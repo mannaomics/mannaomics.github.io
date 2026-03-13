@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manna Omics | From Atoms to Systems</title>
+<meta name="description" content="Manna Omics - Computational biology and bioinformatics consulting. Molecular simulations, multi-omics analysis, and protein engineering solutions.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700&family=Playfair+Display:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-primary: #0a0f1a;
+  --bg-secondary: #111827;
+  --bg-card: #1a2236;
+  --bg-card-hover: #1f2a42;
+  --accent-teal: #2dd4bf;
+  --accent-teal-dim: rgba(45, 212, 191, 0.15);
+  --accent-blue: #3b82f6;
+  --accent-violet: #8b5cf6;
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --border: rgba(148, 163, 184, 0.1);
+  --gradient-hero: linear-gradient(135deg, #0a0f1a 0%, #1a1040 50%, #0a0f1a 100%);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ===== NAVIGATION ===== */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  padding: 1rem 0;
+  transition: all 0.3s ease;
+  background: rgba(10, 15, 26, 0.8);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-decoration: none;
+  letter-spacing: 0.5px;
+}
+
+.logo span { color: var(--accent-teal); }
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.3s;
+  letter-spacing: 0.3px;
+}
+
+.nav-links a:hover { color: var(--accent-teal); }
+
+.mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gradient-hero);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  opacity: 0.4;
+}
+
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(45, 212, 191, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(45, 212, 191, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.hero-glow {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.15;
+}
+
+.glow-1 {
+  background: var(--accent-teal);
+  top: -200px;
+  right: -100px;
+}
+
+.glow-2 {
+  background: var(--accent-violet);
+  bottom: -200px;
+  left: -100px;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 900px;
+  padding: 0 2rem;
+}
+
+.hero-badge {
+  display: inline-block;
+  padding: 0.4rem 1.2rem;
+  border: 1px solid rgba(45, 212, 191, 0.3);
+  border-radius: 50px;
+  font-size: 0.8rem;
+  color: var(--accent-teal);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  background: var(--accent-teal-dim);
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.5px;
+}
+
+.hero h1 .highlight {
+  background: linear-gradient(135deg, var(--accent-teal), var(--accent-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero p {
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  max-width: 650px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.8;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 2rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: none;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.btn-primary {
+  background: var(--accent-teal);
+  color: var(--bg-primary);
+}
+
+.btn-primary:hover {
+  background: #5eead4;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(45, 212, 191, 0.3);
+}
+
+.btn-outline {
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  background: transparent;
+}
+
+.btn-outline:hover {
+  border-color: var(--accent-teal);
+  color: var(--accent-teal);
+  transform: translateY(-2px);
+}
+
+/* ===== SECTIONS COMMON ===== */
+section {
+  padding: 6rem 2rem;
+}
+
+.section-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-label {
+  font-size: 0.8rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent-teal);
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  line-height: 1.3;
+}
+
+.section-desc {
+  color: var(--text-secondary);
+  max-width: 600px;
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+/* ===== ABOUT ===== */
+#about {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  margin-top: 3rem;
+}
+
+.about-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.stat-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+  border-color: rgba(45, 212, 191, 0.3);
+  transform: translateY(-3px);
+}
+
+.stat-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--accent-teal);
+  display: block;
+}
+
+.stat-label {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  margin-top: 0.3rem;
+  line-height: 1.4;
+}
+
+/* ===== SERVICES ===== */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.service-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2rem;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-teal), var(--accent-blue));
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.service-card:hover {
+  background: var(--bg-card-hover);
+  border-color: rgba(45, 212, 191, 0.2);
+  transform: translateY(-5px);
+}
+
+.service-card:hover::before { opacity: 1; }
+
+.service-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: var(--accent-teal-dim);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.2rem;
+  font-size: 1.4rem;
+}
+
+.service-card h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+  color: var(--text-primary);
+}
+
+.service-card p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+/* ===== EXPERTISE / TOOLS ===== */
+#tools {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.tool-group {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2rem;
+}
+
+.tool-group h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--accent-teal);
+}
+
+.tool-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tool-tag {
+  padding: 0.35rem 0.8rem;
+  background: rgba(45, 212, 191, 0.08);
+  border: 1px solid rgba(45, 212, 191, 0.15);
+  border-radius: 6px;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-family: 'JetBrains Mono', monospace;
+  transition: all 0.3s;
+}
+
+.tool-tag:hover {
+  border-color: var(--accent-teal);
+  color: var(--accent-teal);
+}
+
+/* ===== PUBLICATIONS ===== */
+.pub-highlight {
+  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.pub-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: all 0.3s;
+}
+
+.pub-card:hover {
+  border-color: rgba(45, 212, 191, 0.3);
+}
+
+.pub-journal {
+  font-size: 0.75rem;
+  color: var(--accent-teal);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+
+.pub-title {
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+}
+
+.pub-meta {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* ===== FOUNDER ===== */
+#founder {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.founder-content {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 3rem;
+  margin-top: 3rem;
+  align-items: start;
+}
+
+.founder-photo {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  color: var(--text-muted);
+}
+
+.founder-bio h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  margin-bottom: 0.3rem;
+}
+
+.founder-title {
+  color: var(--accent-teal);
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+
+.founder-bio p {
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+
+.founder-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.founder-link {
+  padding: 0.4rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: all 0.3s;
+}
+
+.founder-link:hover {
+  border-color: var(--accent-teal);
+  color: var(--accent-teal);
+}
+
+/* ===== CONTACT ===== */
+.contact-box {
+  max-width: 600px;
+  margin: 3rem auto 0;
+  text-align: center;
+}
+
+.contact-email {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1rem 2rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  color: var(--accent-teal);
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s;
+  margin-bottom: 2rem;
+}
+
+.contact-email:hover {
+  border-color: var(--accent-teal);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(45, 212, 191, 0.15);
+}
+
+.contact-details {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 2;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  padding: 2rem;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+footer .logo {
+  font-size: 1.2rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 968px) {
+  .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .services-grid { grid-template-columns: 1fr 1fr; }
+  .tools-grid { grid-template-columns: 1fr; }
+  .pub-highlight { grid-template-columns: 1fr; }
+  .founder-content { grid-template-columns: 1fr; }
+  .founder-photo { max-width: 250px; }
+}
+
+@media (max-width: 640px) {
+  .nav-links { display: none; }
+  .mobile-toggle { display: block; }
+  .nav-links.active {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--bg-primary);
+    padding: 1rem 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .services-grid { grid-template-columns: 1fr; }
+  .about-stats { grid-template-columns: 1fr 1fr; }
+  section { padding: 4rem 1.5rem; }
+  .hero-cta { flex-direction: column; align-items: center; }
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-badge { animation: fadeUp 0.6s ease 0.2s both; }
+.hero h1 { animation: fadeUp 0.6s ease 0.4s both; }
+.hero p { animation: fadeUp 0.6s ease 0.6s both; }
+.hero-cta { animation: fadeUp 0.6s ease 0.8s both; }
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo">Manna<span>Omics</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#tools">Expertise</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#founder">Founder</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="mobile-toggle" onclick="document.getElementById('navLinks').classList.toggle('active')">&#9776;</button>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero" id="home">
+  <div class="hero-bg">
+    <div class="hero-grid"></div>
+    <div class="hero-glow glow-1"></div>
+    <div class="hero-glow glow-2"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-badge">Computational Biology Consulting</div>
+    <h1>From <span class="highlight">Atoms</span> to <span class="highlight">Systems</span></h1>
+    <p>Bridging molecular simulations and systems-level multi-omics analysis to decode biological complexity. We deliver computational solutions for protein engineering, drug discovery, and microbial systems biology.</p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn btn-primary">Get in Touch</a>
+      <a href="#services" class="btn btn-outline">Our Services</a>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-label">About Us</div>
+    <div class="about-grid">
+      <div>
+        <h2 class="section-title">Computational biology expertise across scales</h2>
+        <p class="section-desc">Manna Omics delivers specialized bioinformatics and computational biology consulting services. We combine deep domain expertise in molecular simulations with advanced multi-omics data analysis to provide actionable biological insights for academic and industry partners.</p>
+      </div>
+      <div class="about-stats">
+        <div class="stat-card">
+          <span class="stat-number">27+</span>
+          <span class="stat-label">Peer-reviewed publications</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">450+</span>
+          <span class="stat-label">Citations</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">14</span>
+          <span class="stat-label">h-index</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">8+</span>
+          <span class="stat-label">International conferences</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services -->
+<section id="services">
+  <div class="section-inner">
+    <div class="section-label">Services</div>
+    <h2 class="section-title">What we do</h2>
+    <p class="section-desc">End-to-end computational biology solutions tailored to your research needs.</p>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">&#9883;</div>
+        <h3>Molecular Dynamics Simulations</h3>
+        <p>All-atom MD simulations for protein structure-function analysis, enzyme conformational dynamics, substrate/inhibitor binding, and stability studies using AMBER and related tools.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">&#9830;</div>
+        <h3>Protein Structure-Function Analysis</h3>
+        <p>Investigating how sequence and structural changes affect protein function, stability, and interactions. Rational protein engineering guided by computational insights.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">&#9881;</div>
+        <h3>Metagenomics & Multi-Omics</h3>
+        <p>Genome-resolved metagenomics, metatranscriptomics, metaproteomics, and metabolomics integration. From raw sequencing data to biological insights.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">&#9879;</div>
+        <h3>Resistome & AMR Profiling</h3>
+        <p>Comprehensive antimicrobial resistance gene profiling, mobile genetic element tracking, and resistome characterization in environmental and clinical samples.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">&#9878;</div>
+        <h3>Bioinformatics Pipeline Development</h3>
+        <p>Custom, reproducible, and scalable bioinformatics workflows for NGS data analysis, variant calling, functional annotation, and genome assembly.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">&#9998;</div>
+        <h3>Scientific Writing Support</h3>
+        <p>Manuscript preparation, figure design, statistical analysis, and data visualization for peer-reviewed publications in computational biology and related fields.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Tools & Expertise -->
+<section id="tools">
+  <div class="section-inner">
+    <div class="section-label">Technical Expertise</div>
+    <h2 class="section-title">Tools and platforms we work with</h2>
+
+    <div class="tools-grid">
+      <div class="tool-group">
+        <h3>Molecular Simulations</h3>
+        <div class="tool-tags">
+          <span class="tool-tag">AMBER</span>
+          <span class="tool-tag">NAMD</span>
+          <span class="tool-tag">Packmol</span>
+          <span class="tool-tag">AutoDock</span>
+          <span class="tool-tag">CPPTRAJ</span>
+          <span class="tool-tag">VMD</span>
+          <span class="tool-tag">PyMOL</span>
+          <span class="tool-tag">AlphaFold</span>
+        </div>
+      </div>
+      <div class="tool-group">
+        <h3>Metagenomics & Assembly</h3>
+        <div class="tool-tags">
+          <span class="tool-tag">SqueezeMeta</span>
+          <span class="tool-tag">MEGAHIT</span>
+          <span class="tool-tag">MetaPhlAn</span>
+          <span class="tool-tag">Kraken2</span>
+          <span class="tool-tag">MaxBin</span>
+          <span class="tool-tag">MetaBAT2</span>
+          <span class="tool-tag">GTDB-Tk</span>
+          <span class="tool-tag">CheckM</span>
+        </div>
+      </div>
+      <div class="tool-group">
+        <h3>Multi-Omics & Analysis</h3>
+        <div class="tool-tags">
+          <span class="tool-tag">CARD-RGI</span>
+          <span class="tool-tag">DIAMOND</span>
+          <span class="tool-tag">HUMAnN</span>
+          <span class="tool-tag">DIA-NN</span>
+          <span class="tool-tag">MetaboAnalyst</span>
+          <span class="tool-tag">mixOmics</span>
+          <span class="tool-tag">QIIME2</span>
+          <span class="tool-tag">Prodigal</span>
+        </div>
+      </div>
+      <div class="tool-group">
+        <h3>Programming & Computing</h3>
+        <div class="tool-tags">
+          <span class="tool-tag">R</span>
+          <span class="tool-tag">Bash</span>
+          <span class="tool-tag">ggplot2</span>
+          <span class="tool-tag">Linux</span>
+          <span class="tool-tag">SLURM / HPC</span>
+          <span class="tool-tag">Git</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Publications -->
+<section id="publications">
+  <div class="section-inner">
+    <div class="section-label">Selected Publications</div>
+    <h2 class="section-title">Recent research highlights</h2>
+    <p class="section-desc">A selection from 27+ peer-reviewed publications.</p>
+
+    <div class="pub-highlight">
+      <div class="pub-card">
+        <div class="pub-journal">Water Research (IF: 12.4)</div>
+        <p class="pub-title">ROS-Induced Oxidative Stress Causes Enrichment and Emergence of Antibacterial Resistance in Conventional Activated Sludge Process</p>
+        <p class="pub-meta">Manna B, Zhou X, Singhal N. (2025)</p>
+      </div>
+      <div class="pub-card">
+        <div class="pub-journal">J. Phys. Chem. B (IF: 2.8)</div>
+        <p class="pub-title">Rational Engineering of a Beta-Glucosidase from GH1 to Improve Catalytic Performance on Cellobiose</p>
+        <p class="pub-meta">Sengupta S*, Chanda P*, Manna B*, et al. (2024)</p>
+      </div>
+      <div class="pub-card">
+        <div class="pub-journal">J. Phys. Chem. B (IF: 3.3)</div>
+        <p class="pub-title">Elucidating the Ionic Liquid Induced Mixed Inhibition of GH1 Beta-Glucosidase H0HC94</p>
+        <p class="pub-meta">Manna B*, Chanda P*, Datta S, Ghosh A. (2023)</p>
+      </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 2rem;">
+      <a href="https://scholar.google.com/citations?user=X2-6aVoAAAAJ" target="_blank" class="btn btn-outline">View all publications &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- Founder -->
+<section id="founder">
+  <div class="section-inner">
+    <div class="section-label">Founder</div>
+    <h2 class="section-title">Meet the scientist behind Manna Omics</h2>
+
+    <div class="founder-content">
+      <div class="founder-photo">BM</div>
+      <div class="founder-bio">
+        <h3>Dr. Bharat Manna</h3>
+        <div class="founder-title">Founder & Principal Consultant</div>
+        <p>Computational biologist with a Ph.D. from IIT Kharagpur and postdoctoral research at the University of Auckland. Expertise spanning molecular dynamics simulations of protein systems to genome-resolved multi-omics analysis of complex microbial communities.</p>
+        <p>Research published in leading journals including Water Research, ACS Sustainable Chemistry & Engineering, Journal of Physical Chemistry B, and Renewable Energy, with work presented at international conferences across four continents.</p>
+        <p>Gold Medalist in M.Tech Bioinformatics. Winner, SAMHAR-COVID19 Hackathon (C-DAC, DST, NVIDIA).</p>
+        <div class="founder-links">
+          <a href="https://scholar.google.com/citations?user=X2-6aVoAAAAJ" target="_blank" class="founder-link">Google Scholar</a>
+          <a href="https://orcid.org/0000-0001-7394-8204" target="_blank" class="founder-link">ORCID</a>
+          <a href="https://www.researchgate.net/profile/Bharat-Manna" target="_blank" class="founder-link">ResearchGate</a>
+          <a href="https://www.linkedin.com/in/bharatmanna" target="_blank" class="founder-link">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-label">Get in Touch</div>
+    <h2 class="section-title" style="text-align: center;">Let's work together</h2>
+    <p class="section-desc" style="text-align: center; margin: 0 auto 2rem;">Whether you need bioinformatics analysis, molecular simulations, or multi-omics data integration, we are here to help.</p>
+
+    <div class="contact-box">
+      <a href="mailto:mannaomics@gmail.com" class="contact-email">
+        &#9993; &nbsp; mannaomics@gmail.com
+      </a>
+      <div class="contact-details">
+        <p>Kolkata, India</p>
+        <p>Available for remote consulting worldwide</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <a href="#" class="logo">Manna<span>Omics</span></a>
+  <p>&copy; 2026 Manna Omics. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
