@@ -7,6 +7,7 @@
 <meta name="description" content="Manna Omics Solutions - Computational biology and bioinformatics consulting. Molecular simulations, multi-omics analysis, and protein engineering solutions.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700&family=Playfair+Display:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
 :root {
   --bg-primary: #0a0f1a;
@@ -617,7 +618,97 @@ footer .logo {
   section { padding: 4rem 1.5rem; }
   .hero-cta { flex-direction: column; align-items: center; }
 }
+/* ===== TOOL CATEGORIES ===== */
+.tool-category {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+}
 
+.tool-category h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+  color: var(--accent-teal);
+}
+
+.tool-context {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.tool-tags span {
+  display: inline-block;
+  padding: 0.35rem 0.8rem;
+  background: rgba(45, 212, 191, 0.08);
+  border: 1px solid rgba(45, 212, 191, 0.15);
+  border-radius: 6px;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-family: 'JetBrains Mono', monospace;
+  margin: 0.25rem;
+  transition: all 0.3s;
+}
+
+.tool-tags span:hover {
+  border-color: var(--accent-teal);
+  color: var(--accent-teal);
+}
+
+/* ===== CONTACT NOTE ===== */
+.contact-note {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  opacity: 0.75;
+  text-align: center;
+  color: var(--text-secondary);
+}
+
+/* ===== FOOTER EXTRAS ===== */
+.footer-tagline {
+  font-size: 0.9rem;
+  opacity: 0.6;
+  margin: 0.3rem 0 1rem;
+  letter-spacing: 0.05em;
+}
+
+.footer-links {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 1rem;
+  font-size: 0.85rem;
+}
+
+.footer-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  opacity: 0.7;
+  transition: opacity 0.3s;
+}
+
+.footer-links a:hover { opacity: 1; color: var(--accent-teal); }
+
+.footer-social {
+  display: flex;
+  gap: 1.2rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.footer-social a {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-social a:hover { color: var(--accent-teal); }
 /* ===== ANIMATIONS ===== */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(30px); }
@@ -628,6 +719,11 @@ footer .logo {
 .hero h1 { animation: fadeUp 0.6s ease 0.4s both; }
 .hero p { animation: fadeUp 0.6s ease 0.6s both; }
 .hero-cta { animation: fadeUp 0.6s ease 0.8s both; }
+
+.section-desc, .service-card p, .founder-bio p, .tool-context, .contact-note {
+  text-align: justify;
+}
+
 </style>
 </head>
 <body>
@@ -658,7 +754,7 @@ footer .logo {
   <div class="hero-content">
     <div class="hero-badge">Bioinformatics and Computational Biology Consulting</div>
     <h1>From <span class="highlight">Atoms</span> to <span class="highlight">Systems</span></h1>
-    <p>Bridging atomistic biomolecular simulations and systems-level multi-omics analysis to decode biological complexity. We deliver computational solutions for protein engineering, drug discovery, and microbial systems biology.</p>
+    <p>Bridging atomistic molecular simulations, AI/ML-driven structural biology, and systems-level multi-omics analysis to generate actionable computational insights. We partner with academic and industry teams in protein engineering, structure-based drug discovery, and microbial systems biology.</p>
     <div class="hero-cta">
       <a href="#contact" class="btn btn-primary">Get in Touch</a>
       <a href="#services" class="btn btn-outline">Our Services</a>
@@ -672,8 +768,8 @@ footer .logo {
     <div class="section-label">About Us</div>
     <div class="about-grid">
       <div>
-        <h2 class="section-title">Computational biology expertise across scales</h2>
-        <p class="section-desc">Manna Omics Solutions deliver specialized bioinformatics and computational biology consulting services. We combine deep domain expertise in molecular simulations with advanced multi-omics data analysis to provide actionable biological insights for academic and industry partners.</p>
+        <h2 class="section-title">From Molecules to Microbiomes</h2>
+        <p class="section-desc">Manna Omics Solutions is a specialized bioinformatics and computational biology consultancy led by Dr. Bharat Manna, operating as a collaborative network of domain specialists. We integrate molecular dynamics simulations, AI/ML-assisted structural biology, and genome-resolved multi-omics analysis to address complex biological questions across scales — from atomic interactions to microbial ecosystem dynamics. Our clients include academic research groups and industry partners seeking rigorous, publication-quality computational insights.</p>
       </div>
       <div class="about-stats">
         <div class="stat-card">
@@ -702,104 +798,98 @@ footer .logo {
   <div class="section-inner">
     <div class="section-label">Services</div>
     <h2 class="section-title">What we do</h2>
-    <p class="section-desc">End-to-end computational biology solutions tailored to your research needs.</p>
-
+    <p class="section-desc">Specialized computational services spanning molecular, genomic, and systems scales — designed for research groups and industry teams who need rigorous, reproducible, and publication-ready outputs.</p>
     <div class="services-grid">
       <div class="service-card">
-        <div class="service-icon">&#9883;</div>
+        <div class="service-icon"><i class="fas fa-atom"></i></div>
         <h3>Molecular Dynamics Simulations</h3>
-        <p>All-atom MD simulations of proteins, enzymes, and biomolecular systems including cellulose, lignin, and polymers. Conformational dynamics, substrate/inhibitor binding analysis, stability profiling, and structure-function characterization at atomic resolution.</p>
+        <p>All-atom and coarse-grained MD simulations of proteins, enzymes, and complex biomolecular systems including industrial polymers. Services include conformational dynamics, free energy perturbation, substrate/inhibitor binding analysis, and structure-function characterization — integrated with AI-assisted structure prediction where applicable.</p>
       </div>
       <div class="service-card">
-        <div class="service-icon">&#9830;</div>
+        <div class="service-icon"><i class="fas fa-dna"></i></div>
         <h3>Protein Structure-Function Analysis</h3>
-        <p>Investigating how sequence and structural changes affect protein function, stability, and interactions. Rational protein engineering guided by computational insights.</p>
+        <p>Computational investigation of how sequence variants, mutations, and structural perturbations affect protein function, stability, and molecular interactions. Combines homology modeling, AI-assisted structure prediction, and MD-based validation for rational protein engineering.</p>
       </div>
       <div class="service-card">
-        <div class="service-icon">&#9881;</div>
+        <div class="service-icon"><i class="fas fa-bacteria"></i></div>
         <h3>Metagenomics & Multi-Omics</h3>
-        <p>Genome-resolved metagenomics, metatranscriptomics, metaproteomics, and metabolomics integration. From raw sequencing data to biological insights.</p>
+        <p>Genome-resolved metagenomics, metatranscriptomics, metaproteomics, and metabolomics — analyzed individually or integrated for systems-level interpretation. From sequencing QC and assembly to functional annotation, metabolic reconstruction, and cross-omics network analysis.</p>
       </div>
       <div class="service-card">
-        <div class="service-icon">&#9879;</div>
+        <div class="service-icon"><i class="fas fa-shield-virus"></i></div>
         <h3>Resistome & AMR Profiling</h3>
-        <p>Comprehensive antimicrobial resistance gene profiling, mobile genetic element tracking, and resistome characterization in environmental and clinical samples.</p>
+        <p>Comprehensive antimicrobial resistance gene profiling, mobile genetic element tracking, and resistome dynamics characterization across environmental, clinical, and agricultural samples. Applied within a One Health framework linking microbial ecology to public health.</p>
       </div>
       <div class="service-card">
-        <div class="service-icon">&#9878;</div>
+        <div class="service-icon"><i class="fas fa-code-branch"></i></div>
         <h3>Bioinformatics Pipeline Development</h3>
-        <p>Custom, reproducible, and scalable bioinformatics workflows for NGS data analysis, variant calling, functional annotation, and genome assembly.</p>
+        <p>Development of custom, reproducible, and scalable bioinformatics workflows for NGS data processing, metagenomic assembly, functional annotation, and multi-omics integration. Built for HPC environments with documentation for long-term reproducibility.</p>
       </div>
       <div class="service-card">
-        <div class="service-icon">&#9998;</div>
+        <div class="service-icon"><i class="fas fa-file-pen"></i></div>
         <h3>Scientific Writing Support</h3>
-        <p>Manuscript preparation, figure design, statistical analysis, and data visualization for peer-reviewed publications in computational biology and related fields.</p>
+        <p>End-to-end manuscript support, including results interpretation, statistical analysis, scientific figure preparation, and writing for peer-reviewed high-impact journals.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Tools & Expertise -->
+<!-- Expertise -->
 <section id="tools">
   <div class="section-inner">
     <div class="section-label">Technical Expertise</div>
-    <h2 class="section-title">Tools and platforms we work with</h2>
-
+    <p class="section-desc">Our work is grounded in industry-standard and cutting-edge computational platforms, ensuring reproducibility, scalability, and methodological rigor across every project.</p>
     <div class="tools-grid">
-      <div class="tool-group">
-        <h3>Molecular Simulations</h3>
+
+      <div class="tool-category">
+        <h3><i class="fas fa-atom"></i> Molecular Simulation Suite</h3>
+        <p class="tool-context">End-to-end MD simulation workflows — from system preparation and force field parameterization to production runs and thermodynamic analysis.</p>
         <div class="tool-tags">
-          <span class="tool-tag">AMBER</span>
-          <span class="tool-tag">NAMD</span>
-          <span class="tool-tag">GROMACS</span>
-          <span class="tool-tag">CHARMM</span>
-          <span class="tool-tag">Packmol</span>
-          <span class="tool-tag">AutoDock</span>
-          <span class="tool-tag">CPPTRAJ</span>
-          <span class="tool-tag">VMD</span>
-          <span class="tool-tag">PyMOL</span>
-          <span class="tool-tag">AlphaFold</span>
+          <span>AMBER</span><span>GROMACS</span><span>NAMD</span><span>CHARMM</span>
+          <span>Packmol</span><span>AutoDock</span><span>CPPTRAJ</span>
+          <span>VMD</span><span>PyMOL</span>
         </div>
       </div>
-      <div class="tool-group">
-        <h3>Metagenomics & Assembly</h3>
+
+      <div class="tool-category">
+        <h3><i class="fas fa-robot"></i> AI/ML & Structural Biology</h3>
+        <p class="tool-context">Integrating state-of-the-art AI-driven tools for protein structure prediction, molecular design, and generative biology pipelines.</p>
         <div class="tool-tags">
-          <span class="tool-tag">SqueezeMeta</span>
-          <span class="tool-tag">Kraken2</span>
-          <span class="tool-tag">MetaPhlAn</span>
-          <span class="tool-tag">HUMAnN</span>
-          <span class="tool-tag">Qiime2</span>
-          <span class="tool-tag">Bowtie2</span>
-          <span class="tool-tag">Prodigal</span>
-          <span class="tool-tag">DIAMOND</span>
-          <span class="tool-tag">MEGAHIT</span>
-          <span class="tool-tag">MaxBin</span>
-          <span class="tool-tag">MetaBAT2</span>
-          <span class="tool-tag">CONCOCT</span>
-          <span class="tool-tag">CheckM</span>
-          <span class="tool-tag">GTDB-Tk</span>
+          <span>AlphaFold</span><span>ESM-2</span><span>RFdiffusion</span>
+          <span>DiffDock</span><span>REINVENT4</span>
         </div>
       </div>
-      <div class="tool-group">
-        <h3>Multi-Omics & Analysis</h3>
+
+      <div class="tool-category">
+        <h3><i class="fas fa-bacteria"></i> Genomics & Metagenomic Assembly</h3>
+        <p class="tool-context">Genome-resolved metagenomics from raw sequencing data to binning, taxonomy, and functional annotation at population scale.</p>
         <div class="tool-tags">
-          <span class="tool-tag">CARD-RGI</span>
-          <span class="tool-tag">DIA-NN</span>
-          <span class="tool-tag">MetaboAnalyst</span>
-          <span class="tool-tag">mixOmics</span>
+          <span>SqueezeMeta</span><span>MEGAHIT</span><span>Bowtie2</span>
+          <span>Prodigal</span><span>DIAMOND</span><span>MaxBin</span>
+          <span>MetaBAT2</span><span>CONCOCT</span><span>CheckM</span>
+          <span>GTDB-Tk</span><span>Kraken2</span><span>MetaPhlAn</span>
+          <span>HUMAnN</span><span>QIIME2</span>
         </div>
       </div>
-      <div class="tool-group">
-        <h3>Programming & Computing</h3>
+
+      <div class="tool-category">
+        <h3><i class="fas fa-chart-network"></i> Multi-Omics Integration</h3>
+        <p class="tool-context">Cross-platform integration of metaproteomics, metabolomics, and transcriptomics data for systems-level biological interpretation.</p>
         <div class="tool-tags">
-          <span class="tool-tag">R</span>
-          <span class="tool-tag">Python</span>
-          <span class="tool-tag">Bash</span>
-          <span class="tool-tag">Linux</span>
-          <span class="tool-tag">SLURM / HPC</span>
-          <span class="tool-tag">Git</span>
+          <span>CARD-RGI</span><span>DIA-NN</span><span>MetaboAnalyst</span>
+          <span>mixOmics</span>
         </div>
       </div>
+
+      <div class="tool-category">
+        <h3><i class="fas fa-terminal"></i> Computing & Workflow Automation</h3>
+        <p class="tool-context">Scalable, reproducible pipelines built for HPC environments with version-controlled, documented workflows.</p>
+        <div class="tool-tags">
+          <span>R</span><span>Python</span><span>Bash</span>
+          <span>Linux</span><span>SLURM / HPC</span><span>Git</span>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -839,16 +929,17 @@ footer .logo {
 <section id="founder">
   <div class="section-inner">
     <div class="section-label">Founder</div>
-    <h2 class="section-title">Meet the scientist behind Manna Omics Solutions</h2>
+    <h2 class="section-title">The Scientist Behind the Science</h2>
 
     <div class="founder-content">
       <img src="bharat.png" alt="Dr. Bharat Manna" class="founder-photo" style="object-fit: cover;">
       <div class="founder-bio">
         <h3>Dr. Bharat Manna</h3>
         <div class="founder-title">Founder & Principal Scientist</div>
-        <p>Computational biologist with a Ph.D. from IIT Kharagpur and postdoctoral research at the University of Auckland. Expertise spanning molecular dynamics simulations of protein systems to genome-resolved multi-omics analysis of complex microbial communities.</p>
-        <p>Research published in leading journals including Water Research, ACS Sustainable Chemistry & Engineering, Journal of Physical Chemistry B, and Renewable Energy, with work presented at international conferences across four continents.</p>
-        <p>Gold Medalist in M.Tech Bioinformatics. Winner, SAMHAR-COVID19 Hackathon (C-DAC, DST, NVIDIA).</p>
+        <p>Dr. Bharat Manna is a computational biologist with a Ph.D. from IIT Kharagpur and postdoctoral training at the University of Auckland, where his research focused on the intersection of oxidative stress, microbial ecology, and antimicrobial resistance — a body of work increasingly relevant to global One Health challenges.</p>
+        <p>His expertise spans two scales: atomistic molecular dynamics simulations of protein systems, and genome-resolved multi-omics analysis of complex environmental microbiomes. This dual fluency — from force fields to metagenomes — is the foundation on which Manna Omics Solutions was built.</p>
+        <p>With 27+ peer-reviewed publications in journals including Water Research, ACS Sustainable Chemistry & Engineering, and Journal of Physical Chemistry B, and research presented across four continents, Dr. Manna brings both scientific depth and international perspective to every engagement.</p>
+        <p>Gold Medalist, M.Tech Bioinformatics. Winner, SAMHAR-COVID19 Hackathon (C-DAC, DST, NVIDIA).</p>
         <div class="founder-links">
           <a href="https://scholar.google.com/citations?user=X2-6aVoAAAAJ" target="_blank" class="founder-link">Google Scholar</a>
           <a href="https://orcid.org/0000-0001-7394-8204" target="_blank" class="founder-link">ORCID</a>
@@ -864,17 +955,17 @@ footer .logo {
 <section id="contact">
   <div class="section-inner">
     <div class="section-label">Get in Touch</div>
-    <h2 class="section-title" style="text-align: center;">Let's work together</h2>
-    <p class="section-desc" style="text-align: center; margin: 0 auto 2rem;">Whether you need bioinformatics analysis, molecular simulations, or multi-omics data integration, we are here to help.</p>
-
+    <h2 class="section-title" style="text-align: center;">Start a Conversation</h2>
+    <p class="section-desc" style="text-align: center; margin: 0 auto 2rem;">Whether you are exploring a collaboration, need a specific computational analysis, or want to discuss how our expertise fits your research goals — we would love to hear from you. We typically respond within 48 hours.</p>
     <div class="contact-box">
       <a href="mailto:mannaomics@gmail.com" class="contact-email">
-        &#9993; &nbsp; mannaomics@gmail.com
+        <i class="fas fa-envelope"></i> &nbsp; mannaomics@gmail.com
       </a>
       <div class="contact-details">
-        <p>Kolkata, India</p>
-        <p>Available for remote consulting worldwide</p>
+        <p><i class="fas fa-location-dot"></i> &nbsp; Kolkata, India</p>
+        <p><i class="fas fa-globe"></i> &nbsp; Available for remote consulting worldwide</p>
       </div>
+      <p class="contact-note">For academic collaborations, industry projects, and grant-linked consulting — all enquiries welcome.</p>
     </div>
   </div>
 </section>
@@ -882,8 +973,17 @@ footer .logo {
 <!-- Footer -->
 <footer>
   <a href="#" class="logo">Manna <span>Omics</span> Solutions</a>
+  <p class="footer-tagline">From Atoms to Systems</p>
+  <div class="footer-links">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#tools">Expertise</a>
+    <a href="#publications">Publications</a>
+    <a href="#founder">Founder</a>
+    <a href="#contact">Contact</a>
+  </div>
   <p>&copy; 2026 Manna Omics Solutions. All rights reserved.</p>
-  <p style="margin-top: 0.4rem;">MSME Registered | Udyam: UDYAM-WB-12-0147213</p>
+  <p style="font-size: 0.75rem; opacity: 0.5; margin-top: 0.5rem;">MSME Registered | Udyam: UDYAM-WB-12-0147213</p>
 </footer>
 
 </body>
