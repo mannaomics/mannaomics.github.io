@@ -868,6 +868,7 @@ footer .logo {
 
 <!-- Hero -->
 <section class="hero" id="home">
+  <canvas id="bioCanvas" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;"></canvas>
   <div class="hero-bg">
     <div class="hero-grid"></div>
     <div class="hero-glow glow-1"></div>
@@ -1148,6 +1149,147 @@ footer .logo {
 </footer>
 
 <script>
+// ── Bio Canvas (DNA helix + molecular particle network) ──────────
+(function () {
+  const canvas = document.getElementById('bioCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  // Skip animation for users who prefer reduced motion
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    canvas.style.display = 'none';
+    return;
+  }
+
+  let W, H, particles, animId, t = 0;
+  const N = 55;           // particle count
+  const LINK = 130;       // connection distance px
+
+  class Particle {
+    constructor() { this.init(); }
+    init() {
+      this.x  = Math.random() * W;
+      this.y  = Math.random() * H;
+      this.vx = (Math.random() - 0.5) * 0.32;
+      this.vy = (Math.random() - 0.5) * 0.32;
+      this.r  = 1.5 + Math.random() * 1.5;
+      this.c  = Math.random() > 0.5 ? '45,212,191' : '59,130,246';
+    }
+    update() {
+      this.x += this.vx;  this.y += this.vy;
+      if (this.x < 0 || this.x > W) this.vx *= -1;
+      if (this.y < 0 || this.y > H) this.vy *= -1;
+    }
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${this.c},0.65)`;
+      ctx.fill();
+    }
+  }
+
+  function initParticles() {
+    particles = Array.from({ length: N }, () => new Particle());
+  }
+
+  function drawConnections() {
+    for (let i = 0; i < N; i++) {
+      for (let j = i + 1; j < N; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const d  = Math.sqrt(dx * dx + dy * dy);
+        if (d < LINK) {
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = `rgba(45,212,191,${(1 - d / LINK) * 0.16})`;
+          ctx.lineWidth = 0.8;
+          ctx.stroke();
+        }
+      }
+    }
+  }
+
+  function drawDNA() {
+    const hx = W * 0.82;          // horizontal centre of helix
+    const hy = H * 0.04;          // top of helix
+    const hh = H * 0.92;          // total height
+    const hw = Math.min(52, W * 0.038); // helix half-width
+    const turns = 5;
+    const steps = 64;
+
+    // Backbones
+    ['45,212,191', '139,92,246'].forEach((col, s) => {
+      const off = s * Math.PI;
+      ctx.beginPath();
+      for (let i = 0; i <= steps; i++) {
+        const f  = i / steps;
+        const a  = f * Math.PI * 2 * turns + t + off;
+        const px = hx + Math.cos(a) * hw;
+        const py = hy + f * hh;
+        i === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
+      }
+      ctx.strokeStyle = `rgba(${col},0.18)`;
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+    });
+
+    // Base pairs + nucleotide dots
+    const bases = 28;
+    for (let i = 0; i < bases; i++) {
+      const f  = i / bases;
+      const py = hy + f * hh;
+      const a  = f * Math.PI * 2 * turns + t;
+      const x1 = hx + Math.cos(a) * hw;
+      const x2 = hx + Math.cos(a + Math.PI) * hw;
+      const d1 = (Math.cos(a) + 1) / 2;
+      const d2 = (Math.cos(a + Math.PI) + 1) / 2;
+
+      // Rung
+      ctx.beginPath();
+      ctx.moveTo(x1, py); ctx.lineTo(x2, py);
+      ctx.strokeStyle = `rgba(148,163,184,${0.04 + Math.min(d1, d2) * 0.1})`;
+      ctx.lineWidth = 1;
+      ctx.stroke();
+
+      // Teal nucleotide
+      ctx.beginPath();
+      ctx.arc(x1, py, 2 + d1 * 2.5, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(45,212,191,${0.22 + d1 * 0.58})`;
+      ctx.fill();
+
+      // Violet nucleotide
+      ctx.beginPath();
+      ctx.arc(x2, py, 2 + d2 * 2.5, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(139,92,246,${0.22 + d2 * 0.58})`;
+      ctx.fill();
+    }
+  }
+
+  function animate() {
+    animId = requestAnimationFrame(animate);
+    ctx.clearRect(0, 0, W, H);
+    t += 0.007;
+    drawConnections();
+    particles.forEach(p => { p.update(); p.draw(); });
+    drawDNA();
+  }
+
+  function resize() {
+    W = canvas.width  = canvas.offsetWidth;
+    H = canvas.height = canvas.offsetHeight;
+    initParticles();
+  }
+
+  window.addEventListener('resize', resize);
+  document.addEventListener('visibilitychange', () => {
+    document.hidden ? cancelAnimationFrame(animId) : animate();
+  });
+
+  resize();
+  animate();
+})();
+
 // ── Button ripple ────────────────────────────────────────────────
 document.querySelectorAll('.btn').forEach(btn => {
   btn.addEventListener('click', e => {
