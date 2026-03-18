@@ -1162,7 +1162,6 @@ footer .logo {
   const particles  = [];
   const rnaStrands  = [];
   const glucoseMols = [];
-  const atpMols     = [];
 
   const ZONES = {
     dna:  { x0: 0.72, x1: 1.00, rgb: '45,212,191'  },
@@ -1295,101 +1294,6 @@ footer .logo {
     }
   }
 
-  // ── ATP: triphosphate chain + ribose + correctly fused purine ────
-  // Purine = pyrimidine ring (6) FUSED to imidazole ring (5), sharing one bond
-  class ATPMolecule {
-    constructor() {
-      const z = ZONES.meta;
-      this.x    = (z.x0 + Math.random() * (z.x1 - z.x0)) * (W || 400);
-      this.y    = Math.random() * (H || 600);
-      this.vx   = -0.05 - Math.random() * 0.06;
-      this.vy   = (Math.random() - 0.5) * 0.18;
-      this.rot  = (Math.random() - 0.5) * 0.5;
-      this.rotV = (Math.random() - 0.5) * 0.002;
-    }
-    update() {
-      this.x += this.vx; this.y += this.vy; this.rot += this.rotV;
-      const z = ZONES.meta;
-      if (this.x < z.x0 * W) this.x = z.x1 * W;
-      if (this.x > z.x1 * W) this.vx = -Math.abs(this.vx);
-      if (this.y < 0 || this.y > H) this.vy *= -1;
-    }
-    draw() {
-      const rgb = '251,191,36';
-      ctx.save();
-      ctx.translate(this.x, this.y);
-      ctx.rotate(this.rot);
-
-      // === TRIPHOSPHATE CHAIN (gamma-beta-alpha, left to right) ===
-      const pX = [-24, -15, -6], pR = 4;
-      pX.forEach((px, i) => {
-        if (i < 2) {
-          // Wavy line = high-energy phosphoanhydride bond
-          const nx = pX[i+1] - pR, mx = (px + pR + nx) / 2;
-          ctx.beginPath(); ctx.moveTo(px + pR, 0);
-          ctx.bezierCurveTo(mx, -3.5, mx, 3.5, nx, 0);
-          ctx.strokeStyle = `rgba(${rgb},0.35)`; ctx.lineWidth = 1; ctx.stroke();
-        }
-        ctx.beginPath(); ctx.arc(px, 0, pR, 0, Math.PI * 2);
-        ctx.strokeStyle = `rgba(${rgb},0.55)`; ctx.lineWidth = 1; ctx.stroke();
-        ctx.font = '5px monospace'; ctx.textAlign = 'center';
-        ctx.fillStyle = `rgba(${rgb},0.55)`; ctx.fillText('P', px, 1.8);
-      });
-
-      // Bond alpha-P → ribose O5'
-      ctx.beginPath(); ctx.moveTo(-6 + pR, 0); ctx.lineTo(1, 0);
-      ctx.strokeStyle = `rgba(${rgb},0.3)`; ctx.lineWidth = 1; ctx.stroke();
-
-      // === RIBOSE (5-membered furanose ring) centred at (6, 0) ===
-      const rX = 6, rR = 5.5;
-      ctx.beginPath();
-      for (let i = 0; i < 5; i++) {
-        const a = (i / 5) * Math.PI * 2 - Math.PI / 2;
-        i === 0 ? ctx.moveTo(rX + Math.cos(a)*rR, Math.sin(a)*rR)
-                : ctx.lineTo(rX + Math.cos(a)*rR, Math.sin(a)*rR);
-      }
-      ctx.closePath();
-      ctx.strokeStyle = `rgba(${rgb},0.42)`; ctx.lineWidth = 1; ctx.stroke();
-
-      // N-glycosidic bond: ribose C1' → N9 of adenine
-      ctx.beginPath(); ctx.moveTo(rX + rR, 0); ctx.lineTo(16, 0);
-      ctx.strokeStyle = `rgba(${rgb},0.3)`; ctx.lineWidth = 1; ctx.stroke();
-
-      // === ADENINE (purine): pyrimidine hexagon FUSED with imidazole pentagon ===
-      // Hexagon (pyrimidine ring) — pointy-top, centre at (22, 0), radius 6
-      const ahx = 22, ahr = 6;
-      const hexV = [];
-      for (let i = 0; i < 6; i++) {
-        const a = -Math.PI / 2 + (i / 6) * Math.PI * 2;
-        hexV.push([ahx + Math.cos(a) * ahr, Math.sin(a) * ahr]);
-      }
-      // hexV[0]=top, [1]=upper-right(27.2,-3), [2]=lower-right(27.2,3), [3]=bottom, [4]=lower-left, [5]=upper-left
-
-      ctx.beginPath();
-      hexV.forEach(([x, y], i) => i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y));
-      ctx.closePath();
-      ctx.strokeStyle = `rgba(${rgb},0.42)`; ctx.lineWidth = 1; ctx.stroke();
-
-      // Pentagon (imidazole ring) — shares right edge hexV[1]–hexV[2]
-      // Pentagon circumradius for edge length = ahr: R = ahr/(2*sin(π/5)) ≈ ahr*0.851
-      // Pentagon centre offset from hexagon centre: apothem ≈ ahr*0.688 to the right of edge midpoint
-      // Edge midpoint x = ahx + cos(-30°)*ahr = ahx + 0.866*ahr ≈ 27.2
-      // Pentagon centre ≈ (ahx + 0.866*ahr + 0.688*ahr, 0) = (ahx + 9.32, 0)
-      const pentV = [
-        hexV[1],                        // shared — upper vertex of shared edge
-        [ahx + 10.9, -4.85],            // upper-right of pentagon
-        [ahx + 14.4,  0   ],            // rightmost tip
-        [ahx + 10.9,  4.85],            // lower-right of pentagon
-        hexV[2],                        // shared — lower vertex of shared edge
-      ];
-      ctx.beginPath();
-      pentV.forEach(([x, y], i) => i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y));
-      ctx.closePath();
-      ctx.strokeStyle = `rgba(${rgb},0.35)`; ctx.lineWidth = 1; ctx.stroke();
-
-      ctx.restore();
-    }
-  }
 
   // ── Particles: DNA nodes, Protein PPI, Metabolite clusters ───────
   class Particle {
@@ -1451,12 +1355,11 @@ footer .logo {
 
   function initAll() {
     particles.length = 0; rnaStrands.length = 0;
-    glucoseMols.length = 0; atpMols.length = 0;
+    glucoseMols.length = 0;
     [{ z: 'dna', n: 12 }, { z: 'prot', n: 22 }, { z: 'meta', n: 14 }]
       .forEach(({ z, n }) => { for (let i = 0; i < n; i++) particles.push(new Particle(z)); });
     for (let i = 0; i < 5; i++) rnaStrands.push(new RNAStrand(true));
     for (let i = 0; i < 3; i++) glucoseMols.push(new GlucoseMolecule());
-    for (let i = 0; i < 2; i++) atpMols.push(new ATPMolecule());
   }
 
   const CONN = {
@@ -1540,7 +1443,6 @@ footer .logo {
     rnaStrands.forEach(s => { s.update(); s.draw(); });
     particles.forEach(p => { p.update(); p.draw(); });
     glucoseMols.forEach(g => { g.update(); g.draw(); });
-    atpMols.forEach(a => { a.update(); a.draw(); });
     drawDNA();
     drawLabels();
   }
