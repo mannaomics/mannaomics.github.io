@@ -1149,7 +1149,7 @@ footer .logo {
 </footer>
 
 <script>
-// ── Central Dogma Canvas: Genome → Transcriptome → Proteome → Metabolome ──
+// ── Central Dogma Canvas: Genome > Transcriptome > Proteome > Metabolome ──
 (function () {
   const canvas = document.getElementById('bioCanvas');
   if (!canvas) return;
@@ -1159,23 +1159,239 @@ footer .logo {
   }
 
   let W, H, t = 0, animId;
-  const particles = [];
+  const particles  = [];
+  const rnaStrands  = [];
+  const glucoseMols = [];
+  const atpMols     = [];
 
-  // Zone definitions (x fractions) — flow right → left
   const ZONES = {
-    dna:  { x0: 0.72, x1: 1.00, rgb: '45,212,191',  n: 12 },  // teal
-    rna:  { x0: 0.48, x1: 0.72, rgb: '251,191,36',   n: 18 },  // amber
-    prot: { x0: 0.24, x1: 0.48, rgb: '59,130,246',   n: 22 },  // blue
-    meta: { x0: 0.00, x1: 0.24, rgb: '244,63,94',    n: 20 },  // rose
+    dna:  { x0: 0.72, x1: 1.00, rgb: '45,212,191'  },
+    rna:  { x0: 0.48, x1: 0.72, rgb: '251,191,36'   },
+    prot: { x0: 0.24, x1: 0.48, rgb: '59,130,246'   },
+    meta: { x0: 0.00, x1: 0.24, rgb: '244,63,94'    },
   };
 
   const LABELS = [
-    { xf: 0.86, text: 'Genome',        rgb: '45,212,191'  },
-    { xf: 0.60, text: 'Transcriptome', rgb: '251,191,36'  },
-    { xf: 0.36, text: 'Proteome',      rgb: '59,130,246'  },
-    { xf: 0.12, text: 'Metabolome',    rgb: '244,63,94'   },
+    { xf: 0.86, text: 'GENOME',        rgb: '45,212,191'  },
+    { xf: 0.60, text: 'TRANSCRIPTOME', rgb: '251,191,36'  },
+    { xf: 0.36, text: 'PROTEOME',      rgb: '59,130,246'  },
+    { xf: 0.12, text: 'METABOLOME',    rgb: '244,63,94'   },
   ];
 
+  // ── RNA: flowing single-strand ribbons with base tick marks ──────
+  class RNAStrand {
+    constructor(init) { this.spawn(init); }
+    spawn(init) {
+      this.y     = 30 + Math.random() * (H - 60);
+      this.len   = 90 + Math.random() * 90;
+      this.headX = init
+        ? (ZONES.rna.x0 + Math.random() * (ZONES.rna.x1 - ZONES.rna.x0)) * W + this.len / 2
+        : ZONES.rna.x1 * W + this.len + Math.random() * 60;
+      this.speed = 0.38 + Math.random() * 0.25;
+      this.amp   = 5 + Math.random() * 10;
+      this.freq  = 0.03 + Math.random() * 0.025;
+      this.wSpd  = 1.0 + Math.random() * 0.8;
+      this.phase = Math.random() * Math.PI * 2;
+    }
+    update() {
+      this.headX -= this.speed;
+      if (this.headX < ZONES.rna.x0 * W) this.spawn(false);
+    }
+    draw() {
+      const rgb   = ZONES.rna.rgb;
+      const steps = 50;
+      ctx.beginPath();
+      for (let i = 0; i <= steps; i++) {
+        const f  = i / steps;
+        const px = this.headX - f * this.len;
+        const py = this.y + Math.sin(f * this.len * this.freq + t * this.wSpd + this.phase) * this.amp;
+        i === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
+      }
+      ctx.strokeStyle = `rgba(${rgb},0.5)`;
+      ctx.lineWidth   = 1.5;
+      ctx.stroke();
+      // Perpendicular base tick marks
+      const nTicks = Math.floor(this.len / 11);
+      for (let i = 1; i < nTicks; i++) {
+        const f   = i / nTicks;
+        const f2  = (i + 0.05) / nTicks;
+        const px  = this.headX - f  * this.len;
+        const py  = this.y + Math.sin(f  * this.len * this.freq + t * this.wSpd + this.phase) * this.amp;
+        const px2 = this.headX - f2 * this.len;
+        const py2 = this.y + Math.sin(f2 * this.len * this.freq + t * this.wSpd + this.phase) * this.amp;
+        const dx  = px2 - px, dy = py2 - py;
+        const d   = Math.sqrt(dx * dx + dy * dy) || 1;
+        const nx  = -dy / d * 4, ny = dx / d * 4;
+        ctx.beginPath();
+        ctx.moveTo(px - nx, py - ny);
+        ctx.lineTo(px + nx, py + ny);
+        ctx.strokeStyle = `rgba(${rgb},0.28)`;
+        ctx.lineWidth   = 1;
+        ctx.stroke();
+      }
+    }
+  }
+
+  // ── Glucose: pyranose ring with ring-O marker + OH substituents ─
+  class GlucoseMolecule {
+    constructor() {
+      const z = ZONES.meta;
+      this.x    = (z.x0 + Math.random() * (z.x1 - z.x0)) * (W || 400);
+      this.y    = Math.random() * (H || 600);
+      this.vx   = -0.05 - Math.random() * 0.06;
+      this.vy   = (Math.random() - 0.5) * 0.18;
+      this.rot  = Math.random() * Math.PI * 2;
+      this.rotV = (Math.random() - 0.5) * 0.003;
+      this.r    = 9;
+    }
+    update() {
+      this.x += this.vx; this.y += this.vy; this.rot += this.rotV;
+      const z = ZONES.meta;
+      if (this.x < z.x0 * W) this.x = z.x1 * W;
+      if (this.x > z.x1 * W) this.vx = -Math.abs(this.vx);
+      if (this.y < 0 || this.y > H) this.vy *= -1;
+    }
+    draw() {
+      const rgb = ZONES.meta.rgb;
+      const r   = this.r;
+      ctx.save();
+      ctx.translate(this.x, this.y);
+      ctx.rotate(this.rot);
+
+      // Six-membered pyranose ring (5 C + 1 O)
+      // Flat-bottom orientation: vertex 0 = right (C1), going clockwise
+      // v0=C1(right), v1=C2(lower-right), v2=C3(lower-left),
+      // v3=C4(left),  v4=C5(upper-left), v5=O(upper-right, ring oxygen)
+      const verts = [];
+      for (let i = 0; i < 6; i++) {
+        const a = (i / 6) * Math.PI * 2;
+        verts.push([Math.cos(a) * r, Math.sin(a) * r]);
+      }
+
+      // Draw ring
+      ctx.beginPath();
+      verts.forEach(([x, y], i) => i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y));
+      ctx.closePath();
+      ctx.strokeStyle = `rgba(${rgb},0.52)`; ctx.lineWidth = 1.3; ctx.stroke();
+
+      // Ring oxygen at v5 — small filled dot to distinguish from C vertices
+      ctx.beginPath();
+      ctx.arc(verts[5][0], verts[5][1], 2.2, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${rgb},0.55)`; ctx.fill();
+
+      // OH substituents at C1–C4 (short radial stubs), CH2OH at C5 (longer + tip circle)
+      [[0,7,false],[1,7,false],[2,7,false],[3,7,false],[4,11,true]].forEach(([i,len,tip]) => {
+        const [x, y] = verts[i];
+        const nx = x / r, ny = y / r;
+        ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + nx*len, y + ny*len);
+        ctx.strokeStyle = `rgba(${rgb},0.3)`; ctx.lineWidth = 1; ctx.stroke();
+        if (tip) {
+          ctx.beginPath(); ctx.arc(x + nx*len, y + ny*len, 2, 0, Math.PI*2);
+          ctx.fillStyle = `rgba(${rgb},0.3)`; ctx.fill();
+        }
+      });
+
+      ctx.restore();
+    }
+  }
+
+  // ── ATP: triphosphate chain + ribose + correctly fused purine ────
+  // Purine = pyrimidine ring (6) FUSED to imidazole ring (5), sharing one bond
+  class ATPMolecule {
+    constructor() {
+      const z = ZONES.meta;
+      this.x    = (z.x0 + Math.random() * (z.x1 - z.x0)) * (W || 400);
+      this.y    = Math.random() * (H || 600);
+      this.vx   = -0.05 - Math.random() * 0.06;
+      this.vy   = (Math.random() - 0.5) * 0.18;
+      this.rot  = (Math.random() - 0.5) * 0.5;
+      this.rotV = (Math.random() - 0.5) * 0.002;
+    }
+    update() {
+      this.x += this.vx; this.y += this.vy; this.rot += this.rotV;
+      const z = ZONES.meta;
+      if (this.x < z.x0 * W) this.x = z.x1 * W;
+      if (this.x > z.x1 * W) this.vx = -Math.abs(this.vx);
+      if (this.y < 0 || this.y > H) this.vy *= -1;
+    }
+    draw() {
+      const rgb = '251,191,36';
+      ctx.save();
+      ctx.translate(this.x, this.y);
+      ctx.rotate(this.rot);
+
+      // === TRIPHOSPHATE CHAIN (gamma-beta-alpha, left to right) ===
+      const pX = [-24, -15, -6], pR = 4;
+      pX.forEach((px, i) => {
+        if (i < 2) {
+          // Wavy line = high-energy phosphoanhydride bond
+          const nx = pX[i+1] - pR, mx = (px + pR + nx) / 2;
+          ctx.beginPath(); ctx.moveTo(px + pR, 0);
+          ctx.bezierCurveTo(mx, -3.5, mx, 3.5, nx, 0);
+          ctx.strokeStyle = `rgba(${rgb},0.35)`; ctx.lineWidth = 1; ctx.stroke();
+        }
+        ctx.beginPath(); ctx.arc(px, 0, pR, 0, Math.PI * 2);
+        ctx.strokeStyle = `rgba(${rgb},0.55)`; ctx.lineWidth = 1; ctx.stroke();
+        ctx.font = '5px monospace'; ctx.textAlign = 'center';
+        ctx.fillStyle = `rgba(${rgb},0.55)`; ctx.fillText('P', px, 1.8);
+      });
+
+      // Bond alpha-P → ribose O5'
+      ctx.beginPath(); ctx.moveTo(-6 + pR, 0); ctx.lineTo(1, 0);
+      ctx.strokeStyle = `rgba(${rgb},0.3)`; ctx.lineWidth = 1; ctx.stroke();
+
+      // === RIBOSE (5-membered furanose ring) centred at (6, 0) ===
+      const rX = 6, rR = 5.5;
+      ctx.beginPath();
+      for (let i = 0; i < 5; i++) {
+        const a = (i / 5) * Math.PI * 2 - Math.PI / 2;
+        i === 0 ? ctx.moveTo(rX + Math.cos(a)*rR, Math.sin(a)*rR)
+                : ctx.lineTo(rX + Math.cos(a)*rR, Math.sin(a)*rR);
+      }
+      ctx.closePath();
+      ctx.strokeStyle = `rgba(${rgb},0.42)`; ctx.lineWidth = 1; ctx.stroke();
+
+      // N-glycosidic bond: ribose C1' → N9 of adenine
+      ctx.beginPath(); ctx.moveTo(rX + rR, 0); ctx.lineTo(16, 0);
+      ctx.strokeStyle = `rgba(${rgb},0.3)`; ctx.lineWidth = 1; ctx.stroke();
+
+      // === ADENINE (purine): pyrimidine hexagon FUSED with imidazole pentagon ===
+      // Hexagon (pyrimidine ring) — pointy-top, centre at (22, 0), radius 6
+      const ahx = 22, ahr = 6;
+      const hexV = [];
+      for (let i = 0; i < 6; i++) {
+        const a = -Math.PI / 2 + (i / 6) * Math.PI * 2;
+        hexV.push([ahx + Math.cos(a) * ahr, Math.sin(a) * ahr]);
+      }
+      // hexV[0]=top, [1]=upper-right(27.2,-3), [2]=lower-right(27.2,3), [3]=bottom, [4]=lower-left, [5]=upper-left
+
+      ctx.beginPath();
+      hexV.forEach(([x, y], i) => i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y));
+      ctx.closePath();
+      ctx.strokeStyle = `rgba(${rgb},0.42)`; ctx.lineWidth = 1; ctx.stroke();
+
+      // Pentagon (imidazole ring) — shares right edge hexV[1]–hexV[2]
+      // Pentagon circumradius for edge length = ahr: R = ahr/(2*sin(π/5)) ≈ ahr*0.851
+      // Pentagon centre offset from hexagon centre: apothem ≈ ahr*0.688 to the right of edge midpoint
+      // Edge midpoint x = ahx + cos(-30°)*ahr = ahx + 0.866*ahr ≈ 27.2
+      // Pentagon centre ≈ (ahx + 0.866*ahr + 0.688*ahr, 0) = (ahx + 9.32, 0)
+      const pentV = [
+        hexV[1],                        // shared — upper vertex of shared edge
+        [ahx + 10.9, -4.85],            // upper-right of pentagon
+        [ahx + 14.4,  0   ],            // rightmost tip
+        [ahx + 10.9,  4.85],            // lower-right of pentagon
+        hexV[2],                        // shared — lower vertex of shared edge
+      ];
+      ctx.beginPath();
+      pentV.forEach(([x, y], i) => i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y));
+      ctx.closePath();
+      ctx.strokeStyle = `rgba(${rgb},0.35)`; ctx.lineWidth = 1; ctx.stroke();
+
+      ctx.restore();
+    }
+  }
+
+  // ── Particles: DNA nodes, Protein PPI, Metabolite clusters ───────
   class Particle {
     constructor(zone) {
       this.zone = zone;
@@ -1188,19 +1404,12 @@ footer .logo {
           this.vx = (Math.random() - 0.5) * 0.22;
           this.vy = (Math.random() - 0.5) * 0.22;
           break;
-        case 'rna': // drift leftward with sine wobble
-          this.vx   = -0.12 - Math.random() * 0.12;
-          this.vy   = (Math.random() - 0.5) * 0.2;
-          this.ph   = Math.random() * Math.PI * 2;
-          this.wAmp = 18 + Math.random() * 22;
-          this.wFrq = 0.014 + Math.random() * 0.008;
-          break;
         case 'prot':
-          this.vx = (Math.random() - 0.5) * 0.15;
+          this.vx = -0.08 - Math.random() * 0.1;
           this.vy = (Math.random() - 0.5) * 0.15;
           break;
-        case 'meta': // small rotating molecule clusters
-          this.vx       = (Math.random() - 0.5) * 0.28;
+        case 'meta':
+          this.vx       = -0.06 - Math.random() * 0.08;
           this.vy       = (Math.random() - 0.5) * 0.28;
           this.nAtoms   = 2 + Math.floor(Math.random() * 3);
           this.atomAng  = Math.random() * Math.PI * 2;
@@ -1208,30 +1417,21 @@ footer .logo {
           break;
       }
     }
-
     update() {
       const z = ZONES[this.zone];
-      if (this.zone === 'rna') {
-        this.x += this.vx;
-        this.y += this.vy + Math.sin(t * 1.8 + this.ph) * this.wAmp * this.wFrq;
-        if (this.x < z.x0 * W) this.x = z.x1 * W; // wrap back to right of RNA zone
-        if (this.y < 0 || this.y > H) this.vy *= -1;
-      } else if (this.zone === 'meta') {
-        this.x += this.vx; this.y += this.vy;
-        this.atomAng += this.atomAngV;
-        if (this.x < z.x0 * W || this.x > z.x1 * W) this.vx *= -1;
-        if (this.y < 0 || this.y > H) this.vy *= -1;
+      this.x += this.vx; this.y += this.vy;
+      if (this.zone === 'meta') this.atomAng += this.atomAngV;
+      if (this.zone === 'prot' || this.zone === 'meta') {
+        if (this.x < z.x0 * W) this.x = z.x1 * W;
+        if (this.x > z.x1 * W) this.vx = -Math.abs(this.vx);
       } else {
-        this.x += this.vx; this.y += this.vy;
         if (this.x < z.x0 * W || this.x > z.x1 * W) this.vx *= -1;
-        if (this.y < 0 || this.y > H) this.vy *= -1;
       }
+      if (this.y < 0 || this.y > H) this.vy *= -1;
     }
-
     draw() {
       const rgb = ZONES[this.zone].rgb;
       if (this.zone === 'meta') {
-        // Draw small molecule: bonds + atoms around centre
         const bLen = 11;
         for (let i = 0; i < this.nAtoms - 1; i++) {
           const a  = this.atomAng + (i / (this.nAtoms - 1)) * Math.PI * 2;
@@ -1249,61 +1449,54 @@ footer .logo {
     }
   }
 
-  function initParticles() {
-    particles.length = 0;
-    Object.entries(ZONES).forEach(([zone, cfg]) => {
-      for (let i = 0; i < cfg.n; i++) particles.push(new Particle(zone));
-    });
+  function initAll() {
+    particles.length = 0; rnaStrands.length = 0;
+    glucoseMols.length = 0; atpMols.length = 0;
+    [{ z: 'dna', n: 12 }, { z: 'prot', n: 22 }, { z: 'meta', n: 14 }]
+      .forEach(({ z, n }) => { for (let i = 0; i < n; i++) particles.push(new Particle(z)); });
+    for (let i = 0; i < 5; i++) rnaStrands.push(new RNAStrand(true));
+    for (let i = 0; i < 3; i++) glucoseMols.push(new GlucoseMolecule());
+    for (let i = 0; i < 2; i++) atpMols.push(new ATPMolecule());
   }
 
-  // Connections within each zone (topology reflects biology)
   const CONN = {
     dna:  { maxD: 105, alpha: 0.12 },
-    rna:  { maxD:  75, alpha: 0.09 },  // sparse — single strand
-    prot: { maxD: 145, alpha: 0.18 },  // dense — folded network
+    prot: { maxD: 145, alpha: 0.18 },
   };
 
   function drawConnections() {
     for (let i = 0; i < particles.length; i++) {
       const pi = particles[i];
-      if (pi.zone === 'meta') continue;
-      const cfg = CONN[pi.zone];
+      const cfg = CONN[pi.zone]; if (!cfg) continue;
       const rgb = ZONES[pi.zone].rgb;
       for (let j = i + 1; j < particles.length; j++) {
         if (particles[j].zone !== pi.zone) continue;
         const dx = pi.x - particles[j].x, dy = pi.y - particles[j].y;
-        const d  = Math.sqrt(dx*dx + dy*dy);
+        const d  = Math.sqrt(dx * dx + dy * dy);
         if (d < cfg.maxD) {
           ctx.beginPath(); ctx.moveTo(pi.x, pi.y); ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.strokeStyle = `rgba(${rgb},${(1 - d/cfg.maxD) * cfg.alpha})`;
+          ctx.strokeStyle = `rgba(${rgb},${(1 - d / cfg.maxD) * cfg.alpha})`;
           ctx.lineWidth = 0.8; ctx.stroke();
         }
       }
     }
   }
 
-  // Faint boundary lines + animated flow chevrons between zones
   function drawBoundaries() {
-    const bounds = [
-      { xf: 0.72, rgb: '251,191,36'  },
-      { xf: 0.48, rgb: '59,130,246'  },
-      { xf: 0.24, rgb: '244,63,94'   },
-    ];
-    bounds.forEach(({ xf, rgb }) => {
-      const x = xf * W;
-      ctx.beginPath(); ctx.setLineDash([4, 10]);
-      ctx.moveTo(x, 0); ctx.lineTo(x, H);
-      ctx.strokeStyle = `rgba(${rgb},0.07)`; ctx.lineWidth = 1; ctx.stroke();
-      ctx.setLineDash([]);
-      // Animated chevron drifting downward
-      const cy = ((t * 25) % H);
-      ctx.beginPath();
-      ctx.moveTo(x - 6, cy - 7); ctx.lineTo(x - 1, cy); ctx.lineTo(x - 6, cy + 7);
-      ctx.strokeStyle = `rgba(${rgb},0.28)`; ctx.lineWidth = 1.5; ctx.stroke();
-    });
+    [{ xf: 0.72, rgb: '251,191,36' }, { xf: 0.48, rgb: '59,130,246' }, { xf: 0.24, rgb: '244,63,94' }]
+      .forEach(({ xf, rgb }) => {
+        const x = xf * W;
+        ctx.beginPath(); ctx.setLineDash([4, 10]);
+        ctx.moveTo(x, 0); ctx.lineTo(x, H);
+        ctx.strokeStyle = `rgba(${rgb},0.07)`; ctx.lineWidth = 1; ctx.stroke();
+        ctx.setLineDash([]);
+        const cy = (t * 25) % H;
+        ctx.beginPath();
+        ctx.moveTo(x - 6, cy - 7); ctx.lineTo(x - 1, cy); ctx.lineTo(x - 6, cy + 7);
+        ctx.strokeStyle = `rgba(${rgb},0.28)`; ctx.lineWidth = 1.5; ctx.stroke();
+      });
   }
 
-  // DNA double helix
   function drawDNA() {
     const hx = W * 0.87, hy = H * 0.04, hh = H * 0.92;
     const hw = Math.min(50, W * 0.037), turns = 5, steps = 64;
@@ -1311,8 +1504,8 @@ footer .logo {
       ctx.beginPath();
       for (let i = 0; i <= steps; i++) {
         const f = i / steps, a = f * Math.PI * 2 * turns + t + s * Math.PI;
-        const px = hx + Math.cos(a) * hw, py = hy + f * hh;
-        i === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
+        i === 0 ? ctx.moveTo(hx + Math.cos(a) * hw, hy + f * hh)
+                : ctx.lineTo(hx + Math.cos(a) * hw, hy + f * hh);
       }
       ctx.strokeStyle = `rgba(${col},0.2)`; ctx.lineWidth = 1.5; ctx.stroke();
     });
@@ -1321,21 +1514,20 @@ footer .logo {
       const x1 = hx + Math.cos(a) * hw, x2 = hx + Math.cos(a + Math.PI) * hw;
       const d1 = (Math.cos(a) + 1) / 2, d2 = (Math.cos(a + Math.PI) + 1) / 2;
       ctx.beginPath(); ctx.moveTo(x1, py); ctx.lineTo(x2, py);
-      ctx.strokeStyle = `rgba(148,163,184,${0.04 + Math.min(d1,d2)*0.1})`; ctx.lineWidth = 1; ctx.stroke();
-      ctx.beginPath(); ctx.arc(x1, py, 2+d1*2.5, 0, Math.PI*2);
-      ctx.fillStyle = `rgba(45,212,191,${0.22+d1*0.58})`; ctx.fill();
-      ctx.beginPath(); ctx.arc(x2, py, 2+d2*2.5, 0, Math.PI*2);
-      ctx.fillStyle = `rgba(139,92,246,${0.22+d2*0.58})`; ctx.fill();
+      ctx.strokeStyle = `rgba(148,163,184,${0.04 + Math.min(d1, d2) * 0.1})`; ctx.lineWidth = 1; ctx.stroke();
+      ctx.beginPath(); ctx.arc(x1, py, 2 + d1 * 2.5, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(45,212,191,${0.22 + d1 * 0.58})`; ctx.fill();
+      ctx.beginPath(); ctx.arc(x2, py, 2 + d2 * 2.5, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(139,92,246,${0.22 + d2 * 0.58})`; ctx.fill();
     }
   }
 
-  // Faint omics zone labels
   function drawLabels() {
     ctx.font = '10px JetBrains Mono, monospace';
     ctx.textAlign = 'center';
     LABELS.forEach(({ xf, text, rgb }) => {
       ctx.fillStyle = `rgba(${rgb},0.2)`;
-      ctx.fillText(text.toUpperCase(), xf * W, 16);
+      ctx.fillText(text, xf * W, 16);
     });
   }
 
@@ -1345,7 +1537,10 @@ footer .logo {
     t += 0.007;
     drawBoundaries();
     drawConnections();
+    rnaStrands.forEach(s => { s.update(); s.draw(); });
     particles.forEach(p => { p.update(); p.draw(); });
+    glucoseMols.forEach(g => { g.update(); g.draw(); });
+    atpMols.forEach(a => { a.update(); a.draw(); });
     drawDNA();
     drawLabels();
   }
@@ -1353,7 +1548,7 @@ footer .logo {
   function resize() {
     W = canvas.width  = canvas.offsetWidth;
     H = canvas.height = canvas.offsetHeight;
-    initParticles();
+    initAll();
   }
 
   window.addEventListener('resize', resize);
