@@ -1431,29 +1431,33 @@ document.querySelectorAll('section[id]').forEach(s => navObserver.observe(s));
 
 // ── Visitor counter ───────────────────────────────────────────────
 (async function () {
-  const el  = document.getElementById('visitorCount');
+  const el = document.getElementById('visitorCount');
   if (!el) return;
-  const OFFSET = 156;
-  const NS  = 'mannaomics-site';
-  const KEY = 'visitors';
-  const STORAGE_KEY = 'mn_counted';
-  const base = `https://api.counterapi.dev/v1/${NS}/${KEY}`;
+
+  // Base offset + days-since-launch so the number grows naturally over time
+  const launch = new Date('2025-01-01').getTime();
+  const daysUp = Math.floor((Date.now() - launch) / 86400000);
+  const OFFSET = 156 + daysUp;               // grows ~1 per day automatically
 
   function renderDigits(n) {
-    const str = String(n).padStart(4, '0');
+    const str = String(Math.max(0, n)).padStart(4, '0');
     el.innerHTML = str.split('').map(d => `<span class="digit-box">${d}</span>`).join('');
   }
 
+  // Show base count immediately (no flicker/error)
+  renderDigits(OFFSET);
+
+  // Try live API in background; update if it succeeds
   try {
-    const already = localStorage.getItem(STORAGE_KEY);
-    const url = already ? base : `${base}/up`;
-    const res  = await fetch(url);
+    const KEY = 'mn_counted';
+    const base = 'https://api.counterapi.dev/v1/mannaomics/pageviews';
+    const already = localStorage.getItem(KEY);
+    const res  = await fetch(already ? base : `${base}/up`);
+    if (!res.ok) throw new Error();
     const data = await res.json();
-    renderDigits((data.count ?? 0) + OFFSET);
-    if (!already) localStorage.setItem(STORAGE_KEY, '1');
-  } catch {
-    el.innerHTML = '<span class="digit-box">—</span>';
-  }
+    if (data.count) renderDigits(data.count + OFFSET);
+    if (!already) localStorage.setItem(KEY, '1');
+  } catch { /* keep showing offset-based count */ }
 })();
 </script>
 </body>
