@@ -597,29 +597,44 @@ footer .logo {
 /* ===== VISITOR COUNTER ===== */
 .visitor-counter {
   display: inline-flex;
+  flex-direction: column;
   align-items: center;
-  gap: 0.4rem;
-  margin: 0.75rem auto 0.25rem;
-  padding: 0.3rem 0.85rem;
+  gap: 0.45rem;
+  margin: 1rem auto 0.4rem;
+}
+.digit-display {
+  display: flex;
+  gap: 5px;
+}
+.digit-box {
+  width: 38px;
+  height: 50px;
   background: rgba(45, 212, 191, 0.06);
-  border: 1px solid rgba(45, 212, 191, 0.18);
-  border-radius: 999px;
-  font-size: 0.78rem;
+  border: 1px solid rgba(45, 212, 191, 0.28);
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.45rem;
+  font-weight: 600;
+  color: var(--accent-teal);
+  box-shadow: 0 0 14px rgba(45, 212, 191, 0.08), inset 0 1px 0 rgba(45,212,191,0.1);
+  position: relative;
+}
+.digit-box::after {
+  content: '';
+  position: absolute;
+  left: 6px; right: 6px;
+  top: 50%; height: 1px;
+  background: rgba(45, 212, 191, 0.12);
+}
+.visitor-label {
+  font-size: 0.7rem;
   color: var(--text-muted);
-  letter-spacing: 0.3px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
 }
-.visitor-dot {
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  background: var(--accent-teal);
-  box-shadow: 0 0 6px var(--accent-teal);
-  animation: pulse-dot 2s ease-in-out infinite;
-}
-@keyframes pulse-dot {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: 0.35; }
-}
-#visitorCount { color: var(--accent-teal); font-weight: 600; }
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 968px) {
@@ -1171,8 +1186,10 @@ footer .logo {
     <a href="#contact">Contact</a>
   </div>
   <div class="visitor-counter">
-    <span class="visitor-dot"></span>
-    <span id="visitorCount">—</span> visitors
+    <div id="visitorCount" class="digit-display">
+      <span class="digit-box">—</span>
+    </div>
+    <span class="visitor-label">Site Visitors</span>
   </div>
   <p>&copy; 2026 Manna Omics Solutions. All rights reserved.</p>
   <p style="font-size: 0.75rem; opacity: 0.5; margin-top: 0.5rem;">MSME Registered | Udyam: UDYAM-WB-12-0147213</p>
@@ -1416,20 +1433,26 @@ document.querySelectorAll('section[id]').forEach(s => navObserver.observe(s));
 (async function () {
   const el  = document.getElementById('visitorCount');
   if (!el) return;
+  const OFFSET = 156;
   const NS  = 'mannaomics-site';
   const KEY = 'visitors';
   const STORAGE_KEY = 'mn_counted';
   const base = `https://api.counterapi.dev/v1/${NS}/${KEY}`;
+
+  function renderDigits(n) {
+    const str = String(n).padStart(4, '0');
+    el.innerHTML = str.split('').map(d => `<span class="digit-box">${d}</span>`).join('');
+  }
+
   try {
     const already = localStorage.getItem(STORAGE_KEY);
     const url = already ? base : `${base}/up`;
     const res  = await fetch(url);
     const data = await res.json();
-    const count = data.count ?? 0;
-    el.textContent = count.toLocaleString();
+    renderDigits((data.count ?? 0) + OFFSET);
     if (!already) localStorage.setItem(STORAGE_KEY, '1');
   } catch {
-    el.textContent = '—';
+    el.innerHTML = '<span class="digit-box">—</span>';
   }
 })();
 </script>
