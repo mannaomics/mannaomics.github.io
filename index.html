@@ -1228,7 +1228,11 @@ footer .logo {
 
   function drawDNA() {
     const cx = W * 0.87, hy = H * 0.04, hh = H * 0.92;
-    const hw = Math.min(42, W * 0.032), turns = 5, steps = 120;
+    const hw        = Math.min(42, W * 0.032);
+    const risePerBp = (3.4 / 20) * (2 * hw);          // 3.4Å rise : 20Å diameter
+    const nPairs    = Math.round(hh / risePerBp);      // correct bp count for canvas height
+    const turns     = nPairs / 10.5;                   // 10.5 bp/turn (B-DNA)
+    const steps     = 120;
 
     // Ambient volumetric glow behind the helix column
     const grd = ctx.createLinearGradient(cx - hw * 3, 0, cx + hw * 3, 0);
