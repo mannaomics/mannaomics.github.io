@@ -1434,20 +1434,17 @@ document.querySelectorAll('section[id]').forEach(s => navObserver.observe(s));
   const el = document.getElementById('visitorCount');
   if (!el) return;
 
-  // Base offset + days-since-launch so the number grows naturally over time
-  const launch = new Date('2025-01-01').getTime();
-  const daysUp = Math.floor((Date.now() - launch) / 86400000);
-  const OFFSET = 156 + daysUp;               // grows ~1 per day automatically
+  const OFFSET = 150;
 
   function renderDigits(n) {
     const str = String(Math.max(0, n)).padStart(4, '0');
     el.innerHTML = str.split('').map(d => `<span class="digit-box">${d}</span>`).join('');
   }
 
-  // Show base count immediately (no flicker/error)
+  // Show base immediately — no flicker, no dash
   renderDigits(OFFSET);
 
-  // Try live API in background; update if it succeeds
+  // Try live API; each new browser increments once, updates display if API works
   try {
     const KEY = 'mn_counted';
     const base = 'https://api.counterapi.dev/v1/mannaomics/pageviews';
@@ -1457,7 +1454,7 @@ document.querySelectorAll('section[id]').forEach(s => navObserver.observe(s));
     const data = await res.json();
     if (data.count) renderDigits(data.count + OFFSET);
     if (!already) localStorage.setItem(KEY, '1');
-  } catch { /* keep showing offset-based count */ }
+  } catch { /* keep showing 150 */ }
 })();
 </script>
 </body>
