@@ -1452,7 +1452,7 @@ document.querySelectorAll('section[id]').forEach(s => navObserver.observe(s));
 
   // Try live API; each new browser increments once
   try {
-    const base    = 'https://api.counterapi.dev/v1/mannaomics/pageviews';
+    const base    = 'https://api.counterapi.dev/v1/mannaomics/pageviews/';
     const already = localStorage.getItem(COUNTED_KEY);
     const res     = await fetch(already ? base : `${base}/up`);
     if (!res.ok) throw new Error();
