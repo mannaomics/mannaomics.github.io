@@ -1444,17 +1444,25 @@ document.querySelectorAll('section[id]').forEach(s => navObserver.observe(s));
   // Show base immediately — no flicker, no dash
   renderDigits(OFFSET);
 
-  // Try live API; each new browser increments once, updates display if API works
+  // Restore last known count immediately (avoids flicker back to 150)
+  const COUNTED_KEY = 'mn_counted';
+  const CACHE_KEY   = 'mn_count_cache';
+  const cached = parseInt(localStorage.getItem(CACHE_KEY), 10);
+  if (cached) renderDigits(cached + OFFSET);
+
+  // Try live API; each new browser increments once
   try {
-    const KEY = 'mn_counted';
-    const base = 'https://api.counterapi.dev/v1/mannaomics/pageviews';
-    const already = localStorage.getItem(KEY);
-    const res  = await fetch(already ? base : `${base}/up`);
+    const base    = 'https://api.counterapi.dev/v1/mannaomics/pageviews';
+    const already = localStorage.getItem(COUNTED_KEY);
+    const res     = await fetch(already ? base : `${base}/up`);
     if (!res.ok) throw new Error();
     const data = await res.json();
-    if (data.count) renderDigits(data.count + OFFSET);
-    if (!already) localStorage.setItem(KEY, '1');
-  } catch { /* keep showing 150 */ }
+    if (data.count) {
+      renderDigits(data.count + OFFSET);
+      localStorage.setItem(CACHE_KEY, data.count); // persist for next visit
+    }
+    if (!already) localStorage.setItem(COUNTED_KEY, '1');
+  } catch { /* keep showing cached or 150 */ }
 })();
 </script>
 </body>
