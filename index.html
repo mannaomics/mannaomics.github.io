@@ -1376,12 +1376,6 @@ footer .logo {
           <label for="cf-message">Message *</label>
           <textarea id="cf-message" name="message" placeholder="Briefly describe your project, goals, or question..." required></textarea>
         </div>
-        <div class="form-group" style="flex-direction:row; align-items:flex-start; gap:0.6rem; margin-bottom:1.2rem;">
-          <input type="checkbox" id="cf-terms" style="margin-top:3px; accent-color:var(--accent-teal); width:15px; height:15px; flex-shrink:0; cursor:pointer;">
-          <label for="cf-terms" style="font-size:0.82rem; text-transform:none; letter-spacing:0; color:var(--text-secondary); cursor:pointer; line-height:1.5;">
-            I have read and agree to the <a href="terms.html" target="_blank" style="color:var(--accent-teal); text-decoration:underline;">Terms and Conditions</a>, including the storage of my submitted data.
-          </label>
-        </div>
         <div class="form-group" id="refund-checkbox-group" style="flex-direction:row; align-items:flex-start; gap:0.6rem; margin-bottom:1.2rem; display:none;">
           <input type="checkbox" id="cf-refund" style="margin-top:3px; accent-color:var(--accent-teal); width:15px; height:15px; flex-shrink:0; cursor:pointer;">
           <label for="cf-refund" style="font-size:0.82rem; text-transform:none; letter-spacing:0; color:var(--text-secondary); cursor:pointer; line-height:1.5;">
@@ -1745,16 +1739,9 @@ document.getElementById('contactForm').addEventListener('submit', async function
   const subject = document.getElementById('cf-subject').value;
   const message = document.getElementById('cf-message').value.trim();
 
-  const agreed = document.getElementById('cf-terms').checked;
-
   if (!name || !email || !subject || !message) {
     status.className = 'form-status error';
     status.textContent = 'Please fill in all required fields.';
-    return;
-  }
-  if (!agreed) {
-    status.className = 'form-status error';
-    status.textContent = 'Please agree to the Terms and Conditions before submitting.';
     return;
   }
   if (subject === 'Internship Program' && !document.getElementById('cf-refund').checked) {
