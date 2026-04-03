@@ -1305,6 +1305,12 @@ footer .logo {
             I have read and agree to the <a href="terms.html" target="_blank" style="color:var(--accent-teal); text-decoration:underline;">Terms and Conditions</a>, including the storage of my submitted data.
           </label>
         </div>
+        <div class="form-group" id="refund-checkbox-group" style="flex-direction:row; align-items:flex-start; gap:0.6rem; margin-bottom:1.2rem; display:none;">
+          <input type="checkbox" id="cf-refund" style="margin-top:3px; accent-color:var(--accent-teal); width:15px; height:15px; flex-shrink:0; cursor:pointer;">
+          <label for="cf-refund" style="font-size:0.82rem; text-transform:none; letter-spacing:0; color:var(--text-secondary); cursor:pointer; line-height:1.5;">
+            I understand and agree that program fees are non-refundable after 14 days from the program start date, and that fees are non-refundable in the event of termination for misconduct, as stated in the <a href="terms.html" target="_blank" style="color:var(--accent-teal); text-decoration:underline;">Terms and Conditions</a>.
+          </label>
+        </div>
         <button type="submit" class="form-submit-btn" id="submitBtn">
           <i class="fas fa-paper-plane"></i> Send Message
         </button>
@@ -1632,6 +1638,17 @@ document.querySelectorAll('section[id]').forEach(s => navObserver.observe(s));
 })();
 
 /* ===== CONTACT FORM ===== */
+/* Show refund checkbox only for Internship */
+document.getElementById('cf-subject').addEventListener('change', function() {
+  const refundGroup = document.getElementById('refund-checkbox-group');
+  if (this.value === 'Internship Program') {
+    refundGroup.style.display = 'flex';
+  } else {
+    refundGroup.style.display = 'none';
+    document.getElementById('cf-refund').checked = false;
+  }
+});
+
 const FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxF164X8TDGDXDv1VvfxpuaM10VK95C-KmCP3cQhPSBdwxT55ywlsVnXr8dstmh2Yac/exec';
 
 document.getElementById('contactForm').addEventListener('submit', async function(e) {
@@ -1654,6 +1671,11 @@ document.getElementById('contactForm').addEventListener('submit', async function
   if (!agreed) {
     status.className = 'form-status error';
     status.textContent = 'Please agree to the Terms and Conditions before submitting.';
+    return;
+  }
+  if (subject === 'Internship Program' && !document.getElementById('cf-refund').checked) {
+    status.className = 'form-status error';
+    status.textContent = 'Please acknowledge the refund policy before submitting.';
     return;
   }
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
