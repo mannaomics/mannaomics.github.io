@@ -1051,7 +1051,8 @@ footer .logo {
           <ul>
             <li>RMSD — system equilibration and structural drift</li>
             <li>RMSF — per-residue flexibility profiles</li>
-            <li>Radius of gyration — compactness and domain movements</li>
+            <li>Radius of gyration — overall compactness and structural expansion or collapse</li>
+            <li>Center of mass (COM) tracking — domain separation, subunit movements, and ligand displacement monitoring</li>
           </ul>
         </div>
 
@@ -1059,9 +1060,12 @@ footer .logo {
           <h4>Binding and Interaction Analysis</h4>
           <ul>
             <li>Hydrogen bond occupancy and lifetime analysis</li>
-            <li>Salt bridge and hydrophobic contact tracking</li>
+            <li>Salt bridge tracking — formation, persistence, and occupancy across trajectories</li>
+            <li>Hydrophobic contact analysis</li>
             <li>Interface SASA (solvent-accessible surface area)</li>
-            <li>Key distance monitoring (e.g., catalytic dyad/triad distances)</li>
+            <li>Key distance monitoring (e.g., catalytic dyad/triad distances, cross-chain contacts)</li>
+            <li>Contact maps — residue-residue contact frequency and interaction persistence across simulations</li>
+            <li>Binding statistics — interaction fingerprints and binding mode characterization</li>
           </ul>
         </div>
 
@@ -1069,7 +1073,8 @@ footer .logo {
           <h4>Energetics</h4>
           <ul>
             <li>MM-PBSA / MM-GBSA binding free energy estimation</li>
-            <li>Per-residue energy decomposition</li>
+            <li>Per-residue energy decomposition — identifying residues driving binding</li>
+            <li>Linear Interaction Energy (LIE) — rapid binding free energy estimation from electrostatic and van der Waals contributions</li>
             <li>FEP/TI relative binding free energy calculations (where applicable)</li>
           </ul>
         </div>
@@ -1077,19 +1082,27 @@ footer .logo {
         <div class="analysis-group">
           <h4>Conformational Landscape</h4>
           <ul>
-            <li>PCA — dominant motions and conformational substates</li>
-            <li>Dynamic Cross-Correlation Maps (DCCM)</li>
-            <li>Clustering analysis — representative conformations</li>
+            <li>Principal Component Analysis (PCA) — dominant motions and conformational substates</li>
+            <li>Covariance analysis — correlated atomic displacements underlying functional motions</li>
+            <li>Dynamic Cross-Correlation Maps (DCCM) — correlated and anti-correlated residue motions</li>
+            <li>Clustering analysis — representative conformations from trajectory ensembles</li>
             <li>Free energy landscapes from enhanced sampling</li>
           </ul>
         </div>
 
         <div class="analysis-group">
-          <h4>Protein-Specific</h4>
+          <h4>Network and Communication Analysis</h4>
           <ul>
-            <li>Secondary structure evolution (DSSP)</li>
-            <li>Domain hinge analysis</li>
+            <li>Protein Structure Networks (PSN) — residue interaction networks revealing communication pathways, hub residues, and allosteric connectivity</li>
             <li>Allosteric communication pathway identification</li>
+            <li>Domain hinge analysis</li>
+          </ul>
+        </div>
+
+        <div class="analysis-group">
+          <h4>Solvent and Distribution Analysis</h4>
+          <ul>
+            <li>Radial Distribution Function (RDF) — solvent shell structure, ion distribution, and molecular pair correlations around sites of interest</li>
           </ul>
         </div>
       </div>
@@ -1142,7 +1155,7 @@ footer .logo {
       <div class="tool-group reveal">
         <h3><i class="fas fa-microchip"></i> Simulation Engines</h3>
         <div class="tool-tags">
-          <span class="tool-tag">AMBER (pmemd.cuda)</span>
+          <span class="tool-tag">AMBER</span>
           <span class="tool-tag">GROMACS</span>
           <span class="tool-tag">NAMD</span>
           <span class="tool-tag">OpenMM</span>
@@ -1151,12 +1164,12 @@ footer .logo {
       <div class="tool-group reveal">
         <h3><i class="fas fa-atom"></i> Force Fields</h3>
         <div class="tool-tags">
-          <span class="tool-tag">ff14SB</span>
-          <span class="tool-tag">GAFF2</span>
+          <span class="tool-tag">ff19SB</span>
+          <span class="tool-tag">CHARMM36m</span>
           <span class="tool-tag">GLYCAM_06j</span>
-          <span class="tool-tag">Lipid17</span>
-          <span class="tool-tag">OPC</span>
-          <span class="tool-tag">TIP3P</span>
+          <span class="tool-tag">Lipid21</span>
+          <span class="tool-tag">LignAmb25</span>
+          <span class="tool-tag">GAFF2</span>
         </div>
       </div>
       <div class="tool-group reveal">
@@ -1175,7 +1188,6 @@ footer .logo {
         <div class="tool-tags">
           <span class="tool-tag">AutoDock Vina</span>
           <span class="tool-tag">DiffDock</span>
-          <span class="tool-tag">GOLD</span>
         </div>
       </div>
       <div class="tool-group reveal">
@@ -1198,17 +1210,6 @@ footer .logo {
           <span class="tool-tag">PyMOL</span>
           <span class="tool-tag">VMD</span>
           <span class="tool-tag">ChimeraX</span>
-          <span class="tool-tag">BoltzGen</span>
-        </div>
-      </div>
-      <div class="tool-group reveal" style="grid-column: 1 / -1;">
-        <h3><i class="fas fa-server"></i> Computing Infrastructure</h3>
-        <div class="tool-tags">
-          <span class="tool-tag">GPU-accelerated HPC clusters</span>
-          <span class="tool-tag">SLURM workload management</span>
-          <span class="tool-tag">CUDA-enabled MD engines</span>
-          <span class="tool-tag">National research computing infrastructure</span>
-          <span class="tool-tag">Multi-replica ensemble simulations</span>
         </div>
       </div>
     </div>
@@ -1277,7 +1278,7 @@ footer .logo {
         <ul class="package-includes">
           <li>System preparation and parameterization (1 system)</li>
           <li>3 &times; 100 ns production replicate simulations</li>
-          <li>Core analysis suite (RMSD, RMSF, H-bonds, PCA, clustering)</li>
+          <li>Analysis suite selected as needed to answer your specific scientific question</li>
           <li>Analysis report with publication-quality figures</li>
           <li>Methods section for manuscript or thesis</li>
         </ul>
@@ -1293,10 +1294,9 @@ footer .logo {
         <ul class="package-includes">
           <li>System preparation for 2–3 related systems</li>
           <li>3 &times; 200–300 ns replicates per system</li>
-          <li>Full analysis suite including DCCM and per-residue decomposition</li>
-          <li>Comparative overlays and statistical comparisons</li>
-          <li>MM-PBSA/MM-GBSA binding free energy estimation</li>
-          <li>Comprehensive comparative report</li>
+          <li>Comprehensive analysis suite with comparative analysis as needed for the scientific question</li>
+          <li>Binding free energy estimation where applicable</li>
+          <li>Comparative report with statistical evaluation</li>
           <li>Methods section and reviewer response support</li>
         </ul>
         <div class="package-cta">
@@ -1310,10 +1310,10 @@ footer .logo {
         <p class="package-best">Best for: Projects requiring advanced sampling, free energy calculations, or AI-driven design components.</p>
         <ul class="package-includes">
           <li>Everything in Standard, plus:</li>
-          <li>Enhanced sampling (metadynamics / REST2) or FEP/TI calculations</li>
-          <li>AI-based structure prediction or docking (AlphaFold, DiffDock)</li>
+          <li>Enhanced sampling or alchemical free energy calculations</li>
+          <li>AI-based structure prediction or docking</li>
           <li>Extended timescales or large-scale ensemble simulations</li>
-          <li>Multi-method validation (docking &rarr; MD &rarr; FEP pipeline)</li>
+          <li>Multi-method validation pipeline</li>
           <li>Full project report with integrated interpretation</li>
         </ul>
         <div class="package-cta">
@@ -1458,7 +1458,7 @@ footer .logo {
       <div class="section-label" style="text-align: center;">Get Started</div>
       <h2 class="section-title">Ready to Simulate?</h2>
       <p>Have a scientific question that needs computational insight? Whether you are a PI planning a publication, a graduate student needing thesis support, or an R&D team evaluating molecular candidates — share your system, your hypothesis, or your challenge, and we will design the right simulation strategy to get you answers.</p>
-      <a href="mailto:info@mannaomics.com" class="btn btn-primary" style="font-size: 1rem; padding: 1rem 2.5rem;">
+      <a href="https://mannaomics.com/#contact" class="btn btn-primary" style="font-size: 1rem; padding: 1rem 2.5rem;">
         <i class="fas fa-envelope"></i> Discuss Your Project
       </a>
       <p class="cta-secondary">Typical response time: 48 hours. All enquiries welcome — from a single-protein student project to enterprise-scale drug discovery campaigns.</p>
