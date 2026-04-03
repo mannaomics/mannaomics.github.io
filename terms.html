@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms and Conditions | Manna Omics Solutions</title>
+<meta name="description" content="Terms and Conditions for Manna Omics Solutions — governing use of our website, consulting services, training workshops, and internship programs.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://mannaomics.com/terms">
+<link rel="icon" type="image/png" href="logo-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700&family=Playfair+Display:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-primary: #0a0f1a;
+  --bg-secondary: #111827;
+  --bg-card: #1a2236;
+  --accent-teal: #2dd4bf;
+  --accent-teal-dim: rgba(45, 212, 191, 0.15);
+  --accent-blue: #3b82f6;
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --border: rgba(148, 163, 184, 0.1);
+  --border-subtle: rgba(148, 163, 184, 0.06);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ===== NAV ===== */
+nav {
+  position: fixed; top: 0; width: 100%; z-index: 100;
+  padding: 1rem 0;
+  background: rgba(10,15,26,0.9);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner {
+  max-width: 1200px; margin: 0 auto;
+  padding: 0 2rem;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem; font-weight: 600;
+  color: var(--text-primary); text-decoration: none; letter-spacing: 0.5px;
+}
+.logo span { color: var(--accent-teal); }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+  color: var(--text-secondary); text-decoration: none;
+  font-size: 0.9rem; font-weight: 500; transition: color 0.3s;
+}
+.nav-links a:hover { color: var(--accent-teal); }
+.mobile-toggle {
+  display: none; background: none; border: none;
+  color: var(--text-primary); font-size: 1.5rem; cursor: pointer;
+}
+
+/* ===== PAGE HERO ===== */
+.page-hero {
+  padding: 8rem 2rem 4rem;
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(135deg, #0a0f1a 0%, #111827 100%);
+}
+.page-hero-inner { max-width: 860px; margin: 0 auto; }
+.hero-badge {
+  display: inline-block; padding: 0.3rem 1rem;
+  border: 1px solid rgba(45,212,191,0.25); border-radius: 50px;
+  font-size: 0.75rem; color: var(--accent-teal); letter-spacing: 2px;
+  text-transform: uppercase; margin-bottom: 1.5rem;
+  background: var(--accent-teal-dim);
+}
+.page-hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 600; line-height: 1.2;
+  margin-bottom: 1.2rem; color: var(--text-primary);
+}
+.meta-line {
+  display: flex; flex-wrap: wrap; gap: 1.5rem;
+  font-size: 0.85rem; color: var(--text-muted);
+  font-family: 'JetBrains Mono', monospace;
+}
+.meta-line span { display: flex; align-items: center; gap: 0.4rem; }
+.meta-line strong { color: var(--text-secondary); }
+
+/* ===== LAYOUT ===== */
+.legal-layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 0;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  align-items: start;
+}
+
+/* ===== TOC SIDEBAR ===== */
+.toc-sidebar {
+  position: sticky; top: 5rem;
+  padding: 2.5rem 0 2.5rem 0;
+  max-height: calc(100vh - 6rem);
+  overflow-y: auto;
+  border-right: 1px solid var(--border);
+  padding-right: 1.5rem;
+}
+.toc-sidebar::-webkit-scrollbar { width: 3px; }
+.toc-sidebar::-webkit-scrollbar-track { background: transparent; }
+.toc-sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+.toc-title {
+  font-size: 0.7rem; letter-spacing: 2.5px; text-transform: uppercase;
+  color: var(--text-muted); font-weight: 600; margin-bottom: 1.2rem;
+}
+.toc-list { list-style: none; display: flex; flex-direction: column; gap: 0; }
+.toc-list li a {
+  display: block; padding: 0.35rem 0.75rem;
+  font-size: 0.82rem; color: var(--text-muted);
+  text-decoration: none; border-left: 2px solid transparent;
+  transition: all 0.2s; line-height: 1.45; border-radius: 0 4px 4px 0;
+}
+.toc-list li a:hover { color: var(--accent-teal); border-left-color: var(--accent-teal); background: var(--accent-teal-dim); }
+.toc-list li a.active { color: var(--accent-teal); border-left-color: var(--accent-teal); background: var(--accent-teal-dim); }
+
+/* ===== LEGAL CONTENT ===== */
+.legal-content {
+  padding: 3rem 0 6rem 3rem;
+  max-width: 720px;
+}
+
+.legal-section { margin-bottom: 3.5rem; scroll-margin-top: 7rem; }
+
+.legal-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem; font-weight: 600;
+  color: var(--text-primary); margin-bottom: 1.2rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 0.75rem;
+}
+.section-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem; color: var(--accent-teal);
+  background: var(--accent-teal-dim);
+  padding: 0.2rem 0.6rem; border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.legal-section h3 {
+  font-size: 1rem; font-weight: 600;
+  color: var(--text-primary); margin: 1.8rem 0 0.75rem;
+}
+
+.legal-section h4 {
+  font-size: 0.92rem; font-weight: 600;
+  color: var(--accent-teal); margin: 1.2rem 0 0.5rem;
+}
+
+.legal-section p {
+  font-size: 0.92rem; color: var(--text-secondary);
+  line-height: 1.85; margin-bottom: 1rem;
+  text-align: justify; overflow-wrap: break-word; word-break: break-word;
+}
+
+.legal-section ul, .legal-section ol {
+  margin: 0.75rem 0 1rem 0;
+  padding-left: 0; list-style: none;
+  display: flex; flex-direction: column; gap: 0.4rem;
+}
+.legal-section ul li, .legal-section ol li {
+  font-size: 0.92rem; color: var(--text-secondary);
+  line-height: 1.75; padding-left: 1.4rem; position: relative;
+}
+.legal-section ul li::before {
+  content: '·'; position: absolute; left: 0.3rem;
+  color: var(--accent-teal); font-weight: 700; font-size: 1.1rem; top: -0.05rem;
+}
+.legal-section ol { counter-reset: list-counter; }
+.legal-section ol li { counter-increment: list-counter; padding-left: 1.8rem; }
+.legal-section ol li::before {
+  content: counter(list-counter) '.';
+  position: absolute; left: 0;
+  color: var(--accent-teal); font-weight: 600; font-size: 0.85rem;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.definition-block {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-left: 3px solid var(--accent-teal);
+  border-radius: 0 10px 10px 0;
+  padding: 1.2rem 1.5rem; margin: 1rem 0;
+}
+.definition-block strong {
+  color: var(--accent-teal); font-size: 0.92rem;
+}
+.definition-block p {
+  margin-bottom: 0; font-size: 0.88rem;
+}
+
+.subsection {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px; padding: 1.4rem 1.6rem;
+  margin: 1.5rem 0;
+}
+.subsection h3 {
+  margin-top: 0; font-size: 0.95rem;
+  color: var(--text-primary);
+}
+.subsection p, .subsection li { font-size: 0.88rem; }
+
+.callout-box {
+  background: linear-gradient(135deg, rgba(45,212,191,0.05), rgba(59,130,246,0.05));
+  border: 1px solid rgba(45,212,191,0.2);
+  border-radius: 10px; padding: 1.2rem 1.5rem; margin: 1.2rem 0;
+}
+.callout-box p { margin-bottom: 0; font-size: 0.88rem; }
+
+.contact-block {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 12px; padding: 1.6rem 2rem; margin-top: 1.5rem;
+}
+.contact-block p { margin-bottom: 0.3rem; font-size: 0.92rem; }
+.contact-block a { color: var(--accent-teal); text-decoration: none; }
+.contact-block a:hover { text-decoration: underline; }
+
+.disclaimer-footer {
+  margin-top: 3rem; padding-top: 2rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.82rem; color: var(--text-muted);
+  font-style: italic; line-height: 1.75;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  padding: 2rem; text-align: center;
+  border-top: 1px solid var(--border);
+  color: var(--text-muted); font-size: 0.85rem;
+  background: var(--bg-secondary);
+}
+footer .logo { font-size: 1.2rem; display: block; margin-bottom: 0.5rem; text-decoration: none; }
+.footer-tagline { font-size: 0.9rem; opacity: 0.6; margin: 0.3rem 0 1rem; }
+.footer-links {
+  display: flex; gap: 1.5rem; flex-wrap: wrap;
+  justify-content: center; margin-bottom: 1rem;
+}
+.footer-links a { color: var(--text-muted); text-decoration: none; opacity: 0.7; transition: opacity 0.3s, color 0.3s; }
+.footer-links a:hover { opacity: 1; color: var(--accent-teal); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 860px) {
+  .legal-layout { grid-template-columns: 1fr; }
+  .toc-sidebar {
+    position: static; border-right: none; border-bottom: 1px solid var(--border);
+    padding: 1.5rem 0; max-height: none;
+    display: grid; grid-template-columns: auto 1fr; gap: 1rem; align-items: start;
+  }
+  .toc-title { writing-mode: initial; }
+  .toc-list { flex-direction: row; flex-wrap: wrap; gap: 0.25rem; }
+  .toc-list li a { border-left: none; border-bottom: 2px solid transparent; border-radius: 4px; padding: 0.25rem 0.6rem; }
+  .toc-list li a:hover, .toc-list li a.active { border-left: none; border-bottom-color: var(--accent-teal); }
+  .legal-content { padding: 2rem 0 4rem 0; }
+  .legal-layout { padding: 0 1.5rem; }
+}
+@media (max-width: 640px) {
+  .nav-links { display: none; }
+  .mobile-toggle { display: block; }
+  .nav-links.active {
+    display: flex; flex-direction: column;
+    position: absolute; top: 100%; left: 0; right: 0;
+    background: var(--bg-primary);
+    padding: 1rem 2rem; border-bottom: 1px solid var(--border);
+  }
+  .page-hero { padding: 6rem 1.5rem 3rem; }
+  .meta-line { flex-direction: column; gap: 0.5rem; }
+  .toc-sidebar { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+  <div class="nav-inner">
+    <a href="https://mannaomics.com" class="logo">
+      <img src="logo-icon.png" alt="" style="height:36px;vertical-align:middle;margin-right:8px;">
+      Manna <span>Omics</span> Solutions
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="https://mannaomics.com/#about">About</a></li>
+      <li><a href="https://mannaomics.com/#services">Services</a></li>
+      <li><a href="https://mannaomics.com/#contact">Contact</a></li>
+    </ul>
+    <button class="mobile-toggle" onclick="document.getElementById('navLinks').classList.toggle('active')">&#9776;</button>
+  </div>
+</nav>
+
+<!-- Hero -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="hero-badge">Legal</div>
+    <h1>Terms and Conditions</h1>
+    <div class="meta-line">
+      <span><strong>Effective Date:</strong> [Insert Date]</span>
+      <span><strong>Last Updated:</strong> [Insert Date]</span>
+      <span><strong>Entity:</strong> Manna Omics Solutions &nbsp;&middot;&nbsp; UDYAM-WB-12-0147213</span>
+    </div>
+  </div>
+</div>
+
+<!-- Legal layout -->
+<div class="legal-layout">
+
+  <!-- TOC -->
+  <aside class="toc-sidebar">
+    <div class="toc-title">Contents</div>
+    <ul class="toc-list">
+      <li><a href="#section-1">1. Introduction</a></li>
+      <li><a href="#section-2">2. Scope of Services</a></li>
+      <li><a href="#section-3">3. Website Terms of Use</a></li>
+      <li><a href="#section-4">4. Consulting Services</a></li>
+      <li><a href="#section-5">5. Scientific Writing</a></li>
+      <li><a href="#section-6">6. Training and Workshops</a></li>
+      <li><a href="#section-7">7. Training and Internship</a></li>
+      <li><a href="#section-8">8. General Terms</a></li>
+      <li><a href="#section-9">9. Privacy and Data</a></li>
+      <li><a href="#section-10">10. Governing Law</a></li>
+      <li><a href="#section-11">11. Contact Information</a></li>
+    </ul>
+  </aside>
+
+  <!-- Content -->
+  <main class="legal-content">
+
+    <!-- 1. Introduction -->
+    <div class="legal-section" id="section-1">
+      <h2><span class="section-num">1</span> Introduction</h2>
+      <p>These Terms and Conditions ("Terms") constitute a legally binding agreement between Manna Omics Solutions ("MOS," "we," "us," or "our"), a sole proprietorship registered as a Micro, Small and Medium Enterprise under the Government of India (Udyam Registration: UDYAM-WB-12-0147213), and any individual or entity ("you," "your," "Client," "Participant," or "Intern") who accesses our website, engages our services, or participates in our programs.</p>
+      <p>By accessing our website at www.mannaomics.com, engaging our consulting services, enrolling in our training or workshop programs, or participating in our internship programs, you acknowledge that you have read, understood, and agree to be bound by these Terms in their entirety. If you do not agree with any part of these Terms, you must not access our website or engage our services.</p>
+      <p>We reserve the right to update or modify these Terms at any time without prior notice. The most current version will always be available on our website. Continued use of our website or services after any modifications constitutes your acceptance of the revised Terms. It is your responsibility to review these Terms periodically.</p>
+
+      <h3>Key Definitions</h3>
+
+      <div class="definition-block">
+        <p><strong>"Computational Biology"</strong> refers to the application of mathematical models, statistical methods, and computer simulations to study biological systems. This work is inherently predictive and probabilistic in nature — it generates scientific predictions and interpretations based on available data and current methodological knowledge, not guaranteed or deterministic outcomes.</p>
+      </div>
+      <div class="definition-block">
+        <p><strong>"Deliverables"</strong> refers to the specific results, reports, figures, datasets, documents, and other outputs generated by MOS for a Client or Participant under a Service Agreement.</p>
+      </div>
+      <div class="definition-block">
+        <p><strong>"Service Agreement"</strong> refers to any project proposal, engagement letter, enrollment confirmation, or other written agreement that defines the specific scope, deliverables, timeline, and fees for a particular engagement between MOS and a Client or Participant.</p>
+      </div>
+      <div class="definition-block">
+        <p><strong>"Background IP"</strong> refers to all methodologies, algorithms, scripts, workflows, software tools, and analytical frameworks developed by MOS prior to or independently of any specific Client project.</p>
+      </div>
+    </div>
+
+    <!-- 2. Scope of Services -->
+    <div class="legal-section" id="section-2">
+      <h2><span class="section-num">2</span> Scope of Services</h2>
+      <p>Manna Omics Solutions provides computational biology, bioinformatics, and scientific consulting services, including but not limited to:</p>
+
+      <h4>Consulting and Analytical Services</h4>
+      <p>Molecular dynamics simulations and AI-driven molecular design; protein engineering and variant analysis; metagenomics, multi-omics data analysis, and systems-level biological interpretation; antimicrobial resistance profiling and resistome characterization; molecular docking and virtual screening; and related computational biology services.</p>
+
+      <h4>Scientific Writing and Grant Support</h4>
+      <p>Manuscript development, thesis writing support, grant proposal architecture, data visualization, scientific editing, and reviewer response preparation.</p>
+
+      <h4>Training and Workshops</h4>
+      <p>Group training sessions, institutional workshops, multi-session courses, and semester-length modules in bioinformatics, computational biology, programming, and related disciplines.</p>
+
+      <h4>Training and Internship Programs</h4>
+      <p>Personalized one-on-one mentorship, final year project guidance, dissertation support, PhD research mentorship, structured research internships, and individual skill training sessions.</p>
+
+      <p>The specific scope, deliverables, timeline, and fees for any engagement are defined in a separate project proposal, service agreement, or enrollment confirmation ("Service Agreement") provided to the Client or Participant prior to commencement of work. In the event of any conflict between these Terms and a specific Service Agreement, the Service Agreement shall prevail.</p>
+    </div>
+
+    <!-- 3. Website Terms -->
+    <div class="legal-section" id="section-3">
+      <h2><span class="section-num">3</span> Website Terms of Use</h2>
+
+      <div class="subsection">
+        <h3>3.1 Access and Use</h3>
+        <p>Our website is provided for informational purposes and as a point of contact for our services. You may access and browse the website freely, subject to these Terms.</p>
+      </div>
+
+      <div class="subsection">
+        <h3>3.2 Intellectual Property on the Website</h3>
+        <p>All content on www.mannaomics.com — including text, graphics, logos, images, page layouts, and underlying code — is the intellectual property of Manna Omics Solutions unless otherwise stated. You may not reproduce, distribute, modify, republish, or commercially exploit any website content without our prior written permission.</p>
+      </div>
+
+      <div class="subsection">
+        <h3>3.3 Accuracy of Website Content</h3>
+        <p>While we make reasonable efforts to ensure the accuracy of information on our website, we do not warrant that all content is complete, current, or error-free. Service descriptions, case studies, and tool listings on the website are indicative and may be updated without notice. The specific terms of any engagement are governed by the applicable Service Agreement, not by website content.</p>
+      </div>
+
+      <div class="subsection">
+        <h3>3.4 External Links</h3>
+        <p>Our website may contain links to third-party websites for reference or convenience. We do not control, endorse, or assume responsibility for the content, privacy policies, or practices of any third-party websites. Accessing external links is at your own risk.</p>
+      </div>
+
+      <div class="subsection">
+        <h3>3.5 Prohibited Use</h3>
+        <p>You agree not to use our website for any purpose that is unlawful, harmful, or prohibited by these Terms. You may not attempt to gain unauthorized access to any part of the website, its servers, or any connected systems. You may not use automated tools to scrape, crawl, or extract content from the website without our prior written permission.</p>
+      </div>
+    </div>
+
+    <!-- 4. Consulting Services -->
+    <div class="legal-section" id="section-4">
+      <h2><span class="section-num">4</span> Consulting and Analytical Services</h2>
+
+      <div class="subsection">
+        <h3>4.1 Nature of Scientific Work</h3>
+        <p>You acknowledge and agree that computational biology (as defined in Section 1) is inherently exploratory and probabilistic. Results are dependent on the quality and completeness of input data, the current state of scientific knowledge, the inherent limitations of computational methods, and the assumptions underlying specific models and algorithms.</p>
+        <p>While we employ validated, current best-practice methods and exercise professional diligence, we do not guarantee specific scientific outcomes, positive results, or particular conclusions. Computational predictions are not substitutes for experimental validation.</p>
+      </div>
+
+      <div class="subsection">
+        <h3>4.2 Research Use Only</h3>
+        <p>Unless explicitly stated otherwise in the Service Agreement, all analytical outputs, simulation results, and computational predictions delivered by MOS are intended for research purposes only. They are not intended for direct clinical diagnosis, therapeutic decision-making, regulatory submission, or any application where failure could result in harm to human health or safety, unless the Service Agreement specifically provides for such use and appropriate validation protocols are agreed upon.</p>
+      </div>
+
+      <div class="subsection">
+        <h3>4.3 Client Responsibilities</h3>
+        <p>The Client is responsible for:</p>
+        <ul>
+          <li>Providing accurate, complete, and high-quality input data (including but not limited to raw sequencing files, protein structures, molecular coordinates, experimental metadata, and sample information) necessary for the agreed scope of work.</li>
+          <li>Ensuring that they have the legal right, institutional approval, and, where applicable, ethics clearance to share all data provided to MOS. This includes compliance with IRB requirements, biosafety approvals, and any data sharing agreements applicable to the data.</li>
+          <li>Reviewing and validating all deliverables within the timeframe specified in the Service Agreement. Failure to review deliverables within the agreed period shall constitute acceptance.</li>
+          <li>Communicating any specific requirements, constraints, or concerns relevant to the project in a timely manner.</li>
+        </ul>
+      </div>
+
+      <div class="subsection">
+        <h3>4.4 Data Handling and Confidentiality</h3>
+        <p>We treat all Client data as confidential. Specifically:</p>
+        <ul>
+          <li>Client data is used solely for the purpose of performing the agreed services and is not shared with any third party without the Client's written consent.</li>
+          <li>Data is stored on secure, access-controlled systems for the duration of the project and for a reasonable period thereafter (typically 90 days post-delivery), after which it is permanently deleted unless the Client requests otherwise in writing. Storage of large-scale datasets beyond the 90-day period may incur additional data retention fees, communicated to the Client in advance.</li>
+          <li>For Clients requiring enhanced confidentiality, we execute Non-Disclosure Agreements (NDAs) upon request prior to data transfer.</li>
+          <li>Where Client data includes human-derived genomic or health-related information, additional data protection measures will be agreed upon in the Service Agreement in compliance with applicable laws, including the Digital Personal Data Protection Act (DPDP), 2023.</li>
+        </ul>
+      </div>
+
+      <div class="subsection">
+        <h3>4.5 Intellectual Property</h3>
+        <p><strong>Background IP:</strong> All methodologies, algorithms, custom scripts, proprietary workflows, software tools, and analytical frameworks developed by MOS prior to or independently of any specific Client project remain the sole and exclusive property of MOS. No license to Background IP is granted to the Client except as necessary to use the specific deliverables provided.</p>
+        <p><strong>Project Deliverables:</strong> Upon receipt of full payment, the Client shall own the specific results, analyzed datasets, figures, reports, and other deliverables generated specifically for their project, unless otherwise agreed in the Service Agreement. MOS retains the right to use anonymized, non-confidential methodological approaches and general learnings from the project to improve its services and methodologies.</p>
+        <p><strong>Authorship and Scientific Credit:</strong> For academic projects intended for publication, authorship rights shall be governed by ICMJE guidelines or equivalent discipline-specific standards, recognizing the intellectual contribution of MOS team members. Authorship expectations are discussed and agreed upon before the project commences. Where the contribution of MOS does not meet authorship criteria, appropriate acknowledgment in published work is expected.</p>
+        <p><strong>Co-developed IP:</strong> Any novel methods, tools, or intellectual property developed jointly during a project shall be jointly owned unless otherwise specified in the Service Agreement.</p>
+      </div>
+
+      <div class="subsection">
+        <h3>4.6 Payment Terms</h3>
+        <ul>
+          <li>All fees are as quoted in the Service Agreement or project proposal. Fees are denominated in Indian Rupees (INR) for domestic clients and in US Dollars (USD) for international clients, unless otherwise agreed.</li>
+          <li>For standard projects, we require an advance payment (typically 50%) before work commences, with the balance due upon delivery of final outputs.</li>
+          <li>Invoices are payable within 30 days of the invoice date unless otherwise specified.</li>
+          <li>As a registered MSME, Manna Omics Solutions is entitled to payment protections under the Micro, Small and Medium Enterprises Development (MSMED) Act, 2006. Delayed payments beyond the agreed terms may attract interest as prescribed under the Act.</li>
+          <li>Payments may be made via bank transfer (NEFT/RTGS/IMPS), UPI, or international wire transfer. Payment details are provided on the invoice.</li>
+          <li>All applicable taxes, including GST, shall be charged in addition to the quoted fees as per prevailing Indian tax law.</li>
+        </ul>
+      </div>
+
+      <div class="subsection">
+        <h3>4.7 Cancellation and Refund</h3>
+        <p><strong>Client-initiated cancellation:</strong> If the Client cancels a project after work has commenced, the advance payment is non-refundable, as it covers initial setup costs including computational environment configuration, data ingestion, system preparation, and resource allocation. For work completed beyond the scope covered by the advance, the Client shall pay on a pro-rata basis as calculated by MOS. Any payment in excess of the work completed (excluding the non-refundable advance) shall be refunded within 30 days.</p>
+        <p><strong>MOS-initiated cancellation:</strong> If MOS is unable to complete a project due to unforeseen circumstances, the Client shall be refunded for any undelivered portion of the work within 30 days.</p>
+        <p><strong>Scope changes:</strong> If the Client requests changes to the agreed scope after work has commenced, MOS will provide a revised proposal with updated timelines and fees. Additional work will only proceed upon written acceptance of the revised proposal.</p>
+      </div>
+
+      <div class="subsection">
+        <h3>4.8 Revisions and Post-Delivery Support</h3>
+        <p>Each Service Agreement specifies the number of revision rounds included. Standard projects include one round of revisions on deliverables at no additional cost, provided revision requests are submitted within 14 days of delivery. Additional revisions or new analyses beyond the agreed scope are quoted separately.</p>
+      </div>
+    </div>
+
+    <!-- 5. Scientific Writing -->
+    <div class="legal-section" id="section-5">
+      <h2><span class="section-num">5</span> Scientific Writing and Grant Support</h2>
+
+      <div class="subsection">
+        <h3>5.1 Nature of Writing Services</h3>
+        <p>MOS provides scientific writing support as a collaborative service — we assist in structuring, drafting, editing, and refining scientific documents. We are not a ghostwriting service. For student theses, the student is expected to contribute intellectually and engage actively in the writing process. The final intellectual content and responsibility for the document remains with the Client or student.</p>
+      </div>
+
+      <div class="subsection">
+        <h3>5.2 Accuracy of Scientific Content</h3>
+        <p>While we exercise professional diligence in interpreting and presenting scientific data, the Client is ultimately responsible for the accuracy and validity of the scientific content in any manuscript, thesis, or grant proposal. The Client must review all drafts and confirm the accuracy of data, claims, and interpretations before submission to any journal, institution, or funding agency.</p>
+      </div>
+
+      <div class="subsection">
+        <h3>5.3 Publication and Submission Outcomes</h3>
+        <p>We do not guarantee acceptance of manuscripts by journals, approval of theses by examiners, or success of grant applications. Our role is to maximize the quality and competitiveness of the document. Editorial and funding decisions are made by independent third parties beyond our control.</p>
+      </div>
+
+      <div class="subsection">
+        <h3>5.4 Thesis-Specific Terms</h3>
+        <p>For thesis writing support (undergraduate, postgraduate, or doctoral):</p>
+        <ul>
+          <li>We work alongside the student, not in place of the student. The student is expected to participate in all writing sessions, provide input, and make decisions about content and direction.</li>
+          <li>Coordination with the student's institutional supervisor is available and encouraged but requires the student's explicit consent.</li>
+          <li>MOS is not responsible for institutional policies regarding external writing assistance. It is the student's responsibility to ensure that engaging MOS complies with their institution's academic integrity policies.</li>
+          <li>All thesis-related materials shared with MOS are treated as confidential.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 6. Training and Workshops -->
+    <div class="legal-section" id="section-6">
+      <h2><span class="section-num">6</span> Training and Workshops</h2>
+
+      <div class="subsection">
+        <h3>6.1 Enrollment and Confirmation</h3>
+        <p>Workshop enrollment is confirmed upon receipt of the registration fee. Enrollment confirmation is sent via email. Availability is on a first-come, first-served basis, and we reserve the right to limit the number of participants per session.</p>
+      </div>
+
+      <div class="subsection">
+        <h3>6.2 Workshop Content and Materials</h3>
+        <p>All workshop materials — including slides, scripts, datasets, handouts, and reference guides — are the intellectual property of Manna Omics Solutions. Participants receive these materials for personal educational use only. Redistribution, reproduction, or commercial use of workshop materials without our written permission is prohibited.</p>
+      </div>
+
+      <div class="subsection">
+        <h3>6.3 Certificates</h3>
+        <p>Certificates of completion are issued for multi-session courses, institutional modules, and internship programs. For one-day workshops, certificates are issued upon request. Certificates attest to participation and completion; they do not constitute a professional accreditation or academic degree.</p>
+      </div>
+
+      <div class="subsection">
+        <h3>6.4 Recording and Privacy</h3>
+        <p>Workshop sessions may be recorded for internal quality assurance purposes. Recordings are not shared with participants or third parties unless explicitly agreed. Participants may not record, screenshot, or broadcast workshop sessions without prior written consent from MOS.</p>
+      </div>
+
+      <div class="subsection">
+        <h3>6.5 Cancellation and Rescheduling</h3>
+        <p><strong>By Participant:</strong></p>
+        <ul>
+          <li>Cancellation more than 7 days before the workshop: full refund minus a 10% administrative fee.</li>
+          <li>Cancellation 3–7 days before: 50% refund.</li>
+          <li>Cancellation less than 3 days before or no-show: no refund.</li>
+          <li>Participants may transfer their registration to another individual from the same institution at no additional cost, subject to notification at least 48 hours before the workshop.</li>
+        </ul>
+        <p style="margin-top:0.75rem;"><strong>By MOS:</strong> If MOS cancels or reschedules a workshop, registered participants will be offered a full refund or the option to attend the rescheduled session. MOS is not liable for any travel, accommodation, or other incidental costs incurred by participants due to cancellation or rescheduling.</p>
+        <p style="margin-top:0.75rem;"><strong>By Institutional Clients:</strong> For institutional or group bookings, cancellation terms are as specified in the institutional Service Agreement. In the absence of specific terms, the participant cancellation policy above applies.</p>
+      </div>
+
+      <div class="subsection">
+        <h3>6.6 Participant Conduct</h3>
+        <p>Participants are expected to maintain professional conduct during workshops. MOS reserves the right to remove any participant whose behavior is disruptive, disrespectful, or in violation of these Terms, without refund.</p>
+      </div>
+    </div>
+
+    <!-- 7. Training and Internship -->
+    <div class="legal-section" id="section-7">
+      <h2><span class="section-num">7</span> Training and Internship Programs</h2>
+
+      <div class="subsection">
+        <h3>7.1 Nature of the Program</h3>
+        <p>Training and internship programs offered by MOS are educational and skill-development programs. They do not constitute employment, an employer-employee relationship, or a guarantee of future employment with MOS or any other organization. Interns and trainees are not employees of MOS and are not entitled to wages, benefits, or employment protections under Indian labor law.</p>
+      </div>
+
+      <div class="subsection">
+        <h3>7.2 Program Fees</h3>
+        <p>Internship and personalized training programs are fee-based. The program fee covers structured mentorship, project supervision, computing resources (where applicable), and administrative costs including certificates and letters of recommendation. Fees are communicated during the application process and confirmed in the enrollment agreement.</p>
+      </div>
+
+      <div class="subsection">
+        <h3>7.3 Selection and Enrollment</h3>
+        <p>Admission to internship programs is at the sole discretion of MOS based on the applicant's background, motivation, and available capacity. Enrollment is confirmed upon acceptance of the offer and receipt of the program fee. MOS reserves the right to limit the number of interns and trainees at any given time.</p>
+      </div>
+
+      <div class="subsection">
+        <h3>7.4 Intellectual Property During Internships</h3>
+        <p>Any work product, analysis, code, or research output generated by the Intern during the program using MOS resources, data, or supervision ("Intern Work Product") shall be jointly owned by MOS and the Intern, unless otherwise specified in the enrollment agreement. Specifically:</p>
+        <ul>
+          <li>The Intern may use the work for their academic requirements (thesis, project report, coursework) and for their personal portfolio (CV, applications).</li>
+          <li>MOS may use the work for its research, publications, and service development.</li>
+          <li>If the Intern Work Product contributes to a publication, authorship shall be determined by ICMJE guidelines based on intellectual contribution.</li>
+          <li>The Intern shall not publish or publicly disclose the work without prior written consent from MOS, to protect ongoing research interests.</li>
+        </ul>
+      </div>
+
+      <div class="subsection">
+        <h3>7.5 Confidentiality</h3>
+        <p>Interns and trainees may have access to unpublished data, ongoing research, client information, or proprietary methodologies during their program. All such information is strictly confidential. Interns agree not to disclose, share, or use confidential information for any purpose outside the program, both during and after the program. MOS may require Interns to sign a separate confidentiality undertaking.</p>
+      </div>
+
+      <div class="subsection">
+        <h3>7.6 Certificates and Letters of Recommendation</h3>
+        <p>Certificates of completion are issued upon successful completion of the program — defined as fulfilling the agreed hours, completing the assigned project, and submitting the final report or presentation. Letters of recommendation are issued at the discretion of MOS based on the Intern's performance, commitment, and quality of work. Neither certificates nor recommendation letters are guaranteed at the time of enrollment; they are earned through performance.</p>
+      </div>
+
+      <div class="subsection">
+        <h3>7.7 Termination</h3>
+        <p><strong>By Intern/Trainee:</strong> The Intern may withdraw from the program at any time by providing written notice. Fees paid are non-refundable after the first 14 days of the program. No certificate or recommendation letter will be issued for incomplete programs.</p>
+        <p style="margin-top:0.75rem;"><strong>By MOS:</strong> MOS reserves the right to terminate an Intern's participation if the Intern fails to meet agreed commitments, engages in academic dishonesty, violates confidentiality obligations, or conducts themselves in a manner inconsistent with professional and ethical standards. In such cases, fees paid are non-refundable.</p>
+      </div>
+
+      <div class="subsection">
+        <h3>7.8 Institutional Coordination</h3>
+        <p>Where the Intern's academic institution requires documentation, co-supervision letters, or progress reports, MOS will provide reasonable support upon request from the Intern. MOS is not responsible for institutional recognition of the internship — it is the Intern's responsibility to confirm that their institution accepts external internship arrangements.</p>
+      </div>
+    </div>
+
+    <!-- 8. General Terms -->
+    <div class="legal-section" id="section-8">
+      <h2><span class="section-num">8</span> General Terms</h2>
+
+      <div class="subsection">
+        <h3>8.1 Limitation of Liability</h3>
+        <p>To the maximum extent permitted by applicable law, Manna Omics Solutions shall not be liable for any indirect, incidental, special, consequential, or punitive damages — including but not limited to loss of data, loss of research funding, failed experiments, publication rejections, missed deadlines, or loss of business opportunity — arising from or related to the use of our website, services, training programs, or deliverables.</p>
+        <p>Our total aggregate liability for any claim arising from a specific engagement shall not exceed the total fees actually paid by the Client or Participant for that specific engagement.</p>
+      </div>
+
+      <div class="subsection">
+        <h3>8.2 Indemnification</h3>
+        <p>You agree to indemnify, defend, and hold harmless Manna Omics Solutions, its founder, team members, and collaborators from any claims, damages, losses, liabilities, or expenses (including legal fees) arising from: your breach of these Terms; your misuse of our deliverables or services; your violation of any applicable law or third-party rights; or any inaccurate or misleading data provided by you.</p>
+      </div>
+
+      <div class="subsection">
+        <h3>8.3 Force Majeure</h3>
+        <p>Neither party shall be liable for any failure or delay in performing obligations under these Terms or any Service Agreement if such failure or delay results from circumstances beyond the reasonable control of the affected party, including but not limited to natural disasters, pandemics, government actions, internet or power outages, hardware failures, or civil unrest. The affected party shall notify the other party promptly and make reasonable efforts to mitigate the impact.</p>
+      </div>
+
+      <div class="subsection">
+        <h3>8.4 No Warranty</h3>
+        <p>All services, deliverables, and website content are provided "as is" and "as available." MOS makes no warranties, express or implied, including but not limited to implied warranties of merchantability, fitness for a particular purpose, or non-infringement. We do not warrant that our services will meet your specific expectations, that deliverables will be error-free, or that our website will be available without interruption.</p>
+      </div>
+
+      <div class="subsection">
+        <h3>8.5 Severability</h3>
+        <p>If any provision of these Terms is found to be invalid, illegal, or unenforceable by a court of competent jurisdiction, the remaining provisions shall continue in full force and effect. The invalid provision shall be modified to the minimum extent necessary to make it valid and enforceable while preserving its original intent.</p>
+      </div>
+
+      <div class="subsection">
+        <h3>8.6 Entire Agreement</h3>
+        <p>These Terms, together with any applicable Service Agreement, project proposal, enrollment agreement, or NDA, constitute the entire agreement between you and MOS with respect to the subject matter hereof. They supersede all prior communications, proposals, and representations, whether oral or written.</p>
+      </div>
+
+      <div class="subsection">
+        <h3>8.7 Assignment</h3>
+        <p>You may not assign or transfer your rights or obligations under these Terms or any Service Agreement without our prior written consent. MOS may assign its rights and obligations to a successor entity or affiliate without your consent, provided that such assignment does not materially diminish your rights.</p>
+      </div>
+
+      <div class="subsection">
+        <h3>8.8 Waiver</h3>
+        <p>The failure of MOS to enforce any right or provision of these Terms shall not constitute a waiver of such right or provision. Any waiver must be in writing and signed by an authorized representative of MOS.</p>
+      </div>
+    </div>
+
+    <!-- 9. Privacy -->
+    <div class="legal-section" id="section-9">
+      <h2><span class="section-num">9</span> Privacy and Data Protection</h2>
+
+      <div class="subsection">
+        <h3>9.1 Personal Information</h3>
+        <p>We collect and process personal information (name, email address, institutional affiliation, and related details) solely for the purpose of providing our services, communicating with you, and managing our business relationship. We do not sell or share your personal information with third parties for marketing purposes.</p>
+      </div>
+
+      <div class="subsection">
+        <h3>9.2 Data Protection Compliance</h3>
+        <p>We are committed to protecting your personal data in accordance with applicable Indian law, including the Information Technology Act, 2000, and the Digital Personal Data Protection Act (DPDP), 2023, as applicable. Where our services involve processing of personal data (including human-derived genomic or health data), specific data processing terms will be agreed upon in the Service Agreement.</p>
+      </div>
+
+      <div class="subsection">
+        <h3>9.3 Cookies and Analytics</h3>
+        <p>Our website may use cookies and analytics tools to understand visitor behavior and improve user experience. By using our website, you consent to the use of cookies in accordance with standard web practices. You may disable cookies through your browser settings, though this may affect website functionality.</p>
+      </div>
+
+      <div class="subsection">
+        <h3>9.4 Data Retention</h3>
+        <p>Personal information collected through our website (contact form submissions, email correspondence) is retained for as long as necessary to fulfill the purpose for which it was collected, or as required by law. You may request deletion of your personal data by contacting us at the address provided below.</p>
+      </div>
+    </div>
+
+    <!-- 10. Governing Law -->
+    <div class="legal-section" id="section-10">
+      <h2><span class="section-num">10</span> Governing Law and Dispute Resolution</h2>
+
+      <div class="subsection">
+        <h3>10.1 Governing Law</h3>
+        <p>These Terms shall be governed by and construed in accordance with the laws of India.</p>
+      </div>
+
+      <div class="subsection">
+        <h3>10.2 Dispute Resolution</h3>
+        <p>In the event of any dispute, controversy, or claim arising out of or relating to these Terms or any Service Agreement, the parties shall first attempt to resolve the matter amicably through good-faith negotiation. If the dispute is not resolved within 30 days of written notice, it shall be subject to the exclusive jurisdiction of the courts in Kolkata, West Bengal, India.</p>
+      </div>
+    </div>
+
+    <!-- 11. Contact -->
+    <div class="legal-section" id="section-11">
+      <h2><span class="section-num">11</span> Contact Information</h2>
+      <p>For any questions, concerns, or communications regarding these Terms, please contact:</p>
+      <div class="contact-block">
+        <p><strong>Manna Omics Solutions</strong></p>
+        <p>Kolkata, West Bengal, India</p>
+        <p>Email: <a href="mailto:info@mannaomics.com">info@mannaomics.com</a></p>
+        <p>Website: <a href="https://mannaomics.com">www.mannaomics.com</a></p>
+      </div>
+      <div class="disclaimer-footer">
+        Manna Omics Solutions recommends that Clients and Participants seek independent legal advice where appropriate. These Terms apply to all services provided by Manna Omics Solutions and are subject to periodic revision. The version currently published on our website shall be the governing version.
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- Footer -->
+<footer>
+  <a href="https://mannaomics.com" class="logo">Manna <span>Omics</span> Solutions</a>
+  <p class="footer-tagline">Computational Biology &middot; Bioinformatics &middot; Structural Biology</p>
+  <div class="footer-links">
+    <a href="https://mannaomics.com/#about">About</a>
+    <a href="https://mannaomics.com/#services">Services</a>
+    <a href="https://mannaomics.com/#contact">Contact</a>
+    <a href="terms.html" style="color:var(--accent-teal);opacity:1;">Terms and Conditions</a>
+  </div>
+  <p style="margin-bottom:0.4rem; font-size:0.78rem;">&copy; 2026 Manna Omics Solutions. All rights reserved.</p>
+  <p style="font-size:0.75rem;opacity:0.4;">MSME Registered &middot; Udyam: UDYAM-WB-12-0147213</p>
+</footer>
+
+<script>
+/* ===== TOC active state on scroll ===== */
+const sections = document.querySelectorAll('.legal-section');
+const tocLinks = document.querySelectorAll('.toc-list li a');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      tocLinks.forEach(l => l.classList.remove('active'));
+      const active = document.querySelector(`.toc-list li a[href="#${entry.target.id}"]`);
+      if (active) active.classList.add('active');
+    }
+  });
+}, { rootMargin: '-20% 0px -70% 0px' });
+
+sections.forEach(s => observer.observe(s));
+
+/* ===== Nav mobile toggle ===== */
+window.addEventListener('scroll', () => {
+  document.querySelector('nav').style.boxShadow =
+    window.scrollY > 20 ? '0 4px 30px rgba(0,0,0,0.3)' : 'none';
+});
+</script>
+</body>
+</html>

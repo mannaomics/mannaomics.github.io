@@ -553,26 +553,30 @@ section {
 }
 
 /* ===== CONTACT ===== */
-.contact-box {
-  max-width: 600px;
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 3rem;
+  max-width: 1000px;
   margin: 3rem auto 0;
-  text-align: center;
+  align-items: start;
 }
+
+.contact-info { display: flex; flex-direction: column; gap: 1.2rem; }
 
 .contact-email {
   display: inline-flex;
   align-items: center;
   gap: 0.8rem;
-  padding: 1rem 2rem;
+  padding: 1rem 1.5rem;
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: 12px;
   color: var(--accent-teal);
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 500;
   text-decoration: none;
   transition: all 0.3s;
-  margin-bottom: 2rem;
 }
 
 .contact-email:hover {
@@ -583,8 +587,90 @@ section {
 
 .contact-details {
   color: var(--text-secondary);
-  font-size: 0.95rem;
-  line-height: 2;
+  font-size: 0.92rem;
+  line-height: 2.2;
+}
+
+/* ===== FORM ===== */
+.contact-form-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2rem;
+}
+
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+.form-group { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
+
+.form-group label {
+  font-size: 0.8rem; font-weight: 600;
+  color: var(--text-secondary); letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  color: var(--text-primary);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.92rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+  width: 100%;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder { color: var(--text-muted); }
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--accent-teal);
+  box-shadow: 0 0 0 3px rgba(45,212,191,0.1);
+}
+
+.form-group select option { background: var(--bg-secondary); color: var(--text-primary); }
+
+.form-group textarea { resize: vertical; min-height: 120px; }
+
+.form-submit-btn {
+  width: 100%; padding: 0.9rem;
+  background: var(--accent-teal); color: var(--bg-primary);
+  border: none; border-radius: 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem; font-weight: 700;
+  cursor: pointer; transition: all 0.3s;
+  display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+}
+.form-submit-btn:hover { background: #5eead4; transform: translateY(-2px); box-shadow: 0 8px 30px rgba(45,212,191,0.3); }
+.form-submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+.form-status {
+  margin-top: 1rem; padding: 0.85rem 1rem;
+  border-radius: 8px; font-size: 0.88rem;
+  display: none; text-align: center;
+}
+.form-status.success {
+  display: block;
+  background: rgba(45,212,191,0.1);
+  border: 1px solid rgba(45,212,191,0.3);
+  color: var(--accent-teal);
+}
+.form-status.error {
+  display: block;
+  background: rgba(239,68,68,0.1);
+  border: 1px solid rgba(239,68,68,0.3);
+  color: #f87171;
+}
+
+@media (max-width: 860px) {
+  .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .form-row { grid-template-columns: 1fr; }
 }
 
 /* ===== FOOTER ===== */
@@ -1177,15 +1263,69 @@ footer .logo {
     <div class="section-label">Get in Touch</div>
     <h2 class="section-title" style="text-align: center;">Let's Work Together</h2>
     <p class="section-desc" style="text-align: center; margin: 0 auto 2rem;">Tell us about your project and we'll respond with a scope outline and estimate within 48 hours.</p>
-    <div class="contact-box">
-      <a href="mailto:info@mannaomics.com" class="contact-email">
-        <i class="fas fa-envelope"></i> &nbsp; info@mannaomics.com
-      </a>
-      <div class="contact-details">
-        <p><i class="fas fa-location-dot"></i> &nbsp; Kolkata, India</p>
-        <p><i class="fas fa-globe"></i> &nbsp; Available for remote consulting worldwide</p>
+
+    <div class="contact-grid">
+
+      <!-- Left: info -->
+      <div class="contact-info">
+        <a href="mailto:info@mannaomics.com" class="contact-email">
+          <i class="fas fa-envelope"></i> info@mannaomics.com
+        </a>
+        <div class="contact-details">
+          <p><i class="fas fa-location-dot"></i> &nbsp; Kolkata, India</p>
+          <p><i class="fas fa-globe"></i> &nbsp; Remote consulting worldwide</p>
+          <p><i class="fas fa-clock"></i> &nbsp; Response within 48 hours</p>
+        </div>
+        <p class="contact-note">Academic collaborations, industry projects, and grant-linked consulting — all enquiries welcome.</p>
       </div>
-      <p class="contact-note">For academic collaborations, industry projects, and grant-linked consulting: all enquiries welcome.</p>
+
+      <!-- Right: form -->
+      <div class="contact-form-card">
+        <form id="contactForm" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="cf-name">Full Name *</label>
+              <input type="text" id="cf-name" name="name" placeholder="Dr. Jane Smith" required>
+            </div>
+            <div class="form-group">
+              <label for="cf-email">Email *</label>
+              <input type="email" id="cf-email" name="email" placeholder="jane@institution.edu" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="cf-org">Organization / Institution</label>
+            <input type="text" id="cf-org" name="organization" placeholder="University / Company name">
+          </div>
+          <div class="form-group">
+            <label for="cf-subject">Service of Interest *</label>
+            <select id="cf-subject" name="subject" required>
+              <option value="" disabled selected>Select a service...</option>
+              <option>Molecular Dynamics &amp; AI Molecular Design</option>
+              <option>Metagenomics &amp; Multi-omics Analysis</option>
+              <option>Resistome &amp; AMR Profiling</option>
+              <option>Scientific Writing &amp; Grant Support</option>
+              <option>Training &amp; Workshops</option>
+              <option>Internship Program</option>
+              <option>General Enquiry</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="cf-message">Message *</label>
+            <textarea id="cf-message" name="message" placeholder="Briefly describe your project, goals, or question..." required></textarea>
+          </div>
+          <div class="form-group" style="flex-direction:row; align-items:flex-start; gap:0.6rem; margin-bottom:1.2rem;">
+            <input type="checkbox" id="cf-terms" style="margin-top:3px; accent-color:var(--accent-teal); width:15px; height:15px; flex-shrink:0; cursor:pointer;">
+            <label for="cf-terms" style="font-size:0.82rem; text-transform:none; letter-spacing:0; color:var(--text-secondary); cursor:pointer; line-height:1.5;">
+              I have read and agree to the <a href="terms.html" target="_blank" style="color:var(--accent-teal); text-decoration:underline;">Terms and Conditions</a>, including the storage of my submitted data.
+            </label>
+          </div>
+          <button type="submit" class="form-submit-btn" id="submitBtn">
+            <i class="fas fa-paper-plane"></i> Send Message
+          </button>
+          <div class="form-status" id="formStatus"></div>
+        </form>
+      </div>
+
     </div>
   </div>
 </section>
@@ -1202,6 +1342,7 @@ footer .logo {
     <a href="#publications">Publications</a>
     <a href="#founder">Founder</a>
     <a href="#contact">Contact</a>
+    <a href="terms.html" style="color:var(--accent-teal);opacity:1;">Terms &amp; Conditions</a>
   </div>
   <div class="visitor-counter">
     <div id="visitorCount" class="digit-display">
@@ -1485,6 +1626,67 @@ document.querySelectorAll('section[id]').forEach(s => navObserver.observe(s));
     if (!already) localStorage.setItem(COUNTED_KEY, '1');
   } catch { /* keep showing cached or 150 */ }
 })();
+
+/* ===== CONTACT FORM ===== */
+const FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxF164X8TDGDXDv1VvfxpuaM10VK95C-KmCP3cQhPSBdwxT55ywlsVnXr8dstmh2Yac/exec';
+
+document.getElementById('contactForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = document.getElementById('submitBtn');
+  const status = document.getElementById('formStatus');
+
+  const name    = document.getElementById('cf-name').value.trim();
+  const email   = document.getElementById('cf-email').value.trim();
+  const subject = document.getElementById('cf-subject').value;
+  const message = document.getElementById('cf-message').value.trim();
+
+  const agreed = document.getElementById('cf-terms').checked;
+
+  if (!name || !email || !subject || !message) {
+    status.className = 'form-status error';
+    status.textContent = 'Please fill in all required fields.';
+    return;
+  }
+  if (!agreed) {
+    status.className = 'form-status error';
+    status.textContent = 'Please agree to the Terms and Conditions before submitting.';
+    return;
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    status.className = 'form-status error';
+    status.textContent = 'Please enter a valid email address.';
+    return;
+  }
+
+  btn.disabled = true;
+  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+  status.className = 'form-status';
+
+  try {
+    await fetch(FORM_ENDPOINT, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name,
+        email,
+        organization: document.getElementById('cf-org').value.trim(),
+        subject,
+        message,
+        agreed: 'Yes'
+      })
+    });
+    status.className = 'form-status success';
+    status.textContent = 'Message sent! We\'ll get back to you within 48 hours.';
+    document.getElementById('contactForm').reset();
+  } catch (err) {
+    status.className = 'form-status error';
+    status.textContent = 'Something went wrong. Please email us directly at info@mannaomics.com.';
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+  }
+});
 </script>
 </body>
 </html>

@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bioinformatics Training and Workshops | Manna Omics Solutions</title>
+<meta name="description" content="Hands-on bioinformatics workshops and computational biology training — metagenomics, molecular dynamics, R programming, Python, AlphaFold, AMR profiling, and more. Remote and on-site. India and worldwide.">
+<meta property="og:title" content="Bioinformatics Training and Workshops | Manna Omics Solutions">
+<meta property="og:description" content="Live, hands-on workshops in bioinformatics, metagenomics, molecular dynamics, and AI/ML for biology. Designed for researchers, graduate students, and industry professionals.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mannaomics.com/services/training-workshops">
+<link rel="canonical" href="https://mannaomics.com/services/training-workshops">
+<link rel="icon" type="image/png" href="../logo-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700&family=Playfair+Display:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root {
+  --bg-primary: #0a0f1a;
+  --bg-secondary: #111827;
+  --bg-card: #1a2236;
+  --bg-card-hover: #1f2a42;
+  --accent-teal: #2dd4bf;
+  --accent-teal-dim: rgba(45, 212, 191, 0.15);
+  --accent-blue: #3b82f6;
+  --accent-violet: #8b5cf6;
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --border: rgba(148, 163, 184, 0.1);
+  --gradient-hero: linear-gradient(135deg, #0a0f1a 0%, #1a1040 50%, #0a0f1a 100%);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ===== NAV ===== */
+nav {
+  position: fixed; top: 0; width: 100%; z-index: 100;
+  padding: 1rem 0;
+  background: rgba(10,15,26,0.8);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  transition: all 0.3s ease;
+}
+.nav-inner {
+  max-width: 1200px; margin: 0 auto;
+  padding: 0 2rem;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem; font-weight: 600;
+  color: var(--text-primary); text-decoration: none; letter-spacing: 0.5px;
+}
+.logo span { color: var(--accent-teal); }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+  color: var(--text-secondary); text-decoration: none;
+  font-size: 0.9rem; font-weight: 500;
+  transition: color 0.3s; letter-spacing: 0.3px; position: relative;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -3px; left: 0;
+  width: 100%; height: 2px; background: var(--accent-teal);
+  border-radius: 2px; transform: scaleX(0); transform-origin: left;
+  transition: transform 0.25s ease-out;
+}
+.nav-links a:hover { color: var(--accent-teal); }
+.nav-links a:hover::after { transform: scaleX(1); }
+.mobile-toggle {
+  display: none; background: none; border: none;
+  color: var(--text-primary); font-size: 1.5rem; cursor: pointer;
+}
+
+/* ===== HERO ===== */
+.page-hero {
+  padding: 10rem 2rem 6rem;
+  background: var(--gradient-hero);
+  position: relative; overflow: hidden;
+}
+.hero-bg-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(45,212,191,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(45,212,191,0.03) 1px, transparent 1px);
+  background-size: 60px 60px; pointer-events: none;
+}
+.hero-glow {
+  position: absolute; width: 600px; height: 600px;
+  border-radius: 50%; filter: blur(120px); opacity: 0.12; pointer-events: none;
+}
+.glow-1 { background: var(--accent-blue); top: -200px; right: -100px; animation: floatOrb 14s ease-in-out infinite; }
+.glow-2 { background: var(--accent-teal); bottom: -200px; left: -100px; animation: floatOrb 18s ease-in-out infinite reverse; }
+@keyframes floatOrb {
+  0%,100% { transform: translate(0,0); }
+  40%      { transform: translate(40px,-25px); }
+  70%      { transform: translate(-20px,20px); }
+}
+.page-hero-inner {
+  max-width: 900px; margin: 0 auto;
+  position: relative; z-index: 2;
+}
+.hero-badge {
+  display: inline-block;
+  padding: 0.4rem 1.2rem;
+  border: 1px solid rgba(45,212,191,0.3);
+  border-radius: 50px; font-size: 0.8rem;
+  color: var(--accent-teal); letter-spacing: 2px;
+  text-transform: uppercase; margin-bottom: 2rem;
+  background: var(--accent-teal-dim);
+}
+.page-hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 700; line-height: 1.15;
+  margin-bottom: 1rem; letter-spacing: -0.5px;
+}
+.page-hero h1 .highlight {
+  background: linear-gradient(135deg, var(--accent-teal), var(--accent-blue));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.page-hero .tagline {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem; font-style: italic;
+  color: var(--text-secondary); margin-bottom: 1.5rem;
+}
+.page-hero .intro {
+  font-size: 1.05rem; color: var(--text-secondary);
+  line-height: 1.85; max-width: 780px;
+  text-align: justify; overflow-wrap: break-word; word-break: break-word;
+}
+.hero-cta { display: flex; gap: 1rem; margin-top: 2.5rem; flex-wrap: wrap; }
+
+/* ===== BUTTONS ===== */
+.btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.85rem 2rem; border-radius: 8px;
+  font-size: 0.95rem; font-weight: 600;
+  text-decoration: none; transition: all 0.3s ease;
+  cursor: pointer; border: none;
+  font-family: 'DM Sans', sans-serif;
+  position: relative; overflow: hidden;
+}
+.btn-primary { background: var(--accent-teal); color: var(--bg-primary); }
+.btn-primary:hover { background: #5eead4; transform: translateY(-2px); box-shadow: 0 8px 30px rgba(45,212,191,0.3); }
+.btn-outline { border: 1px solid var(--border); color: var(--text-primary); background: transparent; }
+.btn-outline:hover { border-color: var(--accent-teal); color: var(--accent-teal); transform: translateY(-2px); }
+.btn .ripple {
+  position: absolute; border-radius: 50%;
+  background: rgba(255,255,255,0.2); transform: scale(0);
+  animation: rippleAnim 0.55s ease-out forwards; pointer-events: none;
+}
+@keyframes rippleAnim { to { transform: scale(4); opacity: 0; } }
+
+/* ===== SECTIONS ===== */
+section { padding: 6rem 2rem; }
+.section-inner { max-width: 1200px; margin: 0 auto; }
+.section-label {
+  font-size: 0.8rem; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--accent-teal);
+  font-weight: 600; margin-bottom: 1rem;
+}
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 600; margin-bottom: 1rem; line-height: 1.3;
+}
+.section-desc {
+  color: var(--text-secondary); font-size: 1.05rem;
+  line-height: 1.85; text-align: justify;
+  overflow-wrap: break-word; word-break: break-word;
+}
+
+/* ===== CATALOG ===== */
+#catalog {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.service-category { margin-top: 3.5rem; }
+.service-category:first-of-type { margin-top: 3rem; }
+
+.category-header {
+  display: flex; align-items: center; gap: 1rem;
+  margin-bottom: 1.5rem; padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+.category-icon {
+  width: 44px; height: 44px; border-radius: 10px;
+  background: var(--accent-teal-dim);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem; color: var(--accent-teal); flex-shrink: 0;
+}
+.category-header h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.35rem; font-weight: 600; color: var(--text-primary);
+}
+
+.service-cards-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem;
+}
+.service-cards-grid.three-col { grid-template-columns: repeat(3, 1fr); }
+
+.service-item {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 14px; padding: 1.6rem;
+  transition: all 0.35s ease; position: relative; overflow: hidden;
+}
+.service-item::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--accent-teal), var(--accent-blue));
+  opacity: 0; transition: opacity 0.3s;
+}
+.service-item:hover {
+  background: var(--bg-card-hover);
+  border-color: rgba(45,212,191,0.2);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(45,212,191,0.1);
+}
+.service-item:hover::before { opacity: 1; }
+.service-item h4 {
+  font-size: 1rem; font-weight: 600;
+  color: var(--accent-teal); margin-bottom: 0.6rem;
+}
+.service-item p {
+  font-size: 0.9rem; color: var(--text-secondary);
+  line-height: 1.75; text-align: justify;
+  overflow-wrap: break-word; word-break: break-word;
+}
+.service-item .cross-link {
+  display: inline-block; margin-top: 0.75rem;
+  font-size: 0.82rem; color: var(--accent-teal);
+  text-decoration: none; opacity: 0.8; transition: opacity 0.2s;
+}
+.service-item .cross-link:hover { opacity: 1; }
+.service-item.full-width { grid-column: 1 / -1; }
+
+.workshop-level {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem; letter-spacing: 0.5px;
+  padding: 0.15rem 0.6rem; border-radius: 4px;
+  margin-bottom: 0.6rem;
+}
+.level-beginner { background: rgba(45,212,191,0.1); color: var(--accent-teal); }
+.level-intermediate { background: rgba(59,130,246,0.1); color: var(--accent-blue); }
+.level-advanced { background: rgba(139,92,246,0.1); color: var(--accent-violet); }
+
+/* ===== FORMATS ===== */
+#formats { background: var(--bg-primary); }
+.formats-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem; margin-top: 3rem;
+}
+.format-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 14px; padding: 1.8rem;
+  transition: all 0.35s ease; position: relative; overflow: hidden;
+}
+.format-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--accent-teal), var(--accent-blue));
+  opacity: 0; transition: opacity 0.3s;
+}
+.format-card:hover {
+  background: var(--bg-card-hover);
+  border-color: rgba(45,212,191,0.2);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(45,212,191,0.1);
+}
+.format-card:hover::before { opacity: 1; }
+.format-icon {
+  width: 48px; height: 48px; border-radius: 12px;
+  background: var(--accent-teal-dim);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem; color: var(--accent-teal);
+  margin-bottom: 1.2rem;
+}
+.format-duration {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem; color: var(--text-muted);
+  letter-spacing: 0.5px; margin-bottom: 0.6rem;
+  text-transform: uppercase;
+}
+.format-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem; font-weight: 600;
+  color: var(--text-primary); margin-bottom: 0.75rem;
+}
+.format-card p {
+  font-size: 0.88rem; color: var(--text-secondary);
+  line-height: 1.75; text-align: justify;
+  overflow-wrap: break-word; word-break: break-word;
+}
+.format-best {
+  margin-top: 1rem; padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.82rem; color: var(--text-muted); font-style: italic;
+}
+.format-best strong { color: var(--accent-teal); font-style: normal; }
+
+/* ===== AUDIENCE ===== */
+#audience {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.audience-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem; margin-top: 3rem;
+}
+.audience-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 14px; padding: 1.8rem;
+  transition: all 0.3s ease;
+}
+.audience-card:hover {
+  border-color: rgba(45,212,191,0.2);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(45,212,191,0.08);
+}
+.audience-icon {
+  width: 44px; height: 44px; border-radius: 10px;
+  background: rgba(59,130,246,0.1);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem; color: var(--accent-blue);
+  margin-bottom: 1rem;
+}
+.audience-card h3 {
+  font-size: 1rem; font-weight: 600;
+  color: var(--text-primary); margin-bottom: 0.6rem;
+}
+.audience-card p {
+  font-size: 0.88rem; color: var(--text-secondary);
+  line-height: 1.75; text-align: justify;
+  overflow-wrap: break-word; word-break: break-word;
+}
+
+/* ===== WORKFLOW ===== */
+#workflow {
+  background: var(--bg-primary);
+}
+.workflow-steps {
+  display: flex; flex-direction: column;
+  margin-top: 3rem; position: relative;
+}
+.workflow-steps::before {
+  content: ''; position: absolute;
+  left: 26px; top: 26px; bottom: 26px; width: 2px;
+  background: linear-gradient(180deg, var(--accent-teal), var(--accent-blue), var(--accent-violet));
+  opacity: 0.25;
+}
+.workflow-step {
+  display: flex; gap: 1.5rem; align-items: flex-start;
+  padding: 1.5rem 0; position: relative;
+}
+.step-num {
+  width: 52px; height: 52px; border-radius: 50%;
+  background: var(--bg-card);
+  border: 2px solid rgba(45,212,191,0.3);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1rem; font-weight: 600;
+  color: var(--accent-teal); flex-shrink: 0; z-index: 1; transition: all 0.3s;
+}
+.workflow-step:hover .step-num {
+  background: var(--accent-teal-dim);
+  border-color: var(--accent-teal);
+  box-shadow: 0 0 20px rgba(45,212,191,0.2);
+}
+.step-content { padding-top: 0.6rem; }
+.step-content h3 {
+  font-size: 1.05rem; font-weight: 600;
+  color: var(--text-primary); margin-bottom: 0.5rem;
+}
+.step-content p {
+  font-size: 0.9rem; color: var(--text-secondary);
+  line-height: 1.75; max-width: 680px;
+  text-align: justify; overflow-wrap: break-word; word-break: break-word;
+}
+
+/* ===== PACKAGES ===== */
+#packages { background: var(--bg-secondary); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.packages-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem; margin-top: 3rem;
+}
+.package-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 16px; padding: 2rem;
+  transition: all 0.35s ease; position: relative; overflow: hidden;
+  display: flex; flex-direction: column;
+}
+.package-card.featured {
+  border-color: rgba(45,212,191,0.35);
+  background: linear-gradient(145deg, #1a2236, #1a2a3a);
+}
+.package-card.featured::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--accent-teal), var(--accent-blue));
+}
+.package-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 50px rgba(45,212,191,0.1);
+  border-color: rgba(45,212,191,0.25);
+}
+.package-tag {
+  display: inline-block; padding: 0.25rem 0.8rem; border-radius: 50px;
+  font-size: 0.72rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 1rem;
+  background: var(--accent-teal-dim); color: var(--accent-teal);
+  border: 1px solid rgba(45,212,191,0.25); width: fit-content;
+}
+.package-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem; font-weight: 600; margin-bottom: 0.4rem;
+}
+.package-best {
+  font-size: 0.85rem; color: var(--text-muted);
+  margin-bottom: 1.2rem; font-style: italic;
+}
+.package-includes {
+  list-style: none; display: flex; flex-direction: column;
+  gap: 0.5rem; flex: 1;
+}
+.package-includes li {
+  font-size: 0.9rem; color: var(--text-secondary);
+  padding-left: 1.4rem; position: relative; line-height: 1.6;
+}
+.package-includes li::before {
+  content: '✓'; position: absolute; left: 0;
+  color: var(--accent-teal); font-weight: 700; font-size: 0.85rem;
+}
+.package-cta { margin-top: 1.8rem; }
+
+.packages-note {
+  margin-top: 2rem;
+  padding: 1.2rem 1.6rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  font-size: 0.88rem; color: var(--text-muted);
+  line-height: 1.75; font-style: italic;
+}
+
+/* ===== UPCOMING WORKSHOPS ===== */
+#upcoming {
+  background: var(--bg-primary);
+  display: none; /* activated when workshops are scheduled */
+}
+#upcoming.active { display: block; }
+.upcoming-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem; margin-top: 3rem;
+}
+.upcoming-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 14px; padding: 1.6rem;
+  transition: all 0.3s ease; position: relative; overflow: hidden;
+}
+.upcoming-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--accent-blue), var(--accent-violet));
+  opacity: 0; transition: opacity 0.3s;
+}
+.upcoming-card:hover {
+  border-color: rgba(59,130,246,0.25);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(59,130,246,0.1);
+}
+.upcoming-card:hover::before { opacity: 1; }
+.upcoming-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem; color: var(--accent-blue);
+  letter-spacing: 0.5px; margin-bottom: 0.5rem;
+}
+.upcoming-card h4 {
+  font-size: 1rem; font-weight: 600;
+  color: var(--text-primary); margin-bottom: 0.5rem;
+}
+.upcoming-meta {
+  display: flex; gap: 0.75rem; flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+.upcoming-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem; padding: 0.15rem 0.55rem;
+  border-radius: 4px; background: rgba(59,130,246,0.1);
+  color: var(--accent-blue); letter-spacing: 0.3px;
+}
+.upcoming-card p {
+  font-size: 0.85rem; color: var(--text-secondary);
+  line-height: 1.65; margin-bottom: 1rem;
+}
+.upcoming-empty {
+  text-align: center; padding: 3rem 2rem;
+  background: var(--bg-card); border: 1px dashed var(--border);
+  border-radius: 16px; margin-top: 3rem;
+}
+.upcoming-empty p {
+  color: var(--text-muted); font-size: 0.95rem; line-height: 1.8;
+}
+.upcoming-empty .linkedin-link {
+  display: inline-block; margin-top: 1rem;
+  color: var(--accent-teal); text-decoration: none;
+  font-size: 0.9rem; font-weight: 500;
+  border: 1px solid rgba(45,212,191,0.3);
+  padding: 0.5rem 1.2rem; border-radius: 50px;
+  transition: all 0.25s;
+}
+.upcoming-empty .linkedin-link:hover {
+  background: var(--accent-teal-dim);
+}
+
+/* ===== FAQ ===== */
+#faq {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.faq-list { margin-top: 3rem; display: flex; flex-direction: column; gap: 0.75rem; }
+.faq-item {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 12px; overflow: hidden; transition: border-color 0.3s;
+}
+.faq-item.open { border-color: rgba(45,212,191,0.25); }
+.faq-question {
+  width: 100%; background: none; border: none; text-align: left;
+  padding: 1.25rem 1.5rem; cursor: pointer;
+  display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+  font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 600;
+  color: var(--text-primary); transition: color 0.3s;
+}
+.faq-question:hover { color: var(--accent-teal); }
+.faq-icon { font-size: 1rem; color: var(--accent-teal); flex-shrink: 0; transition: transform 0.3s ease; }
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+.faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+.faq-item.open .faq-answer { max-height: 400px; }
+.faq-answer-inner {
+  padding: 0 1.5rem 1.25rem; font-size: 0.9rem;
+  color: var(--text-secondary); line-height: 1.8;
+  text-align: justify; overflow-wrap: break-word; word-break: break-word;
+}
+
+/* ===== CTA ===== */
+#cta { background: var(--bg-primary); }
+.cta-box { max-width: 720px; margin: 0 auto; text-align: center; }
+.cta-box .section-title { margin-bottom: 1rem; }
+.cta-box p { color: var(--text-secondary); font-size: 1.05rem; line-height: 1.85; margin-bottom: 2rem; }
+.cta-secondary { margin-top: 1.2rem; font-size: 0.88rem; color: var(--text-muted); }
+
+/* ===== FOOTER ===== */
+footer {
+  padding: 2rem; text-align: center;
+  border-top: 1px solid var(--border);
+  color: var(--text-muted); font-size: 0.85rem;
+}
+footer .logo { font-size: 1.2rem; display: block; margin-bottom: 0.5rem; }
+.footer-tagline { font-size: 0.9rem; opacity: 0.6; margin: 0.3rem 0 1rem; letter-spacing: 0.05em; }
+.footer-links {
+  display: flex; gap: 1.5rem; flex-wrap: wrap;
+  justify-content: center; margin-bottom: 1rem; font-size: 0.85rem;
+}
+.footer-links a { color: var(--text-muted); text-decoration: none; opacity: 0.7; transition: opacity 0.3s, color 0.3s; }
+.footer-links a:hover { opacity: 1; color: var(--accent-teal); }
+
+/* ===== SCROLL REVEAL ===== */
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.5s ease-out, transform 0.5s ease-out; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 968px) {
+  .formats-grid,
+  .audience-grid { grid-template-columns: repeat(2, 1fr); }
+  .service-cards-grid,
+  .service-cards-grid.three-col { grid-template-columns: 1fr; }
+  .packages-grid { grid-template-columns: 1fr; }
+  .upcoming-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .nav-links { display: none; }
+  .mobile-toggle { display: block; }
+  .nav-links.active {
+    display: flex; flex-direction: column;
+    position: absolute; top: 100%; left: 0; right: 0;
+    background: var(--bg-primary);
+    padding: 1rem 2rem; border-bottom: 1px solid var(--border);
+  }
+  section { padding: 4rem 1.5rem; }
+  .page-hero { padding: 8rem 1.5rem 4rem; }
+  .hero-cta { flex-direction: column; }
+  .formats-grid,
+  .audience-grid { grid-template-columns: 1fr; }
+  .workflow-steps::before { left: 24px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .glow-1, .glow-2 { animation: none; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+  <div class="nav-inner">
+    <a href="https://mannaomics.com" class="logo">
+      <img src="../logo-icon.png" alt="" style="height:36px;vertical-align:middle;margin-right:8px;">
+      Manna <span>Omics</span> Solutions
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="https://mannaomics.com/#about">About</a></li>
+      <li><a href="https://mannaomics.com/#services">Services</a></li>
+      <li><a href="https://mannaomics.com/#case-studies">Case Studies</a></li>
+      <li><a href="https://mannaomics.com/#tools">Expertise</a></li>
+      <li><a href="https://mannaomics.com/#publications">Publications</a></li>
+      <li><a href="https://mannaomics.com/#founder">Founder</a></li>
+      <li><a href="https://mannaomics.com/#contact">Contact</a></li>
+    </ul>
+    <button class="mobile-toggle" onclick="document.getElementById('navLinks').classList.toggle('active')">&#9776;</button>
+  </div>
+</nav>
+
+<!-- Hero -->
+<div class="page-hero" id="top">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-glow glow-1"></div>
+  <div class="hero-glow glow-2"></div>
+  <div class="page-hero-inner">
+    <div class="hero-badge">Training and Education &middot; Service</div>
+    <h1>Training <span class="highlight">and Workshops</span></h1>
+    <p class="tagline">Learn to do the analysis yourself — from someone who does it for a living.</p>
+    <p class="intro">Bioinformatics and computational biology should not be a black box. We run hands-on, practical training workshops designed for researchers, graduate students, and industry professionals who want to build real computational skills — not sit through slides. Every workshop is built around actual data, actual tools, and actual problems. Whether your lab needs a one-day crash course in 16S amplicon analysis or a structured multi-week program covering molecular dynamics from scratch, we design the training around what you need to know and what you will actually use.</p>
+    <div class="hero-cta">
+      <a href="#catalog" class="btn btn-primary">Explore the Catalog</a>
+      <a href="https://mannaomics.com/#contact" class="btn btn-outline">Book a Workshop</a>
+    </div>
+  </div>
+</div>
+
+<!-- Workshop Catalog -->
+<section id="catalog">
+  <div class="section-inner">
+    <div class="section-label">Workshop Catalog</div>
+    <h2 class="section-title">What We Teach</h2>
+    <p class="section-desc">Seven topic areas spanning foundational computing skills through advanced multi-omics, molecular simulation, and AI-driven biology. Every workshop listed below is available as a standalone session or as part of a structured course. Prerequisites are noted on each workshop — most foundational workshops assume no prior experience.</p>
+
+    <!-- 2.1 Bioinformatics Foundations -->
+    <div class="service-category reveal" id="foundations">
+      <div class="category-header">
+        <div class="category-icon"><i class="fas fa-terminal"></i></div>
+        <h3>Bioinformatics Foundations</h3>
+      </div>
+      <div class="service-cards-grid three-col">
+        <div class="service-item">
+          <span class="workshop-level level-beginner">Beginner</span>
+          <h4>Linux and Command Line for Biologists</h4>
+          <p>The essential starting point for anyone entering bioinformatics. File system navigation, text processing (grep, awk, sed), shell scripting, remote server access (SSH), and job submission on HPC clusters (SLURM). Designed for wet-lab researchers and students with zero prior command line experience. By the end, participants can navigate a Linux server, process files, and submit their own analysis jobs.</p>
+        </div>
+        <div class="service-item">
+          <span class="workshop-level level-beginner">Beginner</span>
+          <h4>R Programming for Life Sciences</h4>
+          <p>Introduction to R for biological data analysis — data import, manipulation (tidyverse), statistical testing, and publication-quality visualization (ggplot2). Covers the core skills needed to independently analyze experimental data, generate figures, and perform basic statistical comparisons. No prior programming experience required.</p>
+          <a href="scientific-writing.html" class="cross-link">Need publication-quality figures? See our Scientific Writing service &rarr;</a>
+        </div>
+        <div class="service-item">
+          <span class="workshop-level level-beginner">Beginner</span>
+          <h4>Python for Bioinformatics</h4>
+          <p>Python fundamentals tailored for biological applications — scripting, data handling (pandas, NumPy), file parsing (FASTA, FASTQ, PDB), basic plotting (matplotlib, seaborn), and automation of repetitive bioinformatics tasks. Designed for researchers who want scripting capability beyond point-and-click tools.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2.2 Metagenomics and Amplicon -->
+    <div class="service-category reveal" id="metagenomics">
+      <div class="category-header">
+        <div class="category-icon"><i class="fas fa-dna"></i></div>
+        <h3>(Meta)genomics and Amplicon Analysis</h3>
+      </div>
+      <div class="service-cards-grid">
+        <div class="service-item">
+          <span class="workshop-level level-intermediate">Intermediate</span>
+          <h4>16S/ITS Amplicon Analysis — From Raw Reads to Publication</h4>
+          <p>Complete hands-on workflow using QIIME2 and R: quality control, ASV generation (DADA2), taxonomic classification (SILVA/UNITE), alpha and beta diversity analysis, statistical testing (PERMANOVA, ANOSIM), differential abundance (DESeq2, ANCOM-BC), and publication-quality figure generation. Participants leave with a reproducible pipeline they can apply to their own data immediately.</p>
+          <a href="metagenomics-multiomics.html" class="cross-link">Want the full analysis done for you? See our Metagenomics service &rarr;</a>
+        </div>
+        <div class="service-item">
+          <span class="workshop-level level-intermediate">Intermediate</span>
+          <h4>Shotgun Metagenomics and MAG Reconstruction</h4>
+          <p>End-to-end metagenomic analysis: quality control, read-based profiling (Kraken2, MetaPhlAn), assembly (MEGAHIT), gene prediction (Prodigal), functional annotation (DIAMOND, KEGG, COG), binning (MaxBin2, MetaBAT2, CONCOCT), bin refinement, quality assessment (CheckM), and taxonomic placement (GTDB-Tk). Covers both read-based and assembly-based approaches and when to use each.</p>
+        </div>
+        <div class="service-item">
+          <span class="workshop-level level-intermediate">Intermediate</span>
+          <h4>Metatranscriptomics and Functional Expression Analysis</h4>
+          <p>From raw RNA-Seq reads to differential expression: quality control, alignment, quantification, normalization, DESeq2/edgeR workflows, pathway enrichment, and integration with metagenomic context. Includes practical guidance on experimental design for metatranscriptomic studies.</p>
+        </div>
+        <div class="service-item">
+          <span class="workshop-level level-advanced">Advanced</span>
+          <h4>Multi-Omics Data Integration</h4>
+          <p>Hands-on integration of two or more omics layers using mixOmics and related frameworks. Covers sparse PLS, canonical correlation, multi-omics factor analysis (MOFA), and network-based integration. Participants work with real paired datasets and learn to identify cross-omics signatures that no single layer can reveal.</p>
+          <a href="metagenomics-multiomics.html" class="cross-link">See our full multi-omics analysis service &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2.3 Molecular Dynamics -->
+    <div class="service-category reveal" id="md-simulations">
+      <div class="category-header">
+        <div class="category-icon"><i class="fas fa-atom"></i></div>
+        <h3>Molecular Dynamics Simulations</h3>
+      </div>
+      <div class="service-cards-grid">
+        <div class="service-item">
+          <span class="workshop-level level-beginner">Beginner</span>
+          <h4>Introduction to Molecular Dynamics — Concepts and Practice</h4>
+          <p>For researchers with no prior MD experience. Covers the fundamentals: what MD simulations are, when they are appropriate, how force fields work, what the outputs mean, and how to critically evaluate published MD studies. Includes a guided hands-on session running a simple protein simulation from start to finish.</p>
+          <a href="molecular-dynamics.html" class="cross-link">Need your MD simulations run for you? See our MD service &rarr;</a>
+        </div>
+        <div class="service-item">
+          <span class="workshop-level level-intermediate">Intermediate</span>
+          <h4>AMBER MD Workflow — From PDB to Publication</h4>
+          <p>Complete hands-on pipeline using AMBER: structure preparation (PDB2PQR, tleap), parameterization (ff14SB, GAFF2), solvation, minimization, heating, equilibration, production MD (pmemd.cuda), and trajectory analysis (CPPTRAJ). Covers protein, protein-ligand, and glycan systems. Participants build and run a simulation during the workshop.</p>
+        </div>
+        <div class="service-item">
+          <span class="workshop-level level-intermediate">Intermediate</span>
+          <h4>MD Analysis and Interpretation</h4>
+          <p>Focused on post-simulation analysis: RMSD, RMSF, hydrogen bond analysis, PCA, DCCM, clustering, SASA, MM-PBSA/MM-GBSA, and free energy landscape construction. Participants learn not just how to run these analyses but how to interpret and present them for publication. Includes best practices for statistical robustness — replicate analysis and convergence assessment.</p>
+        </div>
+        <div class="service-item">
+          <span class="workshop-level level-intermediate">Intermediate</span>
+          <h4>Molecular Docking — Theory and Practice</h4>
+          <p>Structure-based molecular docking using AutoDock Vina and related tools. Covers receptor and ligand preparation, grid setup, docking execution, pose analysis, scoring interpretation, and post-docking MD validation. Includes discussion of docking limitations and when to trust — or not trust — docking results.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2.4 AMR -->
+    <div class="service-category reveal" id="amr-training">
+      <div class="category-header">
+        <div class="category-icon"><i class="fas fa-shield-virus"></i></div>
+        <h3>AMR and Resistome Analysis</h3>
+      </div>
+      <div class="service-cards-grid">
+        <div class="service-item full-width">
+          <span class="workshop-level level-intermediate">Intermediate</span>
+          <h4>Resistome Profiling from Metagenomic Data</h4>
+          <p>Hands-on identification and quantification of antimicrobial resistance genes from shotgun metagenomic data. Covers CARD/RGI, ResFinder, AMRFinderPlus, resistance mechanism classification, and resistome diversity analysis. Participants learn to go beyond gene lists to ecological interpretation of resistome data — understanding the community context of resistance, not just presence/absence calls.</p>
+          <a href="resistome-amr.html" class="cross-link">Need comprehensive resistome analysis done for your samples? See our AMR Profiling service &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2.5 AI/ML -->
+    <div class="service-category reveal" id="ai-ml">
+      <div class="category-header">
+        <div class="category-icon"><i class="fas fa-microchip"></i></div>
+        <h3>AI and ML in Structural Biology</h3>
+      </div>
+      <div class="service-cards-grid">
+        <div class="service-item">
+          <span class="workshop-level level-intermediate">Intermediate</span>
+          <h4>AlphaFold and Protein Structure Prediction</h4>
+          <p>Practical workshop on using ColabFold/AlphaFold for structure prediction — when to use it, how to assess confidence (pLDDT, PAE), how to prepare predicted structures for downstream analysis (MD simulations, docking), and what AlphaFold cannot tell you. Includes hands-on structure prediction and critical evaluation exercises.</p>
+          <a href="molecular-dynamics.html" class="cross-link">Learn to validate AlphaFold structures with MD — see our MD service &rarr;</a>
+        </div>
+        <div class="service-item">
+          <span class="workshop-level level-advanced">Advanced</span>
+          <h4>Generative AI for Molecular Design — Concepts and Tools</h4>
+          <p>An overview of the emerging AI/ML toolkit for molecular and protein design: ESM-2 for sequence annotation, RFdiffusion for protein backbone generation, DiffDock for ML-based docking, REINVENT4 for de novo small molecule design. Covers what each tool does, when it is appropriate, current limitations, and how to integrate AI-generated outputs with physics-based validation (MD, FEP). Designed as an orientation for researchers who want to understand the landscape, not just use one tool.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2.6 Scientific Writing -->
+    <div class="service-category reveal" id="writing-training">
+      <div class="category-header">
+        <div class="category-icon"><i class="fas fa-pen-nib"></i></div>
+        <h3>Scientific Writing and Data Visualization</h3>
+      </div>
+      <div class="service-cards-grid">
+        <div class="service-item">
+          <span class="workshop-level level-intermediate">Intermediate</span>
+          <h4>Scientific Writing for Computational Studies</h4>
+          <p>Practical workshop on writing manuscripts, methods sections, and results narratives for computational biology papers. Covers common mistakes in MD and bioinformatics manuscripts, how to describe pipelines reproducibly, how to present figures effectively, and how to structure a paper for maximum impact. Includes live editing exercises using participant drafts (with permission).</p>
+          <a href="scientific-writing.html" class="cross-link">Prefer we write the manuscript for you? See our Scientific Writing service &rarr;</a>
+        </div>
+        <div class="service-item">
+          <span class="workshop-level level-intermediate">Intermediate</span>
+          <h4>Publication-Quality Data Visualization in R</h4>
+          <p>Advanced ggplot2 and related packages for producing journal-ready figures — multi-panel layouts, heatmaps (ComplexHeatmap), ordination plots, network visualizations, and consistent color and typography theming. Participants bring their own data and leave with finished, publication-ready figures.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2.7 Reproducibility -->
+    <div class="service-category reveal" id="reproducibility">
+      <div class="category-header">
+        <div class="category-icon"><i class="fas fa-rotate"></i></div>
+        <h3>Reproducibility and Workflow Automation</h3>
+      </div>
+      <div class="service-cards-grid">
+        <div class="service-item full-width">
+          <span class="workshop-level level-intermediate">Intermediate</span>
+          <h4>Reproducible Bioinformatics with Snakemake and Nextflow</h4>
+          <p>Building automated, reproducible analysis pipelines using workflow managers. Covers Snakemake and/or Nextflow basics, rule/process design, dependency management, containerization (Docker, Singularity), and version control (Git). Essential for any lab that wants their analyses to be reproducible, shareable, and scalable — from a single sample to a hundred.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Workshop Formats -->
+<section id="formats">
+  <div class="section-inner">
+    <div class="section-label">Delivery Modes</div>
+    <h2 class="section-title">Workshop Formats</h2>
+    <p class="section-desc">Not every group has the same schedule, infrastructure, or learning objective. We offer six delivery formats — from a focused single day to a full semester module — and we adapt the depth, pace, and content to match your group's level and goals.</p>
+
+    <div class="formats-grid">
+      <div class="format-card reveal">
+        <div class="format-icon"><i class="fas fa-bolt"></i></div>
+        <div class="format-duration">6 – 8 hours</div>
+        <h3>One-Day Intensive</h3>
+        <p>A focused, single-topic deep dive delivered in one day. Participants leave with a working workflow and the confidence to apply it independently. Best for specific skill building — one tool, one pipeline, one method.</p>
+        <div class="format-best"><strong>Ideal for:</strong> Labs or departments that want targeted upskilling without a multi-week commitment.</div>
+      </div>
+      <div class="format-card reveal">
+        <div class="format-icon"><i class="fas fa-calendar-days"></i></div>
+        <div class="format-duration">2 – 5 days or 2 – 6 weeks</div>
+        <h3>Multi-Session Course</h3>
+        <p>Structured, progressive training covering a broader topic area. Each session builds on the previous one, with assignments or practice exercises between sessions. Allows time for participants to practice, encounter real problems, and get support.</p>
+        <div class="format-best"><strong>Ideal for:</strong> Comprehensive skill development — taking a group from zero to independent practitioner on a full workflow.</div>
+      </div>
+      <div class="format-card reveal">
+        <div class="format-icon"><i class="fas fa-graduation-cap"></i></div>
+        <div class="format-duration">12 – 16 weeks</div>
+        <h3>Semester-Long Module</h3>
+        <p>A full academic course module designed for integration into university curricula or structured PhD training programs. Includes lectures, hands-on practicals, assignments, and assessment components. We provide the syllabus, materials, and instruction.</p>
+        <div class="format-best"><strong>Ideal for:</strong> MSc, PhD, or BTech programs that need a structured computational biology component.</div>
+      </div>
+      <div class="format-card reveal">
+        <div class="format-icon"><i class="fas fa-building"></i></div>
+        <div class="format-duration">Flexible — your venue</div>
+        <h3>On-Site Workshop</h3>
+        <p>We travel to your institution, lab, or company and deliver training in your own computing environment. Participants learn on the systems they will actually use. On-site workshops also let us assess and advise on your existing computational infrastructure.</p>
+        <div class="format-best"><strong>Ideal for:</strong> Groups who want maximum relevance to their own setup. Available across India and internationally by arrangement.</div>
+      </div>
+      <div class="format-card reveal">
+        <div class="format-icon"><i class="fas fa-video"></i></div>
+        <div class="format-duration">Live, instructor-led</div>
+        <h3>Remote / Online Workshop</h3>
+        <p>Live, instructor-led workshops delivered via video conferencing with shared computing environments (cloud instances or institutional HPC). Fully interactive — not recorded lectures. Participants work in real time with live troubleshooting and support.</p>
+        <div class="format-best"><strong>Ideal for:</strong> Groups anywhere in the world. No local infrastructure required — we provide cloud compute access.</div>
+      </div>
+      <div class="format-card reveal">
+        <div class="format-icon"><i class="fas fa-sliders"></i></div>
+        <div class="format-duration">Half-day to multi-week</div>
+        <h3>Custom / Private Workshop</h3>
+        <p>A workshop designed specifically for your group's needs — your data, your tools, your questions. We consult with the group leader to understand the skill gaps, design the curriculum, and deliver training that directly advances your ongoing projects.</p>
+        <div class="format-best"><strong>Ideal for:</strong> Any group where the catalog does not quite fit. This is the fastest path from "we don't know how" to "we can do this ourselves."</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Who Is This For -->
+<section id="audience">
+  <div class="section-inner">
+    <div class="section-label">Target Audience</div>
+    <h2 class="section-title">Who Is This For?</h2>
+    <p class="section-desc">Our workshops are designed for people with biological expertise who need computational skills — not for computer scientists. You do not need a programming background to get started. What you need is a research question and the motivation to solve it yourself.</p>
+
+    <div class="audience-grid">
+      <div class="audience-card reveal">
+        <div class="audience-icon"><i class="fas fa-user-graduate"></i></div>
+        <h3>Graduate Students (MSc / PhD)</h3>
+        <p>Building computational skills alongside your thesis work. Whether your project suddenly requires bioinformatics and no one in the lab can teach you, or you want to strengthen your CV with demonstrable computational skills, our workshops give you hands-on capability — not just theoretical exposure.</p>
+      </div>
+      <div class="audience-card reveal">
+        <div class="audience-icon"><i class="fas fa-book-open"></i></div>
+        <h3>Undergraduate Students</h3>
+        <p>Getting your first exposure to bioinformatics, programming, or computational biology. Our foundational workshops (Linux, R, Python) are designed for complete beginners. Final-year project students working on computational topics will find the targeted workshops (amplicon analysis, MD simulations) directly useful.</p>
+      </div>
+      <div class="audience-card reveal">
+        <div class="audience-icon"><i class="fas fa-flask"></i></div>
+        <h3>Postdoctoral Researchers</h3>
+        <p>Expanding your methodological toolkit. If your new lab uses tools you have not worked with before, or your project has shifted into computational territory, a focused workshop gets you productive quickly — without months of self-teaching from tutorials that assume knowledge you do not have yet.</p>
+      </div>
+      <div class="audience-card reveal">
+        <div class="audience-icon"><i class="fas fa-users"></i></div>
+        <h3>PIs and Lab Heads</h3>
+        <p>Upskilling your group as a whole. Instead of sending students to figure things out independently (and slowly), invest in structured training that gets the whole group to a baseline competence. Also valuable for PIs who want to understand computational methods well enough to critically evaluate their students' work and published literature.</p>
+      </div>
+      <div class="audience-card reveal">
+        <div class="audience-icon"><i class="fas fa-briefcase"></i></div>
+        <h3>Industry and R&amp;D Professionals</h3>
+        <p>Building in-house bioinformatics or computational capability. Our workshops are designed for non-computational backgrounds — you do not need a computer science degree to learn these tools. We train pharma, biotech, agriculture, and environmental science professionals on the specific analytical skills their projects require.</p>
+      </div>
+      <div class="audience-card reveal">
+        <div class="audience-icon"><i class="fas fa-university"></i></div>
+        <h3>Academic Departments and Institutions</h3>
+        <p>Integrating computational training into your curriculum or PhD program. We design and deliver complete modules that fit your academic calendar and learning objectives. We have experience aligning content with UGC and institutional learning outcomes, and can scale to full class sizes with TA coordination.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Workflow -->
+<section id="workflow">
+  <div class="section-inner">
+    <div class="section-label">How We Work</div>
+    <h2 class="section-title">From Request to Running Code</h2>
+    <p class="section-desc">Every workshop follows a structured process that begins before the first session and continues after the last one. The goal is that participants spend zero time troubleshooting setup and maximum time learning — and that learning does not stop when the session ends.</p>
+
+    <div class="workflow-steps">
+      <div class="workflow-step reveal">
+        <div class="step-num">01</div>
+        <div class="step-content">
+          <h3>Needs Assessment</h3>
+          <p>You tell us what your group needs to learn, what their current skill level is, and what your goals are. We assess the gap and recommend the right workshop format, topic, and depth. If you are unsure what you need, we help figure that out too — a brief conversation is usually enough to map the right starting point.</p>
+        </div>
+      </div>
+      <div class="workflow-step reveal">
+        <div class="step-num">02</div>
+        <div class="step-content">
+          <h3>Curriculum Design</h3>
+          <p>We design the workshop content around your group's specific context. This includes selecting relevant datasets (ideally related to your actual research), choosing the right tools and platforms, calibrating the pace and depth to the participants' level, and preparing hands-on exercises with clear, measurable learning outcomes for each session.</p>
+        </div>
+      </div>
+      <div class="workflow-step reveal">
+        <div class="step-num">03</div>
+        <div class="step-content">
+          <h3>Environment Setup</h3>
+          <p>We ensure every participant has a working computational environment before the workshop starts — whether that means cloud instances, your institutional HPC, or local installations. No time is wasted on day one fixing setup issues. We provide a pre-workshop setup guide and test connectivity with participants in advance.</p>
+        </div>
+      </div>
+      <div class="workflow-step reveal">
+        <div class="step-num">04</div>
+        <div class="step-content">
+          <h3>Workshop Delivery</h3>
+          <p>Live, interactive, hands-on instruction. Every concept is immediately followed by practice. We work through real data, encounter real errors, and solve real problems together. Questions are encouraged throughout — not saved for the end. For multi-session courses, we provide take-home exercises and support between sessions so learning continues between meetings.</p>
+        </div>
+      </div>
+      <div class="workflow-step reveal">
+        <div class="step-num">05</div>
+        <div class="step-content">
+          <h3>Post-Workshop Support</h3>
+          <p>Every participant receives complete workshop materials — scripts, slides, datasets, and a reference guide they can consult long after the session ends. We provide a support window (typically two weeks after the workshop) for follow-up questions as participants apply what they learned to their own projects. For institutional clients, we deliver a summary report on topics covered, skill levels achieved, and recommendations for further development.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Packages -->
+<section id="packages">
+  <div class="section-inner">
+    <div class="section-label">Packages</div>
+    <h2 class="section-title">Standard Workshop Packages</h2>
+    <p class="section-desc">Four standard configurations to match the most common training needs. Every package includes participant materials and post-workshop support. Custom scoping is available for groups whose needs do not fit a standard format.</p>
+
+    <div class="packages-grid">
+      <div class="package-card reveal">
+        <div class="package-tag">One-Day Intensive</div>
+        <h3>Single Workshop</h3>
+        <p class="package-best">Best for: A lab or department that needs focused training on one specific topic.</p>
+        <ul class="package-includes">
+          <li>6–8 hour hands-on workshop on a single topic from the catalog</li>
+          <li>Pre-workshop setup and environment testing</li>
+          <li>Complete materials package (scripts, slides, datasets, reference guide)</li>
+          <li>Two-week post-workshop support window</li>
+          <li>Up to 20 participants (remote) or as per venue capacity (on-site)</li>
+          <li>Certificate available upon request</li>
+        </ul>
+        <div class="package-cta">
+          <a href="https://mannaomics.com/#contact" class="btn btn-outline" style="width:100%;justify-content:center;">Enquire</a>
+        </div>
+      </div>
+
+      <div class="package-card featured reveal">
+        <div class="package-tag">Multi-Session</div>
+        <h3>Short Course</h3>
+        <p class="package-best">Best for: Groups that need comprehensive coverage of a broader area, with time to practice between sessions.</p>
+        <ul class="package-includes">
+          <li>2–5 sessions (3–4 hours each, or full-day intensives)</li>
+          <li>Progressive curriculum with hands-on exercises and take-home assignments</li>
+          <li>Pre-workshop setup and environment testing</li>
+          <li>Complete materials package</li>
+          <li>Four-week post-workshop support window</li>
+          <li>Certificate of completion for all participants</li>
+        </ul>
+        <div class="package-cta">
+          <a href="https://mannaomics.com/#contact" class="btn btn-primary" style="width:100%;justify-content:center;">Enquire</a>
+        </div>
+      </div>
+
+      <div class="package-card reveal">
+        <div class="package-tag">Semester-Length</div>
+        <h3>Institutional Module</h3>
+        <p class="package-best">Best for: Universities and research institutes integrating computational training into their academic programs.</p>
+        <ul class="package-includes">
+          <li>12–16 week structured module with syllabus, lectures, and practicals</li>
+          <li>Assessment design (assignments, projects, or examinations as needed)</li>
+          <li>All teaching materials and datasets included</li>
+          <li>Ongoing instructor support throughout the semester</li>
+          <li>Scalable to large class sizes with TA coordination</li>
+          <li>Aligned with UGC and institutional learning objectives</li>
+        </ul>
+        <div class="package-cta">
+          <a href="https://mannaomics.com/#contact" class="btn btn-outline" style="width:100%;justify-content:center;">Enquire</a>
+        </div>
+      </div>
+
+      <div class="package-card reveal">
+        <div class="package-tag">Custom</div>
+        <h3>Custom / Private Workshop</h3>
+        <p class="package-best">Best for: Any group with specific training needs that do not fit the standard catalog or format.</p>
+        <ul class="package-includes">
+          <li>Needs assessment and custom curriculum design</li>
+          <li>Workshop built around your group's data and research questions</li>
+          <li>Flexible format — half-day to multi-week</li>
+          <li>Materials tailored to your tools, platforms, and infrastructure</li>
+          <li>Post-workshop support and recommendations for further development</li>
+          <li>On-site or remote delivery available</li>
+        </ul>
+        <div class="package-cta">
+          <a href="https://mannaomics.com/#contact" class="btn btn-outline" style="width:100%;justify-content:center;">Enquire</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="packages-note">
+      All packages include participant materials and post-workshop support. Pricing depends on format, duration, group size, and delivery mode (remote vs. on-site). On-site workshops include travel costs where applicable. Pricing is provided upon consultation — contact us with your topic of interest, approximate group size, preferred format, and preferred dates.
+    </div>
+  </div>
+</section>
+
+<!-- Upcoming Workshops — hidden until workshops are scheduled; add class="active" to activate -->
+<section id="upcoming">
+  <div class="section-inner">
+    <div class="section-label">Open Enrollment</div>
+    <h2 class="section-title">Upcoming Workshops</h2>
+    <p class="section-desc">Open-enrollment workshops that individual students and researchers can register for — no group required. Follow us on LinkedIn or contact us to be notified of new sessions as they are scheduled.</p>
+
+    <!-- Replace this block with workshop cards when sessions are scheduled -->
+    <div class="upcoming-empty">
+      <p>No open-enrollment workshops are currently scheduled.<br>Follow us on LinkedIn or contact us to be notified when the next session opens.</p>
+      <a href="https://mannaomics.com/#contact" class="linkedin-link">Get Notified &rarr;</a>
+    </div>
+
+    <!-- Template for upcoming workshop cards (uncomment and populate when ready):
+    <div class="upcoming-grid">
+      <div class="upcoming-card">
+        <div class="upcoming-date">DD MMM YYYY</div>
+        <h4>Workshop Title</h4>
+        <div class="upcoming-meta">
+          <span class="upcoming-tag">Remote</span>
+          <span class="upcoming-tag">One-Day</span>
+          <span class="upcoming-tag">Intermediate</span>
+        </div>
+        <p>Brief description of the workshop, target audience, and what participants will leave with.</p>
+        <a href="https://mannaomics.com/#contact" class="btn btn-outline" style="font-size:0.85rem;padding:0.6rem 1.2rem;">Register &rarr;</a>
+      </div>
+    </div>
+    -->
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-inner">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title">Common Questions</h2>
+    <p class="section-desc">Everything you need to know before booking a workshop — from prerequisites and logistics to what you actually get out of it.</p>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question">
+          Do participants need any prior programming or bioinformatics experience?
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Depends on the workshop. Our foundational workshops (Linux, R, Python) assume zero prior experience. More advanced workshops (metagenomics, MD simulations, multi-omics integration) assume basic comfort with the command line and/or R. We clearly state prerequisites for each workshop and offer preparatory sessions if your group needs them.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          What do participants need to bring?
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">A laptop with a web browser and a stable internet connection. For remote workshops, we provide cloud computing environments — no local software installation required. For on-site workshops, we work with your existing infrastructure or set up temporary computing environments. We send a detailed setup guide before every workshop and test connectivity in advance so there are no surprises on day one.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          How many participants can attend?
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">For hands-on workshops, we recommend a maximum of 20 participants to ensure everyone gets individual attention during exercises. For lecture-based components, there is no practical limit. For larger groups, we can run multiple sessions or add a teaching assistant. Institutional semester modules can scale to full class sizes.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          Can you run a workshop on a topic not listed in the catalog?
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Yes. The catalog represents our core offerings, but we design custom workshops regularly. If your group needs training on a specific tool, pipeline, or method within bioinformatics or computational biology, contact us and we will scope it. The only requirement is that the topic is within our area of expertise — computational biology, omics analysis, molecular simulation, and adjacent fields.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          Can you train us on our own data?
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Absolutely — and this is the most effective format. Custom workshops built around your group's actual data and research questions deliver the most immediate value. Participants solve problems they will face in their real work, not textbook exercises. This also means they leave with results that are directly relevant to their ongoing projects.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          Are workshops available in Hindi or other Indian languages?
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Workshops are conducted in English, which is the standard for scientific computing training. However, for groups in India, we are happy to provide explanations and support in Hindi or Bengali where it helps with comprehension — especially for foundational workshops with participants new to the field.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          Do participants receive a certificate?
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Yes, for multi-session courses and institutional modules, participants receive a certificate of completion from Manna Omics Solutions. For one-day workshops, certificates are available upon request.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          Can you come to our campus?
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Yes. We offer on-site delivery at your institution, company, or conference venue — anywhere in India, and internationally by arrangement. On-site workshops have the advantage of using your own computing infrastructure, so participants learn on the systems they will actually use. Travel and accommodation costs are included in the on-site pricing and quoted upfront.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          Can this be part of our university's curriculum?
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Yes. We design semester-length modules that integrate into existing MSc, PhD, or BTech programs. We provide the syllabus, teaching materials, and instruction. Your institution handles enrollment, credit assignment, and scheduling. We have experience aligning content with UGC and institutional learning objectives and can provide full documentation for academic approval processes.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          What is the difference between your workshops and free online tutorials?
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Free tutorials teach tools. We teach thinking. Our workshops are live, interactive, and built around problem-solving — not just following commands. Participants encounter real errors, learn to troubleshoot, and understand why each step matters, not just how to execute it. They get a real instructor who answers questions in real time, provides feedback on their work, and adapts the pace to the room. And the post-workshop support means learning does not stop when the session ends.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          I am a single student, not a group. Can I attend?
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">We periodically run open-enrollment workshops that individual students can register for. Follow our LinkedIn page or contact us to be notified of upcoming scheduled workshops. For groups of five or more from the same institution, we can arrange a dedicated session at a competitive rate.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          How do I book a workshop?
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Contact us with your topic of interest, approximate group size, preferred format (remote or on-site), and preferred dates. We respond within 48 hours with a curriculum outline and quote. You can reach us through the contact form on the main site or directly by email.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="section-inner">
+    <div class="cta-box">
+      <div class="section-label">Get Started</div>
+      <h2 class="section-title">Ready to Train Your Team?</h2>
+      <p>Whether you need a one-day crash course for your lab, a structured program for your graduate students, or a custom workshop built around your data — tell us what your group needs to learn, and we will design the training to get them there.</p>
+      <div class="hero-cta" style="justify-content:center;">
+        <a href="https://mannaomics.com/#contact" class="btn btn-primary">Book a Workshop</a>
+        <a href="#catalog" class="btn btn-outline">Browse the Catalog</a>
+      </div>
+      <p class="cta-secondary">Typical response time: 48 hours &middot; Available remotely worldwide and on-site across India</p>
+      <p class="cta-secondary" style="margin-top:0.6rem;">Attended a workshop? Our analysis services can handle what you learn to interpret — <a href="metagenomics-multiomics.html" style="color:var(--accent-teal);text-decoration:none;">Metagenomics</a> &middot; <a href="molecular-dynamics.html" style="color:var(--accent-teal);text-decoration:none;">Molecular Dynamics</a> &middot; <a href="resistome-amr.html" style="color:var(--accent-teal);text-decoration:none;">AMR Profiling</a> &middot; <a href="scientific-writing.html" style="color:var(--accent-teal);text-decoration:none;">Scientific Writing</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <a href="https://mannaomics.com" class="logo">Manna <span>Omics</span> Solutions</a>
+  <p class="footer-tagline">Computational Biology &middot; Bioinformatics &middot; Structural Biology</p>
+  <div class="footer-links">
+    <a href="https://mannaomics.com/#about">About</a>
+    <a href="https://mannaomics.com/#services">Services</a>
+    <a href="molecular-dynamics.html">Molecular Dynamics</a>
+    <a href="metagenomics-multiomics.html">Metagenomics</a>
+    <a href="resistome-amr.html">Resistome and AMR</a>
+    <a href="scientific-writing.html">Scientific Writing</a>
+    <a href="training-workshops.html">Training</a>
+    <a href="https://mannaomics.com/#contact">Contact</a>
+  </div>
+  <p style="margin-bottom:0.4rem;">&copy; 2026 Manna Omics Solutions. All rights reserved.</p>
+  <p style="font-size:0.78rem;opacity:0.5;">MSME Registered &middot; India</p>
+</footer>
+
+<script>
+/* ===== Ripple on buttons ===== */
+document.querySelectorAll('.btn').forEach(btn => {
+  btn.addEventListener('click', function (e) {
+    const r = this.getBoundingClientRect();
+    const ripple = document.createElement('span');
+    ripple.className = 'ripple';
+    const size = Math.max(r.width, r.height);
+    ripple.style.cssText = `width:${size}px;height:${size}px;left:${e.clientX - r.left - size/2}px;top:${e.clientY - r.top - size/2}px;`;
+    this.appendChild(ripple);
+    setTimeout(() => ripple.remove(), 600);
+  });
+});
+
+/* ===== FAQ accordion ===== */
+document.querySelectorAll('.faq-question').forEach(btn => {
+  btn.addEventListener('click', function () {
+    const item = this.closest('.faq-item');
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  });
+});
+
+/* ===== Scroll reveal ===== */
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+/* ===== Nav scroll shadow ===== */
+window.addEventListener('scroll', () => {
+  document.querySelector('nav').style.boxShadow =
+    window.scrollY > 20 ? '0 4px 30px rgba(0,0,0,0.3)' : 'none';
+});
+</script>
+</body>
+</html>
