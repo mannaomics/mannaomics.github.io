@@ -1,0 +1,1474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Metagenomics and Multi-Omics Analysis Services | Manna Omics Solutions</title>
+<meta name="description" content="16S amplicon, shotgun metagenomics, MAG reconstruction, metatranscriptomics, proteomics, metabolomics, and multi-omics integration for academic research and industry.">
+<meta property="og:title" content="(Meta)genomics and Multi-Omics | Manna Omics Solutions">
+<meta property="og:description" content="End-to-end bioinformatics analysis: amplicon profiling, shotgun metagenomics, MAG reconstruction, metatranscriptomics, proteomics, metabolomics, and multi-omics integration.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mannaomics.com/services/metagenomics-multiomics">
+<link rel="canonical" href="https://mannaomics.com/services/metagenomics-multiomics">
+<link rel="icon" type="image/png" href="../logo-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700&family=Playfair+Display:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root {
+  --bg-primary: #0a0f1a;
+  --bg-secondary: #111827;
+  --bg-card: #1a2236;
+  --bg-card-hover: #1f2a42;
+  --accent-teal: #2dd4bf;
+  --accent-teal-dim: rgba(45, 212, 191, 0.15);
+  --accent-blue: #3b82f6;
+  --accent-violet: #8b5cf6;
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --border: rgba(148, 163, 184, 0.1);
+  --gradient-hero: linear-gradient(135deg, #0a0f1a 0%, #0f1f30 50%, #0a0f1a 100%);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ===== NAVIGATION ===== */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  padding: 1rem 0;
+  transition: all 0.3s ease;
+  background: rgba(10, 15, 26, 0.8);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-decoration: none;
+  letter-spacing: 0.5px;
+}
+.logo span { color: var(--accent-teal); }
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+.nav-links a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.3s;
+  letter-spacing: 0.3px;
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -3px; left: 0;
+  width: 100%; height: 2px;
+  background: var(--accent-teal);
+  border-radius: 2px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease-out;
+}
+.nav-links a:hover { color: var(--accent-teal); }
+.nav-links a:hover::after { transform: scaleX(1); }
+.mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* ===== PAGE HERO ===== */
+.page-hero {
+  padding: 10rem 2rem 6rem;
+  background: var(--gradient-hero);
+  position: relative;
+  overflow: hidden;
+}
+.hero-bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(45, 212, 191, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(45, 212, 191, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+.hero-glow {
+  position: absolute;
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.12;
+  pointer-events: none;
+}
+.glow-1 { background: var(--accent-teal);   top: -200px; right: -100px; animation: floatOrb 14s ease-in-out infinite; }
+.glow-2 { background: var(--accent-blue);   bottom: -200px; left: -100px; animation: floatOrb 18s ease-in-out infinite reverse; }
+@keyframes floatOrb {
+  0%,100% { transform: translate(0,0); }
+  40%      { transform: translate(40px,-25px); }
+  70%      { transform: translate(-20px,20px); }
+}
+.page-hero-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+.hero-badge {
+  display: inline-block;
+  padding: 0.4rem 1.2rem;
+  border: 1px solid rgba(45, 212, 191, 0.3);
+  border-radius: 50px;
+  font-size: 0.8rem;
+  color: var(--accent-teal);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  background: var(--accent-teal-dim);
+}
+.page-hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 1rem;
+  letter-spacing: -0.5px;
+}
+.page-hero h1 .highlight {
+  background: linear-gradient(135deg, var(--accent-teal), var(--accent-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.page-hero .tagline {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  font-style: italic;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+.page-hero .intro {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.85;
+  max-width: 780px;
+  text-align: justify;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+.hero-cta {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2.5rem;
+  flex-wrap: wrap;
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 2rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: none;
+  font-family: 'DM Sans', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+.btn-primary { background: var(--accent-teal); color: var(--bg-primary); }
+.btn-primary:hover { background: #5eead4; transform: translateY(-2px); box-shadow: 0 8px 30px rgba(45,212,191,0.3); }
+.btn-outline { border: 1px solid var(--border); color: var(--text-primary); background: transparent; }
+.btn-outline:hover { border-color: var(--accent-teal); color: var(--accent-teal); transform: translateY(-2px); }
+.btn .ripple {
+  position: absolute; border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  transform: scale(0);
+  animation: rippleAnim 0.55s ease-out forwards;
+  pointer-events: none;
+}
+@keyframes rippleAnim { to { transform: scale(4); opacity: 0; } }
+
+/* ===== SECTIONS ===== */
+section { padding: 6rem 2rem; }
+.section-inner { max-width: 1200px; margin: 0 auto; }
+.section-label {
+  font-size: 0.8rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent-teal);
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 600;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+.section-desc {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.85;
+  text-align: justify;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* ===== CAPABILITIES ===== */
+#analyze {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.analyze-category { margin-top: 3.5rem; }
+.analyze-category:first-of-type { margin-top: 3rem; }
+.category-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+.category-icon {
+  width: 44px; height: 44px;
+  border-radius: 10px;
+  background: var(--accent-teal-dim);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: var(--accent-teal);
+  flex-shrink: 0;
+}
+.category-header h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.sim-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+.sim-cards-grid.three-col { grid-template-columns: repeat(3, 1fr); }
+.sim-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.6rem;
+  transition: all 0.35s ease;
+  position: relative;
+  overflow: hidden;
+}
+.sim-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-teal), var(--accent-blue));
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.sim-card:hover {
+  background: var(--bg-card-hover);
+  border-color: rgba(45,212,191,0.2);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(45,212,191,0.1);
+}
+.sim-card:hover::before { opacity: 1; }
+.sim-card h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--accent-teal);
+  margin-bottom: 0.6rem;
+}
+.sim-card p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  text-align: justify;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+.sim-card .cross-link {
+  display: inline-block;
+  margin-top: 0.75rem;
+  font-size: 0.82rem;
+  color: var(--accent-teal);
+  text-decoration: none;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+.sim-card .cross-link:hover { opacity: 1; }
+
+/* ===== ANALYSIS & DELIVERABLES ===== */
+#analysis { background: var(--bg-primary); }
+.analysis-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  margin-top: 3rem;
+}
+.analysis-col h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+}
+.analysis-group { margin-bottom: 1.5rem; }
+.analysis-group h4 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--accent-teal);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+.analysis-group ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.analysis-group ul li {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  padding-left: 1.2rem;
+  position: relative;
+}
+.analysis-group ul li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--accent-teal);
+  opacity: 0.5;
+}
+.deliverable-list { display: flex; flex-direction: column; gap: 1rem; }
+.deliverable-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.2rem 1.5rem;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  transition: all 0.3s ease;
+}
+.deliverable-item:hover { border-color: rgba(45,212,191,0.25); transform: translateX(4px); }
+.deliverable-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--accent-teal);
+  min-width: 28px;
+  opacity: 0.7;
+}
+.deliverable-text h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.3rem;
+}
+.deliverable-text p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  text-align: justify;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* ===== TOOLS ===== */
+#tools {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-top: 3rem;
+}
+.tool-group {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.6rem;
+  transition: border-color 0.3s;
+}
+.tool-group:hover { border-color: rgba(45,212,191,0.2); }
+.tool-group h3 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent-teal);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.tool-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.tool-tag {
+  padding: 0.3rem 0.7rem;
+  background: rgba(45,212,191,0.07);
+  border: 1px solid rgba(45,212,191,0.15);
+  border-radius: 5px;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  font-family: 'JetBrains Mono', monospace;
+  transition: all 0.25s;
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+}
+.tool-tag::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: rgba(45,212,191,0.13);
+  transform: translateX(-100%);
+  transition: transform 0.2s ease-out;
+  z-index: -1;
+  border-radius: inherit;
+}
+.tool-tag:hover { border-color: var(--accent-teal); color: var(--accent-teal); }
+.tool-tag:hover::before { transform: translateX(0); }
+
+/* ===== WORKFLOW ===== */
+#workflow { background: var(--bg-primary); }
+.workflow-steps {
+  display: flex;
+  flex-direction: column;
+  margin-top: 3rem;
+  position: relative;
+}
+.workflow-steps::before {
+  content: '';
+  position: absolute;
+  left: 26px; top: 26px; bottom: 26px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--accent-teal), var(--accent-blue), var(--accent-violet));
+  opacity: 0.25;
+}
+.workflow-step {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  padding: 1.5rem 0;
+  position: relative;
+}
+.step-num {
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 2px solid rgba(45,212,191,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--accent-teal);
+  flex-shrink: 0;
+  z-index: 1;
+  transition: all 0.3s;
+}
+.workflow-step:hover .step-num {
+  background: var(--accent-teal-dim);
+  border-color: var(--accent-teal);
+  box-shadow: 0 0 20px rgba(45,212,191,0.2);
+}
+.step-content { padding-top: 0.6rem; }
+.step-content h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+.step-content p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  max-width: 680px;
+  text-align: justify;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* ===== PACKAGES ===== */
+#packages {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.packages-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+.package-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2rem;
+  transition: all 0.35s ease;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.package-card.featured {
+  border-color: rgba(45,212,191,0.35);
+  background: linear-gradient(145deg, #1a2236, #1a2a3a);
+}
+.package-card.featured::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-teal), var(--accent-blue));
+}
+.package-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 50px rgba(45,212,191,0.1);
+  border-color: rgba(45,212,191,0.25);
+}
+.package-tag {
+  display: inline-block;
+  padding: 0.25rem 0.8rem;
+  border-radius: 50px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  margin-bottom: 1rem;
+  background: var(--accent-teal-dim);
+  color: var(--accent-teal);
+  border: 1px solid rgba(45,212,191,0.25);
+  width: fit-content;
+}
+.package-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+.package-best {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 1.2rem;
+  font-style: italic;
+}
+.package-includes {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+}
+.package-includes li {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  padding-left: 1.4rem;
+  position: relative;
+  line-height: 1.6;
+}
+.package-includes li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--accent-teal);
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+.package-cta { margin-top: 1.8rem; }
+
+/* ===== FAQ ===== */
+#faq { background: var(--bg-primary); }
+.faq-list {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.faq-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: border-color 0.3s;
+}
+.faq-item.open { border-color: rgba(45,212,191,0.25); }
+.faq-question {
+  width: 100%;
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 1.25rem 1.5rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  transition: color 0.3s;
+}
+.faq-question:hover { color: var(--accent-teal); }
+.faq-icon {
+  font-size: 1rem;
+  color: var(--accent-teal);
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+.faq-item.open .faq-answer { max-height: 320px; }
+.faq-answer-inner {
+  padding: 0 1.5rem 1.25rem;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  text-align: justify;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* ===== CTA ===== */
+#cta {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border);
+}
+.cta-box {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+.cta-box .section-title { margin-bottom: 1rem; }
+.cta-box p {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.85;
+  margin-bottom: 2rem;
+}
+.cta-secondary {
+  margin-top: 1.2rem;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+/* ===== FOOTER ===== */
+footer {
+  padding: 2rem;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+footer .logo { font-size: 1.2rem; display: block; margin-bottom: 0.5rem; }
+.footer-tagline { font-size: 0.9rem; opacity: 0.6; margin: 0.3rem 0 1rem; letter-spacing: 0.05em; }
+.footer-links {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 1rem;
+  font-size: 0.85rem;
+}
+.footer-links a { color: var(--text-muted); text-decoration: none; opacity: 0.7; transition: opacity 0.3s, color 0.3s; }
+.footer-links a:hover { opacity: 1; color: var(--accent-teal); }
+
+/* ===== SCROLL REVEAL ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 968px) {
+  .sim-cards-grid { grid-template-columns: 1fr; }
+  .sim-cards-grid.three-col { grid-template-columns: repeat(2, 1fr); }
+  .analysis-grid { grid-template-columns: 1fr; }
+  .tools-grid { grid-template-columns: repeat(2, 1fr); }
+  .packages-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .nav-links { display: none; }
+  .mobile-toggle { display: block; }
+  .nav-links.active {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%; left: 0; right: 0;
+    background: var(--bg-primary);
+    padding: 1rem 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  section { padding: 4rem 1.5rem; }
+  .page-hero { padding: 8rem 1.5rem 4rem; }
+  .hero-cta { flex-direction: column; }
+  .tools-grid { grid-template-columns: 1fr; }
+  .sim-cards-grid.three-col { grid-template-columns: 1fr; }
+  .workflow-steps::before { left: 24px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .glow-1, .glow-2 { animation: none; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+  <div class="nav-inner">
+    <a href="https://mannaomics.com" class="logo">
+      <img src="../logo-icon.png" alt="" style="height:36px;vertical-align:middle;margin-right:8px;">
+      Manna <span>Omics</span> Solutions
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="https://mannaomics.com/#about">About</a></li>
+      <li><a href="https://mannaomics.com/#services">Services</a></li>
+      <li><a href="https://mannaomics.com/#case-studies">Case Studies</a></li>
+      <li><a href="https://mannaomics.com/#tools">Expertise</a></li>
+      <li><a href="https://mannaomics.com/#publications">Publications</a></li>
+      <li><a href="https://mannaomics.com/#founder">Founder</a></li>
+      <li><a href="https://mannaomics.com/#contact">Contact</a></li>
+    </ul>
+    <button class="mobile-toggle" onclick="document.getElementById('navLinks').classList.toggle('active')">&#9776;</button>
+  </div>
+</nav>
+
+<!-- Hero -->
+<div class="page-hero" id="top">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-glow glow-1"></div>
+  <div class="hero-glow glow-2"></div>
+  <div class="page-hero-inner">
+    <div class="hero-badge">Computational Biology &middot; Service</div>
+    <h1><span class="highlight">(Meta)genomics</span><br>and Multi-Omics</h1>
+    <p class="tagline">From raw reads to biological meaning — we turn your sequencing data into scientific stories.</p>
+    <p class="intro">You generated the data. Now what? We provide rigorous, reproducible bioinformatics analysis for research groups, graduate students, and industry teams working with amplicon, metagenomic, transcriptomic, proteomic, or metabolomic datasets. Whether you have a single 16S amplicon run or a multi-omics experiment spanning five data layers, we handle everything from quality control through publication-ready figures and interpretation. Every analysis is tailored to your biological question — not a generic pipeline dump.</p>
+    <div class="hero-cta">
+      <a href="#packages" class="btn btn-primary">View Packages</a>
+      <a href="https://mannaomics.com/#contact" class="btn btn-outline">Discuss Your Project</a>
+    </div>
+  </div>
+</div>
+
+<!-- What We Analyze -->
+<section id="analyze">
+  <div class="section-inner">
+    <div class="section-label">Capabilities</div>
+    <h2 class="section-title">What We Analyze</h2>
+
+    <!-- Amplicon -->
+    <div class="analyze-category reveal">
+      <div class="category-header">
+        <div class="category-icon"><i class="fas fa-circle-nodes"></i></div>
+        <h3>Amplicon Profiling — 16S / ITS / 18S</h3>
+      </div>
+      <div class="sim-cards-grid three-col">
+        <div class="sim-card">
+          <h4>Bacterial and Archaeal Community Profiling (16S rRNA)</h4>
+          <p>End-to-end processing of 16S amplicon datasets — from demultiplexing and quality filtering through ASV/OTU generation, taxonomic classification, and ecological analysis. We characterize microbial community composition, alpha and beta diversity, and differential abundance across your experimental conditions.</p>
+        </div>
+        <div class="sim-card">
+          <h4>Fungal Community Profiling (ITS)</h4>
+          <p>ITS1/ITS2 amplicon analysis for fungal diversity assessment. Taxonomic assignment against curated fungal databases (UNITE), diversity metrics, and community comparison across samples and treatments.</p>
+        </div>
+        <div class="sim-card">
+          <h4>Microeukaryotic Profiling (18S rRNA)</h4>
+          <p>Community analysis for protists and other microeukaryotes. Particularly relevant for environmental, marine, and soil ecology studies where the eukaryotic fraction is biologically significant.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Shotgun Metagenomics -->
+    <div class="analyze-category reveal">
+      <div class="category-header">
+        <div class="category-icon"><i class="fas fa-dna"></i></div>
+        <h3>Whole-Genome Shotgun Metagenomics</h3>
+      </div>
+      <div class="sim-cards-grid">
+        <div class="sim-card">
+          <h4>Taxonomic Profiling</h4>
+          <p>Species- and strain-level community characterization using both read-based (Kraken2, MetaPhlAn) and assembly-based approaches. We go beyond "what is there" to quantify relative and estimated absolute abundances with proper normalization.</p>
+        </div>
+        <div class="sim-card">
+          <h4>Functional Annotation</h4>
+          <p>Gene-level and pathway-level functional profiling of microbial communities. We map reads and assembled genes to KEGG, COG, CAZy, and custom functional databases to answer "what can this community do" — not just "who is there."</p>
+        </div>
+        <div class="sim-card">
+          <h4>Genome Assembly and Binning (MAG Reconstruction)</h4>
+          <p>Genome-resolved metagenomics: co-assembly or per-sample assembly, contig binning (MaxBin2, MetaBAT2, CONCOCT), bin refinement, quality assessment (CheckM), and taxonomic placement (GTDB-Tk). We reconstruct near-complete metagenome-assembled genomes, giving you organism-level resolution from a community sample.</p>
+        </div>
+        <div class="sim-card">
+          <h4>Metabolic Pathway Reconstruction</h4>
+          <p>From MAGs or unbinned assemblies, we reconstruct complete and partial metabolic pathways — carbon fixation, nitrogen cycling, sulfur metabolism, fermentation routes, xenobiotic degradation — to link community membership to ecosystem function.</p>
+          <a href="amr-resistome.html" class="cross-link">See also: AMR and Resistome Profiling &rarr;</a>
+        </div>
+        <div class="sim-card">
+          <h4>Comparative Metagenomics</h4>
+          <p>Cross-sample, cross-condition, or longitudinal comparison of community composition, functional capacity, and metabolic potential. Statistical testing for differential abundance at the species, gene, and pathway levels.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Metatranscriptomics -->
+    <div class="analyze-category reveal">
+      <div class="category-header">
+        <div class="category-icon"><i class="fas fa-wave-square"></i></div>
+        <h3>(Meta)transcriptomics</h3>
+      </div>
+      <div class="sim-cards-grid">
+        <div class="sim-card">
+          <h4>Bulk RNA-Seq Analysis</h4>
+          <p>Differential gene expression analysis from standard RNA-Seq experiments. Quality control, read alignment, quantification, normalization, and statistical testing (DESeq2, edgeR). We deliver gene lists, volcano plots, heatmaps, and pathway enrichment results tied to your experimental design.</p>
+        </div>
+        <div class="sim-card">
+          <h4>Metatranscriptomics</h4>
+          <p>Analysis of active gene expression within microbial communities. We distinguish what the community can do (metagenomics) from what it is actually doing (metatranscriptomics) under your specific experimental conditions — active pathway identification, expression-level functional profiling, and community-level transcriptional response analysis.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Proteomics -->
+    <div class="analyze-category reveal">
+      <div class="category-header">
+        <div class="category-icon"><i class="fas fa-microscope"></i></div>
+        <h3>(Meta)proteomics</h3>
+      </div>
+      <div class="sim-cards-grid">
+        <div class="sim-card">
+          <h4>Metaproteomic Analysis</h4>
+          <p>Protein-level characterization of microbial communities. Peptide identification, protein inference, taxonomic and functional annotation of expressed proteins, and quantitative comparison across conditions. We connect protein-level data back to genomic context using matched metagenomic databases for deeper biological interpretation.</p>
+        </div>
+        <div class="sim-card">
+          <h4>DIA-Based Quantitative Proteomics</h4>
+          <p>Data-independent acquisition proteomics analysis using DIA-NN and related tools. Library-free and library-based workflows for deep, reproducible quantification of complex proteomes across experimental conditions.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Metabolomics -->
+    <div class="analyze-category reveal">
+      <div class="category-header">
+        <div class="category-icon"><i class="fas fa-flask"></i></div>
+        <h3>Metabolomics</h3>
+      </div>
+      <div class="sim-cards-grid">
+        <div class="sim-card">
+          <h4>Untargeted Metabolomics</h4>
+          <p>Feature detection, annotation, statistical analysis, and pathway mapping from LC-MS or GC-MS metabolomics datasets. We identify significantly altered metabolites across conditions and map them onto biological pathways using MetaboAnalyst and custom workflows.</p>
+        </div>
+        <div class="sim-card">
+          <h4>Targeted Pathway Analysis</h4>
+          <p>Focused analysis of specific metabolic pathways or metabolite classes relevant to your study — short-chain fatty acids, amino acids, lipid profiles, secondary metabolites — with quantitative comparison and biological contextualization.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Multi-Omics Integration -->
+    <div class="analyze-category reveal">
+      <div class="category-header">
+        <div class="category-icon"><i class="fas fa-diagram-project"></i></div>
+        <h3>Multi-Omics Integration</h3>
+      </div>
+      <div class="sim-cards-grid three-col">
+        <div class="sim-card">
+          <h4>Paired Multi-Omics Analysis</h4>
+          <p>Integration of two or more omics layers from the same samples — metagenomics + metatranscriptomics, genomics + proteomics, transcriptomics + metabolomics — using multivariate integration frameworks (mixOmics, MOFA). We identify cross-omics signatures, co-varying features, and multi-layer biomarkers that no single omics layer can reveal alone.</p>
+        </div>
+        <div class="sim-card">
+          <h4>Cross-Omics Network Analysis</h4>
+          <p>Construction and analysis of multi-omics correlation networks linking taxa, genes, transcripts, proteins, and metabolites. We identify hub features, functional modules, and the regulatory or ecological relationships that drive your system.</p>
+        </div>
+        <div class="sim-card">
+          <h4>Systems-Level Biological Interpretation</h4>
+          <p>We do not just integrate data — we interpret it. Every multi-omics project results in a coherent biological narrative: which organisms are doing what, which pathways are active under which conditions, and what the mechanistic connections are across molecular scales. This is the "From Atoms to Systems" principle in action.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Analysis & Deliverables -->
+<section id="analysis">
+  <div class="section-inner">
+    <div class="section-label">Outputs</div>
+    <h2 class="section-title">Analysis and Deliverables</h2>
+    <p class="section-desc">Every project includes a tailored analysis package built around your biological question and experimental design — not a fixed menu of outputs. Every deliverable is structured for direct use in manuscripts, theses, or technical reports.</p>
+
+    <div class="analysis-grid">
+      <div class="analysis-col reveal">
+        <h3>Standard Analyses</h3>
+
+        <div class="analysis-group">
+          <h4>Community Ecology</h4>
+          <ul>
+            <li>Alpha diversity (Shannon, Simpson, Chao1, observed ASVs/species)</li>
+            <li>Beta diversity (Bray-Curtis, UniFrac, Jaccard) with PCoA and NMDS ordination</li>
+            <li>PERMANOVA and ANOSIM for statistical testing of group differences</li>
+            <li>Rarefaction curves and sequencing depth assessment</li>
+          </ul>
+        </div>
+
+        <div class="analysis-group">
+          <h4>Taxonomic and Functional Profiling</h4>
+          <ul>
+            <li>Taxonomic barplots, heatmaps, and composition summaries (phylum to species)</li>
+            <li>Differential abundance analysis (DESeq2, ANCOM-BC, LEfSe) with effect sizes</li>
+            <li>Functional gene and pathway abundance profiles (KEGG, COG, CAZy)</li>
+            <li>Indicator species analysis</li>
+          </ul>
+        </div>
+
+        <div class="analysis-group">
+          <h4>Genome-Resolved Outputs</h4>
+          <ul>
+            <li>MAG quality reports (completeness, contamination, strain heterogeneity)</li>
+            <li>Phylogenomic placement and taxonomic assignment (GTDB-Tk)</li>
+            <li>Metabolic reconstruction per MAG with pathway completeness scores</li>
+            <li>Pangenome analysis where relevant</li>
+          </ul>
+        </div>
+
+        <div class="analysis-group">
+          <h4>Expression and Quantification</h4>
+          <ul>
+            <li>Normalized expression matrices</li>
+            <li>Differential expression with multiple testing correction</li>
+            <li>Gene set and pathway enrichment analysis</li>
+            <li>Volcano plots, MA plots, heatmaps with hierarchical clustering</li>
+          </ul>
+        </div>
+
+        <div class="analysis-group">
+          <h4>Multi-Omics Outputs</h4>
+          <ul>
+            <li>Sparse PLS and canonical correlation plots (mixOmics)</li>
+            <li>Multi-omics factor loadings and variance decomposition (MOFA2)</li>
+            <li>Cross-omics correlation networks with hub identification</li>
+            <li>Integrated pathway diagrams linking genomic potential to expression to metabolite levels</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="analysis-col reveal">
+        <h3>What You Receive</h3>
+        <div class="deliverable-list">
+          <div class="deliverable-item">
+            <span class="deliverable-num">01</span>
+            <div class="deliverable-text">
+              <h4>Analysis Report</h4>
+              <p>A structured, narrated report walking through every analysis step with publication-quality figures, statistical summaries, and biological interpretation. For academic clients, written to slot directly into your results and methods sections. For industry clients, formatted as a technical report with executive summary.</p>
+            </div>
+          </div>
+          <div class="deliverable-item">
+            <span class="deliverable-num">02</span>
+            <div class="deliverable-text">
+              <h4>Publication-Ready Figures</h4>
+              <p>High-resolution figures (PDF/SVG/PNG at 300+ dpi) with consistent styling, proper axis labels, legends, and statistical annotations. Designed for journal submission or internal presentations.</p>
+            </div>
+          </div>
+          <div class="deliverable-item">
+            <span class="deliverable-num">03</span>
+            <div class="deliverable-text">
+              <h4>Data Package</h4>
+              <p>Processed data tables (ASV/OTU tables, gene abundance matrices, MAG statistics, expression matrices), analysis scripts, and pipeline configuration files for full reproducibility.</p>
+            </div>
+          </div>
+          <div class="deliverable-item">
+            <span class="deliverable-num">04</span>
+            <div class="deliverable-text">
+              <h4>Methods Text</h4>
+              <p>A ready-to-use methods section for your manuscript, thesis, or report, citing all software, databases, and parameters used.</p>
+            </div>
+          </div>
+          <div class="deliverable-item">
+            <span class="deliverable-num">05</span>
+            <div class="deliverable-text">
+              <h4>Pipeline Documentation</h4>
+              <p>Step-by-step record of every tool, version, parameter, and database used. Full computational reproducibility guaranteed.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Tools & Platforms -->
+<section id="tools">
+  <div class="section-inner">
+    <div class="section-label">Technical Stack</div>
+    <h2 class="section-title">Tools and Platforms</h2>
+    <p class="section-desc">Industry-standard and state-of-the-art platforms across every omics layer, ensuring reproducibility and methodological rigor from raw data to final interpretation.</p>
+
+    <div class="tools-grid">
+      <div class="tool-group reveal">
+        <h3><i class="fas fa-circle-nodes"></i> Amplicon Analysis</h3>
+        <div class="tool-tags">
+          <span class="tool-tag">QIIME2</span>
+          <span class="tool-tag">DADA2</span>
+          <span class="tool-tag">SILVA</span>
+          <span class="tool-tag">UNITE</span>
+          <span class="tool-tag">Phyloseq</span>
+          <span class="tool-tag">MicrobiomeAnalyst</span>
+        </div>
+      </div>
+      <div class="tool-group reveal">
+        <h3><i class="fas fa-magnifying-glass-chart"></i> Taxonomic and Functional Profiling</h3>
+        <div class="tool-tags">
+          <span class="tool-tag">Kraken2</span>
+          <span class="tool-tag">Bracken</span>
+          <span class="tool-tag">MetaPhlAn</span>
+          <span class="tool-tag">HUMAnN3</span>
+          <span class="tool-tag">Kaiju</span>
+        </div>
+      </div>
+      <div class="tool-group reveal">
+        <h3><i class="fas fa-dna"></i> Assembly and Genome Resolution</h3>
+        <div class="tool-tags">
+          <span class="tool-tag">MEGAHIT</span>
+          <span class="tool-tag">metaSPAdes</span>
+          <span class="tool-tag">Bowtie2</span>
+          <span class="tool-tag">Prodigal</span>
+          <span class="tool-tag">DIAMOND</span>
+          <span class="tool-tag">MaxBin2</span>
+          <span class="tool-tag">MetaBAT2</span>
+          <span class="tool-tag">CONCOCT</span>
+          <span class="tool-tag">DAS Tool</span>
+          <span class="tool-tag">CheckM</span>
+          <span class="tool-tag">GTDB-Tk</span>
+        </div>
+      </div>
+      <div class="tool-group reveal">
+        <h3><i class="fas fa-wave-square"></i> Transcriptomics and Expression</h3>
+        <div class="tool-tags">
+          <span class="tool-tag">STAR</span>
+          <span class="tool-tag">HISAT2</span>
+          <span class="tool-tag">featureCounts</span>
+          <span class="tool-tag">Salmon</span>
+          <span class="tool-tag">DESeq2</span>
+          <span class="tool-tag">edgeR</span>
+        </div>
+      </div>
+      <div class="tool-group reveal">
+        <h3><i class="fas fa-microscope"></i> Proteomics</h3>
+        <div class="tool-tags">
+          <span class="tool-tag">DIA-NN</span>
+          <span class="tool-tag">MaxQuant</span>
+          <span class="tool-tag">Perseus</span>
+        </div>
+      </div>
+      <div class="tool-group reveal">
+        <h3><i class="fas fa-flask"></i> Metabolomics</h3>
+        <div class="tool-tags">
+          <span class="tool-tag">MetaboAnalyst</span>
+          <span class="tool-tag">XCMS</span>
+          <span class="tool-tag">MS-DIAL</span>
+        </div>
+      </div>
+      <div class="tool-group reveal">
+        <h3><i class="fas fa-diagram-project"></i> Multi-Omics Integration</h3>
+        <div class="tool-tags">
+          <span class="tool-tag">mixOmics</span>
+          <span class="tool-tag">MOFA2</span>
+          <span class="tool-tag">NetworkX</span>
+          <span class="tool-tag">igraph</span>
+          <span class="tool-tag">WGCNA</span>
+        </div>
+      </div>
+      <div class="tool-group reveal">
+        <h3><i class="fas fa-terminal"></i> Workflow and Reproducibility</h3>
+        <div class="tool-tags">
+          <span class="tool-tag">Snakemake</span>
+          <span class="tool-tag">Nextflow</span>
+          <span class="tool-tag">nf-core/mag</span>
+          <span class="tool-tag">Docker</span>
+          <span class="tool-tag">Singularity</span>
+          <span class="tool-tag">Git</span>
+        </div>
+      </div>
+      <div class="tool-group reveal">
+        <h3><i class="fas fa-server"></i> Computing Infrastructure</h3>
+        <div class="tool-tags">
+          <span class="tool-tag">Linux HPC clusters</span>
+          <span class="tool-tag">SLURM workload management</span>
+          <span class="tool-tag">Scalable from single-sample to large cohorts</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Workflow -->
+<section id="workflow">
+  <div class="section-inner">
+    <div class="section-label">Process</div>
+    <h2 class="section-title">How We Work</h2>
+    <p class="section-desc">A structured, transparent process from your first message to the final figure — every decision documented, every output explained, every result interpreted in the context of your biology.</p>
+
+    <div class="workflow-steps">
+      <div class="workflow-step reveal">
+        <div class="step-num">01</div>
+        <div class="step-content">
+          <h3>Consultation and Experimental Design Review</h3>
+          <p>You share your scientific question, study design, and data (or planned data). We review your experimental setup — sample sizes, sequencing strategy, controls — and advise on whether the data as generated can answer your question. If you are at the planning stage, we help optimize sequencing depth, replication, and multi-omics strategy before you spend on sequencing.</p>
+        </div>
+      </div>
+      <div class="workflow-step reveal">
+        <div class="step-num">02</div>
+        <div class="step-content">
+          <h3>Data Quality Control</h3>
+          <p>We assess raw data quality (FastQC, MultiQC), perform adapter trimming, quality filtering, chimera removal (for amplicons), and host read decontamination (for metagenomics and metatranscriptomics). You receive a QC summary before we proceed — no analysis is run on bad data.</p>
+        </div>
+      </div>
+      <div class="workflow-step reveal">
+        <div class="step-num">03</div>
+        <div class="step-content">
+          <h3>Core Analysis</h3>
+          <p>The main analytical pipeline, tailored to your data type and question. For amplicon data: ASV generation through diversity analysis. For metagenomics: assembly through MAG reconstruction and functional annotation. For multi-omics: individual layer processing followed by integration. Every step is documented and version-controlled.</p>
+        </div>
+      </div>
+      <div class="workflow-step reveal">
+        <div class="step-num">04</div>
+        <div class="step-content">
+          <h3>Interpretation and Contextualization</h3>
+          <p>We do not hand you a folder of tables and call it done. We interpret the results in the context of your biological question, your experimental design, and the relevant literature. If something unexpected emerges, we flag it and suggest follow-up analyses or validation experiments.</p>
+        </div>
+      </div>
+      <div class="workflow-step reveal">
+        <div class="step-num">05</div>
+        <div class="step-content">
+          <h3>Delivery and Post-Delivery Support</h3>
+          <p>You receive the full deliverable package — report, figures, data tables, scripts, methods text. We remain available for revision requests, additional analyses, reviewer response support, and figure modifications through publication or project completion.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Packages -->
+<section id="packages">
+  <div class="section-inner">
+    <div class="section-label">Pricing</div>
+    <h2 class="section-title">Standard Packages</h2>
+    <p class="section-desc">Structured tiers matched to the scope and complexity of your project. All packages include raw processed data, reproducible scripts, and post-delivery support through publication or project completion. Pricing provided upon consultation.</p>
+
+    <div class="packages-grid">
+      <div class="package-card reveal">
+        <div class="package-tag">Starter</div>
+        <h3>Single-Layer Amplicon Analysis</h3>
+        <p class="package-best">Best for: A lab or student with one 16S/ITS dataset that needs proper analysis for a paper or thesis.</p>
+        <ul class="package-includes">
+          <li>Quality control and ASV/OTU generation</li>
+          <li>Taxonomic classification and composition visualization</li>
+          <li>Alpha and beta diversity analysis with statistical testing</li>
+          <li>Differential abundance analysis across experimental groups</li>
+          <li>Analysis report with publication-quality figures</li>
+          <li>Methods section for manuscript or thesis</li>
+        </ul>
+        <div class="package-cta">
+          <a href="https://mannaomics.com/#contact" class="btn btn-outline" style="width:100%;justify-content:center;">Get a Quote &rarr;</a>
+        </div>
+      </div>
+
+      <div class="package-card featured reveal">
+        <div class="package-tag">Standard</div>
+        <h3>Shotgun Metagenomics</h3>
+        <p class="package-best">Best for: Research groups with whole-genome shotgun data who need both community profiling and functional characterization.</p>
+        <ul class="package-includes">
+          <li>Read-based taxonomic and functional profiling</li>
+          <li>Metagenomic assembly and gene prediction</li>
+          <li>MAG reconstruction, quality assessment, and taxonomic placement</li>
+          <li>Metabolic pathway reconstruction per MAG</li>
+          <li>Comparative analysis across conditions</li>
+          <li>Comprehensive report with figures, data tables, and methods text</li>
+        </ul>
+        <div class="package-cta">
+          <a href="https://mannaomics.com/#contact" class="btn btn-primary" style="width:100%;justify-content:center;">Get a Quote &rarr;</a>
+        </div>
+      </div>
+
+      <div class="package-card reveal">
+        <div class="package-tag">Advanced</div>
+        <h3>Multi-Omics Integration</h3>
+        <p class="package-best">Best for: Projects with two or more omics layers that need integrated analysis and systems-level interpretation.</p>
+        <ul class="package-includes">
+          <li>Individual processing and analysis of each omics layer</li>
+          <li>Cross-omics integration using multivariate frameworks</li>
+          <li>Correlation network construction and hub feature identification</li>
+          <li>Integrated pathway mapping and systems-level narrative</li>
+          <li>Full report with multi-panel figures and integrated interpretation</li>
+          <li>Methods text covering all layers and integration approaches</li>
+        </ul>
+        <div class="package-cta">
+          <a href="https://mannaomics.com/#contact" class="btn btn-outline" style="width:100%;justify-content:center;">Get a Quote &rarr;</a>
+        </div>
+      </div>
+
+      <div class="package-card reveal">
+        <div class="package-tag">Custom</div>
+        <h3>Ongoing Support</h3>
+        <p class="package-best">Best for: Labs, research centers, or companies that generate omics data routinely and need a dedicated bioinformatics partner.</p>
+        <ul class="package-includes">
+          <li>Flexible scope — monthly retainer, per-project, or per-dataset pricing</li>
+          <li>Priority scheduling and dedicated support</li>
+          <li>Co-authorship arrangements where appropriate (academic)</li>
+          <li>Confidential deliverables under NDA (industry)</li>
+          <li>Suitable for longitudinal studies, clinical cohorts, and environmental monitoring</li>
+          <li>Experimental design consultation included</li>
+        </ul>
+        <div class="package-cta">
+          <a href="https://mannaomics.com/#contact" class="btn btn-outline" style="width:100%;justify-content:center;">Discuss Terms &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-inner">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title">What to Expect</h2>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          How long does a typical project take?
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">An amplicon analysis (Starter) typically takes 1–2 weeks. Shotgun metagenomics with MAG reconstruction takes 3–5 weeks depending on dataset size and complexity. Multi-omics integration projects take 4–8 weeks. Timelines are confirmed during consultation based on your specific data.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          My data is already sequenced. Can you start immediately?
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">Yes. Send us the raw FASTQ files (or a download link) along with your sample metadata and experimental design, and we can begin within days. We work with data from any sequencing platform — Illumina, Oxford Nanopore, PacBio.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          I have not sequenced yet. Can you help with experimental design?
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">Absolutely. This is the ideal time to engage us. We advise on sequencing depth, replication strategy, sample collection, DNA/RNA extraction considerations, and which omics layers will best answer your question. Getting the design right saves significant time and money downstream.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          What format do you need my data in?
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">Raw FASTQ files (paired-end or single-end) for sequencing data. Raw instrument files or peak tables for metabolomics. For proteomics, raw mass spec files or processed peptide lists. We also need a metadata file describing your samples, conditions, and experimental design — we provide a template.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Can you analyze data from any sequencing platform?
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">Yes. We work with Illumina short reads, Oxford Nanopore long reads, PacBio HiFi reads, and hybrid assemblies. For multi-platform datasets, we design the analysis strategy to leverage the strengths of each technology.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          What if I only need part of the pipeline?
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">We offer modular services. If you already have assembled MAGs and just need functional annotation, or you have processed expression matrices and need differential expression and pathway analysis — we scope the work to exactly what you need. No unnecessary steps, no inflated pricing.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Can your results be used directly in a publication or report?
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">That is the explicit goal. For academic clients, every deliverable is designed to go directly into a manuscript or thesis — figures at journal resolution, methods sections with proper citations, statistical analyses with appropriate corrections. We also support reviewer responses if your computational methods are questioned during peer review.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Do you offer co-authorship?
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">For academic projects involving substantial intellectual contribution — experimental design input, interpretation, manuscript writing — co-authorship is discussed upfront and follows standard academic norms. For straightforward service work, acknowledgment is sufficient. Terms are always agreed before work begins.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Is my data confidential?
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">Yes. For industry and commercial clients, we work under NDAs and maintain strict confidentiality. For academic clients, we follow standard collaborative norms and do not share data outside the project. Raw data is deleted from our systems after project completion unless you request otherwise.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          I am a graduate student. Can I afford this?
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">We offer flexible pricing for student projects. A focused amplicon analysis or a single metagenome for a thesis chapter is very accessible. Reach out and we will work something out.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          What is the difference between metagenomics and amplicon sequencing? Which do I need?
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">Amplicon sequencing (16S/ITS) tells you who is in your community — it is cheaper, well-established, and sufficient for many ecology and diversity studies. Shotgun metagenomics tells you both who is there and what they can do — it provides functional information, genome-level resolution, and strain-level discrimination. We help you decide which approach matches your question and budget during consultation.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Can you handle large cohort studies?
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">Yes. Our pipelines are designed for scalability using workflow managers (Snakemake, Nextflow) and containerized environments (Docker, Singularity). Whether you have 20 samples or 2,000, the analytical framework is consistent, reproducible, and efficient.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="section-inner">
+    <div class="cta-box reveal">
+      <div class="section-label" style="text-align:center;">Get Started</div>
+      <h2 class="section-title">Ready to Decode Your Data?</h2>
+      <p>Have sequencing data waiting for analysis? Planning a multi-omics experiment and want to get the design right? Whether you are a PI with terabytes of metagenomes, a graduate student with your first amplicon run, or an R&D team building a microbiome product — share your data and your question, and we will design the right analytical strategy.</p>
+      <a href="mailto:info@mannaomics.com" class="btn btn-primary" style="font-size:1rem;padding:1rem 2.5rem;">
+        <i class="fas fa-envelope"></i> Discuss Your Project
+      </a>
+      <p class="cta-secondary">Typical response time: 48 hours. We work with data from any sequencing platform, any sample type, any scale.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <a href="https://mannaomics.com" class="logo">Manna <span>Omics</span> Solutions</a>
+  <p class="footer-tagline">From Atoms to Systems</p>
+  <div class="footer-links">
+    <a href="https://mannaomics.com/#about">About</a>
+    <a href="https://mannaomics.com/#services">Services</a>
+    <a href="https://mannaomics.com/#case-studies">Case Studies</a>
+    <a href="https://mannaomics.com/#tools">Expertise</a>
+    <a href="https://mannaomics.com/#publications">Publications</a>
+    <a href="https://mannaomics.com/#founder">Founder</a>
+    <a href="https://mannaomics.com/#contact">Contact</a>
+  </div>
+  <p style="font-size:0.75rem;opacity:0.6;margin-top:1.5rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.08);line-height:1.6;">
+    <strong style="opacity:0.85;">Registered Micro, Small &amp; Medium Enterprise (MSME)</strong><br>
+    Ministry of MSME, Government of India &nbsp;|&nbsp; Udyam: UDYAM-WB-12-0147213
+  </p>
+  <p style="font-size:0.75rem;opacity:0.4;margin-top:0.75rem;">&copy; 2026 Manna Omics Solutions. All rights reserved.</p>
+</footer>
+
+<script>
+// ── Mobile nav ──
+document.querySelector('.mobile-toggle').addEventListener('click', function () {
+  document.getElementById('navLinks').classList.toggle('active');
+});
+
+// ── Scroll reveal ──
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ── FAQ accordion ──
+document.querySelectorAll('.faq-question').forEach(btn => {
+  btn.addEventListener('click', function () {
+    const item = this.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+    this.setAttribute('aria-expanded', !isOpen);
+  });
+});
+
+// ── Button ripple ──
+document.querySelectorAll('.btn').forEach(btn => {
+  btn.addEventListener('click', function (e) {
+    const r = document.createElement('span');
+    r.className = 'ripple';
+    const rect = this.getBoundingClientRect();
+    const size = Math.max(rect.width, rect.height);
+    r.style.cssText = `width:${size}px;height:${size}px;left:${e.clientX-rect.left-size/2}px;top:${e.clientY-rect.top-size/2}px`;
+    this.appendChild(r);
+    r.addEventListener('animationend', () => r.remove());
+  });
+});
+
+// ── Nav scroll highlight ──
+window.addEventListener('scroll', () => {
+  const sections = document.querySelectorAll('section[id], div[id="top"]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  let current = '';
+  sections.forEach(sec => { if (window.scrollY >= sec.offsetTop - 120) current = sec.id; });
+  navLinks.forEach(a => {
+    a.classList.remove('active');
+    if (a.getAttribute('href').includes(current) && current) a.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>

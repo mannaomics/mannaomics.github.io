@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resistome and AMR Profiling Services | Manna Omics Solutions</title>
+<meta name="description" content="Antimicrobial resistance gene profiling, resistome analysis, One Health AMR, mobile genetic elements, environmental AMR surveillance using CARD, ResFinder, AMRFinderPlus.">
+<meta property="og:title" content="Resistome and AMR Profiling | Manna Omics Solutions">
+<meta property="og:description" content="Comprehensive resistome profiling across One Health compartments — environmental, clinical, agricultural, and aquaculture. AMR gene detection, MGE tracking, host attribution, and surveillance-grade reporting.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mannaomics.com/services/resistome-amr">
+<link rel="canonical" href="https://mannaomics.com/services/resistome-amr">
+<link rel="icon" type="image/png" href="../logo-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700&family=Playfair+Display:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root {
+  --bg-primary: #0a0f1a;
+  --bg-secondary: #111827;
+  --bg-card: #1a2236;
+  --bg-card-hover: #1f2a42;
+  --accent-teal: #2dd4bf;
+  --accent-teal-dim: rgba(45, 212, 191, 0.15);
+  --accent-blue: #3b82f6;
+  --accent-violet: #8b5cf6;
+  
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --border: rgba(148, 163, 184, 0.1);
+  --gradient-hero: linear-gradient(135deg, #0a0f1a 0%, #1a1040 50%, #0a0f1a 100%);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ===== NAV ===== */
+nav {
+  position: fixed; top: 0; width: 100%; z-index: 100;
+  padding: 1rem 0;
+  background: rgba(10,15,26,0.8);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  transition: all 0.3s ease;
+}
+.nav-inner {
+  max-width: 1200px; margin: 0 auto;
+  padding: 0 2rem;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem; font-weight: 600;
+  color: var(--text-primary); text-decoration: none; letter-spacing: 0.5px;
+}
+.logo span { color: var(--accent-teal); }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+  color: var(--text-secondary); text-decoration: none;
+  font-size: 0.9rem; font-weight: 500;
+  transition: color 0.3s; letter-spacing: 0.3px; position: relative;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -3px; left: 0;
+  width: 100%; height: 2px; background: var(--accent-teal);
+  border-radius: 2px; transform: scaleX(0); transform-origin: left;
+  transition: transform 0.25s ease-out;
+}
+.nav-links a:hover { color: var(--accent-teal); }
+.nav-links a:hover::after { transform: scaleX(1); }
+.mobile-toggle {
+  display: none; background: none; border: none;
+  color: var(--text-primary); font-size: 1.5rem; cursor: pointer;
+}
+
+/* ===== HERO ===== */
+.page-hero {
+  padding: 10rem 2rem 6rem;
+  background: var(--gradient-hero);
+  position: relative; overflow: hidden;
+}
+.hero-bg-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(45,212,191,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(45,212,191,0.03) 1px, transparent 1px);
+  background-size: 60px 60px; pointer-events: none;
+}
+.hero-glow {
+  position: absolute; width: 600px; height: 600px;
+  border-radius: 50%; filter: blur(120px); opacity: 0.12; pointer-events: none;
+}
+.glow-1 { background: var(--accent-violet); top: -200px; right: -100px; animation: floatOrb 14s ease-in-out infinite; }
+.glow-2 { background: var(--accent-teal); bottom: -200px; left: -100px; animation: floatOrb 18s ease-in-out infinite reverse; }
+@keyframes floatOrb {
+  0%,100% { transform: translate(0,0); }
+  40%      { transform: translate(40px,-25px); }
+  70%      { transform: translate(-20px,20px); }
+}
+.page-hero-inner {
+  max-width: 900px; margin: 0 auto;
+  position: relative; z-index: 2;
+}
+.hero-badge {
+  display: inline-block;
+  padding: 0.4rem 1.2rem;
+  border: 1px solid rgba(45,212,191,0.3);
+  border-radius: 50px; font-size: 0.8rem;
+  color: var(--accent-teal); letter-spacing: 2px;
+  text-transform: uppercase; margin-bottom: 2rem;
+  background: var(--accent-teal-dim);
+}
+.page-hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 700; line-height: 1.15;
+  margin-bottom: 1rem; letter-spacing: -0.5px;
+}
+.page-hero h1 .highlight {
+  background: linear-gradient(135deg, var(--accent-teal), var(--accent-teal));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.page-hero .tagline {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem; font-style: italic;
+  color: var(--text-secondary); margin-bottom: 1.5rem;
+}
+.page-hero .intro {
+  font-size: 1.05rem; color: var(--text-secondary);
+  line-height: 1.85; max-width: 780px;
+  text-align: justify; overflow-wrap: break-word; word-break: break-word;
+}
+.hero-cta { display: flex; gap: 1rem; margin-top: 2.5rem; flex-wrap: wrap; }
+
+/* ===== BUTTONS ===== */
+.btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.85rem 2rem; border-radius: 8px;
+  font-size: 0.95rem; font-weight: 600;
+  text-decoration: none; transition: all 0.3s ease;
+  cursor: pointer; border: none;
+  font-family: 'DM Sans', sans-serif;
+  position: relative; overflow: hidden;
+}
+.btn-primary { background: var(--accent-teal); color: var(--bg-primary); }
+.btn-primary:hover { background: #5eead4; transform: translateY(-2px); box-shadow: 0 8px 30px rgba(45,212,191,0.3); }
+.btn-outline { border: 1px solid var(--border); color: var(--text-primary); background: transparent; }
+.btn-outline:hover { border-color: var(--accent-teal); color: var(--accent-teal); transform: translateY(-2px); }
+.btn .ripple {
+  position: absolute; border-radius: 50%;
+  background: rgba(255,255,255,0.2); transform: scale(0);
+  animation: rippleAnim 0.55s ease-out forwards; pointer-events: none;
+}
+@keyframes rippleAnim { to { transform: scale(4); opacity: 0; } }
+
+/* ===== SECTIONS ===== */
+section { padding: 6rem 2rem; }
+.section-inner { max-width: 1200px; margin: 0 auto; }
+.section-label {
+  font-size: 0.8rem; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--accent-teal);
+  font-weight: 600; margin-bottom: 1rem;
+}
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 600; margin-bottom: 1rem; line-height: 1.3;
+}
+.section-desc {
+  color: var(--text-secondary); font-size: 1.05rem;
+  line-height: 1.85; text-align: justify;
+  overflow-wrap: break-word; word-break: break-word;
+}
+
+/* ===== ONE HEALTH BANNER ===== */
+.one-health-banner {
+  margin-top: 3rem;
+  background: linear-gradient(135deg, rgba(45,212,191,0.06), rgba(45,212,191,0.08));
+  border: 1px solid rgba(45,212,191,0.2);
+  border-radius: 16px;
+  padding: 1.8rem 2rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+}
+.one-health-banner .banner-icon {
+  font-size: 1.6rem;
+  color: var(--accent-teal);
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+.one-health-banner h4 {
+  font-size: 1rem; font-weight: 600;
+  color: var(--text-primary); margin-bottom: 0.4rem;
+}
+.one-health-banner p {
+  font-size: 0.9rem; color: var(--text-secondary);
+  line-height: 1.75;
+}
+
+/* ===== CAPABILITIES ===== */
+#analyze {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.analyze-category { margin-top: 3.5rem; }
+.analyze-category:first-of-type { margin-top: 3rem; }
+.category-header {
+  display: flex; align-items: center; gap: 1rem;
+  margin-bottom: 1.5rem; padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+.category-icon {
+  width: 44px; height: 44px; border-radius: 10px;
+  background: var(--accent-teal-dim);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem; color: var(--accent-teal); flex-shrink: 0;
+}
+.category-icon.amber { background: var(--accent-teal-dim); color: var(--accent-teal); }
+.category-header h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.35rem; font-weight: 600; color: var(--text-primary);
+}
+.sim-cards-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem;
+}
+.sim-cards-grid.three-col { grid-template-columns: repeat(3, 1fr); }
+.sim-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 14px; padding: 1.6rem;
+  transition: all 0.35s ease; position: relative; overflow: hidden;
+}
+.sim-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-teal), var(--accent-teal));
+  opacity: 0; transition: opacity 0.3s;
+}
+.sim-card:hover {
+  background: var(--bg-card-hover);
+  border-color: rgba(45,212,191,0.2);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(45,212,191,0.06);
+}
+.sim-card:hover::before { opacity: 1; }
+.sim-card h4 {
+  font-size: 1rem; font-weight: 600;
+  color: var(--accent-teal); margin-bottom: 0.6rem;
+}
+.sim-card p {
+  font-size: 0.9rem; color: var(--text-secondary);
+  line-height: 1.75; text-align: justify;
+  overflow-wrap: break-word; word-break: break-word;
+}
+.sim-card .cross-link {
+  display: inline-block; margin-top: 0.75rem;
+  font-size: 0.82rem; color: var(--accent-teal);
+  text-decoration: none; opacity: 0.8; transition: opacity 0.2s;
+}
+.sim-card .cross-link:hover { opacity: 1; }
+
+/* ===== ANALYSIS & DELIVERABLES ===== */
+#analysis { background: var(--bg-primary); }
+.analysis-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 2.5rem; margin-top: 3rem;
+}
+.analysis-col h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem; font-weight: 600;
+  margin-bottom: 1.5rem; color: var(--text-primary);
+}
+.analysis-group { margin-bottom: 1.5rem; }
+.analysis-group h4 {
+  font-size: 0.9rem; font-weight: 600;
+  color: var(--accent-teal); margin-bottom: 0.5rem;
+  text-transform: uppercase; letter-spacing: 0.8px;
+}
+.analysis-group ul { list-style: none; display: flex; flex-direction: column; gap: 0.3rem; }
+.analysis-group ul li {
+  font-size: 0.9rem; color: var(--text-secondary);
+  padding-left: 1.2rem; position: relative;
+}
+.analysis-group ul li::before {
+  content: '—'; position: absolute; left: 0;
+  color: var(--accent-teal); opacity: 0.5;
+}
+.deliverable-list { display: flex; flex-direction: column; gap: 1rem; }
+.deliverable-item {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 12px; padding: 1.2rem 1.5rem;
+  display: flex; gap: 1rem; align-items: flex-start;
+  transition: all 0.3s ease;
+}
+.deliverable-item:hover { border-color: rgba(45,212,191,0.25); transform: translateX(4px); }
+.deliverable-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.1rem; font-weight: 600;
+  color: var(--accent-teal); min-width: 28px; opacity: 0.7;
+}
+.deliverable-text h4 {
+  font-size: 0.95rem; font-weight: 600;
+  color: var(--text-primary); margin-bottom: 0.3rem;
+}
+.deliverable-text p {
+  font-size: 0.85rem; color: var(--text-secondary);
+  line-height: 1.65; text-align: justify;
+  overflow-wrap: break-word; word-break: break-word;
+}
+
+/* ===== TOOLS ===== */
+#tools {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.tools-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem; margin-top: 3rem;
+}
+.tool-group {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 14px; padding: 1.6rem; transition: border-color 0.3s;
+}
+.tool-group:hover { border-color: rgba(45,212,191,0.2); }
+.tool-group h3 {
+  font-size: 0.85rem; font-weight: 600;
+  color: var(--accent-teal); text-transform: uppercase;
+  letter-spacing: 1px; margin-bottom: 1rem;
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.tool-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.tool-tag {
+  padding: 0.3rem 0.7rem;
+  background: rgba(45,212,191,0.07);
+  border: 1px solid rgba(45,212,191,0.15);
+  border-radius: 5px; font-size: 0.78rem;
+  color: var(--text-secondary);
+  font-family: 'JetBrains Mono', monospace;
+  transition: all 0.25s; position: relative; z-index: 0; overflow: hidden;
+}
+.tool-tag::before {
+  content: ''; position: absolute; inset: 0;
+  background: rgba(45,212,191,0.13);
+  transform: translateX(-100%); transition: transform 0.2s ease-out;
+  z-index: -1; border-radius: inherit;
+}
+.tool-tag:hover { border-color: var(--accent-teal); color: var(--accent-teal); }
+.tool-tag:hover::before { transform: translateX(0); }
+
+/* ===== WORKFLOW ===== */
+#workflow { background: var(--bg-primary); }
+.workflow-steps {
+  display: flex; flex-direction: column;
+  margin-top: 3rem; position: relative;
+}
+.workflow-steps::before {
+  content: ''; position: absolute;
+  left: 26px; top: 26px; bottom: 26px; width: 2px;
+  background: linear-gradient(180deg, var(--accent-teal), var(--accent-teal), var(--accent-blue));
+  opacity: 0.25;
+}
+.workflow-step {
+  display: flex; gap: 1.5rem; align-items: flex-start;
+  padding: 1.5rem 0; position: relative;
+}
+.step-num {
+  width: 52px; height: 52px; border-radius: 50%;
+  background: var(--bg-card);
+  border: 2px solid rgba(45,212,191,0.3);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1rem; font-weight: 600;
+  color: var(--accent-teal); flex-shrink: 0; z-index: 1; transition: all 0.3s;
+}
+.workflow-step:hover .step-num {
+  background: var(--accent-teal-dim);
+  border-color: var(--accent-teal);
+  box-shadow: 0 0 20px rgba(45,212,191,0.2);
+}
+.step-content { padding-top: 0.6rem; }
+.step-content h3 {
+  font-size: 1.05rem; font-weight: 600;
+  color: var(--text-primary); margin-bottom: 0.5rem;
+}
+.step-content p {
+  font-size: 0.9rem; color: var(--text-secondary);
+  line-height: 1.75; max-width: 680px;
+  text-align: justify; overflow-wrap: break-word; word-break: break-word;
+}
+
+/* ===== PACKAGES ===== */
+#packages {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.packages-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem; margin-top: 3rem;
+}
+.package-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 16px; padding: 2rem;
+  transition: all 0.35s ease; position: relative; overflow: hidden;
+  display: flex; flex-direction: column;
+}
+.package-card.featured {
+  border-color: rgba(45,212,191,0.35);
+  background: linear-gradient(145deg, #1a2236, #1a2a3a);
+}
+.package-card.featured::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--accent-teal), var(--accent-teal));
+}
+.package-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 50px rgba(45,212,191,0.1);
+  border-color: rgba(45,212,191,0.25);
+}
+.package-tag {
+  display: inline-block; padding: 0.25rem 0.8rem; border-radius: 50px;
+  font-size: 0.72rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 1rem;
+  background: var(--accent-teal-dim); color: var(--accent-teal);
+  border: 1px solid rgba(45,212,191,0.25); width: fit-content;
+}
+.package-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem; font-weight: 600; margin-bottom: 0.4rem;
+}
+.package-best {
+  font-size: 0.85rem; color: var(--text-muted);
+  margin-bottom: 1.2rem; font-style: italic;
+}
+.package-includes {
+  list-style: none; display: flex; flex-direction: column;
+  gap: 0.5rem; flex: 1;
+}
+.package-includes li {
+  font-size: 0.9rem; color: var(--text-secondary);
+  padding-left: 1.4rem; position: relative; line-height: 1.6;
+}
+.package-includes li::before {
+  content: '✓'; position: absolute; left: 0;
+  color: var(--accent-teal); font-weight: 700; font-size: 0.85rem;
+}
+.package-cta { margin-top: 1.8rem; }
+
+/* ===== FAQ ===== */
+#faq { background: var(--bg-primary); }
+.faq-list { margin-top: 3rem; display: flex; flex-direction: column; gap: 0.75rem; }
+.faq-item {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 12px; overflow: hidden; transition: border-color 0.3s;
+}
+.faq-item.open { border-color: rgba(45,212,191,0.25); }
+.faq-question {
+  width: 100%; background: none; border: none; text-align: left;
+  padding: 1.25rem 1.5rem; cursor: pointer;
+  display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+  font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 600;
+  color: var(--text-primary); transition: color 0.3s;
+}
+.faq-question:hover { color: var(--accent-teal); }
+.faq-icon { font-size: 1rem; color: var(--accent-teal); flex-shrink: 0; transition: transform 0.3s ease; }
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+.faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+.faq-item.open .faq-answer { max-height: 360px; }
+.faq-answer-inner {
+  padding: 0 1.5rem 1.25rem; font-size: 0.9rem;
+  color: var(--text-secondary); line-height: 1.8;
+  text-align: justify; overflow-wrap: break-word; word-break: break-word;
+}
+
+/* ===== CTA ===== */
+#cta { background: var(--bg-secondary); border-top: 1px solid var(--border); }
+.cta-box { max-width: 720px; margin: 0 auto; text-align: center; }
+.cta-box .section-title { margin-bottom: 1rem; }
+.cta-box p { color: var(--text-secondary); font-size: 1.05rem; line-height: 1.85; margin-bottom: 2rem; }
+.cta-secondary { margin-top: 1.2rem; font-size: 0.88rem; color: var(--text-muted); }
+
+/* ===== FOOTER ===== */
+footer {
+  padding: 2rem; text-align: center;
+  border-top: 1px solid var(--border);
+  color: var(--text-muted); font-size: 0.85rem;
+}
+footer .logo { font-size: 1.2rem; display: block; margin-bottom: 0.5rem; }
+.footer-tagline { font-size: 0.9rem; opacity: 0.6; margin: 0.3rem 0 1rem; letter-spacing: 0.05em; }
+.footer-links {
+  display: flex; gap: 1.5rem; flex-wrap: wrap;
+  justify-content: center; margin-bottom: 1rem; font-size: 0.85rem;
+}
+.footer-links a { color: var(--text-muted); text-decoration: none; opacity: 0.7; transition: opacity 0.3s, color 0.3s; }
+.footer-links a:hover { opacity: 1; color: var(--accent-teal); }
+
+/* ===== SCROLL REVEAL ===== */
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.5s ease-out, transform 0.5s ease-out; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 968px) {
+  .sim-cards-grid,
+  .sim-cards-grid.three-col { grid-template-columns: 1fr; }
+  .analysis-grid { grid-template-columns: 1fr; }
+  .tools-grid { grid-template-columns: repeat(2, 1fr); }
+  .packages-grid { grid-template-columns: 1fr; }
+  .one-health-banner { flex-direction: column; }
+}
+@media (max-width: 640px) {
+  .nav-links { display: none; }
+  .mobile-toggle { display: block; }
+  .nav-links.active {
+    display: flex; flex-direction: column;
+    position: absolute; top: 100%; left: 0; right: 0;
+    background: var(--bg-primary);
+    padding: 1rem 2rem; border-bottom: 1px solid var(--border);
+  }
+  section { padding: 4rem 1.5rem; }
+  .page-hero { padding: 8rem 1.5rem 4rem; }
+  .hero-cta { flex-direction: column; }
+  .tools-grid { grid-template-columns: 1fr; }
+  .workflow-steps::before { left: 24px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .glow-1, .glow-2 { animation: none; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+  <div class="nav-inner">
+    <a href="https://mannaomics.com" class="logo">
+      <img src="../logo-icon.png" alt="" style="height:36px;vertical-align:middle;margin-right:8px;">
+      Manna <span>Omics</span> Solutions
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="https://mannaomics.com/#about">About</a></li>
+      <li><a href="https://mannaomics.com/#services">Services</a></li>
+      <li><a href="https://mannaomics.com/#case-studies">Case Studies</a></li>
+      <li><a href="https://mannaomics.com/#tools">Expertise</a></li>
+      <li><a href="https://mannaomics.com/#publications">Publications</a></li>
+      <li><a href="https://mannaomics.com/#founder">Founder</a></li>
+      <li><a href="https://mannaomics.com/#contact">Contact</a></li>
+    </ul>
+    <button class="mobile-toggle" onclick="document.getElementById('navLinks').classList.toggle('active')">&#9776;</button>
+  </div>
+</nav>
+
+<!-- Hero -->
+<div class="page-hero" id="top">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-glow glow-1"></div>
+  <div class="hero-glow glow-2"></div>
+  <div class="page-hero-inner">
+    <div class="hero-badge">Computational Biology &middot; Service</div>
+    <h1><span class="highlight">Resistome</span><br>and AMR Profiling</h1>
+    <p class="tagline">Track resistance genes from source to spread — across environments, hosts, and ecosystems.</p>
+    <p class="intro">Antimicrobial resistance does not respect the boundaries between clinics, farms, and ecosystems. Neither does our analysis. We provide comprehensive resistome profiling and AMR gene characterization for research groups, public health teams, and industry partners working across the One Health spectrum — environmental, clinical, agricultural, and aquaculture samples. From identifying which resistance genes are present, to tracing how they move between organisms and environments, we deliver the computational evidence needed for surveillance, risk assessment, and publication.</p>
+    <div class="hero-cta">
+      <a href="#packages" class="btn btn-primary">View Packages</a>
+      <a href="https://mannaomics.com/#contact" class="btn btn-outline">Discuss Your Project</a>
+    </div>
+  </div>
+</div>
+
+<!-- What We Analyze -->
+<section id="analyze">
+  <div class="section-inner">
+    <div class="section-label">Capabilities</div>
+    <h2 class="section-title">What We Analyze</h2>
+
+    <div class="one-health-banner reveal">
+      <div class="banner-icon"><i class="fas fa-earth-americas"></i></div>
+      <div>
+        <h4>One Health Framing</h4>
+        <p>Most bioinformatics services offer AMR gene detection as a checkbox within metagenomics. We treat resistome profiling as a standalone discipline with ecological and public health dimensions — connecting resistance gene data to the organisms that carry them, the mobile elements that spread them, and the environmental and clinical systems they move through. This is what makes our analysis directly useful for surveillance, risk assessment, and high-impact publication.</p>
+      </div>
+    </div>
+
+    <!-- Resistome Profiling -->
+    <div class="analyze-category reveal">
+      <div class="category-header">
+        <div class="category-icon"><i class="fas fa-shield-virus"></i></div>
+        <h3>Resistome Profiling</h3>
+      </div>
+      <div class="sim-cards-grid three-col">
+        <div class="sim-card">
+          <h4>AMR Gene Detection and Quantification</h4>
+          <p>Identification and quantification of antimicrobial resistance genes from metagenomic, genomic, or amplicon data using curated databases (CARD, ResFinder, AMRFinderPlus, MEGARes). We report gene families, resistance mechanisms, drug classes covered, and relative abundance across your samples — with proper normalization and statistical testing for differential abundance between conditions.</p>
+        </div>
+        <div class="sim-card">
+          <h4>Resistome Composition and Diversity</h4>
+          <p>Characterization of the full resistance gene repertoire in your samples. Alpha and beta resistome diversity, resistome richness, evenness, and composition shifts across experimental groups, time points, or geographic locations. We treat the resistome as an ecological entity — not just a gene list.</p>
+        </div>
+        <div class="sim-card">
+          <h4>Resistance Mechanism Classification</h4>
+          <p>Every detected gene is classified by mechanism: antibiotic inactivation, target modification, efflux pump activity, target protection, or target replacement. This mechanistic breakdown tells you not just what the community can resist, but how — which is critical for understanding clinical relevance and designing intervention strategies.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- MGE Tracking -->
+    <div class="analyze-category reveal">
+      <div class="category-header">
+        <div class="category-icon"><i class="fas fa-arrows-spin"></i></div>
+        <h3>Mobile Genetic Element (MGE) Tracking</h3>
+      </div>
+      <div class="sim-cards-grid three-col">
+        <div class="sim-card">
+          <h4>Plasmid Detection and Characterization</h4>
+          <p>Identification of plasmid-borne resistance genes from assembled contigs or long-read data. Plasmid reconstruction, incompatibility group typing, and assessment of which resistance genes sit on mobile versus chromosomal elements. This directly addresses the transferability risk of detected resistance.</p>
+        </div>
+        <div class="sim-card">
+          <h4>Integron, Transposon, and Insertion Sequence Analysis</h4>
+          <p>Detection and characterization of integrons (class 1, 2, 3), transposable elements, and insertion sequences flanking resistance genes. We map the genetic context around AMR genes — what is upstream, what is downstream, and what mobile machinery could move them.</p>
+        </div>
+        <div class="sim-card">
+          <h4>Horizontal Gene Transfer Potential</h4>
+          <p>Assessment of HGT signatures — conjugation machinery, phage-mediated transfer markers, and genomic islands carrying resistance cassettes. We evaluate not just whether resistance genes are present, but how likely they are to spread to new hosts.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Host Attribution -->
+    <div class="analyze-category reveal">
+      <div class="category-header">
+        <div class="category-icon"><i class="fas fa-bacteria"></i></div>
+        <h3>Host Attribution and Source Tracking</h3>
+      </div>
+      <div class="sim-cards-grid three-col">
+        <div class="sim-card">
+          <h4>Taxonomic Assignment of Resistance Carriers</h4>
+          <p>Linking resistance genes to their microbial hosts using MAG-based or read-based approaches. We answer the critical question: which organisms are carrying which resistance genes? Knowing that a resistance gene exists is less useful than knowing which species is harboring and potentially spreading it.</p>
+          <a href="metagenomics-multiomics.html" class="cross-link">See also: Shotgun Metagenomics and MAG Reconstruction &rarr;</a>
+        </div>
+        <div class="sim-card">
+          <h4>Source Attribution Analysis</h4>
+          <p>For studies spanning multiple environments (wastewater, soil, clinical isolates, animal gut), we apply source-tracking approaches to evaluate the likely origin and directionality of resistance gene flow. Which environment is the reservoir? Where is the transmission occurring?</p>
+        </div>
+        <div class="sim-card">
+          <h4>Strain-Level Resolution</h4>
+          <p>Where data quality permits, we resolve AMR carriage to the strain level — distinguishing between resistant and susceptible strains of the same species within a community. Critical for outbreak investigation and surveillance studies.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Longitudinal Dynamics -->
+    <div class="analyze-category reveal">
+      <div class="category-header">
+        <div class="category-icon"><i class="fas fa-chart-line"></i></div>
+        <h3>Resistome Dynamics and Longitudinal Analysis</h3>
+      </div>
+      <div class="sim-cards-grid">
+        <div class="sim-card">
+          <h4>Temporal Resistome Profiling</h4>
+          <p>Analysis of how resistance gene abundance, diversity, and composition change over time — across treatment regimens, seasonal cycles, intervention trials, or environmental perturbation events. We identify which resistance genes are transient versus persistent, and which respond to specific pressures.</p>
+        </div>
+        <div class="sim-card">
+          <h4>Treatment Response Monitoring</h4>
+          <p>Pre- and post-treatment resistome comparison for antibiotic treatment studies, disinfection interventions, or process modifications. We quantify the effect of interventions on resistome composition and identify genes that persist, emerge, or are eliminated.</p>
+        </div>
+        <div class="sim-card">
+          <h4>Resistome–Microbiome Co-Dynamics</h4>
+          <p>Joint analysis of resistome and microbiome shifts — do resistance genes track specific taxa? Does community disruption open ecological niches for resistant organisms? We connect resistome dynamics to the underlying microbial ecology driving them.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- One Health -->
+    <div class="analyze-category reveal">
+      <div class="category-header">
+        <div class="category-icon"><i class="fas fa-earth-americas"></i></div>
+        <h3>One Health Integrative Analysis</h3>
+      </div>
+      <div class="sim-cards-grid three-col">
+        <div class="sim-card">
+          <h4>Cross-Compartment Resistome Comparison</h4>
+          <p>Systematic comparison of resistome profiles across One Health compartments — human clinical samples, animal gut/feces, agricultural soil, water/wastewater, food products — within a unified analytical framework. We identify shared resistance genes and gene variants across compartments, providing evidence for cross-compartment transmission.</p>
+        </div>
+        <div class="sim-card">
+          <h4>Environmental Resistome Surveillance</h4>
+          <p>Baseline and monitoring-level resistome characterization for wastewater treatment plants, river systems, agricultural runoff, aquaculture facilities, and other environmental matrices. We provide the data layer needed for AMR surveillance programs and environmental risk assessments.</p>
+        </div>
+        <div class="sim-card">
+          <h4>Clinical–Environmental Linkage</h4>
+          <p>For studies bridging clinical and environmental sampling, we evaluate whether resistance genes or resistant organisms detected in environmental samples match those found in clinical isolates — providing evidence-level support for environmental transmission pathways.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Analysis & Deliverables -->
+<section id="analysis">
+  <div class="section-inner">
+    <div class="section-label">Outputs</div>
+    <h2 class="section-title">Analysis and Deliverables</h2>
+    <p class="section-desc">Every project includes a tailored analysis package built around your biological question, sample type, and the One Health context of your study. Every deliverable is structured for direct use in manuscripts, surveillance reports, or technical documentation.</p>
+
+    <div class="analysis-grid">
+      <div class="analysis-col reveal">
+        <h3>Standard Analyses</h3>
+
+        <div class="analysis-group">
+          <h4>Resistome Characterization</h4>
+          <ul>
+            <li>AMR gene abundance matrices (raw counts and normalized)</li>
+            <li>Resistance mechanism class distribution per sample</li>
+            <li>Drug class resistance profiles (aminoglycosides, beta-lactams, tetracyclines, fluoroquinolones, etc.)</li>
+            <li>Resistome alpha and beta diversity with statistical testing</li>
+            <li>Differential resistome abundance across conditions (DESeq2, ANCOM-BC)</li>
+          </ul>
+        </div>
+
+        <div class="analysis-group">
+          <h4>Mobile Element Context</h4>
+          <ul>
+            <li>Plasmid vs. chromosome assignment of resistance genes</li>
+            <li>Integron and transposon association mapping</li>
+            <li>Genetic context visualization of AMR gene neighborhoods</li>
+            <li>MGE co-occurrence with resistance gene clusters</li>
+          </ul>
+        </div>
+
+        <div class="analysis-group">
+          <h4>Host and Ecological Analysis</h4>
+          <ul>
+            <li>Taxonomic assignment of AMR gene carriers (MAG-level or contig-level)</li>
+            <li>Resistome–microbiome correlation analysis</li>
+            <li>Co-occurrence networks linking AMR genes to taxa</li>
+            <li>Source tracking outputs (where applicable)</li>
+          </ul>
+        </div>
+
+        <div class="analysis-group">
+          <h4>Longitudinal and Comparative</h4>
+          <ul>
+            <li>Temporal abundance heatmaps and trend analysis</li>
+            <li>Pre/post intervention resistome shift quantification</li>
+            <li>Cross-compartment shared gene and variant identification</li>
+            <li>Statistical testing for temporal trends and treatment effects</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="analysis-col reveal">
+        <h3>What You Receive</h3>
+        <div class="deliverable-list">
+          <div class="deliverable-item">
+            <span class="deliverable-num">01</span>
+            <div class="deliverable-text">
+              <h4>Resistome Report</h4>
+              <p>A comprehensive, narrated report covering all detected resistance genes, their mechanisms, host associations, mobile element context, and ecological interpretation. For academic clients, structured for direct insertion into manuscripts. For public health and industry clients, formatted as a surveillance or risk assessment report with executive summary.</p>
+            </div>
+          </div>
+          <div class="deliverable-item">
+            <span class="deliverable-num">02</span>
+            <div class="deliverable-text">
+              <h4>Publication-Ready Figures</h4>
+              <p>High-resolution figures: resistome composition barplots, heatmaps, diversity plots, network diagrams, gene context maps, and cross-compartment comparison panels. Consistent styling at journal resolution (300+ dpi, PDF/SVG/PNG).</p>
+            </div>
+          </div>
+          <div class="deliverable-item">
+            <span class="deliverable-num">03</span>
+            <div class="deliverable-text">
+              <h4>Annotated AMR Gene Tables</h4>
+              <p>Complete gene-level output: gene name, accession, resistance mechanism, drug class, percent identity, coverage, host assignment, and genomic context (plasmid/chromosome, flanking MGEs). Sortable, filterable, ready for supplementary data submission.</p>
+            </div>
+          </div>
+          <div class="deliverable-item">
+            <span class="deliverable-num">04</span>
+            <div class="deliverable-text">
+              <h4>Data Package</h4>
+              <p>Processed abundance matrices, analysis scripts, pipeline configuration files, and database versions used. Full computational reproducibility.</p>
+            </div>
+          </div>
+          <div class="deliverable-item">
+            <span class="deliverable-num">05</span>
+            <div class="deliverable-text">
+              <h4>Methods Text</h4>
+              <p>Ready-to-use methods section citing all databases, tools, versions, and parameters — including appropriate references for CARD, ResFinder, AMRFinderPlus, and any other resources used.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Tools -->
+<section id="tools">
+  <div class="section-inner">
+    <div class="section-label">Technical Stack</div>
+    <h2 class="section-title">Tools and Platforms</h2>
+    <p class="section-desc">Multi-database AMR detection, mobile element characterization, and ecological analysis — all integrated within reproducible, version-controlled pipelines.</p>
+
+    <div class="tools-grid">
+      <div class="tool-group reveal">
+        <h3><i class="fas fa-shield-virus"></i> AMR Detection and Annotation</h3>
+        <div class="tool-tags">
+          <span class="tool-tag">CARD / RGI</span>
+          <span class="tool-tag">ResFinder</span>
+          <span class="tool-tag">AMRFinderPlus</span>
+          <span class="tool-tag">MEGARes</span>
+          <span class="tool-tag">ARGs-OAP</span>
+          <span class="tool-tag">ABRicate</span>
+          <span class="tool-tag">DeepARG</span>
+        </div>
+      </div>
+      <div class="tool-group reveal">
+        <h3><i class="fas fa-arrows-spin"></i> Mobile Genetic Elements</h3>
+        <div class="tool-tags">
+          <span class="tool-tag">PlasmidFinder</span>
+          <span class="tool-tag">MOB-suite</span>
+          <span class="tool-tag">ISfinder</span>
+          <span class="tool-tag">IntegronFinder</span>
+          <span class="tool-tag">Clinker</span>
+          <span class="tool-tag">EasyFig</span>
+        </div>
+      </div>
+      <div class="tool-group reveal">
+        <h3><i class="fas fa-dna"></i> Metagenomic Foundation</h3>
+        <div class="tool-tags">
+          <span class="tool-tag">Kraken2</span>
+          <span class="tool-tag">MetaPhlAn</span>
+          <span class="tool-tag">MEGAHIT</span>
+          <span class="tool-tag">Prodigal</span>
+          <span class="tool-tag">DIAMOND</span>
+          <span class="tool-tag">MaxBin2</span>
+          <span class="tool-tag">MetaBAT2</span>
+          <span class="tool-tag">CheckM</span>
+          <span class="tool-tag">GTDB-Tk</span>
+        </div>
+      </div>
+      <div class="tool-group reveal">
+        <h3><i class="fas fa-chart-bar"></i> Statistical and Ecological Analysis</h3>
+        <div class="tool-tags">
+          <span class="tool-tag">vegan</span>
+          <span class="tool-tag">phyloseq</span>
+          <span class="tool-tag">DESeq2</span>
+          <span class="tool-tag">ANCOM-BC</span>
+          <span class="tool-tag">LEfSe</span>
+          <span class="tool-tag">NetworkX</span>
+          <span class="tool-tag">scikit-learn</span>
+        </div>
+      </div>
+      <div class="tool-group reveal">
+        <h3><i class="fas fa-chart-area"></i> Visualization</h3>
+        <div class="tool-tags">
+          <span class="tool-tag">ggplot2</span>
+          <span class="tool-tag">ComplexHeatmap</span>
+          <span class="tool-tag">circlize</span>
+          <span class="tool-tag">Cytoscape</span>
+          <span class="tool-tag">Python (matplotlib/seaborn)</span>
+        </div>
+      </div>
+      <div class="tool-group reveal">
+        <h3><i class="fas fa-terminal"></i> Workflow and Infrastructure</h3>
+        <div class="tool-tags">
+          <span class="tool-tag">Snakemake</span>
+          <span class="tool-tag">Nextflow</span>
+          <span class="tool-tag">Docker</span>
+          <span class="tool-tag">Singularity</span>
+          <span class="tool-tag">Git</span>
+          <span class="tool-tag">Linux HPC / SLURM</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Workflow -->
+<section id="workflow">
+  <div class="section-inner">
+    <div class="section-label">Process</div>
+    <h2 class="section-title">How We Work</h2>
+    <p class="section-desc">Six structured steps from study design through final delivery — with a specific focus on making raw resistance gene data interpretable in the ecological and public health context that matters for your work.</p>
+
+    <div class="workflow-steps">
+      <div class="workflow-step reveal">
+        <div class="step-num">01</div>
+        <div class="step-content">
+          <h3>Consultation and Study Design Review</h3>
+          <p>You share your research question, study design, sample types, and the One Health context of your work. We review whether your sampling strategy, sequencing approach, and metadata capture are sufficient to answer your question. For surveillance projects, we advise on sampling frequency, spatial coverage, and detection sensitivity requirements.</p>
+        </div>
+      </div>
+      <div class="workflow-step reveal">
+        <div class="step-num">02</div>
+        <div class="step-content">
+          <h3>Data Quality Control and Preprocessing</h3>
+          <p>Raw data quality assessment, adapter trimming, quality filtering, and host read decontamination. For resistome work specifically, we also assess sequencing depth relative to AMR gene detection sensitivity — undersequenced samples can miss low-abundance resistance genes, and we flag this before analysis begins.</p>
+        </div>
+      </div>
+      <div class="workflow-step reveal">
+        <div class="step-num">03</div>
+        <div class="step-content">
+          <h3>Resistome Detection and Annotation</h3>
+          <p>AMR gene detection against multiple curated databases, with mechanism classification, drug class assignment, and confidence scoring. We do not rely on a single database — cross-referencing CARD, ResFinder, and AMRFinderPlus reduces false positives and captures genes that any single database might miss.</p>
+        </div>
+      </div>
+      <div class="workflow-step reveal">
+        <div class="step-num">04</div>
+        <div class="step-content">
+          <h3>Ecological and Contextual Analysis</h3>
+          <p>Host attribution, mobile element characterization, co-occurrence analysis, and cross-compartment comparison. This is where raw gene lists become biological insight — understanding not just what resistance genes are present, but who carries them, how they might transfer, and what drives their distribution across your system.</p>
+        </div>
+      </div>
+      <div class="workflow-step reveal">
+        <div class="step-num">05</div>
+        <div class="step-content">
+          <h3>Interpretation and Reporting</h3>
+          <p>We deliver results as a coherent narrative: what the resistome looks like, how it compares across your conditions, what the public health or ecological implications are, and what follow-up studies would strengthen the evidence. Every figure and table is annotated and interpreted — not just generated.</p>
+        </div>
+      </div>
+      <div class="workflow-step reveal">
+        <div class="step-num">06</div>
+        <div class="step-content">
+          <h3>Delivery and Post-Delivery Support</h3>
+          <p>Full deliverable package with post-delivery support through publication, grant reporting, or surveillance report submission. We support reviewer responses and additional analyses as needed.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Packages -->
+<section id="packages">
+  <div class="section-inner">
+    <div class="section-label">Pricing</div>
+    <h2 class="section-title">Standard Packages</h2>
+    <p class="section-desc">Four tiers matched to the scope and depth of your resistome question — from a baseline snapshot to full One Health surveillance analysis. All packages include annotated gene tables, reproducible scripts, and post-delivery support. Pricing provided upon consultation.</p>
+
+    <div class="packages-grid">
+      <div class="package-card reveal">
+        <div class="package-tag">Starter</div>
+        <h3>Resistome Snapshot</h3>
+        <p class="package-best">Best for: A lab or student needing baseline resistome characterization from a small set of metagenomic samples.</p>
+        <ul class="package-includes">
+          <li>AMR gene detection and quantification (CARD/RGI and ResFinder)</li>
+          <li>Resistance mechanism and drug class profiling</li>
+          <li>Resistome diversity analysis (alpha and beta)</li>
+          <li>Differential abundance across experimental groups</li>
+          <li>Report with publication-quality figures and methods text</li>
+        </ul>
+        <div class="package-cta">
+          <a href="https://mannaomics.com/#contact" class="btn btn-outline" style="width:100%;justify-content:center;">Get a Quote &rarr;</a>
+        </div>
+      </div>
+
+      <div class="package-card featured reveal">
+        <div class="package-tag">Standard</div>
+        <h3>Resistome in Context</h3>
+        <p class="package-best">Best for: Research groups wanting to understand not just which AMR genes are present, but who carries them and how mobile they are.</p>
+        <ul class="package-includes">
+          <li>Everything in Starter, plus:</li>
+          <li>MAG-based host attribution of resistance genes</li>
+          <li>Plasmid vs. chromosome assignment</li>
+          <li>Mobile genetic element detection (integrons, transposons, IS elements)</li>
+          <li>Genetic context visualization of key AMR gene neighborhoods</li>
+          <li>Resistome–microbiome co-occurrence analysis</li>
+          <li>Comprehensive report with ecological interpretation</li>
+        </ul>
+        <div class="package-cta">
+          <a href="https://mannaomics.com/#contact" class="btn btn-primary" style="width:100%;justify-content:center;">Get a Quote &rarr;</a>
+        </div>
+      </div>
+
+      <div class="package-card reveal">
+        <div class="package-tag">Advanced</div>
+        <h3>One Health Resistome Analysis</h3>
+        <p class="package-best">Best for: Multi-compartment studies, surveillance programs, or projects requiring cross-system AMR tracking.</p>
+        <ul class="package-includes">
+          <li>Everything in Standard, plus:</li>
+          <li>Cross-compartment resistome comparison and shared gene identification</li>
+          <li>Source tracking and transmission pathway analysis</li>
+          <li>Longitudinal or temporal resistome dynamics (where applicable)</li>
+          <li>Strain-level resolution of AMR carriers (where data permits)</li>
+          <li>Integrated report framed within One Health context</li>
+          <li>Suitable for surveillance reports, policy documents, and high-impact publications</li>
+        </ul>
+        <div class="package-cta">
+          <a href="https://mannaomics.com/#contact" class="btn btn-outline" style="width:100%;justify-content:center;">Get a Quote &rarr;</a>
+        </div>
+      </div>
+
+      <div class="package-card reveal">
+        <div class="package-tag">Custom</div>
+        <h3>Ongoing Surveillance Support</h3>
+        <p class="package-best">Best for: Public health agencies, environmental monitoring programs, or research centers running long-term AMR surveillance.</p>
+        <ul class="package-includes">
+          <li>Flexible scope — per-batch, per-quarter, or ongoing retainer</li>
+          <li>Standardized pipeline applied consistently across sampling waves</li>
+          <li>Periodic surveillance summary reports</li>
+          <li>Co-authorship or confidential reporting as appropriate</li>
+          <li>Database updates and reanalysis as AMR databases evolve</li>
+        </ul>
+        <div class="package-cta">
+          <a href="https://mannaomics.com/#contact" class="btn btn-outline" style="width:100%;justify-content:center;">Discuss Terms &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-inner">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title">What to Expect</h2>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          How long does a typical resistome analysis take?
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">A Starter resistome snapshot takes 1–2 weeks. Standard projects with host attribution and MGE analysis take 3–4 weeks. Advanced One Health integrative analyses take 4–8 weeks depending on the number of compartments and samples. Timelines are confirmed during consultation.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          What kind of sequencing data do I need?
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">Whole-genome shotgun metagenomic data is ideal for comprehensive resistome profiling — it captures all resistance genes, not just those targeted by primers. We also work with whole-genome sequences of isolates, long-read data (ONT, PacBio) for plasmid resolution, and amplicon-based approaches (targeted ARG amplicon panels) where available. We advise on the best strategy during consultation.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Can you work with isolate genomes, not just metagenomes?
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">Yes. We analyze individual bacterial isolate genomes for AMR gene content, plasmid carriage, and mobile element characterization. This is common for clinical microbiology labs working with outbreak isolates or surveillance strains.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          What is the One Health framework and why does it matter?
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">One Health recognizes that human, animal, and environmental health are interconnected. For AMR specifically, resistance genes do not stay in one compartment — they move between hospitals, farms, wastewater, soil, and waterways. Our analysis framework is designed to trace these connections, making it directly applicable to studies spanning multiple sample types or environments.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          I only have environmental samples. Is the One Health framing still relevant?
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">Yes. Environmental reservoirs — wastewater, agricultural soil, river sediments — are increasingly recognized as critical nodes in AMR dissemination. Even a single-compartment environmental study benefits from being contextualized within the broader One Health landscape, especially for funding applications and high-impact publications.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Which AMR databases do you use?
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">We cross-reference multiple curated databases — primarily CARD (Comprehensive Antibiotic Resistance Database) with RGI, ResFinder, and NCBI AMRFinderPlus. Each database has different strengths and coverage. Using multiple databases reduces false negatives and provides higher confidence in detected genes. We document exactly which databases and versions were used for full reproducibility.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Can you detect novel or uncharacterized resistance genes?
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">Our standard pipeline detects known resistance genes catalogued in reference databases. For detection of putative novel AMR genes, we can apply machine learning-based approaches (DeepARG) that predict resistance function from sequence features beyond strict homology. We flag these as putative and recommend experimental validation.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Can your results support a grant application or policy document?
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">Absolutely. Resistome analysis and One Health AMR tracking are priorities for major funders — WHO, NIH, Wellcome Trust, DST, ICMR, and national AMR action plans. We can frame results specifically for grant preliminary data or surveillance reports, and provide figures and narratives appropriate for non-specialist reviewers.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Can your results be used directly in a publication?
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">That is the explicit goal. Every deliverable — figures, gene tables, methods text — is designed for direct inclusion in manuscripts or supplementary materials. We support reviewer responses if your AMR methodology is questioned during peer review.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Is my data confidential?
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">Yes. For clinical, industry, and surveillance clients, we work under NDAs and maintain strict data confidentiality. Patient-linked or site-specific metadata is handled with appropriate care. For academic clients, standard collaborative norms apply.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          I am a graduate student working on AMR. Can I afford this?
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">We offer flexible pricing for student projects. A focused resistome characterization for a thesis chapter is very accessible. Reach out and we will find a workable arrangement.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          What is the difference between this service and your metagenomics service?
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">Our metagenomics service covers broad community profiling — who is there, what functions are encoded, genome reconstruction. This service is specifically focused on the resistance gene fraction — detection, quantification, mechanism classification, mobility assessment, and One Health contextualization. Many projects benefit from both, and we can scope a combined project during consultation.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="section-inner">
+    <div class="cta-box reveal">
+      <div class="section-label" style="text-align:center;">Get Started</div>
+      <h2 class="section-title">Ready to Map Your Resistome?</h2>
+      <p>Whether you are tracking resistance genes across a watershed, characterizing AMR in clinical isolates, profiling agricultural resistomes, or building a One Health surveillance dataset — share your samples and your question, and we will design the right analytical strategy.</p>
+      <a href="mailto:info@mannaomics.com" class="btn btn-primary" style="font-size:1rem;padding:1rem 2.5rem;">
+        <i class="fas fa-envelope"></i> Discuss Your Project
+      </a>
+      <p class="cta-secondary">Typical response time: 48 hours. We work with environmental, clinical, agricultural, and aquaculture samples from any sequencing platform.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <a href="https://mannaomics.com" class="logo">Manna <span>Omics</span> Solutions</a>
+  <p class="footer-tagline">From Atoms to Systems</p>
+  <div class="footer-links">
+    <a href="https://mannaomics.com/#about">About</a>
+    <a href="https://mannaomics.com/#services">Services</a>
+    <a href="https://mannaomics.com/#case-studies">Case Studies</a>
+    <a href="https://mannaomics.com/#tools">Expertise</a>
+    <a href="https://mannaomics.com/#publications">Publications</a>
+    <a href="https://mannaomics.com/#founder">Founder</a>
+    <a href="https://mannaomics.com/#contact">Contact</a>
+  </div>
+  <p style="font-size:0.75rem;opacity:0.6;margin-top:1.5rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.08);line-height:1.6;">
+    <strong style="opacity:0.85;">Registered Micro, Small &amp; Medium Enterprise (MSME)</strong><br>
+    Ministry of MSME, Government of India &nbsp;|&nbsp; Udyam: UDYAM-WB-12-0147213
+  </p>
+  <p style="font-size:0.75rem;opacity:0.4;margin-top:0.75rem;">&copy; 2026 Manna Omics Solutions. All rights reserved.</p>
+</footer>
+
+<script>
+// ── Mobile nav ──
+document.querySelector('.mobile-toggle').addEventListener('click', function () {
+  document.getElementById('navLinks').classList.toggle('active');
+});
+
+// ── Scroll reveal ──
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ── FAQ accordion ──
+document.querySelectorAll('.faq-question').forEach(btn => {
+  btn.addEventListener('click', function () {
+    const item = this.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+    this.setAttribute('aria-expanded', !isOpen);
+  });
+});
+
+// ── Button ripple ──
+document.querySelectorAll('.btn').forEach(btn => {
+  btn.addEventListener('click', function (e) {
+    const r = document.createElement('span');
+    r.className = 'ripple';
+    const rect = this.getBoundingClientRect();
+    const size = Math.max(rect.width, rect.height);
+    r.style.cssText = `width:${size}px;height:${size}px;left:${e.clientX-rect.left-size/2}px;top:${e.clientY-rect.top-size/2}px`;
+    this.appendChild(r);
+    r.addEventListener('animationend', () => r.remove());
+  });
+});
+
+// ── Nav scroll highlight ──
+window.addEventListener('scroll', () => {
+  const sections = document.querySelectorAll('section[id], div[id="top"]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  let current = '';
+  sections.forEach(sec => { if (window.scrollY >= sec.offsetTop - 120) current = sec.id; });
+  navLinks.forEach(a => {
+    a.classList.remove('active');
+    if (a.getAttribute('href').includes(current) && current) a.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,1547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Molecular Dynamics Simulation Services | Manna Omics Solutions</title>
+<meta name="description" content="End-to-end MD simulations for protein-ligand, FEP, molecular docking, and AI-driven design. Supporting academic research, student projects, and drug discovery pipelines.">
+<meta property="og:title" content="Molecular Dynamics and AI-Driven Design | Manna Omics Solutions">
+<meta property="og:description" content="Rigorous molecular dynamics simulation services for academic research groups, graduate students, and industry teams. Protein systems, docking, enhanced sampling, FEP, and AI-driven design.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mannaomics.com/services/molecular-dynamics">
+<link rel="canonical" href="https://mannaomics.com/services/molecular-dynamics">
+<link rel="icon" type="image/png" href="../logo-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700&family=Playfair+Display:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root {
+  --bg-primary: #0a0f1a;
+  --bg-secondary: #111827;
+  --bg-card: #1a2236;
+  --bg-card-hover: #1f2a42;
+  --accent-teal: #2dd4bf;
+  --accent-teal-dim: rgba(45, 212, 191, 0.15);
+  --accent-blue: #3b82f6;
+  --accent-violet: #8b5cf6;
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --border: rgba(148, 163, 184, 0.1);
+  --gradient-hero: linear-gradient(135deg, #0a0f1a 0%, #1a1040 50%, #0a0f1a 100%);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ===== NAVIGATION ===== */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  padding: 1rem 0;
+  transition: all 0.3s ease;
+  background: rgba(10, 15, 26, 0.8);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-decoration: none;
+  letter-spacing: 0.5px;
+}
+.logo span { color: var(--accent-teal); }
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+.nav-links a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.3s;
+  letter-spacing: 0.3px;
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -3px; left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--accent-teal);
+  border-radius: 2px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease-out;
+}
+.nav-links a:hover { color: var(--accent-teal); }
+.nav-links a:hover::after { transform: scaleX(1); }
+
+.mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* ===== HERO ===== */
+.page-hero {
+  padding: 10rem 2rem 6rem;
+  background: var(--gradient-hero);
+  position: relative;
+  overflow: hidden;
+}
+.hero-bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(45, 212, 191, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(45, 212, 191, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+.hero-glow {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.12;
+  pointer-events: none;
+}
+.glow-1 { background: var(--accent-teal); top: -200px; right: -100px; animation: floatOrb 14s ease-in-out infinite; }
+.glow-2 { background: var(--accent-violet); bottom: -200px; left: -100px; animation: floatOrb 18s ease-in-out infinite reverse; }
+
+@keyframes floatOrb {
+  0%, 100% { transform: translate(0, 0); }
+  40%       { transform: translate(40px, -25px); }
+  70%       { transform: translate(-20px, 20px); }
+}
+
+.page-hero-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+.hero-badge {
+  display: inline-block;
+  padding: 0.4rem 1.2rem;
+  border: 1px solid rgba(45, 212, 191, 0.3);
+  border-radius: 50px;
+  font-size: 0.8rem;
+  color: var(--accent-teal);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  background: var(--accent-teal-dim);
+}
+.page-hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 1rem;
+  letter-spacing: -0.5px;
+}
+.page-hero h1 .highlight {
+  background: linear-gradient(135deg, var(--accent-teal), var(--accent-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.page-hero .tagline {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  font-style: italic;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+.page-hero .intro {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.85;
+  max-width: 780px;
+  text-align: justify;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+.hero-cta {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2.5rem;
+  flex-wrap: wrap;
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 2rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: none;
+  font-family: 'DM Sans', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+.btn-primary {
+  background: var(--accent-teal);
+  color: var(--bg-primary);
+}
+.btn-primary:hover {
+  background: #5eead4;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(45, 212, 191, 0.3);
+}
+.btn-outline {
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  background: transparent;
+}
+.btn-outline:hover {
+  border-color: var(--accent-teal);
+  color: var(--accent-teal);
+  transform: translateY(-2px);
+}
+.btn .ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  transform: scale(0);
+  animation: rippleAnim 0.55s ease-out forwards;
+  pointer-events: none;
+}
+@keyframes rippleAnim { to { transform: scale(4); opacity: 0; } }
+
+/* ===== SECTIONS ===== */
+section {
+  padding: 6rem 2rem;
+}
+.section-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.section-label {
+  font-size: 0.8rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent-teal);
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 600;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+.section-desc {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.85;
+  text-align: justify;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* ===== WHAT WE SIMULATE ===== */
+#simulate {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.simulate-category {
+  margin-top: 3.5rem;
+}
+.simulate-category:first-child { margin-top: 3rem; }
+
+.category-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+.category-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: var(--accent-teal-dim);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: var(--accent-teal);
+  flex-shrink: 0;
+}
+.category-header h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.sim-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+.sim-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.6rem;
+  transition: all 0.35s ease;
+  position: relative;
+  overflow: hidden;
+}
+.sim-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-teal), var(--accent-blue));
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.sim-card:hover {
+  background: var(--bg-card-hover);
+  border-color: rgba(45, 212, 191, 0.2);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(45, 212, 191, 0.1);
+}
+.sim-card:hover::before { opacity: 1; }
+
+.sim-card h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--accent-teal);
+  margin-bottom: 0.6rem;
+}
+.sim-card p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  text-align: justify;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* ===== ANALYSIS and DELIVERABLES ===== */
+#analysis {
+  background: var(--bg-primary);
+}
+
+.analysis-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  margin-top: 3rem;
+}
+
+.analysis-col h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+}
+
+.analysis-group {
+  margin-bottom: 1.5rem;
+}
+.analysis-group h4 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--accent-teal);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+.analysis-group ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.analysis-group ul li {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  padding-left: 1.2rem;
+  position: relative;
+}
+.analysis-group ul li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--accent-teal);
+  opacity: 0.5;
+}
+
+.deliverable-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.deliverable-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.2rem 1.5rem;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  transition: all 0.3s ease;
+}
+.deliverable-item:hover {
+  border-color: rgba(45, 212, 191, 0.25);
+  transform: translateX(4px);
+}
+.deliverable-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--accent-teal);
+  min-width: 28px;
+  opacity: 0.7;
+}
+.deliverable-text h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.3rem;
+}
+.deliverable-text p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  text-align: justify;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* ===== TOOLS ===== */
+#tools {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-top: 3rem;
+}
+
+.tool-group {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.6rem;
+  transition: all 0.3s ease;
+}
+.tool-group:hover {
+  border-color: rgba(45, 212, 191, 0.2);
+}
+.tool-group h3 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent-teal);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.tool-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.tool-tag {
+  padding: 0.3rem 0.7rem;
+  background: rgba(45, 212, 191, 0.07);
+  border: 1px solid rgba(45, 212, 191, 0.15);
+  border-radius: 5px;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  font-family: 'JetBrains Mono', monospace;
+  transition: all 0.25s;
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+}
+.tool-tag::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(45, 212, 191, 0.13);
+  transform: translateX(-100%);
+  transition: transform 0.2s ease-out;
+  z-index: -1;
+  border-radius: inherit;
+}
+.tool-tag:hover { border-color: var(--accent-teal); color: var(--accent-teal); }
+.tool-tag:hover::before { transform: translateX(0); }
+
+/* ===== WORKFLOW ===== */
+#workflow {
+  background: var(--bg-primary);
+}
+
+.workflow-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 3rem;
+  position: relative;
+}
+.workflow-steps::before {
+  content: '';
+  position: absolute;
+  left: 26px;
+  top: 26px;
+  bottom: 26px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--accent-teal), var(--accent-blue), var(--accent-violet));
+  opacity: 0.25;
+}
+.workflow-step {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  padding: 1.5rem 0;
+  position: relative;
+}
+.step-num {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 2px solid rgba(45, 212, 191, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--accent-teal);
+  flex-shrink: 0;
+  z-index: 1;
+  transition: all 0.3s;
+}
+.workflow-step:hover .step-num {
+  background: var(--accent-teal-dim);
+  border-color: var(--accent-teal);
+  box-shadow: 0 0 20px rgba(45, 212, 191, 0.2);
+}
+.step-content {
+  padding-top: 0.6rem;
+}
+.step-content h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+.step-content p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  max-width: 680px;
+  text-align: justify;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* ===== PACKAGES ===== */
+#packages {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.packages-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+.package-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2rem;
+  transition: all 0.35s ease;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.package-card.featured {
+  border-color: rgba(45, 212, 191, 0.35);
+  background: linear-gradient(145deg, #1a2236, #1a2a3a);
+}
+.package-card.featured::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-teal), var(--accent-blue));
+}
+.package-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 50px rgba(45, 212, 191, 0.1);
+  border-color: rgba(45, 212, 191, 0.25);
+}
+.package-tag {
+  display: inline-block;
+  padding: 0.25rem 0.8rem;
+  border-radius: 50px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  margin-bottom: 1rem;
+  background: var(--accent-teal-dim);
+  color: var(--accent-teal);
+  border: 1px solid rgba(45, 212, 191, 0.25);
+  width: fit-content;
+}
+.package-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+.package-best {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 1.2rem;
+  font-style: italic;
+}
+.package-includes {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+}
+.package-includes li {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  padding-left: 1.4rem;
+  position: relative;
+  line-height: 1.6;
+}
+.package-includes li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--accent-teal);
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+.package-cta {
+  margin-top: 1.8rem;
+}
+
+/* Full-width package card */
+.package-card.full-width {
+  grid-column: 1 / -1;
+}
+.full-width .package-includes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem 2rem;
+}
+
+/* ===== FAQ ===== */
+#faq {
+  background: var(--bg-primary);
+}
+
+.faq-list {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.faq-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: border-color 0.3s;
+}
+.faq-item.open {
+  border-color: rgba(45, 212, 191, 0.25);
+}
+.faq-question {
+  width: 100%;
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 1.25rem 1.5rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  transition: color 0.3s;
+}
+.faq-question:hover { color: var(--accent-teal); }
+.faq-icon {
+  font-size: 1rem;
+  color: var(--accent-teal);
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.3s ease;
+}
+.faq-item.open .faq-answer {
+  max-height: 300px;
+}
+.faq-answer-inner {
+  padding: 0 1.5rem 1.25rem;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  text-align: justify;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* ===== CTA SECTION ===== */
+#cta {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border);
+}
+.cta-box {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+.cta-box .section-title { margin-bottom: 1rem; }
+.cta-box p {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.85;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+.cta-secondary {
+  margin-top: 1.2rem;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+/* ===== FOOTER ===== */
+footer {
+  padding: 2rem;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+footer .logo {
+  font-size: 1.2rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+.footer-tagline {
+  font-size: 0.9rem;
+  opacity: 0.6;
+  margin: 0.3rem 0 1rem;
+  letter-spacing: 0.05em;
+}
+.footer-links {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 1rem;
+  font-size: 0.85rem;
+}
+.footer-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  opacity: 0.7;
+  transition: opacity 0.3s, color 0.3s;
+}
+.footer-links a:hover { opacity: 1; color: var(--accent-teal); }
+
+/* ===== SCROLL REVEAL ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 968px) {
+  .analysis-grid { grid-template-columns: 1fr; }
+  .tools-grid { grid-template-columns: repeat(2, 1fr); }
+  .packages-grid { grid-template-columns: 1fr; }
+  .full-width .package-includes { grid-template-columns: 1fr; }
+  .sim-cards-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  .nav-links { display: none; }
+  .mobile-toggle { display: block; }
+  .nav-links.active {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--bg-primary);
+    padding: 1rem 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+  section { padding: 4rem 1.5rem; }
+  .page-hero { padding: 8rem 1.5rem 4rem; }
+  .hero-cta { flex-direction: column; }
+  .tools-grid { grid-template-columns: 1fr; }
+  .workflow-steps::before { left: 24px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glow-1, .glow-2 { animation: none; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+  <div class="nav-inner">
+    <a href="https://mannaomics.com" class="logo">
+      <img src="../logo-icon.png" alt="" style="height: 36px; vertical-align: middle; margin-right: 8px;">
+      Manna <span>Omics</span> Solutions
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="https://mannaomics.com/#about">About</a></li>
+      <li><a href="https://mannaomics.com/#services">Services</a></li>
+      <li><a href="https://mannaomics.com/#case-studies">Case Studies</a></li>
+      <li><a href="https://mannaomics.com/#tools">Expertise</a></li>
+      <li><a href="https://mannaomics.com/#publications">Publications</a></li>
+      <li><a href="https://mannaomics.com/#founder">Founder</a></li>
+      <li><a href="https://mannaomics.com/#contact">Contact</a></li>
+    </ul>
+    <button class="mobile-toggle" onclick="document.getElementById('navLinks').classList.toggle('active')">&#9776;</button>
+  </div>
+</nav>
+
+<!-- Hero -->
+<div class="page-hero" id="top">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-glow glow-1"></div>
+  <div class="hero-glow glow-2"></div>
+  <div class="page-hero-inner">
+    <div class="hero-badge">Computational Biology &middot; Service</div>
+    <h1>Molecular Dynamics &<br><span class="highlight">AI-Driven Design</span></h1>
+    <p class="tagline">From first principles to function — rigorous simulations that answer the questions your experiments alone cannot.</p>
+    <p class="intro">We provide end-to-end molecular dynamics simulation services for academic research groups, graduate students, and industry teams that need reliable computational support. Whether you need to understand why a mutation destabilizes your protein, how a drug candidate binds its target, or how a polymer behaves under specific conditions — we design, execute, and analyze simulations tailored to your scientific question. From a single-protein student thesis project to a multi-compound drug discovery campaign, every project is built on validated protocols, reproducible workflows, and clear deliverables.</p>
+    <div class="hero-cta">
+      <a href="#packages" class="btn btn-primary">View Packages</a>
+      <a href="https://mannaomics.com/#contact" class="btn btn-outline">Discuss Your Project</a>
+    </div>
+  </div>
+</div>
+
+<!-- What We Simulate -->
+<section id="simulate">
+  <div class="section-inner">
+    <div class="section-label">Capabilities</div>
+    <h2 class="section-title">What We Simulate</h2>
+
+    <!-- Protein Systems -->
+    <div class="simulate-category reveal">
+      <div class="category-header">
+        <div class="category-icon"><i class="fas fa-atom"></i></div>
+        <h3>Protein Systems</h3>
+      </div>
+      <div class="sim-cards-grid">
+        <div class="sim-card">
+          <h4>Apo Protein Dynamics</h4>
+          <p>Characterization of intrinsic protein flexibility, domain motions, and conformational landscapes in the absence of ligands. Essential for understanding baseline dynamics before interpreting binding or mutation effects.</p>
+        </div>
+        <div class="sim-card">
+          <h4>Protein–Ligand Complexes</h4>
+          <p>All-atom simulations of drug–target, substrate–enzyme, and inhibitor–protein complexes. We assess binding pose stability, residence time behavior, key intermolecular contacts, and the energetic contributions driving molecular recognition.</p>
+        </div>
+        <div class="sim-card">
+          <h4>Protein–Protein Interactions</h4>
+          <p>Simulations of homodimeric, heterodimeric, and multimeric assemblies. We characterize interface stability, cross-chain contact networks, and allosteric communication pathways between subunits.</p>
+        </div>
+        <div class="sim-card">
+          <h4>Mutant and Variant Analysis</h4>
+          <p>Side-by-side simulations of wild-type vs. mutant systems to quantify the structural and dynamic consequences of point mutations, insertions, or deletions. Directly supports rational design and variant interpretation studies.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Docking -->
+    <div class="simulate-category reveal">
+      <div class="category-header">
+        <div class="category-icon"><i class="fas fa-puzzle-piece"></i></div>
+        <h3>Molecular Docking and Virtual Screening</h3>
+      </div>
+      <div class="sim-cards-grid">
+        <div class="sim-card">
+          <h4>Structure-Based Docking</h4>
+          <p>Rigid and flexible docking of small molecules, peptides, and fragments against protein targets. Pose prediction, scoring, and consensus ranking across multiple docking programs.</p>
+        </div>
+        <div class="sim-card">
+          <h4>Ensemble Docking</h4>
+          <p>Docking against MD-derived conformational ensembles rather than a single crystal structure — capturing induced-fit effects and cryptic binding sites that static structures miss.</p>
+        </div>
+        <div class="sim-card">
+          <h4>AI-Augmented Docking</h4>
+          <p>Integration of DiffDock and related deep learning-based docking tools for blind docking scenarios and systems where conventional scoring functions underperform.</p>
+        </div>
+        <div class="sim-card">
+          <h4>Post-Docking MD Validation</h4>
+          <p>Short-timescale MD simulations on top-ranked docking poses to filter out false positives, assess pose stability, and refine binding mode predictions before committing to longer simulations.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Polymer and Biomaterial -->
+    <div class="simulate-category reveal">
+      <div class="category-header">
+        <div class="category-icon"><i class="fas fa-layer-group"></i></div>
+        <h3>Polymer and Biomaterial Simulations</h3>
+      </div>
+      <div class="sim-cards-grid">
+        <div class="sim-card">
+          <h4>Cellulose and Lignocellulosic Systems</h4>
+          <p>All-atom simulations of cellulose microfibrils, lignin oligomers, and cellulose–lignin composites using GLYCAM force fields. We study structural rigidity, solvent accessibility, enzymatic degradation surfaces, and pretreatment effects.</p>
+        </div>
+        <div class="sim-card">
+          <h4>Synthetic and Natural Polymers</h4>
+          <p>Simulations of polymer chains, blends, and assemblies — characterizing chain flexibility, radius of gyration, glass transition behavior, and intermolecular packing.</p>
+        </div>
+        <div class="sim-card">
+          <h4>Carbohydrate and Glycan Systems</h4>
+          <p>Dynamics of oligosaccharides, glycoproteins, and glycan shields. GLYCAM_06j-based parameterization with proper treatment of glycosidic linkage conformations.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Advanced Methods -->
+    <div class="simulate-category reveal">
+      <div class="category-header">
+        <div class="category-icon"><i class="fas fa-flask"></i></div>
+        <h3>Advanced Simulation Methods</h3>
+      </div>
+      <div class="sim-cards-grid">
+        <div class="sim-card">
+          <h4>Free Energy Perturbation (FEP) and Thermodynamic Integration (TI)</h4>
+          <p>Alchemical free energy calculations for quantitative prediction of relative binding affinities, solvation free energies, and mutation-induced stability changes. The gold standard when you need numbers, not just trends.</p>
+        </div>
+        <div class="sim-card">
+          <h4>Enhanced Sampling</h4>
+          <p>Metadynamics, replica exchange (REST2/REMD), and accelerated MD for systems trapped in local minima. Essential for studying slow conformational transitions, folding events, and rare binding/unbinding pathways.</p>
+        </div>
+        <div class="sim-card">
+          <h4>Coarse-Grained Simulations</h4>
+          <p>Martini and related CG models for studying large-scale membrane dynamics, protein aggregation, polymer self-assembly, and systems that exceed all-atom timescale limitations.</p>
+        </div>
+        <div class="sim-card">
+          <h4>QM/MM Hybrid Methods</h4>
+          <p>Quantum mechanical treatment of reaction centers embedded within classical molecular mechanics environments. For enzymatic reaction mechanisms, electron transfer processes, and systems where bond breaking/formation is central to the scientific question.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI-Driven Design -->
+    <div class="simulate-category reveal">
+      <div class="category-header">
+        <div class="category-icon"><i class="fas fa-robot"></i></div>
+        <h3>AI-Driven Molecular Design</h3>
+      </div>
+      <div class="sim-cards-grid">
+        <div class="sim-card">
+          <h4>Structure Prediction and Ensemble Generation</h4>
+          <p>AlphaFold and ColabFold for high-confidence structure prediction. ESM-2 for sequence-based structural and functional annotation. AI-predicted structures serve as starting points for MD validation and refinement.</p>
+        </div>
+        <div class="sim-card">
+          <h4>De Novo Protein and Molecular Design</h4>
+          <p>RFdiffusion for generative protein backbone design. REINVENT4 for de novo small molecule generation and lead optimization guided by multi-parameter objectives.</p>
+        </div>
+        <div class="sim-card">
+          <h4>AI-Guided Binding Prediction</h4>
+          <p>DiffDock for deep learning-based molecular docking. Integration of ML-interatomic potentials (ANI-2x, DeePMD-kit) for accelerated energy evaluations and hybrid simulation workflows.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Analysis and Deliverables -->
+<section id="analysis">
+  <div class="section-inner">
+    <div class="section-label">Outputs</div>
+    <h2 class="section-title">Analysis and Deliverables</h2>
+    <p class="section-desc">Every simulation project includes a tailored analysis package designed to answer your specific scientific question — not a generic set of plots. Every deliverable is structured for direct use in manuscripts, theses, or technical reports.</p>
+
+    <div class="analysis-grid">
+      <div class="analysis-col reveal">
+        <h3>What We Analyze</h3>
+
+        <div class="analysis-group">
+          <h4>Structural Stability and Flexibility</h4>
+          <ul>
+            <li>RMSD — system equilibration and structural drift</li>
+            <li>RMSF — per-residue flexibility profiles</li>
+            <li>Radius of gyration — compactness and domain movements</li>
+          </ul>
+        </div>
+
+        <div class="analysis-group">
+          <h4>Binding and Interaction Analysis</h4>
+          <ul>
+            <li>Hydrogen bond occupancy and lifetime analysis</li>
+            <li>Salt bridge and hydrophobic contact tracking</li>
+            <li>Interface SASA (solvent-accessible surface area)</li>
+            <li>Key distance monitoring (e.g., catalytic dyad/triad distances)</li>
+          </ul>
+        </div>
+
+        <div class="analysis-group">
+          <h4>Energetics</h4>
+          <ul>
+            <li>MM-PBSA / MM-GBSA binding free energy estimation</li>
+            <li>Per-residue energy decomposition</li>
+            <li>FEP/TI relative binding free energy calculations (where applicable)</li>
+          </ul>
+        </div>
+
+        <div class="analysis-group">
+          <h4>Conformational Landscape</h4>
+          <ul>
+            <li>PCA — dominant motions and conformational substates</li>
+            <li>Dynamic Cross-Correlation Maps (DCCM)</li>
+            <li>Clustering analysis — representative conformations</li>
+            <li>Free energy landscapes from enhanced sampling</li>
+          </ul>
+        </div>
+
+        <div class="analysis-group">
+          <h4>Protein-Specific</h4>
+          <ul>
+            <li>Secondary structure evolution (DSSP)</li>
+            <li>Domain hinge analysis</li>
+            <li>Allosteric communication pathway identification</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="analysis-col reveal">
+        <h3>What You Receive</h3>
+        <div class="deliverable-list">
+          <div class="deliverable-item">
+            <span class="deliverable-num">01</span>
+            <div class="deliverable-text">
+              <h4>Simulation Summary Report</h4>
+              <p>System setup details (force field, box dimensions, ion concentration, equilibration protocol), production run parameters, and quality control metrics.</p>
+            </div>
+          </div>
+          <div class="deliverable-item">
+            <span class="deliverable-num">02</span>
+            <div class="deliverable-text">
+              <h4>Analysis Report</h4>
+              <p>Publication-quality figures with clear annotations, statistical analysis, and interpretation tied to your specific scientific question. For academic clients, written to be directly insertable into a methods/results section. For industry clients, formatted as a structured technical report.</p>
+            </div>
+          </div>
+          <div class="deliverable-item">
+            <span class="deliverable-num">03</span>
+            <div class="deliverable-text">
+              <h4>Raw Data Package</h4>
+              <p>Topology files, input scripts, representative trajectory frames (or full trajectories upon request), and analysis scripts for reproducibility.</p>
+            </div>
+          </div>
+          <div class="deliverable-item">
+            <span class="deliverable-num">04</span>
+            <div class="deliverable-text">
+              <h4>Methods Text</h4>
+              <p>A ready-to-use methods section drafted for your manuscript, thesis, or internal documentation, with appropriate citations for force fields, software, and analysis protocols.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Tools and Platforms -->
+<section id="tools">
+  <div class="section-inner">
+    <div class="section-label">Technical Stack</div>
+    <h2 class="section-title">Tools and Platforms</h2>
+    <p class="section-desc">Every project is executed on industry-standard and state-of-the-art platforms, ensuring reproducibility and methodological rigor.</p>
+
+    <div class="tools-grid">
+      <div class="tool-group reveal">
+        <h3><i class="fas fa-microchip"></i> Simulation Engines</h3>
+        <div class="tool-tags">
+          <span class="tool-tag">AMBER (pmemd.cuda)</span>
+          <span class="tool-tag">GROMACS</span>
+          <span class="tool-tag">NAMD</span>
+          <span class="tool-tag">OpenMM</span>
+        </div>
+      </div>
+      <div class="tool-group reveal">
+        <h3><i class="fas fa-atom"></i> Force Fields</h3>
+        <div class="tool-tags">
+          <span class="tool-tag">ff14SB</span>
+          <span class="tool-tag">GAFF2</span>
+          <span class="tool-tag">GLYCAM_06j</span>
+          <span class="tool-tag">Lipid17</span>
+          <span class="tool-tag">OPC</span>
+          <span class="tool-tag">TIP3P</span>
+        </div>
+      </div>
+      <div class="tool-group reveal">
+        <h3><i class="fas fa-wrench"></i> System Preparation</h3>
+        <div class="tool-tags">
+          <span class="tool-tag">PDB2PQR</span>
+          <span class="tool-tag">Packmol</span>
+          <span class="tool-tag">tleap</span>
+          <span class="tool-tag">CHARMM-GUI</span>
+          <span class="tool-tag">Antechamber</span>
+          <span class="tool-tag">parmchk2</span>
+        </div>
+      </div>
+      <div class="tool-group reveal">
+        <h3><i class="fas fa-puzzle-piece"></i> Docking and Screening</h3>
+        <div class="tool-tags">
+          <span class="tool-tag">AutoDock Vina</span>
+          <span class="tool-tag">DiffDock</span>
+          <span class="tool-tag">GOLD</span>
+        </div>
+      </div>
+      <div class="tool-group reveal">
+        <h3><i class="fas fa-robot"></i> AI / ML Tools</h3>
+        <div class="tool-tags">
+          <span class="tool-tag">AlphaFold</span>
+          <span class="tool-tag">ColabFold</span>
+          <span class="tool-tag">ESM-2</span>
+          <span class="tool-tag">RFdiffusion</span>
+          <span class="tool-tag">REINVENT4</span>
+          <span class="tool-tag">ANI-2x</span>
+          <span class="tool-tag">DeePMD-kit</span>
+        </div>
+      </div>
+      <div class="tool-group reveal">
+        <h3><i class="fas fa-chart-area"></i> Visualization and Analysis</h3>
+        <div class="tool-tags">
+          <span class="tool-tag">CPPTRAJ</span>
+          <span class="tool-tag">MDAnalysis</span>
+          <span class="tool-tag">PyMOL</span>
+          <span class="tool-tag">VMD</span>
+          <span class="tool-tag">ChimeraX</span>
+          <span class="tool-tag">BoltzGen</span>
+        </div>
+      </div>
+      <div class="tool-group reveal" style="grid-column: 1 / -1;">
+        <h3><i class="fas fa-server"></i> Computing Infrastructure</h3>
+        <div class="tool-tags">
+          <span class="tool-tag">GPU-accelerated HPC clusters</span>
+          <span class="tool-tag">SLURM workload management</span>
+          <span class="tool-tag">CUDA-enabled MD engines</span>
+          <span class="tool-tag">National research computing infrastructure</span>
+          <span class="tool-tag">Multi-replica ensemble simulations</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Workflow -->
+<section id="workflow">
+  <div class="section-inner">
+    <div class="section-label">Process</div>
+    <h2 class="section-title">How We Work</h2>
+    <p class="section-desc">A structured, transparent process from your first message to the final figure — every decision documented and every output explained.</p>
+
+    <div class="workflow-steps">
+      <div class="workflow-step reveal">
+        <div class="step-num">01</div>
+        <div class="step-content">
+          <h3>Consultation and Scope Definition</h3>
+          <p>You share your scientific question — a paper you are writing, a hypothesis you want to test, a reviewer's request. We define the simulation strategy together: what system, what method, what timescale, what analyses will answer your question.</p>
+        </div>
+      </div>
+      <div class="workflow-step reveal">
+        <div class="step-num">02</div>
+        <div class="step-content">
+          <h3>System Preparation</h3>
+          <p>We build, parameterize, and validate the simulation system. This includes structure curation (from PDB, homology model, or AlphaFold prediction), protonation state assignment, force field selection, solvation, ionization, and energy minimization. Every setup decision is documented and justified.</p>
+        </div>
+      </div>
+      <div class="workflow-step reveal">
+        <div class="step-num">03</div>
+        <div class="step-content">
+          <h3>Production Simulations</h3>
+          <p>Simulations are executed on GPU-accelerated HPC infrastructure. We run multiple independent replicates (typically 3 or more) to ensure statistical robustness. Progress is monitored for convergence and quality throughout.</p>
+        </div>
+      </div>
+      <div class="workflow-step reveal">
+        <div class="step-num">04</div>
+        <div class="step-content">
+          <h3>Analysis and Interpretation</h3>
+          <p>We do not just run analyses — we interpret them in the context of your scientific question. Every figure, every metric is connected back to the biology. If the data suggests a follow-up simulation or an alternative analysis, we flag it.</p>
+        </div>
+      </div>
+      <div class="workflow-step reveal">
+        <div class="step-num">05</div>
+        <div class="step-content">
+          <h3>Delivery and Post-Delivery Support</h3>
+          <p>You receive the full deliverable package — reports, figures, data, methods text. We remain available for revision requests, reviewer response support, and follow-up analyses through publication.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Packages -->
+<section id="packages">
+  <div class="section-inner">
+    <div class="section-label">Pricing</div>
+    <h2 class="section-title">Standard Packages</h2>
+    <p class="section-desc">Structured tiers to match the scope of your project — from a single thesis chapter to a multi-stage drug discovery pipeline. All packages include raw data, reproducible scripts, and post-delivery support through publication. Pricing provided upon consultation.</p>
+
+    <div class="packages-grid">
+      <div class="package-card reveal">
+        <div class="package-tag">Starter</div>
+        <h3>Single System MD</h3>
+        <p class="package-best">Best for: A lab or graduate student that needs one protein or complex simulated to support a paper or thesis chapter.</p>
+        <ul class="package-includes">
+          <li>System preparation and parameterization (1 system)</li>
+          <li>3 &times; 100 ns production replicate simulations</li>
+          <li>Core analysis suite (RMSD, RMSF, H-bonds, PCA, clustering)</li>
+          <li>Analysis report with publication-quality figures</li>
+          <li>Methods section for manuscript or thesis</li>
+        </ul>
+        <div class="package-cta">
+          <a href="https://mannaomics.com/#contact" class="btn btn-outline" style="width: 100%; justify-content: center;">Get a Quote &rarr;</a>
+        </div>
+      </div>
+
+      <div class="package-card featured reveal">
+        <div class="package-tag">Standard</div>
+        <h3>Comparative MD</h3>
+        <p class="package-best">Best for: Wild-type vs. mutant, apo vs. bound, or ligand comparison studies.</p>
+        <ul class="package-includes">
+          <li>System preparation for 2–3 related systems</li>
+          <li>3 &times; 200–300 ns replicates per system</li>
+          <li>Full analysis suite including DCCM and per-residue decomposition</li>
+          <li>Comparative overlays and statistical comparisons</li>
+          <li>MM-PBSA/MM-GBSA binding free energy estimation</li>
+          <li>Comprehensive comparative report</li>
+          <li>Methods section and reviewer response support</li>
+        </ul>
+        <div class="package-cta">
+          <a href="https://mannaomics.com/#contact" class="btn btn-primary" style="width: 100%; justify-content: center;">Get a Quote &rarr;</a>
+        </div>
+      </div>
+
+      <div class="package-card reveal">
+        <div class="package-tag">Advanced</div>
+        <h3>Integrated Simulation and Design</h3>
+        <p class="package-best">Best for: Projects requiring advanced sampling, free energy calculations, or AI-driven design components.</p>
+        <ul class="package-includes">
+          <li>Everything in Standard, plus:</li>
+          <li>Enhanced sampling (metadynamics / REST2) or FEP/TI calculations</li>
+          <li>AI-based structure prediction or docking (AlphaFold, DiffDock)</li>
+          <li>Extended timescales or large-scale ensemble simulations</li>
+          <li>Multi-method validation (docking &rarr; MD &rarr; FEP pipeline)</li>
+          <li>Full project report with integrated interpretation</li>
+        </ul>
+        <div class="package-cta">
+          <a href="https://mannaomics.com/#contact" class="btn btn-outline" style="width: 100%; justify-content: center;">Get a Quote &rarr;</a>
+        </div>
+      </div>
+
+      <div class="package-card reveal">
+        <div class="package-tag">Custom</div>
+        <h3>Ongoing Support</h3>
+        <p class="package-best">Best for: Labs or companies that need a computational collaborator on an ongoing basis.</p>
+        <ul class="package-includes">
+          <li>Flexible scope — monthly retainer or per-project pricing</li>
+          <li>Priority scheduling and dedicated support</li>
+          <li>Co-authorship arrangements where appropriate (academic)</li>
+          <li>Confidential deliverables under NDA (industry)</li>
+          <li>Suitable for multi-paper projects and drug discovery pipelines</li>
+          <li>Teams building internal computational capacity</li>
+        </ul>
+        <div class="package-cta">
+          <a href="https://mannaomics.com/#contact" class="btn btn-outline" style="width: 100%; justify-content: center;">Discuss Terms &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-inner">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title">What to Expect</h2>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          How long does a typical MD project take?
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </button>
+        <div class="faq-answer" role="region">
+          <div class="faq-answer-inner">A single-system project (Starter package) typically takes 2–4 weeks from system setup to final report, depending on system complexity and simulation timescale. Comparative studies take 4–6 weeks. Projects involving enhanced sampling or FEP may require 6–8 weeks.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          I don't have a crystal structure. Can you still help?
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </button>
+        <div class="faq-answer" role="region">
+          <div class="faq-answer-inner">Yes. We routinely work with homology models, AlphaFold predictions, and cryo-EM structures. We assess model quality and apply appropriate validation before simulations. If your structure has gaps or unresolved regions, we handle the reconstruction.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          What if I just need the analysis, not the simulations?
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </button>
+        <div class="faq-answer" role="region">
+          <div class="faq-answer-inner">We offer analysis-only services. If you or your collaborator have already run simulations, send us the trajectories and we will perform the analysis and generate publication-ready outputs.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Can your results be used directly in a publication or report?
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </button>
+        <div class="faq-answer" role="region">
+          <div class="faq-answer-inner">That is the explicit goal. For academic clients, every deliverable — figures, analysis, methods text — is designed to go directly into a manuscript or thesis. We also support reviewer response if computational methods are questioned during peer review. For industry clients, deliverables are formatted as internal technical reports with the same rigor and detail.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Do you offer co-authorship?
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </button>
+        <div class="faq-answer" role="region">
+          <div class="faq-answer-inner">For academic projects involving substantial intellectual contribution — experimental design, interpretation, manuscript writing — co-authorship is discussed upfront and follows standard academic norms. For straightforward service work, acknowledgment is sufficient. For industry clients, all work is delivered under service agreements with full IP clarity. Terms are agreed before work begins.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Is my data confidential?
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </button>
+        <div class="faq-answer" role="region">
+          <div class="faq-answer-inner">Yes. For industry and commercial clients, we work under NDAs and maintain strict confidentiality of all proprietary structures, sequences, and results. For academic clients, we follow standard collaborative norms and do not share data outside the project.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          What do you need from me to start?
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </button>
+        <div class="faq-answer" role="region">
+          <div class="faq-answer-inner">At minimum: your scientific question, the relevant structure(s) (PDB ID, file, or sequence), and any specific conditions or variables you want tested. We handle everything else.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          I am a graduate student. Can I afford this?
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </button>
+        <div class="faq-answer" role="region">
+          <div class="faq-answer-inner">We offer flexible pricing for student projects and understand the budget constraints of academic work. A focused Starter package for a thesis chapter is significantly more accessible than you might expect. Reach out and we will work something out.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Can you respond to a reviewer's request for additional simulations?
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </button>
+        <div class="faq-answer" role="region">
+          <div class="faq-answer-inner">Absolutely — this is one of our most common project types. Reviewers requesting MD validation, additional replicates, or specific analyses is exactly the kind of work we handle quickly and efficiently.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Can you support industry R&D under confidentiality agreements?
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </button>
+        <div class="faq-answer" role="region">
+          <div class="faq-answer-inner">Yes. We routinely work under NDAs and can deliver results as confidential technical reports without any public disclosure. Timelines and deliverables are scoped to match your R&D milestones.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="section-inner">
+    <div class="cta-box reveal">
+      <div class="section-label" style="text-align: center;">Get Started</div>
+      <h2 class="section-title">Ready to Simulate?</h2>
+      <p>Have a scientific question that needs computational insight? Whether you are a PI planning a publication, a graduate student needing thesis support, or an R&D team evaluating molecular candidates — share your system, your hypothesis, or your challenge, and we will design the right simulation strategy to get you answers.</p>
+      <a href="mailto:info@mannaomics.com" class="btn btn-primary" style="font-size: 1rem; padding: 1rem 2.5rem;">
+        <i class="fas fa-envelope"></i> Discuss Your Project
+      </a>
+      <p class="cta-secondary">Typical response time: 48 hours. All enquiries welcome — from a single-protein student project to enterprise-scale drug discovery campaigns.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <a href="https://mannaomics.com" class="logo">Manna <span>Omics</span> Solutions</a>
+  <p class="footer-tagline">From Atoms to Systems</p>
+  <div class="footer-links">
+    <a href="https://mannaomics.com/#about">About</a>
+    <a href="https://mannaomics.com/#services">Services</a>
+    <a href="https://mannaomics.com/#case-studies">Case Studies</a>
+    <a href="https://mannaomics.com/#tools">Expertise</a>
+    <a href="https://mannaomics.com/#publications">Publications</a>
+    <a href="https://mannaomics.com/#founder">Founder</a>
+    <a href="https://mannaomics.com/#contact">Contact</a>
+  </div>
+  <p style="font-size: 0.75rem; opacity: 0.6; margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.08); line-height: 1.6;">
+    <strong style="opacity: 0.85;">Registered Micro, Small &amp; Medium Enterprise (MSME)</strong><br>
+    Ministry of MSME, Government of India &nbsp;|&nbsp; Udyam: UDYAM-WB-12-0147213
+  </p>
+  <p style="font-size: 0.75rem; opacity: 0.4; margin-top: 0.75rem;">&copy; 2026 Manna Omics Solutions. All rights reserved.</p>
+</footer>
+
+<script>
+// ── Mobile nav ──
+document.querySelector('.mobile-toggle').addEventListener('click', function () {
+  document.getElementById('navLinks').classList.toggle('active');
+});
+
+// ── Scroll reveal ──
+const revealEls = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08 });
+revealEls.forEach(el => observer.observe(el));
+
+// ── FAQ accordion ──
+document.querySelectorAll('.faq-question').forEach(btn => {
+  btn.addEventListener('click', function () {
+    const item = this.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    // close all
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    // open clicked if it was closed
+    if (!isOpen) item.classList.add('open');
+    this.setAttribute('aria-expanded', !isOpen);
+  });
+});
+
+// ── Button ripple ──
+document.querySelectorAll('.btn').forEach(btn => {
+  btn.addEventListener('click', function (e) {
+    const r = document.createElement('span');
+    r.className = 'ripple';
+    const rect = this.getBoundingClientRect();
+    const size = Math.max(rect.width, rect.height);
+    r.style.cssText = `width:${size}px;height:${size}px;left:${e.clientX - rect.left - size/2}px;top:${e.clientY - rect.top - size/2}px`;
+    this.appendChild(r);
+    r.addEventListener('animationend', () => r.remove());
+  });
+});
+
+// ── Nav scroll highlight ──
+window.addEventListener('scroll', () => {
+  const sections = document.querySelectorAll('section[id], div[id="top"]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  let current = '';
+  sections.forEach(sec => {
+    if (window.scrollY >= sec.offsetTop - 120) current = sec.id;
+  });
+  navLinks.forEach(a => {
+    a.classList.remove('active');
+    if (a.getAttribute('href').includes(current) && current) a.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>

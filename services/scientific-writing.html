@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scientific Writing and Grant Support | Manna Omics Solutions</title>
+<meta name="description" content="Manuscript writing, thesis support, grant proposal development, scientific editing, reviewer response, publication figures, PhD thesis, and computational methods sections.">
+<meta property="og:title" content="Scientific Writing and Grant Support | Manna Omics Solutions">
+<meta property="og:description" content="End-to-end scientific writing and grant support — manuscripts, theses, grant proposals, figure design, and reviewer responses for researchers, students, and industry teams.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mannaomics.com/services/scientific-writing">
+<link rel="canonical" href="https://mannaomics.com/services/scientific-writing">
+<link rel="icon" type="image/png" href="../logo-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700&family=Playfair+Display:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root {
+  --bg-primary: #0a0f1a;
+  --bg-secondary: #111827;
+  --bg-card: #1a2236;
+  --bg-card-hover: #1f2a42;
+  --accent-teal: #2dd4bf;
+  --accent-teal-dim: rgba(45, 212, 191, 0.15);
+  --accent-blue: #3b82f6;
+  --accent-violet: #8b5cf6;
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --border: rgba(148, 163, 184, 0.1);
+  --gradient-hero: linear-gradient(135deg, #0a0f1a 0%, #1a1040 50%, #0a0f1a 100%);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ===== NAV ===== */
+nav {
+  position: fixed; top: 0; width: 100%; z-index: 100;
+  padding: 1rem 0;
+  background: rgba(10,15,26,0.8);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  transition: all 0.3s ease;
+}
+.nav-inner {
+  max-width: 1200px; margin: 0 auto;
+  padding: 0 2rem;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem; font-weight: 600;
+  color: var(--text-primary); text-decoration: none; letter-spacing: 0.5px;
+}
+.logo span { color: var(--accent-teal); }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+  color: var(--text-secondary); text-decoration: none;
+  font-size: 0.9rem; font-weight: 500;
+  transition: color 0.3s; letter-spacing: 0.3px; position: relative;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -3px; left: 0;
+  width: 100%; height: 2px; background: var(--accent-teal);
+  border-radius: 2px; transform: scaleX(0); transform-origin: left;
+  transition: transform 0.25s ease-out;
+}
+.nav-links a:hover { color: var(--accent-teal); }
+.nav-links a:hover::after { transform: scaleX(1); }
+.mobile-toggle {
+  display: none; background: none; border: none;
+  color: var(--text-primary); font-size: 1.5rem; cursor: pointer;
+}
+
+/* ===== HERO ===== */
+.page-hero {
+  padding: 10rem 2rem 6rem;
+  background: var(--gradient-hero);
+  position: relative; overflow: hidden;
+}
+.hero-bg-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(45,212,191,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(45,212,191,0.03) 1px, transparent 1px);
+  background-size: 60px 60px; pointer-events: none;
+}
+.hero-glow {
+  position: absolute; width: 600px; height: 600px;
+  border-radius: 50%; filter: blur(120px); opacity: 0.12; pointer-events: none;
+}
+.glow-1 { background: var(--accent-teal); top: -200px; right: -100px; animation: floatOrb 14s ease-in-out infinite; }
+.glow-2 { background: var(--accent-violet); bottom: -200px; left: -100px; animation: floatOrb 18s ease-in-out infinite reverse; }
+@keyframes floatOrb {
+  0%,100% { transform: translate(0,0); }
+  40%      { transform: translate(40px,-25px); }
+  70%      { transform: translate(-20px,20px); }
+}
+.page-hero-inner {
+  max-width: 900px; margin: 0 auto;
+  position: relative; z-index: 2;
+}
+.hero-badge {
+  display: inline-block;
+  padding: 0.4rem 1.2rem;
+  border: 1px solid rgba(45,212,191,0.3);
+  border-radius: 50px; font-size: 0.8rem;
+  color: var(--accent-teal); letter-spacing: 2px;
+  text-transform: uppercase; margin-bottom: 2rem;
+  background: var(--accent-teal-dim);
+}
+.page-hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 700; line-height: 1.15;
+  margin-bottom: 1rem; letter-spacing: -0.5px;
+}
+.page-hero h1 .highlight {
+  background: linear-gradient(135deg, var(--accent-teal), var(--accent-blue));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.page-hero .tagline {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem; font-style: italic;
+  color: var(--text-secondary); margin-bottom: 1.5rem;
+}
+.page-hero .intro {
+  font-size: 1.05rem; color: var(--text-secondary);
+  line-height: 1.85; max-width: 780px;
+  text-align: justify; overflow-wrap: break-word; word-break: break-word;
+}
+.hero-cta { display: flex; gap: 1rem; margin-top: 2.5rem; flex-wrap: wrap; }
+
+/* ===== BUTTONS ===== */
+.btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.85rem 2rem; border-radius: 8px;
+  font-size: 0.95rem; font-weight: 600;
+  text-decoration: none; transition: all 0.3s ease;
+  cursor: pointer; border: none;
+  font-family: 'DM Sans', sans-serif;
+  position: relative; overflow: hidden;
+}
+.btn-primary { background: var(--accent-teal); color: var(--bg-primary); }
+.btn-primary:hover { background: #5eead4; transform: translateY(-2px); box-shadow: 0 8px 30px rgba(45,212,191,0.3); }
+.btn-outline { border: 1px solid var(--border); color: var(--text-primary); background: transparent; }
+.btn-outline:hover { border-color: var(--accent-teal); color: var(--accent-teal); transform: translateY(-2px); }
+.btn .ripple {
+  position: absolute; border-radius: 50%;
+  background: rgba(255,255,255,0.2); transform: scale(0);
+  animation: rippleAnim 0.55s ease-out forwards; pointer-events: none;
+}
+@keyframes rippleAnim { to { transform: scale(4); opacity: 0; } }
+
+/* ===== SECTIONS ===== */
+section { padding: 6rem 2rem; }
+.section-inner { max-width: 1200px; margin: 0 auto; }
+.section-label {
+  font-size: 0.8rem; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--accent-teal);
+  font-weight: 600; margin-bottom: 1rem;
+}
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 600; margin-bottom: 1rem; line-height: 1.3;
+}
+.section-desc {
+  color: var(--text-secondary); font-size: 1.05rem;
+  line-height: 1.85; text-align: justify;
+  overflow-wrap: break-word; word-break: break-word;
+}
+
+/* ===== SERVICE CATEGORIES ===== */
+#services-detail {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.service-category { margin-top: 3.5rem; }
+.service-category:first-of-type { margin-top: 3rem; }
+
+.category-header {
+  display: flex; align-items: center; gap: 1rem;
+  margin-bottom: 1.5rem; padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+.category-icon {
+  width: 44px; height: 44px; border-radius: 10px;
+  background: var(--accent-teal-dim);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem; color: var(--accent-teal); flex-shrink: 0;
+}
+.category-header h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.35rem; font-weight: 600; color: var(--text-primary);
+}
+
+.service-cards-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem;
+}
+.service-cards-grid.three-col { grid-template-columns: repeat(3, 1fr); }
+
+.service-item {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 14px; padding: 1.6rem;
+  transition: all 0.35s ease; position: relative; overflow: hidden;
+}
+.service-item::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--accent-teal), var(--accent-blue));
+  opacity: 0; transition: opacity 0.3s;
+}
+.service-item:hover {
+  background: var(--bg-card-hover);
+  border-color: rgba(45,212,191,0.2);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(45,212,191,0.1);
+}
+.service-item:hover::before { opacity: 1; }
+.service-item h4 {
+  font-size: 1rem; font-weight: 600;
+  color: var(--accent-teal); margin-bottom: 0.6rem;
+}
+.service-item p {
+  font-size: 0.9rem; color: var(--text-secondary);
+  line-height: 1.75; text-align: justify;
+  overflow-wrap: break-word; word-break: break-word;
+}
+.service-item .cross-link {
+  display: inline-block; margin-top: 0.75rem;
+  font-size: 0.82rem; color: var(--accent-teal);
+  text-decoration: none; opacity: 0.8; transition: opacity 0.2s;
+}
+.service-item .cross-link:hover { opacity: 1; }
+
+/* ===== STUDENT CALLOUT ===== */
+.student-callout {
+  margin-top: 3rem;
+  background: linear-gradient(135deg, rgba(45,212,191,0.06), rgba(139,92,246,0.06));
+  border: 1px solid rgba(45,212,191,0.2);
+  border-radius: 16px;
+  padding: 1.8rem 2rem;
+  display: flex; align-items: flex-start; gap: 1.2rem;
+}
+.student-callout .callout-icon {
+  font-size: 1.5rem; color: var(--accent-teal); flex-shrink: 0; margin-top: 0.1rem;
+}
+.student-callout h4 {
+  font-size: 1rem; font-weight: 600;
+  color: var(--text-primary); margin-bottom: 0.4rem;
+}
+.student-callout p {
+  font-size: 0.9rem; color: var(--text-secondary); line-height: 1.75;
+}
+
+/* ===== DELIVERABLES ===== */
+#deliverables { background: var(--bg-primary); }
+
+.deliverables-tabs {
+  display: flex; gap: 0.5rem; margin-top: 3rem; margin-bottom: 2rem; flex-wrap: wrap;
+}
+.tab-btn {
+  padding: 0.5rem 1.2rem;
+  border: 1px solid var(--border);
+  border-radius: 50px;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 0.88rem; font-weight: 500;
+  cursor: pointer; font-family: 'DM Sans', sans-serif;
+  transition: all 0.25s;
+}
+.tab-btn:hover { border-color: var(--accent-teal); color: var(--accent-teal); }
+.tab-btn.active {
+  background: var(--accent-teal-dim);
+  border-color: rgba(45,212,191,0.4);
+  color: var(--accent-teal);
+}
+
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+.deliverable-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;
+}
+
+.deliverable-item {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 12px; padding: 1.2rem 1.5rem;
+  display: flex; gap: 1rem; align-items: flex-start;
+  transition: all 0.3s ease;
+}
+.deliverable-item:hover { border-color: rgba(45,212,191,0.25); transform: translateX(4px); }
+.deliverable-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.1rem; font-weight: 600;
+  color: var(--accent-teal); min-width: 28px; opacity: 0.7;
+}
+.deliverable-text h4 {
+  font-size: 0.95rem; font-weight: 600;
+  color: var(--text-primary); margin-bottom: 0.3rem;
+}
+.deliverable-text p {
+  font-size: 0.85rem; color: var(--text-secondary);
+  line-height: 1.65; text-align: justify;
+  overflow-wrap: break-word; word-break: break-word;
+}
+
+/* ===== WORKFLOW ===== */
+#workflow {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.workflow-steps {
+  display: flex; flex-direction: column;
+  margin-top: 3rem; position: relative;
+}
+.workflow-steps::before {
+  content: ''; position: absolute;
+  left: 26px; top: 26px; bottom: 26px; width: 2px;
+  background: linear-gradient(180deg, var(--accent-teal), var(--accent-blue), var(--accent-violet));
+  opacity: 0.25;
+}
+.workflow-step {
+  display: flex; gap: 1.5rem; align-items: flex-start;
+  padding: 1.5rem 0; position: relative;
+}
+.step-num {
+  width: 52px; height: 52px; border-radius: 50%;
+  background: var(--bg-card);
+  border: 2px solid rgba(45,212,191,0.3);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1rem; font-weight: 600;
+  color: var(--accent-teal); flex-shrink: 0; z-index: 1; transition: all 0.3s;
+}
+.workflow-step:hover .step-num {
+  background: var(--accent-teal-dim);
+  border-color: var(--accent-teal);
+  box-shadow: 0 0 20px rgba(45,212,191,0.2);
+}
+.step-content { padding-top: 0.6rem; }
+.step-content h3 {
+  font-size: 1.05rem; font-weight: 600;
+  color: var(--text-primary); margin-bottom: 0.5rem;
+}
+.step-content p {
+  font-size: 0.9rem; color: var(--text-secondary);
+  line-height: 1.75; max-width: 680px;
+  text-align: justify; overflow-wrap: break-word; word-break: break-word;
+}
+
+/* ===== PACKAGES ===== */
+#packages {
+  background: var(--bg-primary);
+}
+.packages-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem; margin-top: 3rem;
+}
+.package-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 16px; padding: 2rem;
+  transition: all 0.35s ease; position: relative; overflow: hidden;
+  display: flex; flex-direction: column;
+}
+.package-card.featured {
+  border-color: rgba(45,212,191,0.35);
+  background: linear-gradient(145deg, #1a2236, #1a2a3a);
+}
+.package-card.featured::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--accent-teal), var(--accent-blue));
+}
+.package-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 50px rgba(45,212,191,0.1);
+  border-color: rgba(45,212,191,0.25);
+}
+.package-tag {
+  display: inline-block; padding: 0.25rem 0.8rem; border-radius: 50px;
+  font-size: 0.72rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 1rem;
+  background: var(--accent-teal-dim); color: var(--accent-teal);
+  border: 1px solid rgba(45,212,191,0.25); width: fit-content;
+}
+.package-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem; font-weight: 600; margin-bottom: 0.4rem;
+}
+.package-best {
+  font-size: 0.85rem; color: var(--text-muted);
+  margin-bottom: 1.2rem; font-style: italic;
+}
+.package-includes {
+  list-style: none; display: flex; flex-direction: column;
+  gap: 0.5rem; flex: 1;
+}
+.package-includes li {
+  font-size: 0.9rem; color: var(--text-secondary);
+  padding-left: 1.4rem; position: relative; line-height: 1.6;
+}
+.package-includes li::before {
+  content: '✓'; position: absolute; left: 0;
+  color: var(--accent-teal); font-weight: 700; font-size: 0.85rem;
+}
+.package-cta { margin-top: 1.8rem; }
+
+/* ===== FAQ ===== */
+#faq {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.faq-list { margin-top: 3rem; display: flex; flex-direction: column; gap: 0.75rem; }
+.faq-item {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 12px; overflow: hidden; transition: border-color 0.3s;
+}
+.faq-item.open { border-color: rgba(45,212,191,0.25); }
+.faq-question {
+  width: 100%; background: none; border: none; text-align: left;
+  padding: 1.25rem 1.5rem; cursor: pointer;
+  display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+  font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 600;
+  color: var(--text-primary); transition: color 0.3s;
+}
+.faq-question:hover { color: var(--accent-teal); }
+.faq-icon { font-size: 1rem; color: var(--accent-teal); flex-shrink: 0; transition: transform 0.3s ease; }
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+.faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+.faq-item.open .faq-answer { max-height: 360px; }
+.faq-answer-inner {
+  padding: 0 1.5rem 1.25rem; font-size: 0.9rem;
+  color: var(--text-secondary); line-height: 1.8;
+  text-align: justify; overflow-wrap: break-word; word-break: break-word;
+}
+
+/* ===== CTA ===== */
+#cta { background: var(--bg-primary); }
+.cta-box { max-width: 720px; margin: 0 auto; text-align: center; }
+.cta-box .section-title { margin-bottom: 1rem; }
+.cta-box p { color: var(--text-secondary); font-size: 1.05rem; line-height: 1.85; margin-bottom: 2rem; }
+.cta-secondary { margin-top: 1.2rem; font-size: 0.88rem; color: var(--text-muted); }
+
+/* ===== FOOTER ===== */
+footer {
+  padding: 2rem; text-align: center;
+  border-top: 1px solid var(--border);
+  color: var(--text-muted); font-size: 0.85rem;
+}
+footer .logo { font-size: 1.2rem; display: block; margin-bottom: 0.5rem; }
+.footer-tagline { font-size: 0.9rem; opacity: 0.6; margin: 0.3rem 0 1rem; letter-spacing: 0.05em; }
+.footer-links {
+  display: flex; gap: 1.5rem; flex-wrap: wrap;
+  justify-content: center; margin-bottom: 1rem; font-size: 0.85rem;
+}
+.footer-links a { color: var(--text-muted); text-decoration: none; opacity: 0.7; transition: opacity 0.3s, color 0.3s; }
+.footer-links a:hover { opacity: 1; color: var(--accent-teal); }
+
+/* ===== SCROLL REVEAL ===== */
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.5s ease-out, transform 0.5s ease-out; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 968px) {
+  .service-cards-grid,
+  .service-cards-grid.three-col { grid-template-columns: 1fr; }
+  .deliverable-grid { grid-template-columns: 1fr; }
+  .packages-grid { grid-template-columns: 1fr; }
+  .student-callout { flex-direction: column; }
+}
+@media (max-width: 640px) {
+  .nav-links { display: none; }
+  .mobile-toggle { display: block; }
+  .nav-links.active {
+    display: flex; flex-direction: column;
+    position: absolute; top: 100%; left: 0; right: 0;
+    background: var(--bg-primary);
+    padding: 1rem 2rem; border-bottom: 1px solid var(--border);
+  }
+  section { padding: 4rem 1.5rem; }
+  .page-hero { padding: 8rem 1.5rem 4rem; }
+  .hero-cta { flex-direction: column; }
+  .deliverables-tabs { gap: 0.4rem; }
+  .workflow-steps::before { left: 24px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .glow-1, .glow-2 { animation: none; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+  <div class="nav-inner">
+    <a href="https://mannaomics.com" class="logo">
+      <img src="../logo-icon.png" alt="" style="height:36px;vertical-align:middle;margin-right:8px;">
+      Manna <span>Omics</span> Solutions
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="https://mannaomics.com/#about">About</a></li>
+      <li><a href="https://mannaomics.com/#services">Services</a></li>
+      <li><a href="https://mannaomics.com/#case-studies">Case Studies</a></li>
+      <li><a href="https://mannaomics.com/#tools">Expertise</a></li>
+      <li><a href="https://mannaomics.com/#publications">Publications</a></li>
+      <li><a href="https://mannaomics.com/#founder">Founder</a></li>
+      <li><a href="https://mannaomics.com/#contact">Contact</a></li>
+    </ul>
+    <button class="mobile-toggle" onclick="document.getElementById('navLinks').classList.toggle('active')">&#9776;</button>
+  </div>
+</nav>
+
+<!-- Hero -->
+<div class="page-hero" id="top">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-glow glow-1"></div>
+  <div class="hero-glow glow-2"></div>
+  <div class="page-hero-inner">
+    <div class="hero-badge">Scientific Communication &middot; Service</div>
+    <h1><span class="highlight">Scientific Writing</span><br>and Grant Support</h1>
+    <p class="tagline">Your science deserves to be read, funded, and cited — we make sure the writing matches the work.</p>
+    <p class="intro">Strong science fails when it is poorly communicated. We provide end-to-end scientific writing and grant support for researchers, students, and industry teams who need their computational or experimental results translated into clear, compelling, publication-ready documents. From structuring a first-author manuscript for a high-impact journal to architecting a grant proposal that wins funding, to guiding a PhD student through their thesis — we bring scientific rigor, editorial precision, and strategic framing to every document we touch.</p>
+    <div class="hero-cta">
+      <a href="#packages" class="btn btn-primary">View Packages</a>
+      <a href="https://mannaomics.com/#contact" class="btn btn-outline">Discuss Your Project</a>
+    </div>
+  </div>
+</div>
+
+<!-- Service Categories -->
+<section id="services-detail">
+  <div class="section-inner">
+    <div class="section-label">Capabilities</div>
+    <h2 class="section-title">What We Offer</h2>
+    <p class="section-desc">Five interconnected writing and communication services — from the first draft of a thesis chapter to the final revision of a grant resubmission. If you have used our computational services, this is the natural next step: turning rigorous analysis into published science.</p>
+
+    <!-- Manuscript -->
+    <div class="service-category reveal">
+      <div class="category-header">
+        <div class="category-icon"><i class="fas fa-file-lines"></i></div>
+        <h3>Manuscript Development</h3>
+      </div>
+      <div class="service-cards-grid">
+        <div class="service-item">
+          <h4>Full Manuscript Writing and Structuring</h4>
+          <p>We develop complete manuscripts from raw results to submission-ready drafts. This includes narrative structuring — building a logical storyline from introduction through discussion — figure planning, methods writing, results interpretation, and literature contextualization. We write for the target journal's scope, audience, and formatting requirements from the start.</p>
+          <a href="molecular-dynamics.html" class="cross-link">Using MD or omics results? We wrote them, we can write the paper &rarr;</a>
+        </div>
+        <div class="service-item">
+          <h4>Results Interpretation and Narrative Design</h4>
+          <p>You have the data and the figures but struggle with the "so what?" We take your results — tables, plots, simulation outputs, omics analyses — and build a coherent scientific narrative around them. What do the results mean? How do they advance the field? What is the story the reviewers and readers need to follow?</p>
+        </div>
+        <div class="service-item">
+          <h4>Methods Section Development</h4>
+          <p>Detailed, reproducible methods sections for computational studies — molecular dynamics protocols, bioinformatics pipelines, multi-omics workflows, statistical analyses. Written with the precision that reviewers expect: software versions, parameter settings, database versions, and appropriate citations. If your computational methods section is the weakest part of your manuscript, this fixes it.</p>
+        </div>
+        <div class="service-item">
+          <h4>Manuscript Revision and Rewriting</h4>
+          <p>Already have a draft that has been rejected or needs significant improvement? We restructure, rewrite, and strengthen existing manuscripts — tightening the narrative, improving figure–text integration, addressing logical gaps, and elevating the writing to publication standard.</p>
+        </div>
+        <div class="service-item" style="grid-column: 1 / -1;">
+          <h4>Reviewer Response and Rebuttal Letters</h4>
+          <p>Point-by-point responses to reviewer comments, with revised text, additional analyses where needed, and diplomatic but firm handling of unfair or incorrect criticisms. We help you respond strategically — knowing which battles to fight, which to concede, and how to frame revisions so the editor is satisfied.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Thesis -->
+    <div class="service-category reveal">
+      <div class="category-header">
+        <div class="category-icon"><i class="fas fa-graduation-cap"></i></div>
+        <h3>Thesis Writing and Support</h3>
+      </div>
+
+      <div class="student-callout">
+        <div class="callout-icon"><i class="fas fa-lightbulb"></i></div>
+        <div>
+          <h4>A note for students</h4>
+          <p>We work alongside you — not as a ghostwriter, but as a writing collaborator. The thinking, the science, and the intellectual content are yours. We help you structure it, communicate it clearly, and meet the standards that examiners and supervisors expect. Every interaction is a learning opportunity, not just a deliverable.</p>
+        </div>
+      </div>
+
+      <div class="service-cards-grid" style="margin-top: 1.5rem;">
+        <div class="service-item">
+          <h4>PhD Thesis</h4>
+          <p>Comprehensive support for doctoral thesis writing — from overall structure and chapter planning to individual chapter drafts, literature review development, methods documentation, results interpretation, and discussion synthesis. We work in iterative cycles with the student and supervisor to produce a thesis that meets institutional standards, impresses examiners, and forms the basis for strong publications.</p>
+        </div>
+        <div class="service-item">
+          <h4>Master's and Postgraduate Thesis</h4>
+          <p>Structured support for MSc and postgraduate dissertation writing. We help with defining the research narrative, organizing results into coherent chapters, writing or strengthening the methods and discussion sections, and ensuring the document is internally consistent and well-referenced.</p>
+        </div>
+        <div class="service-item">
+          <h4>Undergraduate Thesis and Final Year Projects</h4>
+          <p>Guidance for BTech, BSc, and other undergraduate final year projects. We help students structure their first substantial scientific document — developing a clear introduction, organizing results, writing a proper methods section, and producing a discussion that demonstrates critical thinking. This is often a student's first exposure to scientific writing, and we make it a learning experience.</p>
+        </div>
+        <div class="service-item">
+          <h4>Thesis-to-Publication Conversion</h4>
+          <p>We help convert thesis chapters into standalone journal manuscripts — restructuring the narrative, condensing content, selecting the right target journal, and reformatting to submission requirements. Many strong thesis chapters never get published simply because the student moves on. We bridge that gap.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Grant -->
+    <div class="service-category reveal">
+      <div class="category-header">
+        <div class="category-icon"><i class="fas fa-hand-holding-dollar"></i></div>
+        <h3>Grant Proposal Development</h3>
+      </div>
+      <div class="service-cards-grid three-col">
+        <div class="service-item">
+          <h4>Full Proposal Writing and Architecture</h4>
+          <p>We develop grant proposals from concept to submission-ready document — structuring the specific aims, building the research plan, writing the significance and innovation sections, developing the computational methodology, and ensuring internal consistency across the entire proposal. We write proposals that reviewers can follow, score well, and fund.</p>
+        </div>
+        <div class="service-item">
+          <h4>Specific Aims Page Development</h4>
+          <p>The single most important page of any grant proposal. We craft specific aims pages that clearly state the problem, articulate the gap, present the proposed approach, and define measurable outcomes — all within one page that makes the reviewer want to read more.</p>
+        </div>
+        <div class="service-item">
+          <h4>Computational Methodology Sections</h4>
+          <p>For grants that include computational or bioinformatics components, we write the methodology sections with the technical depth and rigor that specialist reviewers expect — simulation protocols, pipeline descriptions, validation strategies, benchmarking plans, and feasibility arguments.</p>
+        </div>
+        <div class="service-item">
+          <h4>Budget Justification for Computational Work</h4>
+          <p>We help justify computational resource requests — HPC allocations, software licenses, cloud computing costs, personnel time for bioinformatics — with the specificity and rationale that funding agencies require.</p>
+        </div>
+        <div class="service-item">
+          <h4>Resubmission Strategy and Revision</h4>
+          <p>Grant not funded on first attempt? We analyze reviewer critiques, develop a revision strategy, and rewrite the proposal addressing every concern while strengthening the overall narrative. Resubmissions that directly and visibly respond to reviewer feedback have significantly higher success rates.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Data Visualization -->
+    <div class="service-category reveal">
+      <div class="category-header">
+        <div class="category-icon"><i class="fas fa-chart-pie"></i></div>
+        <h3>Data Visualization and Figure Design</h3>
+      </div>
+      <div class="service-cards-grid">
+        <div class="service-item">
+          <h4>Publication-Quality Figure Design</h4>
+          <p>We create or redesign figures that communicate your data clearly and meet journal standards — proper resolution (300+ dpi), consistent styling, readable legends, colorblind-friendly color schemes, and statistical annotations. Delivered as editable vector files (SVG/PDF) and high-resolution rasters (PNG/TIFF).</p>
+        </div>
+        <div class="service-item">
+          <h4>Multi-Panel Figure Construction</h4>
+          <p>Complex multi-panel figures that integrate multiple data types — structural images alongside plots, omics heatmaps paired with pathway diagrams, MD trajectories with quantitative analyses — assembled into cohesive composite figures with consistent styling and logical flow.</p>
+        </div>
+        <div class="service-item">
+          <h4>Graphical Abstracts and Summary Figures</h4>
+          <p>Visual summaries for journal graphical abstracts, thesis overview figures, or grant proposal schematics. Designed to capture the core message of your work in a single compelling image that works for both specialist and non-specialist audiences.</p>
+        </div>
+        <div class="service-item">
+          <h4>Data Visualization Consulting</h4>
+          <p>Not sure how to present your results? We advise on the best visualization approaches for your data type — when to use a heatmap vs. a network, how to show temporal trends, how to display multi-omics integration results — and produce the figures to match.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Editing -->
+    <div class="service-category reveal">
+      <div class="category-header">
+        <div class="category-icon"><i class="fas fa-pen-to-square"></i></div>
+        <h3>Editing and Language Services</h3>
+      </div>
+      <div class="service-cards-grid three-col">
+        <div class="service-item">
+          <h4>Scientific Language Editing</h4>
+          <p>Line-by-line editing for clarity, grammar, precision, and flow. Particularly valuable for non-native English speakers preparing manuscripts for international journals. We preserve your scientific voice while ensuring the language meets publication standards.</p>
+        </div>
+        <div class="service-item">
+          <h4>Journal Selection and Formatting</h4>
+          <p>We advise on target journal selection based on your study's scope, novelty, and audience — and format the manuscript to the chosen journal's specific requirements: reference style, section structure, word limits, and figure specifications.</p>
+        </div>
+        <div class="service-item">
+          <h4>Cover Letter and Highlights Writing</h4>
+          <p>Compelling cover letters that frame your manuscript for the editor — why this study matters, why it fits this journal, and what the key findings are. We also write highlights, significance statements, and other journal-required summary elements.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Deliverables -->
+<section id="deliverables">
+  <div class="section-inner">
+    <div class="section-label">Outputs</div>
+    <h2 class="section-title">What You Receive</h2>
+    <p class="section-desc">Deliverables are tailored to the document type. Select below to see what is included for each service category.</p>
+
+    <div class="deliverables-tabs reveal">
+      <button class="tab-btn active" data-tab="manuscript">Manuscripts</button>
+      <button class="tab-btn" data-tab="thesis">Theses</button>
+      <button class="tab-btn" data-tab="grant">Grant Proposals</button>
+    </div>
+
+    <div id="tab-manuscript" class="tab-panel active reveal">
+      <div class="deliverable-grid">
+        <div class="deliverable-item">
+          <span class="deliverable-num">01</span>
+          <div class="deliverable-text">
+            <h4>Complete Manuscript Draft</h4>
+            <p>Structured, referenced, and formatted for the target journal. Delivered as an editable Word document with tracked changes where revisions are made to existing text.</p>
+          </div>
+        </div>
+        <div class="deliverable-item">
+          <span class="deliverable-num">02</span>
+          <div class="deliverable-text">
+            <h4>Figures and Visual Elements</h4>
+            <p>Publication-quality figures at journal-specified resolution. Delivered as editable vector files (SVG/PDF) and high-resolution rasters (PNG/TIFF).</p>
+          </div>
+        </div>
+        <div class="deliverable-item">
+          <span class="deliverable-num">03</span>
+          <div class="deliverable-text">
+            <h4>Cover Letter</h4>
+            <p>Tailored to the target journal and editor — framing the study's significance, novelty, and fit within one compelling page.</p>
+          </div>
+        </div>
+        <div class="deliverable-item">
+          <span class="deliverable-num">04</span>
+          <div class="deliverable-text">
+            <h4>Supplementary Materials</h4>
+            <p>Organized supplementary tables, figures, and methods sections as needed by the target journal.</p>
+          </div>
+        </div>
+        <div class="deliverable-item">
+          <span class="deliverable-num">05</span>
+          <div class="deliverable-text">
+            <h4>Revision Support</h4>
+            <p>Post-submission support through the first round of reviewer responses, included in full manuscript packages.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="tab-thesis" class="tab-panel reveal">
+      <div class="deliverable-grid">
+        <div class="deliverable-item">
+          <span class="deliverable-num">01</span>
+          <div class="deliverable-text">
+            <h4>Chapter Drafts or Revisions</h4>
+            <p>Delivered as tracked-change Word documents for student and supervisor review, with explanatory notes on editorial decisions.</p>
+          </div>
+        </div>
+        <div class="deliverable-item">
+          <span class="deliverable-num">02</span>
+          <div class="deliverable-text">
+            <h4>Structural Outline</h4>
+            <p>Full thesis structure with chapter summaries, ensuring logical flow and completeness before writing begins.</p>
+          </div>
+        </div>
+        <div class="deliverable-item">
+          <span class="deliverable-num">03</span>
+          <div class="deliverable-text">
+            <h4>Figure Package</h4>
+            <p>Consistent, high-quality figures across all chapters with unified styling, color scheme, and formatting.</p>
+          </div>
+        </div>
+        <div class="deliverable-item">
+          <span class="deliverable-num">04</span>
+          <div class="deliverable-text">
+            <h4>Reference Management</h4>
+            <p>Properly formatted bibliography in the institution's required citation style, with consistency checks across all chapters.</p>
+          </div>
+        </div>
+        <div class="deliverable-item">
+          <span class="deliverable-num">05</span>
+          <div class="deliverable-text">
+            <h4>Pre-Submission Review</h4>
+            <p>Final read-through for consistency, formatting, and completeness before the student submits to their institution.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="tab-grant" class="tab-panel reveal">
+      <div class="deliverable-grid">
+        <div class="deliverable-item">
+          <span class="deliverable-num">01</span>
+          <div class="deliverable-text">
+            <h4>Complete Proposal Document</h4>
+            <p>All sections written and internally consistent, formatted to the funding agency's specifications and page limits.</p>
+          </div>
+        </div>
+        <div class="deliverable-item">
+          <span class="deliverable-num">02</span>
+          <div class="deliverable-text">
+            <h4>Specific Aims Page</h4>
+            <p>Standalone, polished, and ready for pre-submission feedback from mentors and colleagues — the make-or-break page of any proposal.</p>
+          </div>
+        </div>
+        <div class="deliverable-item">
+          <span class="deliverable-num">03</span>
+          <div class="deliverable-text">
+            <h4>Budget Justification</h4>
+            <p>Clear, defensible justification for all computational resource and personnel requests, written in the language funding agencies expect.</p>
+          </div>
+        </div>
+        <div class="deliverable-item">
+          <span class="deliverable-num">04</span>
+          <div class="deliverable-text">
+            <h4>Revision Track Document</h4>
+            <p>For resubmissions, a tracked document showing exactly how each reviewer concern was addressed — making it easy for reviewers to see the changes.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Workflow -->
+<section id="workflow">
+  <div class="section-inner">
+    <div class="section-label">Process</div>
+    <h2 class="section-title">How We Work</h2>
+    <p class="section-desc">A structured process that turns raw materials into submission-ready documents — with strategic planning before writing begins and support continuing after delivery.</p>
+
+    <div class="workflow-steps">
+      <div class="workflow-step reveal">
+        <div class="step-num">01</div>
+        <div class="step-content">
+          <h3>Intake and Scoping</h3>
+          <p>You share your raw materials — data, figures, existing drafts, thesis chapters, grant call details — along with the target (journal, funding agency, institution). We assess the current state, define the scope of work, and agree on timeline and deliverables before anything is written.</p>
+        </div>
+      </div>
+      <div class="workflow-step reveal">
+        <div class="step-num">02</div>
+        <div class="step-content">
+          <h3>Strategic Planning</h3>
+          <p>Before any writing begins, we plan. For manuscripts: define the narrative arc, plan the figure sequence, identify the target journal. For theses: map the chapter structure, identify gaps, establish the connecting thread. For grants: analyze the call requirements, define the specific aims, and outline the proposal architecture.</p>
+        </div>
+      </div>
+      <div class="workflow-step reveal">
+        <div class="step-num">03</div>
+        <div class="step-content">
+          <h3>Writing and Development</h3>
+          <p>We write, revise, or restructure the document according to the agreed plan. For collaborative projects, we work in iterative cycles — you review, we revise, until the document meets your expectations. For student projects, each cycle is also a learning opportunity where we explain the reasoning behind editorial decisions.</p>
+        </div>
+      </div>
+      <div class="workflow-step reveal">
+        <div class="step-num">04</div>
+        <div class="step-content">
+          <h3>Figure and Visual Development</h3>
+          <p>Figures are created or refined in parallel with the text. We ensure figure–text integration — every figure is referenced, explained, and contextualized in the narrative. No orphan figures, no unexplained panels.</p>
+        </div>
+      </div>
+      <div class="workflow-step reveal">
+        <div class="step-num">05</div>
+        <div class="step-content">
+          <h3>Final Review and Delivery</h3>
+          <p>Complete read-through for internal consistency, reference accuracy, formatting compliance, and logical flow. The final document is delivered in the required format with all supporting materials organized and ready for submission.</p>
+        </div>
+      </div>
+      <div class="workflow-step reveal">
+        <div class="step-num">06</div>
+        <div class="step-content">
+          <h3>Post-Delivery Support</h3>
+          <p>For manuscripts: reviewer response support through the first revision round. For grants: revisions based on internal feedback before submission. For theses: available for pre-defense questions and last-minute corrections.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Packages -->
+<section id="packages">
+  <div class="section-inner">
+    <div class="section-label">Pricing</div>
+    <h2 class="section-title">Standard Packages</h2>
+    <p class="section-desc">Four tiers matched to the scope of your writing project — from a targeted methods and figures package to full grant proposal development. All packages include editable source files and post-delivery revision support. Pricing provided upon consultation.</p>
+
+    <div class="packages-grid">
+      <div class="package-card reveal">
+        <div class="package-tag">Starter</div>
+        <h3>Methods and Figure Package</h3>
+        <p class="package-best">Best for: A researcher who has a manuscript mostly written but needs a rigorous computational methods section and publication-quality figures.</p>
+        <ul class="package-includes">
+          <li>Computational methods section writing or rewriting</li>
+          <li>Up to 5 publication-quality figures (creation or redesign)</li>
+          <li>Reference formatting check for the methods section</li>
+          <li>One round of revisions</li>
+        </ul>
+        <div class="package-cta">
+          <a href="https://mannaomics.com/#contact" class="btn btn-outline" style="width:100%;justify-content:center;">Get a Quote &rarr;</a>
+        </div>
+      </div>
+
+      <div class="package-card featured reveal">
+        <div class="package-tag">Standard</div>
+        <h3>Full Manuscript Development</h3>
+        <p class="package-best">Best for: Researchers with complete results who need the manuscript written, structured, and prepared for submission.</p>
+        <ul class="package-includes">
+          <li>Full manuscript writing (Introduction through Discussion)</li>
+          <li>Figure design and multi-panel figure construction</li>
+          <li>Target journal recommendation and formatting</li>
+          <li>Cover letter and highlights</li>
+          <li>Supplementary materials organization</li>
+          <li>One round of post-submission reviewer response support</li>
+        </ul>
+        <div class="package-cta">
+          <a href="https://mannaomics.com/#contact" class="btn btn-primary" style="width:100%;justify-content:center;">Get a Quote &rarr;</a>
+        </div>
+      </div>
+
+      <div class="package-card reveal">
+        <div class="package-tag">Thesis</div>
+        <h3>Chapter or Full Thesis Support</h3>
+        <p class="package-best">Best for: Undergraduate, Master's, or PhD students who need structured writing support for their thesis or dissertation.</p>
+        <ul class="package-includes">
+          <li>Thesis structure planning and chapter outlining</li>
+          <li>Writing or revision of individual chapters (or full thesis)</li>
+          <li>Figure design consistent across all chapters</li>
+          <li>Reference management and bibliography formatting</li>
+          <li>Pre-submission review for consistency and completeness</li>
+          <li>Priced per chapter or as a full thesis package</li>
+        </ul>
+        <div class="package-cta">
+          <a href="https://mannaomics.com/#contact" class="btn btn-outline" style="width:100%;justify-content:center;">Get a Quote &rarr;</a>
+        </div>
+      </div>
+
+      <div class="package-card reveal">
+        <div class="package-tag">Grant</div>
+        <h3>Full Grant Proposal Development</h3>
+        <p class="package-best">Best for: PIs and research teams preparing proposals for national or international funding agencies.</p>
+        <ul class="package-includes">
+          <li>Specific aims page development</li>
+          <li>Full research plan (significance, innovation, approach)</li>
+          <li>Computational methodology sections</li>
+          <li>Budget justification for computational components</li>
+          <li>Internal review and revision cycles</li>
+          <li>Resubmission support (if applicable)</li>
+        </ul>
+        <div class="package-cta">
+          <a href="https://mannaomics.com/#contact" class="btn btn-outline" style="width:100%;justify-content:center;">Get a Quote &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="package-card reveal" style="margin-top:1.5rem;">
+      <div class="package-tag">Custom</div>
+      <h3>Ongoing Writing Partner</h3>
+      <p class="package-best">Best for: Labs, departments, or companies that produce multiple manuscripts, theses, or proposals per year and want a dedicated writing partner.</p>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:0.5rem 2rem;">
+        <ul class="package-includes">
+          <li>Monthly retainer or per-document pricing</li>
+          <li>Priority scheduling and consistent editorial voice across all documents</li>
+          <li>Suitable for multi-author labs and R&D teams with regular publication output</li>
+        </ul>
+        <ul class="package-includes">
+          <li>Co-authorship where intellectual contribution warrants it</li>
+          <li>Acknowledgment for editorial and language service work</li>
+          <li>Graduate program support for departments with multiple student theses per year</li>
+        </ul>
+      </div>
+      <div class="package-cta">
+        <a href="https://mannaomics.com/#contact" class="btn btn-outline" style="width:fit-content;">Discuss Terms &rarr;</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-inner">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title">What to Expect</h2>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          How long does it take to write a full manuscript?
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">A complete manuscript from results to submission-ready draft typically takes 3–6 weeks, depending on the complexity of the study and the completeness of the data provided. Simpler studies with clean data move faster. Multi-omics or multi-method papers take longer. We confirm the timeline during scoping.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          How long does thesis support take?
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">This depends on the scope. A single chapter revision typically takes 1–2 weeks. A full PhD thesis, working in iterative cycles with the student and supervisor, typically takes 2–4 months. We work on the student's timeline and adapt to institutional deadlines.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Is this ghostwriting?
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">No. For student theses, we work alongside the student — structuring, guiding, revising, and teaching. The student does the thinking and produces the content; we help them communicate it effectively. For manuscripts and grants, we function as a scientific writing collaborator — similar to how a senior co-author contributes to manuscript development. The intellectual content comes from you; we ensure it is presented with clarity, rigor, and strategic framing.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          I am a non-native English speaker. Can you help?
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">Absolutely. A large part of our editing work involves improving manuscripts written by researchers for whom English is not their first language. We improve clarity, grammar, and flow while preserving your scientific voice and meaning. We do not anglicize your writing — we make it clear and precise.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Can you help with journals I have already been rejected from?
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">Yes. We analyze the rejection feedback (if available), assess whether the manuscript can be improved for resubmission to the same journal or should be redirected to a better-fit journal, and rewrite or restructure accordingly. Many strong studies get rejected because of presentation, not science.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Which funding agencies do you have experience with?
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">We have experience with proposals for DST (SERB, Inspire), ICMR, DBT, and international agencies including NIH-style formats, Wellcome Trust, and EU frameworks. The core principles of grant writing — clear aims, strong rationale, feasible methodology, measurable outcomes — are universal. We adapt the format and language to each agency's requirements.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Can you write the computational methods for a grant if I handle the rest?
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">Yes. This is one of our most common grant support requests. Many PIs can write their experimental sections confidently but struggle with the computational methodology — how to describe MD protocols, bioinformatics pipelines, or multi-omics integration plans in a way that satisfies specialist reviewers. We fill that gap.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Can you help with a reviewer response?
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">Yes, and we strongly recommend engaging us for this if the reviewer concerns involve computational methods. We draft point-by-point rebuttals, suggest additional analyses where needed, and help frame revisions diplomatically. We also know when a reviewer is wrong and how to push back respectfully.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          I am an undergraduate writing my first thesis. Is this service for me?
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">Yes. We specifically offer support for undergraduate final year projects and BTech/BSc theses. If this is your first time writing a scientific document, we help you learn the structure, the conventions, and the thinking behind scientific writing — not just produce a document for you.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Do you offer co-authorship for writing support?
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">For projects where we contribute intellectually — shaping the narrative, interpreting results, designing figures that convey new insight — co-authorship is discussed upfront following standard academic norms (ICMJE guidelines). For editorial and language services, acknowledgment is appropriate. This is always agreed before work begins.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Is my work confidential?
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">Yes. All manuscripts, thesis drafts, grant proposals, and unpublished data shared with us are treated as strictly confidential. We do not share, reuse, or reference your work without explicit permission. For industry clients, we work under NDAs.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Can you format my manuscript for a specific journal?
+          <span class="faq-icon"><i class="fas fa-plus"></i></span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">Yes. We format manuscripts to the exact specifications of your target journal — reference style, section structure, word and character limits, figure sizing, and supplementary material organization. If the manuscript needs to be redirected to a different journal after rejection, we reformat accordingly.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="section-inner">
+    <div class="cta-box reveal">
+      <div class="section-label" style="text-align:center;">Get Started</div>
+      <h2 class="section-title">Ready to Write, Submit, or Fund?</h2>
+      <p>Have results waiting to become a manuscript? A thesis deadline approaching? A grant call you want to respond to? Share your current materials and your target, and we will map out the path from where you are to where you need to be.</p>
+      <a href="mailto:info@mannaomics.com" class="btn btn-primary" style="font-size:1rem;padding:1rem 2.5rem;">
+        <i class="fas fa-envelope"></i> Discuss Your Project
+      </a>
+      <p class="cta-secondary">Typical response time: 48 hours. We support manuscripts, theses, and grants across all scientific disciplines with computational or bioinformatics components.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <a href="https://mannaomics.com" class="logo">Manna <span>Omics</span> Solutions</a>
+  <p class="footer-tagline">From Atoms to Systems</p>
+  <div class="footer-links">
+    <a href="https://mannaomics.com/#about">About</a>
+    <a href="https://mannaomics.com/#services">Services</a>
+    <a href="https://mannaomics.com/#case-studies">Case Studies</a>
+    <a href="https://mannaomics.com/#tools">Expertise</a>
+    <a href="https://mannaomics.com/#publications">Publications</a>
+    <a href="https://mannaomics.com/#founder">Founder</a>
+    <a href="https://mannaomics.com/#contact">Contact</a>
+  </div>
+  <p style="font-size:0.75rem;opacity:0.6;margin-top:1.5rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.08);line-height:1.6;">
+    <strong style="opacity:0.85;">Registered Micro, Small &amp; Medium Enterprise (MSME)</strong><br>
+    Ministry of MSME, Government of India &nbsp;|&nbsp; Udyam: UDYAM-WB-12-0147213
+  </p>
+  <p style="font-size:0.75rem;opacity:0.4;margin-top:0.75rem;">&copy; 2026 Manna Omics Solutions. All rights reserved.</p>
+</footer>
+
+<script>
+// ── Mobile nav ──
+document.querySelector('.mobile-toggle').addEventListener('click', function () {
+  document.getElementById('navLinks').classList.toggle('active');
+});
+
+// ── Scroll reveal ──
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ── Deliverables tabs ──
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', function () {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    this.classList.add('active');
+    const panel = document.getElementById('tab-' + this.dataset.tab);
+    if (panel) panel.classList.add('active');
+  });
+});
+
+// ── FAQ accordion ──
+document.querySelectorAll('.faq-question').forEach(btn => {
+  btn.addEventListener('click', function () {
+    const item = this.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+    this.setAttribute('aria-expanded', !isOpen);
+  });
+});
+
+// ── Button ripple ──
+document.querySelectorAll('.btn').forEach(btn => {
+  btn.addEventListener('click', function (e) {
+    const r = document.createElement('span');
+    r.className = 'ripple';
+    const rect = this.getBoundingClientRect();
+    const size = Math.max(rect.width, rect.height);
+    r.style.cssText = `width:${size}px;height:${size}px;left:${e.clientX-rect.left-size/2}px;top:${e.clientY-rect.top-size/2}px`;
+    this.appendChild(r);
+    r.addEventListener('animationend', () => r.remove());
+  });
+});
+
+// ── Nav scroll highlight ──
+window.addEventListener('scroll', () => {
+  const sections = document.querySelectorAll('section[id], div[id="top"]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  let current = '';
+  sections.forEach(sec => { if (window.scrollY >= sec.offsetTop - 120) current = sec.id; });
+  navLinks.forEach(a => {
+    a.classList.remove('active');
+    if (a.getAttribute('href').includes(current) && current) a.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
