@@ -254,6 +254,11 @@ footer .logo { font-size: 1.2rem; display: block; margin-bottom: 0.5rem; text-de
 }
 .footer-links a { color: var(--text-muted); text-decoration: none; opacity: 0.7; transition: opacity 0.3s, color 0.3s; }
 .footer-links a:hover { opacity: 1; color: var(--accent-teal); }
+.visitor-counter { display: inline-flex; flex-direction: column; align-items: center; gap: 0.45rem; margin: 1rem auto 0.4rem; }
+.digit-display { display: flex; gap: 5px; }
+.digit-box { width: 38px; height: 50px; background: rgba(45,212,191,0.06); border: 1px solid rgba(45,212,191,0.28); border-radius: 7px; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 1.45rem; font-weight: 600; color: var(--accent-teal); box-shadow: 0 0 14px rgba(45,212,191,0.08), inset 0 1px 0 rgba(45,212,191,0.1); position: relative; }
+.digit-box::after { content: ''; position: absolute; left: 6px; right: 6px; top: 50%; height: 1px; background: rgba(45,212,191,0.12); }
+.visitor-label { font-size: 0.7rem; color: var(--text-muted); letter-spacing: 1.2px; text-transform: uppercase; }
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 860px) {
@@ -746,15 +751,26 @@ footer .logo { font-size: 1.2rem; display: block; margin-bottom: 0.5rem; text-de
 <!-- Footer -->
 <footer>
   <a href="https://mannaomics.com" class="logo">Manna <span>Omics</span> Solutions</a>
-  <p class="footer-tagline">Computational Biology &middot; Bioinformatics &middot; Structural Biology</p>
+  <p class="footer-tagline">From Atoms to Systems</p>
   <div class="footer-links">
     <a href="https://mannaomics.com/#about">About</a>
     <a href="https://mannaomics.com/#services">Services</a>
+    <a href="https://mannaomics.com/#case-studies">Case Studies</a>
+    <a href="https://mannaomics.com/#tools">Expertise</a>
+    <a href="https://mannaomics.com/#publications">Publications</a>
+    <a href="https://mannaomics.com/#founder">Founder</a>
     <a href="https://mannaomics.com/#contact">Contact</a>
-    <a href="terms.html" style="color:var(--accent-teal);opacity:1;">Terms and Conditions</a>
+    <a href="terms.html" style="color:var(--accent-teal);opacity:1;">Terms &amp; Conditions</a>
   </div>
-  <p style="margin-bottom:0.4rem; font-size:0.78rem;">&copy; 2026 Manna Omics Solutions. All rights reserved.</p>
-  <p style="font-size:0.75rem;opacity:0.4;">MSME Registered &middot; Udyam: UDYAM-WB-12-0147213</p>
+  <div class="visitor-counter">
+    <div id="visitorCount" class="digit-display"><span class="digit-box">—</span></div>
+    <span class="visitor-label">Site Visitors</span>
+  </div>
+  <p style="font-size:0.75rem;opacity:0.6;margin-top:1.5rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.08);line-height:1.6;">
+    <strong style="opacity:0.85;">Registered Micro, Small &amp; Medium Enterprise (MSME)</strong><br>
+    Ministry of MSME, Government of India &nbsp;|&nbsp; Udyam: UDYAM-WB-12-0147213
+  </p>
+  <p style="font-size:0.75rem;opacity:0.4;margin-top:0.75rem;">&copy; 2026 Manna Omics Solutions. All rights reserved.</p>
 </footer>
 
 <script>
@@ -779,6 +795,28 @@ window.addEventListener('scroll', () => {
   document.querySelector('nav').style.boxShadow =
     window.scrollY > 20 ? '0 4px 30px rgba(0,0,0,0.3)' : 'none';
 });
+(async function () {
+  const el = document.getElementById('visitorCount');
+  if (!el) return;
+  const OFFSET = 150;
+  function renderDigits(n) {
+    const str = String(Math.max(0, n)).padStart(4, '0');
+    el.innerHTML = str.split('').map(d => `<span class="digit-box">${d}</span>`).join('');
+  }
+  renderDigits(OFFSET);
+  const COUNTED_KEY = 'mn_counted', CACHE_KEY = 'mn_count_cache';
+  const cached = parseInt(localStorage.getItem(CACHE_KEY), 10);
+  if (cached) renderDigits(cached + OFFSET);
+  try {
+    const base = 'https://api.counterapi.dev/v1/mannaomics/pageviews/';
+    const already = localStorage.getItem(COUNTED_KEY);
+    const res = await fetch(already ? base : `${base}/up`);
+    if (!res.ok) throw new Error();
+    const data = await res.json();
+    if (data.count) { renderDigits(data.count + OFFSET); localStorage.setItem(CACHE_KEY, data.count); }
+    if (!already) localStorage.setItem(COUNTED_KEY, '1');
+  } catch {}
+})();
 </script>
 </body>
 </html>
