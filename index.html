@@ -1265,68 +1265,71 @@ footer .logo {
     <h2 class="section-title" style="text-align: center;">Let's Work Together</h2>
     <p class="section-desc" style="text-align: center; margin: 0 auto 2rem;">Tell us about your project and we'll respond with a scope outline and estimate within 48 hours.</p>
 
-    <div class="contact-grid">
-
-      <!-- Left: info -->
-      <div class="contact-info">
-        <a href="mailto:info@mannaomics.com" class="contact-email">
-          <i class="fas fa-envelope"></i> info@mannaomics.com
-        </a>
-        <div class="contact-details">
-          <p><i class="fas fa-location-dot"></i> &nbsp; Kolkata, India</p>
-          <p><i class="fas fa-globe"></i> &nbsp; Remote consulting worldwide</p>
-          <p><i class="fas fa-clock"></i> &nbsp; Response within 48 hours</p>
+    <!-- Form (centred) -->
+    <div class="contact-form-card" style="max-width:620px; margin:0 auto;">
+      <form id="contactForm" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="cf-name">Full Name *</label>
+            <input type="text" id="cf-name" name="name" placeholder="Dr. Jane Smith" required>
+          </div>
+          <div class="form-group">
+            <label for="cf-email">Email *</label>
+            <input type="email" id="cf-email" name="email" placeholder="jane@institution.edu" required>
+          </div>
         </div>
-        <p class="contact-note">Academic collaborations, industry projects, and grant-linked consulting — all enquiries welcome.</p>
-      </div>
+        <div class="form-group">
+          <label for="cf-org">Organization / Institution</label>
+          <input type="text" id="cf-org" name="organization" placeholder="University / Company name">
+        </div>
+        <div class="form-group">
+          <label for="cf-subject">Service of Interest *</label>
+          <select id="cf-subject" name="subject" required>
+            <option value="" disabled selected>Select a service...</option>
+            <option>Molecular Dynamics &amp; AI Molecular Design</option>
+            <option>Metagenomics &amp; Multi-omics Analysis</option>
+            <option>Resistome &amp; AMR Profiling</option>
+            <option>Scientific Writing &amp; Grant Support</option>
+            <option>Training &amp; Workshops</option>
+            <option>Internship Program</option>
+            <option>General Enquiry</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="cf-message">Message *</label>
+          <textarea id="cf-message" name="message" placeholder="Briefly describe your project, goals, or question..." required></textarea>
+        </div>
+        <div class="form-group" style="flex-direction:row; align-items:flex-start; gap:0.6rem; margin-bottom:1.2rem;">
+          <input type="checkbox" id="cf-terms" style="margin-top:3px; accent-color:var(--accent-teal); width:15px; height:15px; flex-shrink:0; cursor:pointer;">
+          <label for="cf-terms" style="font-size:0.82rem; text-transform:none; letter-spacing:0; color:var(--text-secondary); cursor:pointer; line-height:1.5;">
+            I have read and agree to the <a href="terms.html" target="_blank" style="color:var(--accent-teal); text-decoration:underline;">Terms and Conditions</a>, including the storage of my submitted data.
+          </label>
+        </div>
+        <button type="submit" class="form-submit-btn" id="submitBtn">
+          <i class="fas fa-paper-plane"></i> Send Message
+        </button>
+        <div class="form-status" id="formStatus"></div>
+      </form>
+    </div>
 
-      <!-- Right: form -->
-      <div class="contact-form-card">
-        <form id="contactForm" novalidate>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="cf-name">Full Name *</label>
-              <input type="text" id="cf-name" name="name" placeholder="Dr. Jane Smith" required>
-            </div>
-            <div class="form-group">
-              <label for="cf-email">Email *</label>
-              <input type="email" id="cf-email" name="email" placeholder="jane@institution.edu" required>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="cf-org">Organization / Institution</label>
-            <input type="text" id="cf-org" name="organization" placeholder="University / Company name">
-          </div>
-          <div class="form-group">
-            <label for="cf-subject">Service of Interest *</label>
-            <select id="cf-subject" name="subject" required>
-              <option value="" disabled selected>Select a service...</option>
-              <option>Molecular Dynamics &amp; AI Molecular Design</option>
-              <option>Metagenomics &amp; Multi-omics Analysis</option>
-              <option>Resistome &amp; AMR Profiling</option>
-              <option>Scientific Writing &amp; Grant Support</option>
-              <option>Training &amp; Workshops</option>
-              <option>Internship Program</option>
-              <option>General Enquiry</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="cf-message">Message *</label>
-            <textarea id="cf-message" name="message" placeholder="Briefly describe your project, goals, or question..." required></textarea>
-          </div>
-          <div class="form-group" style="flex-direction:row; align-items:flex-start; gap:0.6rem; margin-bottom:1.2rem;">
-            <input type="checkbox" id="cf-terms" style="margin-top:3px; accent-color:var(--accent-teal); width:15px; height:15px; flex-shrink:0; cursor:pointer;">
-            <label for="cf-terms" style="font-size:0.82rem; text-transform:none; letter-spacing:0; color:var(--text-secondary); cursor:pointer; line-height:1.5;">
-              I have read and agree to the <a href="terms.html" target="_blank" style="color:var(--accent-teal); text-decoration:underline;">Terms and Conditions</a>, including the storage of my submitted data.
-            </label>
-          </div>
-          <button type="submit" class="form-submit-btn" id="submitBtn">
-            <i class="fas fa-paper-plane"></i> Send Message
-          </button>
-          <div class="form-status" id="formStatus"></div>
-        </form>
-      </div>
+    <!-- OR divider -->
+    <div style="max-width:620px; margin:2rem auto 0; display:flex; align-items:center; gap:1rem;">
+      <div style="flex:1; height:1px; background:var(--border);"></div>
+      <span style="font-size:0.82rem; color:var(--text-muted); letter-spacing:1px; text-transform:uppercase;">or</span>
+      <div style="flex:1; height:1px; background:var(--border);"></div>
+    </div>
 
+    <!-- Contact info below -->
+    <div style="max-width:620px; margin:1.5rem auto 0; text-align:center;">
+      <a href="mailto:info@mannaomics.com" class="contact-email" style="display:inline-flex; margin-bottom:1.5rem;">
+        <i class="fas fa-envelope"></i> &nbsp; info@mannaomics.com
+      </a>
+      <div class="contact-details" style="margin-bottom:1rem;">
+        <p><i class="fas fa-location-dot"></i> &nbsp; Kolkata, India</p>
+        <p><i class="fas fa-globe"></i> &nbsp; Remote consulting worldwide</p>
+        <p><i class="fas fa-clock"></i> &nbsp; Response within 48 hours</p>
+      </div>
+      <p class="contact-note">Academic collaborations, industry projects, and grant-linked consulting — all enquiries welcome.</p>
     </div>
   </div>
 </section>
