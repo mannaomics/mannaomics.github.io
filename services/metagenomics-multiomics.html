@@ -1033,19 +1033,21 @@ footer .logo { font-size: 1.2rem; display: block; margin-bottom: 0.5rem; }
           <h4>Community Ecology</h4>
           <ul>
             <li>Alpha diversity (Shannon, Simpson, Chao1, observed ASVs/species)</li>
-            <li>Beta diversity (Bray-Curtis, UniFrac, Jaccard) with PCoA and NMDS ordination</li>
+            <li>Beta diversity (Bray-Curtis, UniFrac, Jaccard) with PCoA/NMDS ordination</li>
+            <li>Rarefaction curves</li>
             <li>PERMANOVA and ANOSIM for statistical testing of group differences</li>
-            <li>Rarefaction curves and sequencing depth assessment</li>
+            <li>Co-association network</li>
           </ul>
         </div>
 
         <div class="analysis-group">
           <h4>Taxonomic and Functional Profiling</h4>
           <ul>
-            <li>Taxonomic barplots, heatmaps, and composition summaries (phylum to species)</li>
-            <li>Differential abundance analysis (DESeq2, ANCOM-BC, LEfSe) with effect sizes</li>
-            <li>Functional gene and pathway abundance profiles (KEGG, COG, CAZy)</li>
+            <li>Taxonomic stacked barplots, composition summaries (phylum to species)</li>
+            <li>Differential abundance analysis with effect sizes</li>
+            <li>Functional gene and pathway abundance profiles (KEGG, CAZy, custom DB)</li>
             <li>Indicator species analysis</li>
+            <li>Antimicrobial resistance gene profiling (detailed analysis available as a dedicated service)</li>
           </ul>
         </div>
 
@@ -1053,8 +1055,10 @@ footer .logo { font-size: 1.2rem; display: block; margin-bottom: 0.5rem; }
           <h4>Genome-Resolved Outputs</h4>
           <ul>
             <li>MAG quality reports (completeness, contamination, strain heterogeneity)</li>
-            <li>Phylogenomic placement and taxonomic assignment (GTDB-Tk)</li>
+            <li>Phylogenomic placement and taxonomic assignment</li>
+            <li>Average nucleotide identity (ANI) comparisons against reference genomes</li>
             <li>Metabolic reconstruction per MAG with pathway completeness scores</li>
+            <li>Gene-taxa physical mapping for host organism identification</li>
             <li>Pangenome analysis where relevant</li>
           </ul>
         </div>
@@ -1062,9 +1066,10 @@ footer .logo { font-size: 1.2rem; display: block; margin-bottom: 0.5rem; }
         <div class="analysis-group">
           <h4>Expression and Quantification</h4>
           <ul>
-            <li>Normalized expression matrices</li>
+            <li>Raw and normalized expression matrices</li>
             <li>Differential expression with multiple testing correction</li>
             <li>Gene set and pathway enrichment analysis</li>
+            <li>Transcript-to-gene abundance ratios for paired metagenome-metatranscriptome datasets</li>
             <li>Volcano plots, MA plots, heatmaps with hierarchical clustering</li>
           </ul>
         </div>
@@ -1072,8 +1077,8 @@ footer .logo { font-size: 1.2rem; display: block; margin-bottom: 0.5rem; }
         <div class="analysis-group">
           <h4>Multi-Omics Outputs</h4>
           <ul>
-            <li>Sparse PLS and canonical correlation plots (mixOmics)</li>
-            <li>Multi-omics factor loadings and variance decomposition (MOFA2)</li>
+            <li>Sparse PLS and canonical correlation plots</li>
+            <li>Multi-omics factor loadings and variance decomposition</li>
             <li>Cross-omics correlation networks with hub identification</li>
             <li>Integrated pathway diagrams linking genomic potential to expression to metabolite levels</li>
           </ul>
