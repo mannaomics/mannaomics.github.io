@@ -106,17 +106,21 @@ nav {
 .nav-dropdown:hover .dropdown-caret { transform: rotate(180deg); }
 .dropdown-menu {
   display: none;
-  position: absolute; top: calc(100% + 0.75rem); left: 50%;
+  position: absolute; top: 100%; left: 50%;
   transform: translateX(-50%);
+  padding-top: 0.75rem;
+  min-width: 230px;
+  z-index: 200;
+}
+.dropdown-menu-inner {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: 10px;
   padding: 0.5rem 0;
-  min-width: 230px;
   box-shadow: 0 16px 40px rgba(0,0,0,0.4);
-  z-index: 200;
+  position: relative;
 }
-.dropdown-menu::before {
+.dropdown-menu-inner::before {
   content: '';
   position: absolute; top: -6px; left: 50%;
   transform: translateX(-50%);
@@ -1063,9 +1067,11 @@ footer .logo {
       <li class="nav-dropdown">
         <a href="#services">Services <span class="dropdown-caret">&#9660;</span></a>
         <div class="dropdown-menu">
-          <a href="services/molecular-dynamics.html">Molecular Dynamics &amp; AI Design</a>
-          <div class="dropdown-divider"></div>
-          <span class="dropdown-coming-soon">More coming soon...</span>
+          <div class="dropdown-menu-inner">
+            <a href="services/molecular-dynamics.html">Molecular Dynamics &amp; AI Design</a>
+            <div class="dropdown-divider"></div>
+            <span class="dropdown-coming-soon">More coming soon...</span>
+          </div>
         </div>
       </li>
       <li><a href="#case-studies">Case Studies</a></li>
