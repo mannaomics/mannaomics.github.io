@@ -845,14 +845,16 @@ footer .logo { font-size: 1.2rem; display: block; margin-bottom: 0.5rem; }
     border-bottom: 1px solid var(--border);
   }
   .dropdown-menu {
+    display: block;
     position: static; transform: none;
     box-shadow: none; border: none;
-    background: transparent; padding: 0 0 0 1rem;
+    background: transparent; padding: 0.25rem 0 0 1rem;
     min-width: unset;
   }
+  .dropdown-menu-inner { background: transparent; border: none; box-shadow: none; padding: 0; }
   .dropdown-menu-inner::before { display: none; }
-  .nav-dropdown:hover .dropdown-menu { display: none; }
-  .nav-dropdown.open .dropdown-menu { display: block; }
+  .dropdown-menu a { font-size: 0.82rem; padding: 0.4rem 0.5rem; color: var(--text-muted); }
+  .nav-dropdown:hover .dropdown-menu { display: block; }
   section { padding: 4rem 1.5rem; }
   .page-hero { padding: 8rem 1.5rem 4rem; }
   .hero-right-img { display: none; }
@@ -1549,13 +1551,6 @@ document.querySelector('.mobile-toggle').addEventListener('click', function () {
   document.getElementById('navLinks').classList.toggle('active');
 });
 
-// ── Services dropdown on mobile ──
-document.querySelector('.nav-dropdown > a').addEventListener('click', function(e) {
-  if (window.innerWidth <= 640) {
-    e.preventDefault();
-    this.closest('.nav-dropdown').classList.toggle('open');
-  }
-});
 
 // ── Scroll reveal ──
 const observer = new IntersectionObserver((entries) => {
