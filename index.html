@@ -15,6 +15,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700&family=Playfair+Display:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 <style>
 :root {
   --bg-primary: #0a0f1a;
@@ -786,6 +787,36 @@ footer .logo {
   letter-spacing: 1.2px;
   text-transform: uppercase;
 }
+.visitor-map-wrap {
+  width: 100%;
+  max-width: 720px;
+  margin: 2rem auto 0;
+}
+.visitor-map-label {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+#visitorMap {
+  width: 100%;
+  height: 300px;
+  border-radius: 12px;
+  border: 1px solid rgba(45, 212, 191, 0.15);
+  overflow: hidden;
+  box-shadow: 0 0 30px rgba(0,0,0,0.4);
+}
+.leaflet-container {
+  background: #0a0f1a !important;
+  font-family: 'DM Sans', sans-serif;
+}
+.leaflet-control-attribution {
+  background: rgba(10,15,26,0.7) !important;
+  color: #64748b !important;
+  font-size: 0.6rem !important;
+}
+.leaflet-control-attribution a { color: #64748b !important; }
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 968px) {
@@ -1430,6 +1461,20 @@ footer .logo {
     </div>
     <span class="visitor-label">Site Visitors</span>
   </div>
+  <div class="visitor-map-wrap">
+    <div style="display:flex; align-items:center; justify-content:center; gap:1.5rem; margin-bottom:0.75rem; flex-wrap:wrap;">
+      <p class="visitor-map-label" style="margin:0;">Recent Visitor Locations</p>
+      <div style="display:flex; gap:1rem; align-items:center;">
+        <span style="display:flex;align-items:center;gap:0.35rem;font-size:0.65rem;color:#64748b;letter-spacing:1px;text-transform:uppercase;">
+          <span style="width:8px;height:8px;border-radius:50%;background:#2dd4bf;display:inline-block;opacity:0.5;"></span>Global Research Hubs
+        </span>
+        <span style="display:flex;align-items:center;gap:0.35rem;font-size:0.65rem;color:#64748b;letter-spacing:1px;text-transform:uppercase;">
+          <span style="width:8px;height:8px;border-radius:50%;background:#f87171;display:inline-block;"></span>Actual Visitors
+        </span>
+      </div>
+    </div>
+    <div id="visitorMap"></div>
+  </div>
   <p style="font-size: 0.75rem; opacity: 0.6; margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.08); line-height: 1.6;">
     <strong style="opacity: 0.85;">Registered Micro, Small &amp; Medium Enterprise (MSME)</strong><br>
     Ministry of MSME, Government of India &nbsp;|&nbsp; Udyam: UDYAM-WB-12-0147213
@@ -1784,6 +1829,100 @@ document.getElementById('contactForm').addEventListener('submit', async function
     btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
   }
 });
+</script>
+
+<!-- Visitor Map -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
+import { getFirestore, collection, addDoc, getDocs, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyA-6TvFjtUIDiEz_aDGtsy9-u5rN61B1OQ",
+  authDomain: "mannaomics-35772.firebaseapp.com",
+  projectId: "mannaomics-35772",
+  storageBucket: "mannaomics-35772.firebasestorage.app",
+  messagingSenderId: "282740865882",
+  appId: "1:282740865882:web:5d16d94cd2efd887425163"
+};
+
+const app = initializeApp(firebaseConfig);
+const db  = getFirestore(app);
+
+// ── Seed locations (global research hubs) ──
+const SEEDS = [
+  [28.63, 77.22],[22.57, 88.36],[19.07, 72.87],[12.97, 77.59],[17.39, 78.49],
+  [13.08, 80.27],[23.02, 72.57],[26.84, 80.94],[21.25, 81.63],[30.73, 76.78],
+  [40.71, -74.00],[37.77, -122.41],[41.85, -87.65],[29.76, -95.36],[47.60, -122.33],
+  [51.51, -0.12],[52.52, 13.40],[48.85, 2.35],[45.46, 9.19],[40.41, -3.70],
+  [35.68, 139.69],[37.56, 126.97],[31.23, 121.47],[22.31, 114.17],[1.35, 103.82],
+  [-33.87, 151.20],[43.70, -79.42],[45.50, -73.56],[55.75, 37.61],[-23.54, -46.63]
+];
+
+// ── Init map ──
+const map = L.map('visitorMap', {
+  center: [20, 10],
+  zoom: 2,
+  zoomControl: false,
+  attributionControl: true,
+  scrollWheelZoom: false
+});
+
+L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+  attribution: '&copy; <a href="https://carto.com/">CARTO</a>',
+  subdomains: 'abcd',
+  maxZoom: 19
+}).addTo(map);
+
+// ── Render seed dots ──
+SEEDS.forEach(([lat, lng]) => {
+  L.circleMarker([lat, lng], {
+    radius: 3,
+    fillColor: '#2dd4bf',
+    fillOpacity: 0.35,
+    color: '#2dd4bf',
+    weight: 0.5,
+    opacity: 0.3
+  }).addTo(map);
+});
+
+// ── Render real visitor dots from Firestore ──
+function renderDot(lat, lng) {
+  L.circleMarker([lat, lng], {
+    radius: 4,
+    fillColor: '#f87171',
+    fillOpacity: 0.75,
+    color: '#ffffff',
+    weight: 0.8,
+    opacity: 0.5
+  }).addTo(map);
+}
+
+try {
+  const snap = await getDocs(collection(db, 'visitors'));
+  snap.forEach(doc => {
+    const { lat, lng } = doc.data();
+    if (lat && lng) renderDot(lat, lng);
+  });
+} catch(e) {}
+
+// ── Log current visitor once per browser ──
+if (!localStorage.getItem('mn_map_logged')) {
+  try {
+    const r    = await fetch('https://ipapi.co/json/');
+    const data = await r.json();
+    if (data.latitude && data.longitude) {
+      await addDoc(collection(db, 'visitors'), {
+        lat:     parseFloat(data.latitude.toFixed(2)),
+        lng:     parseFloat(data.longitude.toFixed(2)),
+        country: data.country_name || '',
+        ts:      serverTimestamp()
+      });
+      renderDot(data.latitude, data.longitude);
+      localStorage.setItem('mn_map_logged', '1');
+    }
+  } catch(e) {}
+}
 </script>
 </body>
 </html>
