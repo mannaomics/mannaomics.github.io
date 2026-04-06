@@ -1943,8 +1943,11 @@ function renderDot(lat, lng) {
 
 try {
   const snap = await getDocs(collection(db, 'visitors'));
+  console.log('[map] docs fetched:', snap.size);
   snap.forEach(doc => {
-    const { lat, lng } = doc.data();
+    const data = doc.data();
+    console.log('[map] doc:', doc.id, data);
+    const { lat, lng } = data;
     if (lat && lng) renderDot(lat, lng);
   });
 } catch(e) { console.error('[map] Firestore read failed:', e); }
