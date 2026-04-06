@@ -1946,7 +1946,7 @@ try {
   console.log('[map] docs fetched:', snap.size);
   snap.forEach(doc => {
     const data = doc.data();
-    console.log('[map] doc:', doc.id, data);
+    console.log('[map] doc:', doc.id, JSON.stringify(data));
     const { lat, lng } = data;
     if (lat && lng) renderDot(lat, lng);
   });
