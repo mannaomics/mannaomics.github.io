@@ -702,11 +702,11 @@ footer .logo { font-size: 1.2rem; display: block; margin-bottom: 0.5rem; }
       <div class="sim-cards-grid three-col">
         <div class="sim-card">
           <h4>AMR Gene Detection and Quantification</h4>
-          <p>AMR gene detection and quantification from metagenomic, genomic, or amplicon data using curated databases (CARD, ResFinder, AMRFinderPlus, MEGARes). We report gene families, resistance mechanisms, drug classes, and relative abundance — with proper normalization and statistical testing for differential abundance between conditions.</p>
+          <p>AMR gene detection and quantification from metagenomic, genomic, or metatranscriptomic data using curated databases. We report gene families, resistance mechanisms, drug classes, and relative abundance — with proper normalization and statistical testing for differential abundance between conditions.</p>
         </div>
         <div class="sim-card">
           <h4>Resistome Composition and Diversity</h4>
-          <p>Characterization of the full resistance gene repertoire in your samples. Alpha and beta resistome diversity, resistome richness, evenness, and composition shifts across experimental groups, time points, or geographic locations. We treat the resistome as an ecological entity, not just a gene list.</p>
+          <p>Characterization of the full resistance gene repertoire in your samples. Alpha and beta resistome diversity, resistome richness, evenness, and composition shifts across experimental groups, time points, or geographic locations. Includes antibiotic resistance bacteria (ARB) detection and pathogen identification where relevant. We treat the resistome as an ecological entity, not just a gene list.</p>
         </div>
         <div class="sim-card">
           <h4>Resistance Mechanism Classification</h4>
@@ -746,7 +746,7 @@ footer .logo { font-size: 1.2rem; display: block; margin-bottom: 0.5rem; }
       <div class="sim-cards-grid three-col">
         <div class="sim-card">
           <h4>Taxonomic Assignment of Resistance Carriers</h4>
-          <p>Linking resistance genes to their microbial hosts using MAG-based or read-based approaches. We answer the critical question: which organisms are carrying which resistance genes? Knowing that a resistance gene exists is less useful than knowing which species is harboring and potentially spreading it.</p>
+          <p>Linking resistance genes to their microbial hosts using MAG-based or contig-based approaches. We answer the critical question: which organisms are carrying which resistance genes? Knowing that a resistance gene exists is less useful than knowing which species is harboring and potentially spreading it.</p>
           <a href="metagenomics-multiomics.html" class="cross-link">See also: Shotgun Metagenomics and MAG Reconstruction &rarr;</a>
         </div>
         <div class="sim-card">
@@ -755,7 +755,7 @@ footer .logo { font-size: 1.2rem; display: block; margin-bottom: 0.5rem; }
         </div>
         <div class="sim-card">
           <h4>Strain-Level Resolution</h4>
-          <p>Where data quality permits, we resolve AMR carriage to the strain level, distinguishing between resistant and susceptible strains of the same species within a community. Critical for outbreak investigation and surveillance studies.</p>
+          <p>Where data quality permits, strain-level resolution of AMR carriage, distinguishing resistant and susceptible strains of the same species within a community. Additionally, antibiotic resistance bacteria (ARB) detection based on amplicon sequences and pathogen databases. Critical for outbreak investigation, surveillance studies, and pathogen tracking.</p>
         </div>
       </div>
     </div>
@@ -825,7 +825,8 @@ footer .logo { font-size: 1.2rem; display: block; margin-bottom: 0.5rem; }
             <li>Resistance mechanism class distribution per sample</li>
             <li>Drug class resistance profiles (aminoglycosides, beta-lactams, tetracyclines, fluoroquinolones, etc.)</li>
             <li>Resistome alpha and beta diversity with statistical testing</li>
-            <li>Differential resistome abundance across conditions (DESeq2, ANCOM-BC)</li>
+            <li>Differential resistome abundance across conditions</li>
+            <li>ARB detection and pathogen identification</li>
           </ul>
         </div>
 
@@ -888,7 +889,7 @@ footer .logo { font-size: 1.2rem; display: block; margin-bottom: 0.5rem; }
             <span class="deliverable-num">04</span>
             <div class="deliverable-text">
               <h4>Data Package</h4>
-              <p>Processed abundance matrices, analysis scripts, pipeline configuration files, and database versions used. Full computational reproducibility.</p>
+              <p>Processed abundance matrices and database versions used.</p>
             </div>
           </div>
           <div class="deliverable-item">
@@ -918,9 +919,6 @@ footer .logo { font-size: 1.2rem; display: block; margin-bottom: 0.5rem; }
           <span class="tool-tag">CARD / RGI</span>
           <span class="tool-tag">ResFinder</span>
           <span class="tool-tag">AMRFinderPlus</span>
-          <span class="tool-tag">MEGARes</span>
-          <span class="tool-tag">ARGs-OAP</span>
-          <span class="tool-tag">ABRicate</span>
           <span class="tool-tag">DeepARG</span>
         </div>
       </div>
@@ -928,11 +926,9 @@ footer .logo { font-size: 1.2rem; display: block; margin-bottom: 0.5rem; }
         <h3><i class="fas fa-arrows-spin"></i> Mobile Genetic Elements</h3>
         <div class="tool-tags">
           <span class="tool-tag">PlasmidFinder</span>
-          <span class="tool-tag">MOB-suite</span>
+          <span class="tool-tag">mobileOG</span>
           <span class="tool-tag">ISfinder</span>
           <span class="tool-tag">IntegronFinder</span>
-          <span class="tool-tag">Clinker</span>
-          <span class="tool-tag">EasyFig</span>
         </div>
       </div>
       <div class="tool-group reveal">
@@ -965,9 +961,9 @@ footer .logo { font-size: 1.2rem; display: block; margin-bottom: 0.5rem; }
         <h3><i class="fas fa-chart-area"></i> Visualization</h3>
         <div class="tool-tags">
           <span class="tool-tag">ggplot2</span>
-          <span class="tool-tag">ComplexHeatmap</span>
           <span class="tool-tag">circlize</span>
           <span class="tool-tag">Cytoscape</span>
+          <span class="tool-tag">Gephi</span>
           <span class="tool-tag">Python (matplotlib/seaborn)</span>
         </div>
       </div>
@@ -975,10 +971,6 @@ footer .logo { font-size: 1.2rem; display: block; margin-bottom: 0.5rem; }
         <h3><i class="fas fa-terminal"></i> Workflow and Infrastructure</h3>
         <div class="tool-tags">
           <span class="tool-tag">Snakemake</span>
-          <span class="tool-tag">Nextflow</span>
-          <span class="tool-tag">Docker</span>
-          <span class="tool-tag">Singularity</span>
-          <span class="tool-tag">Git</span>
           <span class="tool-tag">Linux HPC / SLURM</span>
         </div>
       </div>
@@ -1053,7 +1045,8 @@ footer .logo { font-size: 1.2rem; display: block; margin-bottom: 0.5rem; }
         <h3>Resistome Snapshot</h3>
         <p class="package-best">Best for: A lab or student needing baseline resistome characterization from a small set of metagenomic samples.</p>
         <ul class="package-includes">
-          <li>AMR gene detection and quantification (CARD/RGI and ResFinder)</li>
+          <li>AMR gene detection and quantification</li>
+          <li>ARB detection and pathogen identification</li>
           <li>Resistance mechanism and drug class profiling</li>
           <li>Resistome diversity analysis (alpha and beta)</li>
           <li>Differential abundance across experimental groups</li>
