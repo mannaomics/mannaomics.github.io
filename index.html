@@ -1931,6 +1931,7 @@ SEEDS.forEach(([lat, lng]) => {
 
 // ── Render real visitor dots from Firestore ──
 function renderDot(lat, lng) {
+  console.log('[map] renderDot called:', lat, lng, 'L available:', typeof L, 'map:', !!map);
   L.circleMarker([lat, lng], {
     radius: 4,
     fillColor: '#f87171',
