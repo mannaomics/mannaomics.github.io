@@ -90,7 +90,7 @@ nav {
   position: absolute; top: 100%; left: 50%;
   transform: translateX(-50%);
   padding-top: 0.75rem;
-  min-width: 230px;
+  min-width: 280px;
   z-index: 200;
 }
 .dropdown-menu-inner {
@@ -131,6 +131,18 @@ nav {
   font-style: italic; cursor: default;
   user-select: none;
 }
+.dropdown-group-label {
+  display: block;
+  padding: 0.55rem 1.2rem 0.2rem;
+  font-size: 0.68rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(45, 212, 191, 0.5);
+  font-weight: 600;
+  cursor: default;
+  user-select: none;
+}
+.dropdown-group-label:first-child { padding-top: 0.2rem; }
 .mobile-toggle {
   display: none; background: none; border: none;
   color: var(--text-primary); font-size: 1.5rem; cursor: pointer;
@@ -586,11 +598,15 @@ footer .logo { font-size: 1.2rem; display: block; margin-bottom: 0.5rem; }
         <a href="https://mannaomics.com/#services">Services <span class="dropdown-caret">&#9660;</span></a>
         <div class="dropdown-menu">
           <div class="dropdown-menu-inner">
-            <a href="https://mannaomics.com/services/molecular-dynamics.html">Molecular Dynamics &amp; AI Design</a>
-            <div class="dropdown-divider"></div>
+            <span class="dropdown-group-label">Research &amp; Computational Services</span>
+            <a href="https://mannaomics.com/services/molecular-dynamics.html">Molecular Dynamics &amp; AI-Driven Design</a>
             <a href="https://mannaomics.com/services/metagenomics-multiomics.html">(Meta)genomics &amp; Multi-Omics</a>
+            <a href="https://mannaomics.com/services/resistome-amr.html">Resistome &amp; AMR Profiling</a>
             <div class="dropdown-divider"></div>
-            <span class="dropdown-coming-soon">More coming soon...</span>
+            <span class="dropdown-group-label">Academic &amp; Writing Support</span>
+            <a href="https://mannaomics.com/services/scientific-writing.html">Scientific Writing &amp; Grant Support</a>
+            <a href="https://mannaomics.com/services/training-workshops.html">Training &amp; Workshops</a>
+            <a href="https://mannaomics.com/services/training-internship.html">Internship &amp; Dissertation Guidance</a>
           </div>
         </div>
       </li>
