@@ -1932,12 +1932,12 @@ SEEDS.forEach(([lat, lng]) => {
 // ── Render real visitor dots from Firestore ──
 function renderDot(lat, lng) {
   L.circleMarker([lat, lng], {
-    radius: 10,
+    radius: 4,
     fillColor: '#f87171',
-    fillOpacity: 1,
+    fillOpacity: 0.75,
     color: '#ffffff',
-    weight: 1.5,
-    opacity: 1
+    weight: 0.8,
+    opacity: 0.5
   }).addTo(map);
 }
 
