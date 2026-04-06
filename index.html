@@ -1931,26 +1931,23 @@ SEEDS.forEach(([lat, lng]) => {
 
 // ── Render real visitor dots from Firestore ──
 function renderDot(lat, lng) {
-  console.log('[map] renderDot called:', lat, lng, 'L available:', typeof L, 'map:', !!map);
   L.circleMarker([lat, lng], {
-    radius: 4,
+    radius: 10,
     fillColor: '#f87171',
-    fillOpacity: 0.75,
+    fillOpacity: 1,
     color: '#ffffff',
-    weight: 0.8,
-    opacity: 0.5
+    weight: 1.5,
+    opacity: 1
   }).addTo(map);
 }
 
 try {
   const snap = await getDocs(collection(db, 'visitors'));
-  console.log('[map] docs fetched:', snap.size);
   snap.forEach(doc => {
-    const data = doc.data();
-    console.log('[map] doc:', doc.id, JSON.stringify(data));
-    const { lat, lng } = data;
+    const { lat, lng } = doc.data();
     if (lat && lng) renderDot(lat, lng);
   });
+  map.invalidateSize();
 } catch(e) { console.error('[map] Firestore read failed:', e); }
 
 // ── Log current visitor once per browser ──
