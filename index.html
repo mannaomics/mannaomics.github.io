@@ -1947,7 +1947,7 @@ try {
     const { lat, lng } = doc.data();
     if (lat && lng) renderDot(lat, lng);
   });
-} catch(e) {}
+} catch(e) { console.error('[map] Firestore read failed:', e); }
 
 // ── Log current visitor once per browser ──
 if (!localStorage.getItem('mn_map_logged')) {
@@ -1963,8 +1963,8 @@ if (!localStorage.getItem('mn_map_logged')) {
       });
       renderDot(data.latitude, data.longitude);
       localStorage.setItem('mn_map_logged', '1');
-    }
-  } catch(e) {}
+    } else { console.warn('[map] ipapi.co returned no coords:', data); }
+  } catch(e) { console.error('[map] visitor log failed:', e); }
 }
 </script>
 </body>
