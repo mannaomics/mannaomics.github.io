@@ -208,6 +208,35 @@ nav {
   position: relative;
   z-index: 2;
 }
+.hero-bg-image {
+  position: absolute;
+  inset: 0;
+  background-image: url('../banner/mds.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.25;
+  pointer-events: none;
+  z-index: 0;
+}
+.hero-bg-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(10,15,26,0.7) 0%, rgba(26,16,64,0.5) 50%, rgba(10,15,26,0.7) 100%);
+}
+.hero-water-box {
+  position: absolute;
+  right: -200px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 110%;
+  width: auto;
+  opacity: 0.25;
+  pointer-events: none;
+  z-index: 1;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 25%);
+  mask-image: linear-gradient(to right, transparent 0%, black 25%);
+}
 .hero-badge {
   display: inline-block;
   padding: 0.4rem 1.2rem;
@@ -972,6 +1001,8 @@ footer .logo {
   <div class="hero-bg-grid"></div>
   <div class="hero-glow glow-1"></div>
   <div class="hero-glow glow-2"></div>
+  <div class="hero-bg-image"></div>
+  <img class="hero-water-box" src="../banner/water_box_mds2.jpg" alt="" aria-hidden="true">
   <div class="page-hero-inner">
     <div class="hero-badge">Computational Biology &middot; Service</div>
     <h1>Molecular Dynamics and<br><span class="highlight">AI-Driven Design</span></h1>
