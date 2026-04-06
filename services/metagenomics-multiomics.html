@@ -200,6 +200,36 @@ nav {
   position: relative;
   z-index: 2;
 }
+.hero-bg-image {
+  position: absolute;
+  inset: 0;
+  background-image: url('../banner/metagenomics_left.jpg');
+  background-size: 90% auto;
+  background-repeat: repeat;
+  background-position: left;
+  opacity: 0.2;
+  pointer-events: none;
+  z-index: 0;
+}
+.hero-bg-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(10,15,26,0.7) 0%, rgba(15,31,48,0.5) 50%, rgba(10,15,26,0.7) 100%);
+}
+.hero-right-img {
+  position: absolute;
+  right: -80px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 110%;
+  width: auto;
+  opacity: 0.35;
+  pointer-events: none;
+  z-index: 1;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 25%);
+  mask-image: linear-gradient(to right, transparent 0%, black 25%);
+}
 .hero-badge {
   display: inline-block;
   padding: 0.4rem 1.2rem;
@@ -230,12 +260,12 @@ nav {
   font-family: 'Playfair Display', serif;
   font-size: 1.15rem;
   font-style: italic;
-  color: var(--text-secondary);
+  color: #ffffff;
   margin-bottom: 1.5rem;
 }
 .page-hero .intro {
   font-size: 1.05rem;
-  color: var(--text-secondary);
+  color: #ffffff;
   line-height: 1.85;
   max-width: 780px;
   text-align: justify;
@@ -825,6 +855,7 @@ footer .logo { font-size: 1.2rem; display: block; margin-bottom: 0.5rem; }
   .nav-dropdown.open .dropdown-menu { display: block; }
   section { padding: 4rem 1.5rem; }
   .page-hero { padding: 8rem 1.5rem 4rem; }
+  .hero-right-img { display: none; }
   .hero-cta { flex-direction: column; }
   .tools-grid { grid-template-columns: 1fr; }
   .sim-cards-grid.three-col { grid-template-columns: 1fr; }
@@ -874,6 +905,8 @@ footer .logo { font-size: 1.2rem; display: block; margin-bottom: 0.5rem; }
   <div class="hero-bg-grid"></div>
   <div class="hero-glow glow-1"></div>
   <div class="hero-glow glow-2"></div>
+  <div class="hero-bg-image"></div>
+  <img class="hero-right-img" src="../banner/metagenomics_right.png" alt="" aria-hidden="true">
   <div class="page-hero-inner">
     <div class="hero-badge">BIOINFORMATICS &middot; Service</div>
     <h1><span class="highlight">(Meta)genomics</span><br>and Multi-Omics</h1>
