@@ -1617,22 +1617,20 @@ window.addEventListener('scroll', () => {
 (async function () {
   const el = document.getElementById('visitorCount');
   if (!el) return;
-  const OFFSET = 150;
   function renderDigits(n) {
     const str = String(Math.max(0, n)).padStart(4, '0');
     el.innerHTML = str.split('').map(d => `<span class="digit-box">${d}</span>`).join('');
   }
-  renderDigits(OFFSET);
   const COUNTED_KEY = 'mn_counted', CACHE_KEY = 'mn_count_cache';
   const cached = parseInt(localStorage.getItem(CACHE_KEY), 10);
-  if (cached) renderDigits(cached + OFFSET);
+  if (cached) renderDigits(cached);
   try {
     const base = 'https://api.counterapi.dev/v1/mannaomics/pageviews/';
     const already = localStorage.getItem(COUNTED_KEY);
-    const res = await fetch(already ? base : `${base}/up`);
+    const res = await fetch(already ? base : `${base}up`);
     if (!res.ok) throw new Error();
     const data = await res.json();
-    if (data.count) { renderDigits(data.count + OFFSET); localStorage.setItem(CACHE_KEY, data.count); }
+    if (data.count) { renderDigits(data.count); localStorage.setItem(CACHE_KEY, data.count); }
     if (!already) localStorage.setItem(COUNTED_KEY, '1');
   } catch {}
 })();

@@ -1763,35 +1763,28 @@ document.querySelectorAll('section[id]').forEach(s => navObserver.observe(s));
   const el = document.getElementById('visitorCount');
   if (!el) return;
 
-  const OFFSET = 150;
-
   function renderDigits(n) {
     const str = String(Math.max(0, n)).padStart(4, '0');
     el.innerHTML = str.split('').map(d => `<span class="digit-box">${d}</span>`).join('');
   }
 
-  // Show base immediately — no flicker, no dash
-  renderDigits(OFFSET);
-
-  // Restore last known count immediately (avoids flicker back to 150)
   const COUNTED_KEY = 'mn_counted';
   const CACHE_KEY   = 'mn_count_cache';
   const cached = parseInt(localStorage.getItem(CACHE_KEY), 10);
-  if (cached) renderDigits(cached + OFFSET);
+  if (cached) renderDigits(cached);
 
-  // Try live API; each new browser increments once
   try {
     const base    = 'https://api.counterapi.dev/v1/mannaomics/pageviews/';
     const already = localStorage.getItem(COUNTED_KEY);
-    const res     = await fetch(already ? base : `${base}/up`);
+    const res     = await fetch(already ? base : `${base}up`);
     if (!res.ok) throw new Error();
     const data = await res.json();
     if (data.count) {
-      renderDigits(data.count + OFFSET);
-      localStorage.setItem(CACHE_KEY, data.count); // persist for next visit
+      renderDigits(data.count);
+      localStorage.setItem(CACHE_KEY, data.count);
     }
     if (!already) localStorage.setItem(COUNTED_KEY, '1');
-  } catch { /* keep showing cached or 150 */ }
+  } catch { /* keep showing cached or — */ }
 })();
 
 /* ===== DROPDOWN MOBILE TOGGLE ===== */
